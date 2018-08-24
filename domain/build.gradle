@@ -2,3 +2,18 @@ apply plugin: 'java'
 
 sourceCompatibility = "1.8"
 targetCompatibility = "1.8"
+
+dependencies {
+    def domainDependencies = rootProject.ext.domainDependencies
+    def testDependencies = rootProject.ext.testDependencies
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation domainDependencies.rxjava
+    implementation domainDependencies.rxrelay
+    compileOnly domainDependencies.javaxAnnotation
+    implementation domainDependencies.javaxInject
+
+    testImplementation testDependencies.jUnit
+    testImplementation testDependencies.mockito
+}

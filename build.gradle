@@ -17,9 +17,16 @@ buildscript {
 }
 
 allprojects {
-    repositories {
-        google()
-        jcenter()
+    ext {
+        androidApplicationId = 'com.eventviewer.app'
+        testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+        testApplicationId = 'com.eventviewer.app.test'
+        androidMinSdkVersion = 19
+        androidTargetSdkVersion = 27
+        androidCompileSdkVersion = 27
+
+        versionCode = 1
+        nameExt = "0.0.1"
     }
 }
 
