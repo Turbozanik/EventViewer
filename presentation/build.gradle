@@ -1,0 +1,71 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.eventviewer"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    def presentationDependencies = rootProject.ext.presentationDependencies
+    def debugDependencies = rootProject.ext.debugDependencies
+    def testDependencies = rootProject.ext.testDependencies
+
+    implementation presentationDependencies.appcompat7
+    implementation presentationDependencies.design
+    implementation presentationDependencies.cardview7
+    implementation presentationDependencies.constraintLayout
+    implementation presentationDependencies.multidex
+    implementation presentationDependencies.butterknife
+    annotationProcessor presentationDependencies.butterknifeCompiler
+    implementation presentationDependencies.timber
+    implementation presentationDependencies.cicerone
+    implementation presentationDependencies.dagger
+    annotationProcessor presentationDependencies.daggerCompiler
+    implementation presentationDependencies.rxjava
+    implementation presentationDependencies.rxandroid
+    implementation presentationDependencies.rxrelay
+    implementation presentationDependencies.signaturePad
+    implementation dataDependencies.okhttp
+    implementation(presentationDependencies.permissionsDispatcher) {
+        // if you don't use android.app.Fragment you can exclude support for them
+        exclude module: "support-v13"
+    }
+    annotationProcessor presentationDependencies.permissionsdispatcherProcessor
+    implementation presentationDependencies.glide
+    annotationProcessor presentationDependencies.glideCompiler
+
+    implementation(debugDependencies.crashlytics) {
+        transitive = true
+    }
+    debugImplementation debugDependencies.leakcanaryAndroid
+    releaseImplementation debugDependencies.leakcanaryAndroidNoOp
+
+    testImplementation testDependencies.jUnit
+    testImplementation testDependencies.mockito
+    androidTestImplementation testDependencies.supportTestRunner
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
