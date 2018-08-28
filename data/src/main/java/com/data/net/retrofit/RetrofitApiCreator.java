@@ -5,7 +5,7 @@ import com.data.net.sharedprefs.PrefsDataSource;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 
-public class ClientApiCreator extends BaseApiCreator {
+public class RetrofitApiCreator extends BaseApiCreator {
 
     public RetrofitService create(final PrefsDataSource preferenceManager) {
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();

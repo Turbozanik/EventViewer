@@ -1,7 +1,6 @@
-package com.cryospav2.data.net.retrofit;
+package com.data.net.retrofit;
 
-import com.cryospav2.data.BuildConfig;
-import com.cryospav2.data.Constants;
+import com.data.BuildConfig;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -39,11 +38,8 @@ public abstract class BaseApiCreator {
     <T> T createApi(final Class<T> dest, OkHttpClient.Builder httpClientBuilder) {
         httpClientBuilder.addInterceptor(new LoggingInterceptor());
         Retrofit restAdapter = new Retrofit.Builder()
-                .baseUrl(BuildConfig.BASE_URL
-                                 + "/"
-                                 + Constants.API_SUFFIX
-                                 + BuildConfig.API_VERSION_SUFFIX
-                                 + "/")
+                //.baseUrl(BuildConfig.BASE_URL + "/" + SyncStateContract.Constants.API_SUFFIX + BuildConfig.API_VERSION_SUFFIX + "/")
+                .baseUrl("http://onliner.by")
                 .client(httpClientBuilder.build())
                 .addConverterFactory(getGsonConverterFactory())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

@@ -51,3 +51,28 @@ android {
         abortOnError false
     }
 }
+dependencies {
+    def dataDependencies = rootProject.ext.dataDependencies
+    def testDependencies = rootProject.ext.testDependencies
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(path: ':domain')
+
+    implementation dataDependencies.appcompat7
+    implementation dataDependencies.timber
+    implementation dataDependencies.gson
+    implementation dataDependencies.converterGson
+    implementation dataDependencies.retrofit2
+    implementation dataDependencies.retrofitRxjavaAdapter
+    implementation dataDependencies.okhttp
+    implementation dataDependencies.loggingInterceptor
+    implementation dataDependencies.okhttpUrlconnection
+    compileOnly dataDependencies.javaxAnnotation
+    implementation dataDependencies.javaxInject
+    implementation dataDependencies.rxjava
+    implementation dataDependencies.rabbitmq
+
+    testImplementation testDependencies.jUnit
+    testImplementation testDependencies.mockito
+    androidTestImplementation testDependencies.supportTestRunner
+}

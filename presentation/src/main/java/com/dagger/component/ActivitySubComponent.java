@@ -8,5 +8,5 @@ import dagger.Subcomponent;
 
 @ActivityScope
 @Subcomponent(modules = {ActivityModule.class, NetModule.class})
-public class ActivtiySubComponent {
+public class ActivitySubComponent {
 }
