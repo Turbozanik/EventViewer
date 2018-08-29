@@ -71,6 +71,7 @@ dependencies {
     implementation dataDependencies.javaxInject
     implementation dataDependencies.rxjava
     implementation dataDependencies.rabbitmq
+    implementation dataDependencies.kotlin
 
     testImplementation testDependencies.jUnit
     testImplementation testDependencies.mockito

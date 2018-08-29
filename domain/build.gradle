@@ -1,4 +1,5 @@
 apply plugin: 'java'
+apply plugin: 'kotlin'
 
 sourceCompatibility = "1.8"
 targetCompatibility = "1.8"
@@ -13,6 +14,7 @@ dependencies {
     implementation domainDependencies.rxrelay
     compileOnly domainDependencies.javaxAnnotation
     implementation domainDependencies.javaxInject
+    implementation domainDependencies.kotlin
 
     testImplementation testDependencies.jUnit
     testImplementation testDependencies.mockito

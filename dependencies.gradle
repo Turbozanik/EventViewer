@@ -7,6 +7,9 @@ allprojects {
 }
 
 ext {
+    //Kolin
+    kotlinVersion = '1.2.61'
+
     //Libraries
     androidSupport = '27.1.1'
     constraintLayout = '1.1.2'
@@ -41,7 +44,12 @@ ext {
     mockito = '2.13.0'
     supportTestRunner = '1.0.2-alpha1'
 
+    globalDependencies = [
+            kotlin                        : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}"
+    ]
+
     presentationDependencies = [
+            kotlin                        : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}",
             appcompat7                    : "com.android.support:appcompat-v7:${androidSupport}",
             design                        : "com.android.support:design:${androidSupport}",
             cardview7                     : "com.android.support:cardview-v7:${androidSupport}",
@@ -64,6 +72,7 @@ ext {
     ]
 
     domainDependencies = [
+            kotlin           : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}",
             javaxAnnotation  : "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
             javaxInject      : "javax.inject:javax.inject:${javaxInjectVersion}",
             rxjava           : "io.reactivex.rxjava2:rxjava:${rxJava2}",
@@ -71,6 +80,7 @@ ext {
     ]
 
     dataDependencies = [
+            kotlin               : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}",
             appcompat7           : "com.android.support:appcompat-v7:${androidSupport}",
             timber               : "com.jakewharton.timber:timber:${timber}",
             retrofit2            : "com.squareup.retrofit2:retrofit:${retrofit2}",
