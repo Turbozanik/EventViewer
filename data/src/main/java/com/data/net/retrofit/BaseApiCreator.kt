@@ -37,7 +37,7 @@ abstract class BaseApiCreator {
                 .client(httpClientBuilder.build())
                 .addConverterFactory(getGsonConverterFactory())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build();
+                .build()
         return restAdapter.create(dest)
     }
 
@@ -46,7 +46,7 @@ abstract class BaseApiCreator {
         gsonBuilder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
                 .excludeFieldsWithoutExposeAnnotation()
                 .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
-        return gsonBuilder.create();
+        return gsonBuilder.create()
     }
 
     private fun getGsonConverterFactory(): GsonConverterFactory = GsonConverterFactory.create(getGson())

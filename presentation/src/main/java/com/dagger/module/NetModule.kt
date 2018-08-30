@@ -2,9 +2,11 @@ package com.dagger.module
 
 import android.content.Context
 import com.dagger.scoupe.ActivityScope
+import com.data.net.repository.RetrofitNetRepositoryImpl
 import com.data.net.repository.datasource.NetDataSource
 import com.data.net.retrofit.RetrofitApiCreator
 import com.data.net.sharedprefs.PrefsDataSource
+import com.domain.repository.NetRepository
 import dagger.Module
 import dagger.Provides
 
@@ -22,5 +24,9 @@ class NetModule {
     @Provides
     @ActivityScope
     internal fun provideNetDataSource(prefsDataSource: PrefsDataSource, retrofitApiCreator: RetrofitApiCreator): NetDataSource = NetDataSource(prefsDataSource, retrofitApiCreator)
+
+    @Provides
+    @ActivityScope
+    internal fun provideNetRepository(netDataSource: NetDataSource): NetRepository = RetrofitNetRepositoryImpl(netDataSource)
 
 }
