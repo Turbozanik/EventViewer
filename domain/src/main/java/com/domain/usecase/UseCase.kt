@@ -1,28 +1,26 @@
 package com.domain.usecase
 
-import com.domain.utils.PreconditionUtils
 import io.reactivex.Flowable
-import java.util.*
 
 
-abstract class UseCase<Result, Params> {
-    private var mOptional: Optional<Params>? = null
+abstract class UseCase<Result, Params : Any> {
+    private lateinit var mParams: Params
 
-    abstract fun buildFlowable(optional: Optional<Params>?): Flowable<Result>
+    abstract fun buildFlowable(params: Params): Flowable<Result>
 
     abstract fun isParamsRequired(): Boolean
 
     protected fun setParams(params: Params) {
-        if (params != null) {
-            mOptional = Optional.of(params)
-        }
+        mParams = params
     }
 
     fun execute(): Flowable<Result> {
-        if (isParamsRequired()) {
-            PreconditionUtils.checkNotNull(mOptional?.get(), "Param is null!")
+        if (isParamsRequired() && !::mParams.isInitialized) {
+            throw IllegalArgumentException("Params are required")
+        } else {
+            return buildFlowable(mParams)
         }
-        return PreconditionUtils.checkNotNull(buildFlowable(mOptional), "Flowable is null!")
+
     }
 
 }
