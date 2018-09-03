@@ -1,4 +1,4 @@
-package com.eventviewer
+package com.view
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
