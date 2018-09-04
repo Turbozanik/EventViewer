@@ -1,4 +1,4 @@
 package com.data.net.retrofit;
 
-class BaseResponse<T> {
+public class BaseResponse<T> {
 }

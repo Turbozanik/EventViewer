@@ -1,9 +1,14 @@
 package com.dagger.component
 
 import com.dagger.module.MainActivityModule
-import dagger.Module
+import com.dagger.module.RegistrationFragmentModule
+import com.dagger.scoupe.MainActivityScope
 import dagger.Subcomponent
 
-@Module
+@MainActivityScope
 @Subcomponent(modules = [MainActivityModule::class])
-class MainActivitySubComponent
+interface MainActivitySubComponent {
+
+    fun add(registrationModule: RegistrationFragmentModule): RegistrationFragmentSubComponent
+
+}

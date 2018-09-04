@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
+apply plugin: 'kotlin-kapt'
+
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -32,12 +34,11 @@ dependencies {
     implementation presentationDependencies.cardview7
     implementation presentationDependencies.constraintLayout
     implementation presentationDependencies.multidex
-    implementation presentationDependencies.butterknife
-    annotationProcessor presentationDependencies.butterknifeCompiler
     implementation presentationDependencies.timber
     implementation presentationDependencies.cicerone
     implementation presentationDependencies.dagger
-    annotationProcessor presentationDependencies.daggerCompiler
+    kapt presentationDependencies.daggerCompiler
+    implementation presentationDependencies.daggerCompiler
     implementation presentationDependencies.rxjava
     implementation presentationDependencies.rxandroid
     implementation presentationDependencies.rxrelay

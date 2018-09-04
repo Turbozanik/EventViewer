@@ -45,7 +45,7 @@ ext {
     supportTestRunner = '1.0.2-alpha1'
 
     globalDependencies = [
-            kotlin                        : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}"
+            kotlin                        : "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
     ]
 
     presentationDependencies = [
