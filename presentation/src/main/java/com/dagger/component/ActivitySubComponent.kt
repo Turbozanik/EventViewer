@@ -9,5 +9,7 @@ import dagger.Subcomponent
 @ActivityScope
 @Subcomponent(modules = [ActivityModule::class, NetModule::class])
 interface ActivitySubComponent {
+
     fun add(mainActivityModule: MainActivityModule): MainActivitySubComponent
+
 }

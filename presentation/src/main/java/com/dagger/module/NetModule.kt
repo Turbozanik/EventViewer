@@ -4,18 +4,19 @@ import android.content.Context
 import com.dagger.scoupe.ActivityScope
 import com.data.net.repository.RetrofitNetRepositoryImpl
 import com.data.net.repository.datasource.NetDataSource
+import com.data.net.repository.datasource.PrefsDataSource
 import com.data.net.retrofit.RetrofitApiCreator
-import com.data.net.sharedprefs.PrefsDataSource
 import com.domain.repository.NetRepository
 import dagger.Module
 import dagger.Provides
 
 @Module
-open class NetModule {
+class NetModule {
 
     @Provides
     @ActivityScope
-    fun providePrefsDataSource(context: Context): PrefsDataSource = PrefsDataSource(context)
+    fun providePrefsDataSource(context: Context): PrefsDataSource = PrefsDataSource(
+            context)
 
     @Provides
     @ActivityScope

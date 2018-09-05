@@ -1,10 +1,10 @@
 package com.data.net.retrofit
 
-import com.data.net.sharedprefs.PrefsDataSource
+import com.data.net.repository.datasource.PrefsDataSource
 import okhttp3.OkHttpClient
 
 
-class RetrofitApiCreator : BaseApiCreator() {
+open class RetrofitApiCreator : BaseApiCreator() {
     fun create(prefsDataSource: PrefsDataSource): RetrofitService {
         val okHttpClientBuilder = OkHttpClient.Builder()
         okHttpClientBuilder.addInterceptor { chain ->

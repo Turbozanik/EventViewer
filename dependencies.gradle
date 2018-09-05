@@ -9,6 +9,7 @@ allprojects {
 ext {
     //Kolin
     kotlinVersion = '1.2.61'
+    annotationProcessorValueVersion = '1.5.2'
 
     //Libraries
     androidSupport = '27.1.1'
@@ -45,6 +46,7 @@ ext {
     supportTestRunner = '1.0.2-alpha1'
 
     globalDependencies = [
+            annotationProcessorGoogle     : "com.google.auto.value:auto-value:${annotationProcessorValueVersion}",
             kotlin                        : "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
     ]
 

@@ -10,6 +10,7 @@ buildscript {
 }
 
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
@@ -34,17 +35,8 @@ android {
         }
     }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
     aaptOptions {
         cruncherEnabled false
-    }
-
-    dexOptions {
-        javaMaxHeapSize "1.5g"
     }
 
     lintOptions {

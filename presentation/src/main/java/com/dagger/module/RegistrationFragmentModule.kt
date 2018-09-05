@@ -3,4 +3,4 @@ package com.dagger.module
 import dagger.Module
 
 @Module
-open class RegistrationFragmentModule
+class RegistrationFragmentModule

@@ -32,8 +32,7 @@ abstract class BaseFragment : Fragment() {
     @CallSuper
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(layoutId, null)
-        return view
+        return inflater.inflate(layoutId, null)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

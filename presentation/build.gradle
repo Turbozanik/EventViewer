@@ -29,6 +29,12 @@ dependencies {
     def debugDependencies = rootProject.ext.debugDependencies
     def testDependencies = rootProject.ext.testDependencies
 
+    implementation project(':domain')
+    implementation project(':data')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    kapt globalDependencies.annotationProcessorGoogle
+
     implementation presentationDependencies.appcompat7
     implementation presentationDependencies.design
     implementation presentationDependencies.cardview7
@@ -38,7 +44,6 @@ dependencies {
     implementation presentationDependencies.cicerone
     implementation presentationDependencies.dagger
     kapt presentationDependencies.daggerCompiler
-    implementation presentationDependencies.daggerCompiler
     implementation presentationDependencies.rxjava
     implementation presentationDependencies.rxandroid
     implementation presentationDependencies.rxrelay
@@ -49,9 +54,9 @@ dependencies {
         // if you don't use android.app.Fragment you can exclude support for them
         exclude module: "support-v13"
     }
-    annotationProcessor presentationDependencies.permissionsdispatcherProcessor
+    kapt presentationDependencies.permissionsdispatcherProcessor
     implementation presentationDependencies.glide
-    annotationProcessor presentationDependencies.glideCompiler
+    kapt presentationDependencies.glideCompiler
 
     implementation(debugDependencies.crashlytics) {
         transitive = true
@@ -62,8 +67,4 @@ dependencies {
     testImplementation testDependencies.jUnit
     testImplementation testDependencies.mockito
     androidTestImplementation testDependencies.supportTestRunner
-
-    implementation project(':domain')
-    implementation project(':data')
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
