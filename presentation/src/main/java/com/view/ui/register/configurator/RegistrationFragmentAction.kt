@@ -1,4 +1,4 @@
-package com.view.main.register.configurator
+package com.view.ui.register.configurator
 
 
 enum class RegistrationFragmentAction(action: Int) {

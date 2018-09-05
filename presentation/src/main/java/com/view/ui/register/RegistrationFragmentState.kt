@@ -1,4 +1,4 @@
-package com.view.main.register
+package com.view.ui.register
 
 
 class RegistrationFragmentState

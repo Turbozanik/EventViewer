@@ -1,12 +1,13 @@
-package com.view.main.register
+package com.view.ui.register
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.Constants
 import com.EventViewerApp
+import com.view.R
 import com.view.base.fragment.PresenterFragment
 import com.view.base.presenter.BaseFragmentPresenter
-import com.view.main.register.configurator.RegistrationFragmentAction
+import com.view.ui.register.configurator.RegistrationFragmentAction
 import javax.inject.Inject
 
 
@@ -41,11 +42,9 @@ class RegistrationFragment : PresenterFragment() {
     }
 
     override val layoutId: Int
-        get() = TODO(
-                "not implemented") //To change initializer of created properties use File | Settings | File Templates.
+        get() = R.layout.fragment_ragistration
 
     override fun initView() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun getPresenter(): BaseFragmentPresenter<*, *, *> {

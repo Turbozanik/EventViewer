@@ -1,7 +1,6 @@
 package com.view.base.activity
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.support.annotation.LayoutRes
 import android.support.annotation.StringRes
 import android.support.v4.app.FragmentManager
@@ -20,9 +19,6 @@ import timber.log.Timber
 
 
 abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
-    override fun showRootScreen(screenKey: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
     protected abstract inner class FragmentNavigator(fragmentManager: FragmentManager?,
                                                      containerId: Int)
@@ -42,13 +38,14 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
     private lateinit var mActivityNavigator: ActivityNavigator
     private lateinit var mActivityInitAction: ActivityAction
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         handleDaggerDependencies()
-        super.onCreate(savedInstanceState, persistentState)
+        super.onCreate(savedInstanceState)
         setContentView(layoutId)
         readActivityInitialAction()
         initActivityNavigator()
         initNavigator()
+        showRootScreen(getRootScreenKey(getActivityInitAction()))
     }
 
     override fun onDestroy() {
@@ -94,12 +91,12 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
 
     protected abstract fun addCurrentActivitySubComponent()
 
-    protected abstract fun getRootScreenKey(activityAction: ActivityAction): String
+    protected abstract fun getRootScreenKey(activityAction: ActivityAction?): String
 
     protected abstract fun removeCurrentSubComponent()
 
 
-    protected fun getRouter(): Router {
+    private fun getRouter(): Router {
         return (application as EventViewerApp).getRouter()
     }
 
@@ -111,7 +108,7 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
         getNavigatorHolder().removeNavigator()
     }
 
-    protected fun showFragment(screenKey: String, data: Any) {
+    protected fun showFragment(screenKey: String, data: Any?) {
         getRouter().navigateTo(screenKey, data)
     }
 
@@ -124,8 +121,11 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
     }
 
     private fun readActivityInitialAction() {
-        val activityAction: ActivityAction? = intent.getSerializableExtra(
-                Constants.ACTIVITY_ACTION_DATA_KEY) as ActivityAction
+        var activityAction: ActivityAction? = null
+        intent.getSerializableExtra(Constants.ACTIVITY_ACTION_DATA_KEY)?.let {
+            activityAction = intent.getSerializableExtra(
+                    Constants.ACTIVITY_ACTION_DATA_KEY) as ActivityAction
+        }
         mActivityInitAction = activityAction ?: ActivityAction.INITIAL_ACTION_DEFAULT
     }
 
@@ -143,12 +143,8 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
         return 0// TODO: 26.06.2018 add realisation
     }
 
-    protected fun getUserRankVisibility(): Int {
-        return 0// TODO: 26.06.2018 add realisation
-    }
-
-    protected fun getUserRank(): Int {
-        return 0// TODO: 26.06.2018 add realisation, maybe configuration
+    override fun showRootScreen(screenKey: String?) {
+        screenKey?.let { getRouter().newRootScreen(screenKey) }
     }
 
 }

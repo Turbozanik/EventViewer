@@ -1,12 +1,12 @@
-package com.view.main
+package com.view.ui
 
 import android.support.v4.app.Fragment
 import com.ActivityAction
 import com.EventViewerApp
 import com.view.R
 import com.view.base.activity.BaseActivity
-import com.view.main.register.RegistrationFragment
-import com.view.main.register.configurator.RegistrationFragmentAction
+import com.view.ui.register.RegistrationFragment
+import com.view.ui.register.configurator.RegistrationFragmentAction
 import ru.terrakok.cicerone.Navigator
 
 class MainActivity : BaseActivity() {
@@ -14,7 +14,7 @@ class MainActivity : BaseActivity() {
     override fun getNavigator(): Navigator {
         mNavigator = object : FragmentNavigator(supportFragmentManager,
                                                 fragmentContainerViewId) {
-            override fun createFragment(screenKey: String, data: Any): Fragment {
+            override fun createFragment(screenKey: String?, data: Any?): Fragment {
                 when (screenKey) {
                     MainActivityScreens.REGISTRATION_SCREEN -> {
                         val fragment = RegistrationFragment.createNewInstance()
@@ -41,8 +41,15 @@ class MainActivity : BaseActivity() {
         EventViewerApp.getInstance().getDaggerController().addMainActivitySubComponent()
     }
 
-    override fun getRootScreenKey(activityAction: ActivityAction): String {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getRootScreenKey(activityAction: ActivityAction?): String {
+        return when (activityAction) {
+            ActivityAction.INITIAL_ACTION_DEFAULT -> {
+                MainActivityScreens.REGISTRATION_SCREEN
+            }
+            else -> {
+                MainActivityScreens.REGISTRATION_SCREEN
+            }
+        }
     }
 
     override fun removeCurrentSubComponent() {
