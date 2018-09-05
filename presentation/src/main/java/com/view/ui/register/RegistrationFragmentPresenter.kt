@@ -2,22 +2,31 @@ package com.view.ui.register
 
 import com.view.base.configurator.BaseFragmentConfigurator
 import com.view.ui.register.configurator.RegistrationFragmentAction
+import com.view.ui.register.configurator.RegistrationFragmentConfigurator
 import com.view.ui.register.configurator.RegistrationFragmentViewCommand
+import timber.log.Timber
 import javax.inject.Inject
 
 
 class RegistrationFragmentPresenter @Inject constructor() : RegistrationFragmentContract.RegistrationFragmentPresenter(), RegistrationFragmentContract.RegistrationFragmentView {
 
-    override fun intiConfigurator(
-            actionConfigurator: BaseFragmentConfigurator<RegistrationFragmentState, RegistrationFragmentAction, RegistrationFragmentViewCommand>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    private val mRegistrationFragmentState: RegistrationFragmentState = RegistrationFragmentState()
+
+    override fun intiConfigurator(): BaseFragmentConfigurator<RegistrationFragmentState, RegistrationFragmentAction, RegistrationFragmentViewCommand> {
+        return RegistrationFragmentConfigurator()
     }
 
     override fun consumeAction(action: RegistrationFragmentAction?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        if (action != null) {
+            when (getActionConfigurator().produceViewCommand(mRegistrationFragmentState, action)) {
+                RegistrationFragmentViewCommand.COMMAND_DEFAULT -> {
+                    Timber.d("default message")
+                }
+            }
+        }
     }
 
-    override fun dummyFun() {
+    override fun register() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

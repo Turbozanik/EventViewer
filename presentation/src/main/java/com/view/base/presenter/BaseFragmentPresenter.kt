@@ -18,7 +18,7 @@ abstract class BaseFragmentPresenter<ActionConfigurator : BaseFragmentConfigurat
 
     private val mConfigurator: ActionConfigurator? = null
 
-    protected abstract fun intiConfigurator(actionConfigurator: ActionConfigurator)
+    protected abstract fun intiConfigurator(): ActionConfigurator
 
     fun attachView(view: ViewType) {
         mView = view

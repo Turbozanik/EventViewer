@@ -5,13 +5,14 @@ import android.support.v4.app.Fragment
 import com.Constants
 import com.EventViewerApp
 import com.view.R
+import com.view.base.configurator.ActionProducer
 import com.view.base.fragment.PresenterFragment
 import com.view.base.presenter.BaseFragmentPresenter
 import com.view.ui.register.configurator.RegistrationFragmentAction
 import javax.inject.Inject
 
 
-class RegistrationFragment : PresenterFragment() {
+class RegistrationFragment : PresenterFragment(), ActionProducer<RegistrationFragmentAction> {
 
     companion object {
         fun createNewInstance(): RegistrationFragment {
@@ -49,6 +50,10 @@ class RegistrationFragment : PresenterFragment() {
 
     override fun getPresenter(): BaseFragmentPresenter<*, *, *> {
         return mPresenter
+    }
+
+    override fun sendAction(action: RegistrationFragmentAction?) {
+        mPresenter.consumeAction(action)
     }
 
 }
