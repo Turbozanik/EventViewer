@@ -25,10 +25,10 @@ abstract class BaseFragment : Fragment() {
             null
 
     protected val daggerController: DaggerController
-        get() = (activity as BaseActivity).getDaggerController()
+        get() = (activity as BaseActivity).daggerController
 
     protected val activityNavigator: ActivityNavigator
-        get() = (activity as BaseActivity).getActivityNavigator()
+        get() = (activity as BaseActivity).activityNavigator
 
     @CallSuper
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -44,7 +44,7 @@ abstract class BaseFragment : Fragment() {
     protected abstract fun initView()
 
     protected fun getUserKeeper(): UserKeeper {
-        return (activity as BaseActivity).getUserKeeper()
+        return (activity as BaseActivity).userKeeper
     }
 
 }

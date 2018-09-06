@@ -38,9 +38,39 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
 
     @Inject
     protected lateinit var mUserKeeper: UserKeeper
+    val userKeeper: UserKeeper
+        get() {
+            return mUserKeeper
+        }
     protected lateinit var mNavigator: Navigator
     private lateinit var mActivityNavigator: ActivityNavigator
     private lateinit var mActivityInitAction: ActivityAction
+
+    private val router: Router
+        get() {
+            return (application as EventViewerApp).getRouter()
+        }
+
+    private val navigatorHolder: NavigatorHolder
+        get() {
+            return EventViewerApp.getInstance().getNavigatorHolder()
+        }
+
+    val daggerController: DaggerController
+        get() {
+            return EventViewerApp.getInstance()
+                    .getDaggerController()
+        }
+
+    val activityInitAction: ActivityAction
+        get() {
+            return mActivityInitAction
+        }
+
+    val activityNavigator: ActivityNavigator
+        get() {
+            return mActivityNavigator
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         handleDaggerDependencies()
@@ -49,7 +79,7 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
         readActivityInitialAction()
         initActivityNavigator()
         initNavigator()
-        showRootScreen(getRootScreenKey(getActivityInitAction()))
+        showRootScreen(getRootScreenKey(activityInitAction))
     }
 
     override fun onDestroy() {
@@ -67,19 +97,6 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
         initNavigator()
     }
 
-    fun getDaggerController(): DaggerController {
-        return EventViewerApp.getInstance()
-                .getDaggerController()
-    }
-
-    fun getActivityInitAction(): ActivityAction {
-        return mActivityInitAction
-    }
-
-    fun getActivityNavigator(): ActivityNavigator {
-        return mActivityNavigator
-    }
-
     private fun setActivityNavigator(activityNavigator: ActivityNavigator) {
         mActivityNavigator = activityNavigator
     }
@@ -87,7 +104,7 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
     @get:LayoutRes
     protected abstract val layoutId: Int
 
-    protected abstract fun getNavigator(): Navigator
+    protected abstract val navigator: Navigator
 
     protected abstract val fragmentContainerViewId: Int
 
@@ -99,25 +116,16 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
 
     protected abstract fun removeCurrentSubComponent()
 
-
-    private fun getRouter(): Router {
-        return (application as EventViewerApp).getRouter()
-    }
-
-    private fun getNavigatorHolder(): NavigatorHolder {
-        return EventViewerApp.getInstance().getNavigatorHolder()
-    }
-
-    protected fun removeNavigator() {
-        getNavigatorHolder().removeNavigator()
+    private fun removeNavigator() {
+        navigatorHolder.removeNavigator()
     }
 
     protected fun showFragment(screenKey: String, data: Any?) {
-        getRouter().navigateTo(screenKey, data)
+        router.navigateTo(screenKey, data)
     }
 
-    protected fun initNavigator() {
-        getNavigatorHolder().setNavigator(getNavigator())
+    private fun initNavigator() {
+        navigatorHolder.setNavigator(navigator)
     }
 
     private fun initActivityNavigator() {
@@ -148,12 +156,7 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
     }
 
     override fun showRootScreen(screenKey: String?) {
-        screenKey?.let { getRouter().newRootScreen(screenKey) }
-    }
-
-    //todo check if its kotli style
-    fun getUserKeeper(): UserKeeper {
-        return mUserKeeper
+        screenKey?.let { router.newRootScreen(screenKey) }
     }
 
 }
