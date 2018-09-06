@@ -11,6 +11,7 @@ import com.ActivityNavigator
 import com.Constants
 import com.dagger.DaggerController
 import com.view.base.activity.BaseActivity
+import com.watchers.keepers.UserKeeper
 
 abstract class BaseFragment : Fragment() {
 
@@ -41,5 +42,9 @@ abstract class BaseFragment : Fragment() {
     }
 
     protected abstract fun initView()
+
+    protected fun getUserKeeper(): UserKeeper {
+        return (activity as BaseActivity).getUserKeeper()
+    }
 
 }

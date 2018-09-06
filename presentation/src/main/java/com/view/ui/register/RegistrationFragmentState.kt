@@ -1,4 +1,8 @@
 package com.view.ui.register
 
 
-class RegistrationFragmentState
+class RegistrationFragmentState {
+
+    private val isLogedIn: Boolean = false
+
+}

@@ -10,12 +10,14 @@ import com.ActivityNavigator
 import com.Constants
 import com.EventViewerApp
 import com.dagger.DaggerController
-import com.view.base.HasRootScreen
+import com.view.base.view.HasRootScreen
+import com.watchers.keepers.UserKeeper
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
 import ru.terrakok.cicerone.android.SupportFragmentNavigator
 import timber.log.Timber
+import javax.inject.Inject
 
 
 abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
@@ -34,6 +36,8 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
 
     }
 
+    @Inject
+    protected lateinit var mUserKeeper: UserKeeper
     protected lateinit var mNavigator: Navigator
     private lateinit var mActivityNavigator: ActivityNavigator
     private lateinit var mActivityInitAction: ActivityAction
@@ -145,6 +149,11 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
 
     override fun showRootScreen(screenKey: String?) {
         screenKey?.let { getRouter().newRootScreen(screenKey) }
+    }
+
+    //todo check if its kotli style
+    fun getUserKeeper(): UserKeeper {
+        return mUserKeeper
     }
 
 }

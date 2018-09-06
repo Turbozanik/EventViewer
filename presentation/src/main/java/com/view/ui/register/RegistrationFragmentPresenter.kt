@@ -19,7 +19,7 @@ class RegistrationFragmentPresenter @Inject constructor() : RegistrationFragment
     override fun consumeAction(action: RegistrationFragmentAction?) {
         if (action != null) {
             when (getActionConfigurator().produceViewCommand(mRegistrationFragmentState, action)) {
-                RegistrationFragmentViewCommand.COMMAND_DEFAULT -> {
+                RegistrationFragmentViewCommand.DUMMY_COMMAND -> {
                     Timber.d("default message")
                 }
             }

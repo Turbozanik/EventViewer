@@ -4,6 +4,7 @@ import io.reactivex.Flowable
 
 
 abstract class UseCase<Result, Params : Any> {
+
     private lateinit var mParams: Params
 
     abstract fun buildFlowable(params: Params): Flowable<Result>
