@@ -46,17 +46,17 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
     private lateinit var mActivityNavigator: ActivityNavigator
     private lateinit var mActivityInitAction: ActivityAction
 
-    private val router: Router
+    private val mRouter: Router
         get() {
             return (application as EventViewerApp).getRouter()
         }
 
-    private val navigatorHolder: NavigatorHolder
+    private val mNavigatorHolder: NavigatorHolder
         get() {
             return EventViewerApp.getInstance().getNavigatorHolder()
         }
 
-    val daggerController: DaggerController
+    val mDaggerController: DaggerController
         get() {
             return EventViewerApp.getInstance()
                     .getDaggerController()
@@ -117,15 +117,15 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
     protected abstract fun removeCurrentSubComponent()
 
     private fun removeNavigator() {
-        navigatorHolder.removeNavigator()
+        mNavigatorHolder.removeNavigator()
     }
 
     protected fun showFragment(screenKey: String, data: Any?) {
-        router.navigateTo(screenKey, data)
+        mRouter.navigateTo(screenKey, data)
     }
 
     private fun initNavigator() {
-        navigatorHolder.setNavigator(navigator)
+        mNavigatorHolder.setNavigator(navigator)
     }
 
     private fun initActivityNavigator() {
@@ -156,7 +156,7 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
     }
 
     override fun showRootScreen(screenKey: String?) {
-        screenKey?.let { router.newRootScreen(screenKey) }
+        screenKey?.let { mRouter.newRootScreen(screenKey) }
     }
 
 }

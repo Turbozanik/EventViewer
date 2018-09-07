@@ -1,6 +1,19 @@
 package com.dagger.module
 
+import com.dagger.scoupe.RegistrationFragmentScope
+import com.data.net.repository.RetrofitNetRepositoryImpl
+import com.domain.usecase.registration.RegisterUserCase
 import dagger.Module
+import dagger.Provides
 
 @Module
-class RegistrationFragmentModule
+class RegistrationFragmentModule {
+
+    @Provides
+    @RegistrationFragmentScope
+    fun provideRegistrationUseCase(
+            retrofitNetRepositoryImpl: RetrofitNetRepositoryImpl): RegisterUserCase {
+        return RegisterUserCase(retrofitNetRepositoryImpl)
+    }
+
+}

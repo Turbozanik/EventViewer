@@ -12,7 +12,7 @@ class RegisterUserCase(
     private val mRetrofitNetRepository: NetRepository = retrofitNetRepository
 
     override fun buildFlowable(params: Map<String, String>): Flowable<UserDto?> {
-        return mRetrofitNetRepository.register()
+        return mRetrofitNetRepository.register(params)
     }
 
     override val isParamsRequired: Boolean

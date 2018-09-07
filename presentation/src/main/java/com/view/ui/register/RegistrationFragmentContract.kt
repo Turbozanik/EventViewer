@@ -11,7 +11,7 @@ import com.view.ui.register.configurator.RegistrationFragmentViewCommand
 interface RegistrationFragmentContract : BasePresenterContract {
     interface RegistrationFragmentView : BaseView {
 
-        fun register()
+        fun register(email: String, password: String)
 
     }
 

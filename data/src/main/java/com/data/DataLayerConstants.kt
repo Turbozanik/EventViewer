@@ -1,4 +1,4 @@
-package com.data.net
+package com.data
 
 
 //Request urls

@@ -24,8 +24,8 @@ abstract class BaseFragment : Fragment() {
         else
             null
 
-    protected val daggerController: DaggerController
-        get() = (activity as BaseActivity).daggerController
+    protected val mDaggerController: DaggerController
+        get() = (activity as BaseActivity).mDaggerController
 
     protected val activityNavigator: ActivityNavigator
         get() = (activity as BaseActivity).activityNavigator

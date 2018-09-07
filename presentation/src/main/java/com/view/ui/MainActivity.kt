@@ -12,11 +12,11 @@ import ru.terrakok.cicerone.Navigator
 class MainActivity : BaseActivity() {
 
     override fun addActivitySubComponent() {
-        EventViewerApp.getInstance().getDaggerController().addActivitySubComponent()
+        mDaggerController.addActivitySubComponent()
     }
 
     override fun addCurrentActivitySubComponent() {
-        EventViewerApp.getInstance().getDaggerController().addMainActivitySubComponent()
+        mDaggerController.addMainActivitySubComponent()
     }
 
     override fun getRootScreenKey(activityAction: ActivityAction?): String {

@@ -1,4 +1,4 @@
-package com.data.net.transformers
+package com.data.transformers
 
 
 interface Transformer<InputType, OutputType> {

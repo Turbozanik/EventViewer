@@ -1,5 +1,6 @@
 package com.view.ui.register
 
+import com.domain.usecase.registration.RegisterUserCase
 import com.view.base.configurator.BaseFragmentConfigurator
 import com.view.ui.register.configurator.RegistrationFragmentAction
 import com.view.ui.register.configurator.RegistrationFragmentConfigurator
@@ -9,6 +10,9 @@ import javax.inject.Inject
 
 
 class RegistrationFragmentPresenter @Inject constructor() : RegistrationFragmentContract.RegistrationFragmentPresenter(), RegistrationFragmentContract.RegistrationFragmentView {
+
+    @Inject
+    lateinit var mRegistrationUserCase: RegisterUserCase
 
     private val mRegistrationFragmentState: RegistrationFragmentState = RegistrationFragmentState()
 
@@ -26,7 +30,10 @@ class RegistrationFragmentPresenter @Inject constructor() : RegistrationFragment
         }
     }
 
-    override fun register() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun register(email: String, password: String) {
+        val body: Map<String, String> = HashMap()
+        body.plus(Pair("email", email))
+        body.plus(Pair("password", password))
+        mRegistrationUserCase.buildFlowable(body)
     }
 }

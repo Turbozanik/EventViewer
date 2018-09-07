@@ -8,8 +8,8 @@ import dagger.Provides
 @Module
 class ActivityModule {
 
-    @ActivityScope
     @Provides
+    @ActivityScope
     fun provideUserKeeper(): UserKeeper = UserKeeper()
 
 }

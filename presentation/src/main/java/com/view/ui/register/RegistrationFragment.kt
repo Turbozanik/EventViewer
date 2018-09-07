@@ -3,7 +3,6 @@ package com.view.ui.register
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.Constants
-import com.EventViewerApp
 import com.view.R
 import com.view.base.configurator.ActionProducer
 import com.view.base.fragment.PresenterFragment
@@ -30,16 +29,15 @@ class RegistrationFragment : PresenterFragment(), ActionProducer<RegistrationFra
     lateinit var mPresenter: RegistrationFragmentPresenter
 
     override fun inject() {
-        EventViewerApp.getInstance().getDaggerController().getRegistrationFragmentSubComponent()
-                ?.inject(this)
+        mDaggerController.getRegistrationFragmentSubComponent()?.inject(this)
     }
 
     override fun addCurrentSubComponent() {
-        EventViewerApp.getInstance().getDaggerController().addRegistrationFragmnetSubComponent()
+        mDaggerController.addRegistrationFragmentSubComponent()
     }
 
     override fun removeCurrentSubComponent() {
-        EventViewerApp.getInstance().getDaggerController().removeRegistrationFragmentSubComponent()
+        mDaggerController.removeRegistrationFragmentSubComponent()
     }
 
     override val layoutId: Int
