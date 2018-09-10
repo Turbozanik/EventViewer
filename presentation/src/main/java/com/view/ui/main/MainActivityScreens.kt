@@ -1,4 +1,4 @@
-package com.view.ui
+package com.view.ui.main
 
 class MainActivityScreens {
 

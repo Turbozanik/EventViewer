@@ -1,10 +1,9 @@
-package com.view.ui.register
+package com.view.ui.auth.register
 
 import com.domain.usecase.registration.RegisterUserCase
-import com.view.base.configurator.BaseFragmentConfigurator
-import com.view.ui.register.configurator.RegistrationFragmentAction
-import com.view.ui.register.configurator.RegistrationFragmentConfigurator
-import com.view.ui.register.configurator.RegistrationFragmentViewCommand
+import com.view.ui.auth.register.configurator.RegistrationFragmentAction
+import com.view.ui.auth.register.configurator.RegistrationFragmentConfigurator
+import com.view.ui.auth.register.configurator.RegistrationFragmentViewCommand
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -16,13 +15,13 @@ class RegistrationFragmentPresenter @Inject constructor() : RegistrationFragment
 
     private val mRegistrationFragmentState: RegistrationFragmentState = RegistrationFragmentState()
 
-    override fun intiConfigurator(): BaseFragmentConfigurator<RegistrationFragmentState, RegistrationFragmentAction, RegistrationFragmentViewCommand> {
+    override fun intiConfigurator(): RegistrationFragmentConfigurator {
         return RegistrationFragmentConfigurator()
     }
 
     override fun consumeAction(action: RegistrationFragmentAction?) {
         if (action != null) {
-            when (getActionConfigurator().produceViewCommand(mRegistrationFragmentState, action)) {
+            when (actionConfigurator.produceViewCommand(mRegistrationFragmentState, action)) {
                 RegistrationFragmentViewCommand.DUMMY_COMMAND -> {
                     Timber.d("default message")
                 }

@@ -49,8 +49,9 @@ abstract class BaseFragmentPresenter<ActionConfigurator : BaseFragmentConfigurat
         BgExecutors.Executor.submit(runnable)
     }
 
-    protected fun getActionConfigurator(): ActionConfigurator {
-        return mConfigurator!!
-    }
+    protected val actionConfigurator: ActionConfigurator
+        get() {
+            return mConfigurator!!
+        }
 
 }

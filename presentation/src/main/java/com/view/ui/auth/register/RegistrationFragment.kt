@@ -1,4 +1,4 @@
-package com.view.ui.register
+package com.view.ui.auth.register
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -6,12 +6,11 @@ import com.Constants
 import com.view.R
 import com.view.base.configurator.ActionProducer
 import com.view.base.fragment.PresenterFragment
-import com.view.base.presenter.BaseFragmentPresenter
-import com.view.ui.register.configurator.RegistrationFragmentAction
+import com.view.ui.auth.register.configurator.RegistrationFragmentAction
 import javax.inject.Inject
 
 
-class RegistrationFragment : PresenterFragment(), ActionProducer<RegistrationFragmentAction> {
+class RegistrationFragment : PresenterFragment<RegistrationFragmentContract.RegistrationFragmentPresenter>(), ActionProducer<RegistrationFragmentAction> {
 
     companion object {
         fun createNewInstance(): RegistrationFragment {
@@ -29,15 +28,15 @@ class RegistrationFragment : PresenterFragment(), ActionProducer<RegistrationFra
     lateinit var mPresenter: RegistrationFragmentPresenter
 
     override fun inject() {
-        mDaggerController.getRegistrationFragmentSubComponent()?.inject(this)
+        daggerController.registrationFragmentSubComponent?.inject(this)
     }
 
     override fun addCurrentSubComponent() {
-        mDaggerController.addRegistrationFragmentSubComponent()
+        daggerController.addRegistrationFragmentSubComponent()
     }
 
     override fun removeCurrentSubComponent() {
-        mDaggerController.removeRegistrationFragmentSubComponent()
+        daggerController.removeRegistrationFragmentSubComponent()
     }
 
     override val layoutId: Int
@@ -46,9 +45,10 @@ class RegistrationFragment : PresenterFragment(), ActionProducer<RegistrationFra
     override fun initView() {
     }
 
-    override fun getPresenter(): BaseFragmentPresenter<*, *, *> {
-        return mPresenter
-    }
+    override val presenter: RegistrationFragmentPresenter
+        get() {
+            return mPresenter
+        }
 
     override fun sendAction(action: RegistrationFragmentAction?) {
         mPresenter.consumeAction(action)

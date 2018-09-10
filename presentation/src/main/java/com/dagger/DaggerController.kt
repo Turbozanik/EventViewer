@@ -2,17 +2,16 @@ package com.dagger
 
 import android.content.Context
 import com.dagger.component.*
-import com.dagger.module.ActivityModule
-import com.dagger.module.AppModule
-import com.dagger.module.MainActivityModule
-import com.dagger.module.RegistrationFragmentModule
+import com.dagger.module.*
 
 
 open class DaggerController(eventViewerApp: Context) {
 
     private var mActivitySubComponent: ActivitySubComponent? = null
+    private var mAuthActivitySubComponent: AuthActivitySubComponent? = null
     private var mMainActivitySubComponent: MainActivitySubComponent? = null
-    private var mRegistrationActivitySubComponent: RegistrationFragmentSubComponent? = null
+    private var mRegistrationFragmentSubComponent: RegistrationFragmentSubComponent? = null
+    private var mLoginSubComponent: LoginFragmentSubComponent? = null
 
     private val mAppComponent: AppComponent = DaggerAppComponent.builder()
             .appModule(AppModule(eventViewerApp))
@@ -32,9 +31,10 @@ open class DaggerController(eventViewerApp: Context) {
         mActivitySubComponent?.let { mActivitySubComponent = null }
     }
 
-    fun getActivitySubComponent(): ActivitySubComponent? {
-        return mActivitySubComponent
-    }
+    val activitySubComponent: ActivitySubComponent?
+        get() {
+            return mActivitySubComponent
+        }
 
     //MainActivity module
     fun addMainActivitySubComponent() {
@@ -45,22 +45,52 @@ open class DaggerController(eventViewerApp: Context) {
         mMainActivitySubComponent?.let { mMainActivitySubComponent = null }
     }
 
-    fun getMainActivitySubComponent(): MainActivitySubComponent? {
-        return mMainActivitySubComponent
+    val mainActivitySubComponent: MainActivitySubComponent?
+        get() {
+            return mMainActivitySubComponent
+        }
+
+    //AuthActivityModule
+    fun addAuthActivitySubComponent() {
+        mAuthActivitySubComponent = mActivitySubComponent?.add(AuthActivityModule())
     }
+
+    fun removeAuthActivitySubComponent() {
+        mAuthActivitySubComponent?.let { mAuthActivitySubComponent = null }
+    }
+
+    val authActivitySubComponent: AuthActivitySubComponent?
+        get() {
+            return mAuthActivitySubComponent
+        }
 
     //RegistrationFragment
     fun addRegistrationFragmentSubComponent() {
-        mRegistrationActivitySubComponent = mMainActivitySubComponent?.add(
+        mRegistrationFragmentSubComponent = mAuthActivitySubComponent?.add(
                 RegistrationFragmentModule())
     }
 
     fun removeRegistrationFragmentSubComponent() {
-        mRegistrationActivitySubComponent?.let { mRegistrationActivitySubComponent = null }
+        mRegistrationFragmentSubComponent?.let { mRegistrationFragmentSubComponent = null }
     }
 
-    fun getRegistrationFragmentSubComponent(): RegistrationFragmentSubComponent? {
-        return mRegistrationActivitySubComponent
+    val registrationFragmentSubComponent: RegistrationFragmentSubComponent?
+        get() {
+            return mRegistrationFragmentSubComponent
+        }
+
+    //LoginFragment
+    fun addLoginFragmentSubComponent() {
+        mLoginSubComponent = mAuthActivitySubComponent?.add(LoginFragmentModule())
     }
+
+    fun removeLoginFragmentSubComponent() {
+        mLoginSubComponent?.let { mLoginSubComponent = null }
+    }
+
+    val loginFragmentSubComponent: LoginFragmentSubComponent?
+        get() {
+            return mLoginSubComponent
+        }
 
 }

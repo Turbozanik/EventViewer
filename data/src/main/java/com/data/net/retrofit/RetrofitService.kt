@@ -10,4 +10,7 @@ interface RetrofitService {
 
     @GET(GET_PRIVACY_POLICY_AGREEMENT_URL)
     fun register(@Body map: Map<String, String>): Flowable<BaseResponse<User?>>
+
+    @GET(GET_PRIVACY_POLICY_AGREEMENT_URL)
+    fun login(@Body map: Map<String, String>): Flowable<BaseResponse<User?>>
 }

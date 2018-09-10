@@ -12,4 +12,8 @@ open class NetDataSource(prefsDataSource: PrefsDataSource, retrofitApiCreator: R
         return mRetrofitService.register(map)
     }
 
+    fun login(body: Map<String, String>): Flowable<BaseResponse<User?>> {
+        return mRetrofitService.login(body)
+    }
+
 }

@@ -5,11 +5,11 @@ import android.os.Bundle
 import com.view.base.presenter.BaseFragmentPresenter
 import com.view.base.view.BaseView
 
-abstract class PresenterFragment : BaseFragment(), BaseView {
+abstract class PresenterFragment<PresenterType : BaseFragmentPresenter<*, *, *>> : BaseFragment(), BaseView {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        getPresenter().detachView()
+        presenter.detachView()
     }
 
     override fun onAttach(context: Context?) {
@@ -27,7 +27,7 @@ abstract class PresenterFragment : BaseFragment(), BaseView {
         removeCurrentSubComponent()
     }
 
-    protected abstract fun getPresenter(): BaseFragmentPresenter<*, *, *>
+    protected abstract val presenter: PresenterType
 
     protected abstract fun inject()
 

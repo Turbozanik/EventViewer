@@ -1,4 +1,4 @@
-package com.view.ui.register.configurator
+package com.view.ui.auth.register.configurator
 
 
 enum class RegistrationFragmentViewCommand(command: Int) {
@@ -8,7 +8,8 @@ enum class RegistrationFragmentViewCommand(command: Int) {
 
     companion object {
         private val map = RegistrationFragmentViewCommand.values()
-                .associateBy(RegistrationFragmentViewCommand::mCommand)
+                .associateBy(
+                        RegistrationFragmentViewCommand::mCommand)
 
         fun getActionValue(
                 registrationFragmentViewCommand: RegistrationFragmentViewCommand): Int = registrationFragmentViewCommand.mCommand

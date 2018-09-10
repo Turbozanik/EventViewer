@@ -1,7 +1,7 @@
-package com.view.ui.register.configurator
+package com.view.ui.auth.register.configurator
 
 import com.view.base.configurator.BaseFragmentConfigurator
-import com.view.ui.register.RegistrationFragmentState
+import com.view.ui.auth.register.RegistrationFragmentState
 
 class RegistrationFragmentConfigurator : BaseFragmentConfigurator<RegistrationFragmentState, RegistrationFragmentAction, RegistrationFragmentViewCommand>() {
 
