@@ -1,10 +1,7 @@
 package com.dagger
 
 import android.content.Context
-import com.dagger.component.ActivitySubComponent
-import com.dagger.component.AppComponent
-import com.dagger.component.MainActivitySubComponent
-import com.dagger.component.RegistrationFragmentSubComponent
+import com.dagger.component.*
 import com.dagger.module.ActivityModule
 import com.dagger.module.AppModule
 import com.dagger.module.MainActivityModule
@@ -21,9 +18,10 @@ open class DaggerController(eventViewerApp: Context) {
             .appModule(AppModule(eventViewerApp))
             .build()
 
-    fun getAppComponent(): AppComponent {
-        return mAppComponent
-    }
+    val appComponent: AppComponent
+        get() {
+            return mAppComponent
+        }
 
     //Activity module
     fun addActivitySubComponent() {
