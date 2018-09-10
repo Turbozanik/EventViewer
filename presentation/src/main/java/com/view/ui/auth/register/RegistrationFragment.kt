@@ -10,7 +10,7 @@ import com.view.ui.auth.register.configurator.RegistrationFragmentAction
 import javax.inject.Inject
 
 
-class RegistrationFragment : PresenterFragment<RegistrationFragmentContract.RegistrationFragmentPresenter>(), ActionProducer<RegistrationFragmentAction> {
+class RegistrationFragment : PresenterFragment<RegistrationFragmentContract.RegistrationFragmentPresenter>(), ActionProducer<RegistrationFragmentAction>, RegistrationFragmentContract.RegistrationFragmentView {
 
     companion object {
         fun createNewInstance(): RegistrationFragment {
@@ -52,6 +52,10 @@ class RegistrationFragment : PresenterFragment<RegistrationFragmentContract.Regi
 
     override fun sendAction(action: RegistrationFragmentAction?) {
         mPresenter.consumeAction(action)
+    }
+
+    override fun register() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 }

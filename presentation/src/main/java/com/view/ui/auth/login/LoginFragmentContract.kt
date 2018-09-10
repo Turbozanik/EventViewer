@@ -8,9 +8,14 @@ import com.view.ui.auth.login.configurator.LoginFragmentConfigurator
 
 
 interface LoginFragmentContract : BasePresenterContract {
+
+    data class LoginFragmentDto(val email: String, val password: String)
+
     interface LoginFragmentView : BaseView {
 
-        fun login(email: String, password: String)
+        fun login()
+
+        fun getViewData(): LoginFragmentDto
 
     }
 

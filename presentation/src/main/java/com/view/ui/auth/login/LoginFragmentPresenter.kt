@@ -6,7 +6,7 @@ import com.view.ui.auth.login.configurator.LoginFragmentConfigurator
 import javax.inject.Inject
 
 
-class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.LoginFragmentPresenter(), LoginFragmentContract.LoginFragmentView {
+class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.LoginFragmentPresenter() {
 
     @Inject
     protected lateinit var mLoginUseCase: LoginUseCase
@@ -25,10 +25,4 @@ class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.Login
         }
     }
 
-    override fun login(email: String, password: String) {
-        val body: Map<String, String> = HashMap()
-        body.plus(Pair("email", email))
-        body.plus(Pair("password", password))
-        mLoginUseCase.buildFlowable(body)
-    }
 }
