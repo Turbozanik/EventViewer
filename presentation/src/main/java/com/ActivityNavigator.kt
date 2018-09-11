@@ -7,8 +7,9 @@ import android.content.Intent
 class ActivityNavigator(context: Context) {
     private val mContext: Context = context
 
-    fun startActivityWithInitialAction(stringKey: String, activityAction: ActivityAction) {
-        startActivity(applyAction(getNewActivityIntent(stringKey), activityAction))
+    fun startActivityWithInitialAction(activityAction: ActivityAction) {
+        startActivity(applyAction(getNewActivityIntent(getStringKeyByAction(activityAction)),
+                                  activityAction))
     }
 
     private fun applyAction(intent: Intent, activityAction: ActivityAction): Intent {
@@ -25,11 +26,11 @@ class ActivityNavigator(context: Context) {
 
     private fun getNewActivityIntent(stringKey: String): Intent {
         return when (stringKey) {
-            ActivityScreenKey.MAIN_ACTIVITY -> {
+            MAIN_ACTIVITY -> {
                 Intent()
                 //TODO
             }
-            ActivityScreenKey.POS_ACTIVITY -> {
+            AUTH_ACTIVITY -> {
                 Intent()
                 //TODO
             }
@@ -38,4 +39,16 @@ class ActivityNavigator(context: Context) {
             }
         }
     }
+
+    private fun getStringKeyByAction(activityAction: ActivityAction): String {
+        return when (activityAction) {
+            ActivityAction.OPEN_AUTH_ACTIVITY -> {
+                AUTH_ACTIVITY
+            }
+            ActivityAction.OPEN_MAIN_ACTIVITY -> {
+                MAIN_ACTIVITY
+            }
+        }
+    }
+
 }

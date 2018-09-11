@@ -109,7 +109,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun getRootScreenKey(activityAction: ActivityAction?): String {
 //        return when (activityAction) {
-//            ActivityAction.NOT_LOGGED_IN -> {
+//            AuthActivityAction.NOT_LOGGED_IN -> {
 //                MainActivityScreens.REGISTRATION_SCREEN
 //            }
 //            else -> {
@@ -137,7 +137,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                     when (screenKey) {
 //                        MainActivityScreens.REGISTRATION_SCREEN -> {
 //                            val fragment = RegistrationFragment.createNewInstance()
-//                            if (activityInitAction === com.ActivityAction.NOT_LOGGED_IN) {
+//                            if (activityInitAction === com.AuthActivityAction.NOT_LOGGED_IN) {
 //                                RegistrationFragment.addInitialAction(fragment,
 //                                                                      RegistrationFragmentAction.INITIAL_ACTION_DEFAULT)
 //                            }

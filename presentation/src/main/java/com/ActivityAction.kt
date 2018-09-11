@@ -2,8 +2,8 @@ package com
 
 
 enum class ActivityAction(action: Int) {
-    NOT_LOGGED_IN(action = 0),
-    HAS_SAVED_CREDENTIALS(action = 1);
+    OPEN_MAIN_ACTIVITY(action = 0),
+    OPEN_AUTH_ACTIVITY(action = 1);
 
     private val mAction: Int = action
 

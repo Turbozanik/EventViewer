@@ -46,7 +46,7 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
     private lateinit var mActivityNavigator: ActivityNavigator
     private lateinit var mActivityInitAction: ActivityAction
 
-    private val mRouter: Router
+    private val router: Router
         get() {
             return (application as EventViewerApp).getRouter()
         }
@@ -121,7 +121,7 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
     }
 
     protected fun showFragment(screenKey: String, data: Any?) {
-        mRouter.navigateTo(screenKey, data)
+        router.navigateTo(screenKey, data)
     }
 
     private fun initNavigator() {
@@ -156,7 +156,7 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
     }
 
     override fun showRootScreen(screenKey: String?) {
-        screenKey?.let { mRouter.newRootScreen(screenKey) }
+        screenKey?.let { router.newRootScreen(screenKey) }
     }
 
 }
