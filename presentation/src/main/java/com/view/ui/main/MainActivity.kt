@@ -15,8 +15,6 @@ import com.EventViewerApp
 import com.view.R
 import com.view.base.activity.BaseActivity
 import com.view.base.view.HasProgress
-import com.view.ui.auth.register.RegistrationFragment
-import com.view.ui.auth.register.configurator.RegistrationFragmentAction
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -102,22 +100,23 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun addActivitySubComponent() {
-        mDaggerController.addActivitySubComponent()
+        daggerController.addActivitySubComponent()
     }
 
     override fun addCurrentActivitySubComponent() {
-        mDaggerController.addMainActivitySubComponent()
+        daggerController.addMainActivitySubComponent()
     }
 
     override fun getRootScreenKey(activityAction: ActivityAction?): String {
-        return when (activityAction) {
-            ActivityAction.INITIAL_ACTION_DEFAULT -> {
-                MainActivityScreens.REGISTRATION_SCREEN
-            }
-            else -> {
-                MainActivityScreens.REGISTRATION_SCREEN
-            }
-        }
+//        return when (activityAction) {
+//            ActivityAction.NOT_LOGGED_IN -> {
+//                MainActivityScreens.REGISTRATION_SCREEN
+//            }
+//            else -> {
+//                MainActivityScreens.REGISTRATION_SCREEN
+//            }
+//        }
+        return ""
     }
 
     override fun removeCurrentSubComponent() {
@@ -136,18 +135,19 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                                                     fragmentContainerViewId) {
                 override fun createFragment(screenKey: String?, data: Any?): Fragment {
                     when (screenKey) {
-                        MainActivityScreens.REGISTRATION_SCREEN -> {
-                            val fragment = RegistrationFragment.createNewInstance()
-                            if (activityInitAction === com.ActivityAction.INITIAL_ACTION_DEFAULT) {
-                                RegistrationFragment.addInitialAction(fragment,
-                                                                      RegistrationFragmentAction.INITIAL_ACTION_DEFAULT)
-                            }
-                            return fragment
-                        }
-                        else -> {
-                            throw IllegalArgumentException(Throwable("Unknown screen"))
-                        }
+//                        MainActivityScreens.REGISTRATION_SCREEN -> {
+//                            val fragment = RegistrationFragment.createNewInstance()
+//                            if (activityInitAction === com.ActivityAction.NOT_LOGGED_IN) {
+//                                RegistrationFragment.addInitialAction(fragment,
+//                                                                      RegistrationFragmentAction.INITIAL_ACTION_DEFAULT)
+//                            }
+//                            return fragment
+//                        }
+//                        else -> {
+//                            throw IllegalArgumentException(Throwable("Unknown screen"))
+//                        }
                     }
+                    return Fragment()
                 }
             }
             return mNavigator

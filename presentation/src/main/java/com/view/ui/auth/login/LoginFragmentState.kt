@@ -1,4 +1,6 @@
 package com.view.ui.auth.login
 
 
-class LoginFragmentState
+class LoginFragmentState {
+    var areCredentialsSaved: Boolean = false
+}

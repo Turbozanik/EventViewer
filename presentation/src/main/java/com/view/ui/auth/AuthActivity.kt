@@ -17,6 +17,7 @@ class AuthActivity : BaseActivity(), HasProgress {
 
     override val layoutId: Int
         get() = R.layout.activity_login
+
     override val navigator: Navigator
         get() {
             mNavigator = object : FragmentNavigator(supportFragmentManager,
@@ -26,7 +27,7 @@ class AuthActivity : BaseActivity(), HasProgress {
                     when (screenKey) {
                         AuthActivityScreens.REGISTRATION_SCREEN -> {
                             fragment = RegistrationFragment.createNewInstance()
-                            if (activityInitAction === com.ActivityAction.INITIAL_ACTION_DEFAULT) {
+                            if (activityInitAction === com.ActivityAction.NOT_LOGGED_IN) {
                                 RegistrationFragment.addInitialAction(fragment,
                                                                       RegistrationFragmentAction.INITIAL_ACTION_DEFAULT)
                             }
@@ -34,9 +35,8 @@ class AuthActivity : BaseActivity(), HasProgress {
                         }
                         AuthActivityScreens.LOGIN_SCREEN -> {
                             fragment = LoginFragment.createNewInstance()
-                            if (activityInitAction === com.ActivityAction.INITIAL_ACTION_DEFAULT) {
-                                LoginFragment.addInitialAction(fragment,
-                                                               LoginFragmentAction.INITIAL_ACTION_DEFAULT)
+                            if (activityInitAction === com.ActivityAction.NOT_LOGGED_IN) {
+                                LoginFragment.addInitialAction(fragment, LoginFragmentAction.LOGIN)
                             }
                             return fragment
                         }
@@ -48,23 +48,31 @@ class AuthActivity : BaseActivity(), HasProgress {
             }
             return mNavigator
         }
+
     override val fragmentContainerViewId: Int
         get() = R.id.mAuthFragmentContainer
 
     override fun addActivitySubComponent() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        daggerController.addActivitySubComponent()
     }
 
     override fun addCurrentActivitySubComponent() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun getRootScreenKey(activityAction: ActivityAction?): String {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        daggerController.addAuthActivitySubComponent()
     }
 
     override fun removeCurrentSubComponent() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        daggerController.removeAuthActivitySubComponent()
+    }
+
+    override fun getRootScreenKey(activityAction: ActivityAction?): String {
+        return when (activityAction) {
+            ActivityAction.NOT_LOGGED_IN -> {
+                AuthActivityScreens.LOGIN_SCREEN
+            }
+            else -> {
+                AuthActivityScreens.REGISTRATION_SCREEN
+            }
+        }
     }
 
     override fun showProgress() {

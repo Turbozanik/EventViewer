@@ -2,7 +2,7 @@ package com
 
 
 enum class ActivityAction(action: Int) {
-    INITIAL_ACTION_DEFAULT(action = 0);
+    NOT_LOGGED_IN(action = 0);
 
     private val mAction: Int = action
 

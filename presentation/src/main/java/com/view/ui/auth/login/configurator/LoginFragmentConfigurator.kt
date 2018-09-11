@@ -6,6 +6,10 @@ import com.view.ui.auth.login.LoginFragmentState
 class LoginFragmentConfigurator : BaseFragmentConfigurator<LoginFragmentState, LoginFragmentAction, LoginFragmentViewCommand>() {
     override fun produceViewCommand(viewState: LoginFragmentState,
                                     action: LoginFragmentAction): LoginFragmentViewCommand {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        when (action) {
+            LoginFragmentAction.LOGIN -> {
+                return LoginFragmentViewCommand.LOGIN
+            }
+        }
     }
 }

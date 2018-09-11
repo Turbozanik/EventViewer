@@ -1,6 +1,6 @@
 package com.data.net.retrofit
 
-import com.data.net.repository.datasource.PrefsDataSource
+import com.data.prefs.datasource.PrefsDataSource
 import okhttp3.OkHttpClient
 
 

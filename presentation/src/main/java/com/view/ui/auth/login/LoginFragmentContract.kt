@@ -13,8 +13,6 @@ interface LoginFragmentContract : BasePresenterContract {
 
     interface LoginFragmentView : BaseView {
 
-        fun login()
-
         fun getViewData(): LoginFragmentDto
 
     }

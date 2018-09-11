@@ -2,7 +2,7 @@ package com.view.ui.auth.login.configurator
 
 
 enum class LoginFragmentViewCommand(command: Int) {
-    DUMMY_COMMAND(command = 0);
+    LOGIN(command = 0);
 
     private val mCommand: Int = command
 

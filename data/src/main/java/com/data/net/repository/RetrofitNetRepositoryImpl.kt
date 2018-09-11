@@ -1,7 +1,7 @@
 package com.data.net.repository
 
+import com.data.net.datasource.NetDataSource
 import com.data.net.pojo.User
-import com.data.net.repository.datasource.NetDataSource
 import com.data.transformers.user.UserToUserDtoTransformer
 import com.domain.models.UserDto
 import com.domain.repository.NetRepository

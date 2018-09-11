@@ -8,9 +8,7 @@ import com.view.base.fragment.PresenterFragment
 import com.view.ui.auth.login.configurator.LoginFragmentAction
 import javax.inject.Inject
 
-/**
- * A placeholder fragment containing a simple view.
- */
+
 class LoginFragment : PresenterFragment<LoginFragmentContract.LoginFragmentPresenter>(), LoginFragmentContract.LoginFragmentView {
 
     @Inject
@@ -50,10 +48,6 @@ class LoginFragment : PresenterFragment<LoginFragmentContract.LoginFragmentPrese
         get() {
             return mPresenter
         }
-
-    override fun login() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
     override fun getViewData(): LoginFragmentContract.LoginFragmentDto {
         return LoginFragmentContract.LoginFragmentDto("email", "password")

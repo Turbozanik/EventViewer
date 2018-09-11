@@ -56,7 +56,7 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
             return EventViewerApp.getInstance().getNavigatorHolder()
         }
 
-    val mDaggerController: DaggerController
+    val daggerController: DaggerController
         get() {
             return EventViewerApp.getInstance()
                     .getDaggerController()
@@ -138,7 +138,7 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
             activityAction = intent.getSerializableExtra(
                     Constants.ACTIVITY_ACTION_DATA_KEY) as ActivityAction
         }
-        mActivityInitAction = activityAction ?: ActivityAction.INITIAL_ACTION_DEFAULT
+        mActivityInitAction = activityAction ?: ActivityAction.NOT_LOGGED_IN
     }
 
     private fun handleDaggerDependencies() {
