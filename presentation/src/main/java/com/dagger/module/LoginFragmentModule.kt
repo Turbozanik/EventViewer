@@ -2,7 +2,7 @@ package com.dagger.module
 
 import com.dagger.scoupe.LoginFragmentScope
 import com.data.net.repository.RetrofitNetRepositoryImpl
-import com.domain.usecase.login.LoginUseCase
+import com.domain.usecase.net.login.LoginUseCase
 import dagger.Module
 import dagger.Provides
 

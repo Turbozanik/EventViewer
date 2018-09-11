@@ -1,6 +1,6 @@
 package com.view.ui.auth.register
 
-import com.domain.usecase.registration.RegisterUserCase
+import com.domain.usecase.net.registration.RegisterUserCase
 import com.view.ui.auth.register.configurator.RegistrationFragmentAction
 import com.view.ui.auth.register.configurator.RegistrationFragmentConfigurator
 import com.view.ui.auth.register.configurator.RegistrationFragmentViewCommand

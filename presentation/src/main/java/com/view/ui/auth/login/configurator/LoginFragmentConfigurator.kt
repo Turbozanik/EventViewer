@@ -6,9 +6,15 @@ import com.view.ui.auth.login.LoginFragmentState
 class LoginFragmentConfigurator : BaseFragmentConfigurator<LoginFragmentState, LoginFragmentAction, LoginFragmentViewCommand>() {
     override fun produceViewCommand(viewState: LoginFragmentState,
                                     action: LoginFragmentAction): LoginFragmentViewCommand {
-        when (action) {
+        return when (action) {
+            LoginFragmentAction.DEFAULT -> {
+                LoginFragmentViewCommand.DEFAULT
+            }
             LoginFragmentAction.LOGIN -> {
-                return LoginFragmentViewCommand.LOGIN
+                LoginFragmentViewCommand.LOGIN
+            }
+            LoginFragmentAction.LOGIN_SAVED_CREDENTIALS -> {
+                LoginFragmentViewCommand.LOGIN_SAVED_CREDENTIALS
             }
         }
     }

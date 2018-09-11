@@ -1,6 +1,5 @@
 package com.dagger.module
 
-import android.content.Context
 import com.dagger.scoupe.ActivityScope
 import com.data.net.datasource.NetDataSource
 import com.data.net.repository.RetrofitNetRepositoryImpl
@@ -11,11 +10,6 @@ import dagger.Provides
 
 @Module
 class NetModule {
-
-    @Provides
-    @ActivityScope
-    fun providePrefsDataSource(context: Context): PrefsDataSource = PrefsDataSource(
-            context)
 
     @Provides
     @ActivityScope

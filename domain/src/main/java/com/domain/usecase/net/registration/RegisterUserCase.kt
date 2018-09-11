@@ -1,19 +1,23 @@
-package com.domain.usecase.login
+package com.domain.usecase.net.registration
 
 import com.domain.models.UserDto
 import com.domain.repository.NetRepository
 import com.domain.usecase.UseCase
 import io.reactivex.Flowable
 
-class LoginUseCase(retrofitNetRepository: NetRepository) : UseCase<UserDto, Map<String, String>>() {
+
+class RegisterUserCase(
+        retrofitNetRepository: NetRepository) : UseCase<UserDto, Map<String, String>>() {
 
     private val mRetrofitNetRepository: NetRepository = retrofitNetRepository
 
     override fun buildFlowable(params: Map<String, String>): Flowable<UserDto?> {
-        return mRetrofitNetRepository.login(params)
+        return mRetrofitNetRepository.register(params)
     }
 
     override val isParamsRequired: Boolean
-        get() = true
+        get() {
+            return true
+        }
 
 }

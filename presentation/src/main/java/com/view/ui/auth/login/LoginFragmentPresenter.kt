@@ -1,6 +1,6 @@
 package com.view.ui.auth.login
 
-import com.domain.usecase.login.LoginUseCase
+import com.domain.usecase.net.login.LoginUseCase
 import com.view.ui.auth.login.configurator.LoginFragmentAction
 import com.view.ui.auth.login.configurator.LoginFragmentConfigurator
 import com.view.ui.auth.login.configurator.LoginFragmentViewCommand
