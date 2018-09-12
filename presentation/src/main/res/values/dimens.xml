@@ -6,4 +6,10 @@
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="progress_size">100dp</dimen>
+    <dimen name="left_side_content_margin">0.1</dimen>
+    <dimen name="right_side_content_margin">0.9</dimen>
+    <dimen name="top_side_content_margin">0.05</dimen>
+    <dimen name="bottom_side_content_margin">0.05</dimen>
+    <dimen name="half_screen">0.5</dimen>
+
 </resources>

@@ -29,12 +29,13 @@ class AuthActivity : BaseActivity(), HasProgress {
                                 LoginFragment.addInitialAction(fragment,
                                                                LoginFragmentAction.DEFAULT)
                             }
-                            return fragment
                         }
                         else -> {
-                            throw IllegalArgumentException(Throwable("Unknown screen"))
+                            fragment = LoginFragment.createNewInstance()
+                            LoginFragment.addInitialAction(fragment, LoginFragmentAction.DEFAULT)
                         }
                     }
+                    return fragment
                 }
             }
             return mNavigator
