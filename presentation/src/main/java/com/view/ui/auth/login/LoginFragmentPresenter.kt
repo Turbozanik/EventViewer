@@ -35,7 +35,7 @@ class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.Login
                     login()
                 }
                 LoginFragmentViewCommand.DEFAULT -> TODO()
-                LoginFragmentViewCommand.LOGIN_SAVED_CREDENTIALS -> TODO()
+                LoginFragmentViewCommand.LOGIN_WITH_SAVED_CREDENTIALS -> TODO()
             }
         }
     }

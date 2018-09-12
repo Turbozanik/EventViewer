@@ -3,7 +3,7 @@ package com.view.ui.auth.login.configurator
 
 enum class LoginFragmentViewCommand(command: Int) {
     DEFAULT(command = 0),
-    LOGIN_SAVED_CREDENTIALS(command = 1),
+    LOGIN_WITH_SAVED_CREDENTIALS(command = 1),
     LOGIN(command = 2);
 
     private val mCommand: Int = command

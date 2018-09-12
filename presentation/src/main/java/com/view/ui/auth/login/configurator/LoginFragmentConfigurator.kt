@@ -14,7 +14,7 @@ class LoginFragmentConfigurator : BaseFragmentConfigurator<LoginFragmentState, L
                 LoginFragmentViewCommand.LOGIN
             }
             LoginFragmentAction.LOGIN_WITH_SAVED_CREDENTIALS -> {
-                LoginFragmentViewCommand.LOGIN_SAVED_CREDENTIALS
+                LoginFragmentViewCommand.LOGIN_WITH_SAVED_CREDENTIALS
             }
         }
     }
