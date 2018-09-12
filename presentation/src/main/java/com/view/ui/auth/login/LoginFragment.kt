@@ -49,8 +49,22 @@ class LoginFragment : PresenterFragment<LoginFragmentContract.LoginFragmentPrese
             return mPresenter
         }
 
+    private fun getUserCredentials(): LoginFragmentContract.UserCredentials {
+        return when (initialAction) {
+            LoginFragmentAction.LOGIN_WITH_SAVED_CREDENTIALS -> {
+                mPresenter.getUserCredentialsFromSharedPrefs()
+            }
+            LoginFragmentAction.LOGIN -> {
+                LoginFragmentContract.UserCredentials("email", "password")
+            }
+            else -> {
+                throw IllegalArgumentException("Unknown action")
+            }
+        }
+    }
+
     override fun getViewData(): LoginFragmentContract.LoginFragmentDto {
-        return LoginFragmentContract.LoginFragmentDto("email", "password")
+        return LoginFragmentContract.LoginFragmentDto(getUserCredentials())
     }
 
 }

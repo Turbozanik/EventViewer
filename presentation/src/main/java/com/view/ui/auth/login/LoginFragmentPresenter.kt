@@ -1,9 +1,13 @@
 package com.view.ui.auth.login
 
 import com.domain.usecase.net.login.LoginUseCase
+import com.domain.usecase.prefs.user.GetUserEmailUseCase
+import com.domain.usecase.prefs.user.GetUserPasswordUseCase
 import com.view.ui.auth.login.configurator.LoginFragmentAction
 import com.view.ui.auth.login.configurator.LoginFragmentConfigurator
 import com.view.ui.auth.login.configurator.LoginFragmentViewCommand
+import io.reactivex.Flowable
+import io.reactivex.functions.BiFunction
 import javax.inject.Inject
 
 
@@ -11,6 +15,10 @@ class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.Login
 
     @Inject
     protected lateinit var mLoginUseCase: LoginUseCase
+    @Inject
+    lateinit var mGetUserPasswordUserCase: GetUserPasswordUseCase
+    @Inject
+    lateinit var mGetUserEmailUseCase: GetUserEmailUseCase
 
     private var loginFragmentData: LoginFragmentContract.LoginFragmentDto? = getView()?.getViewData()
 
@@ -26,6 +34,8 @@ class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.Login
                 LoginFragmentViewCommand.LOGIN -> {
                     login()
                 }
+                LoginFragmentViewCommand.DEFAULT -> TODO()
+                LoginFragmentViewCommand.LOGIN_SAVED_CREDENTIALS -> TODO()
             }
         }
     }
@@ -33,9 +43,21 @@ class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.Login
     private fun login() {
         loginFragmentData = getView()?.getViewData()
         val body: Map<String, String> = HashMap()
-        body.plus(Pair("email", loginFragmentData?.email))
-        body.plus(Pair("password", loginFragmentData?.password))
+        body.plus(Pair("email", loginFragmentData?.userCredentials?.email))
+        body.plus(Pair("password", loginFragmentData?.userCredentials?.password))
         mLoginUseCase.buildFlowable(body)
+    }
+
+    fun getUserCredentialsFromSharedPrefs(): LoginFragmentContract.UserCredentials {
+        lateinit var userCredentials: LoginFragmentContract.UserCredentials
+        Flowable.zip(mGetUserEmailUseCase.buildFlowable(Any()),
+                     mGetUserPasswordUserCase.buildFlowable(Any()),
+                     BiFunction { email: String?, password: String? ->
+                         LoginFragmentContract.UserCredentials(email, password)
+                     }).subscribe {
+            userCredentials = it ?: LoginFragmentContract.UserCredentials(null, null)
+        }
+        return userCredentials
     }
 
 }

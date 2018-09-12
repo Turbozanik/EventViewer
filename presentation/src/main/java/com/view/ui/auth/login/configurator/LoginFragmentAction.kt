@@ -3,7 +3,7 @@ package com.view.ui.auth.login.configurator
 
 enum class LoginFragmentAction(action: Int) {
     DEFAULT(action = 0),
-    LOGIN_SAVED_CREDENTIALS(action = 1),
+    LOGIN_WITH_SAVED_CREDENTIALS(action = 1),
     LOGIN(action = 2);
 
     internal val mAction: Int = action

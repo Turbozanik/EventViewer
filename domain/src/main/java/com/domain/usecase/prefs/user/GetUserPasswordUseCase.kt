@@ -5,11 +5,11 @@ import com.domain.usecase.UseCase
 import io.reactivex.Flowable
 
 
-class GetUserPasswordUseCase(sharedPrefsRepository: PrefsRepository) : UseCase<String?, Void>() {
+class GetUserPasswordUseCase(sharedPrefsRepository: PrefsRepository) : UseCase<String?, Any>() {
 
     private val mPrefsRepository: PrefsRepository = sharedPrefsRepository
 
-    override fun buildFlowable(params: Void): Flowable<String?> {
+    override fun buildFlowable(params: Any): Flowable<String?> {
         return Flowable.just(mPrefsRepository.getUserPassword())
     }
 

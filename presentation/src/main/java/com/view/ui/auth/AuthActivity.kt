@@ -3,8 +3,6 @@ package com.view.ui.auth
 import android.support.v4.app.Fragment
 import android.view.View
 import com.ActivityAction
-import com.domain.usecase.prefs.user.GetUserEmailUseCase
-import com.domain.usecase.prefs.user.GetUserPasswordUseCase
 import com.view.R
 import com.view.base.activity.BaseActivity
 import com.view.base.view.HasProgress
@@ -12,14 +10,8 @@ import com.view.ui.auth.login.LoginFragment
 import com.view.ui.auth.login.configurator.LoginFragmentAction
 import kotlinx.android.synthetic.main.activity_login.*
 import ru.terrakok.cicerone.Navigator
-import javax.inject.Inject
 
 class AuthActivity : BaseActivity(), HasProgress {
-
-    @Inject
-    lateinit var mGetUserPasswordUserCase: GetUserPasswordUseCase
-    @Inject
-    lateinit var mGetUserEmailUseCase: GetUserEmailUseCase
 
     override val layoutId: Int
         get() = R.layout.activity_login
@@ -33,7 +25,7 @@ class AuthActivity : BaseActivity(), HasProgress {
                     when (screenKey) {
                         AuthActivityScreens.LOGIN_SCREEN -> {
                             fragment = LoginFragment.createNewInstance()
-                            if (activityInitAction == com.ActivityAction.NOT_LOGGED_IN) {
+                            if (activityInitAction == com.ActivityAction.OPEN_AUTH_ACTIVITY_WITH_NO_SAVED_CREDENTIALS) {
                                 LoginFragment.addInitialAction(fragment,
                                                                LoginFragmentAction.DEFAULT)
                             }
@@ -65,7 +57,7 @@ class AuthActivity : BaseActivity(), HasProgress {
 
     override fun getRootScreenKey(activityAction: ActivityAction?): String {
         return when (activityAction) {
-            ActivityAction.NOT_LOGGED_IN -> {
+            ActivityAction.OPEN_AUTH_ACTIVITY_WITH_NO_SAVED_CREDENTIALS -> {
                 AuthActivityScreens.LOGIN_SCREEN
             }
             else -> {
