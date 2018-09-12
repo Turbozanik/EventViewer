@@ -138,7 +138,7 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
             activityAction = intent.getSerializableExtra(
                     Constants.ACTIVITY_ACTION_DATA_KEY) as ActivityAction
         }
-        mActivityInitAction = activityAction ?: ActivityAction.NOT_LOGGED_IN
+        mActivityInitAction = activityAction ?: ActivityAction.DEFAULT
     }
 
     private fun handleDaggerDependencies() {

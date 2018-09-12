@@ -29,10 +29,10 @@ class RegistrationFragmentPresenter @Inject constructor() : RegistrationFragment
         }
     }
 
-    override fun register(email: String, password: String) {
-        val body: Map<String, String> = HashMap()
-        body.plus(Pair("email", email))
-        body.plus(Pair("password", password))
-        mRegistrationUserCase.buildFlowable(body)
+    override fun register() {
+//        val body: Map<String, String> = HashMap()
+//        body.plus(Pair("email", email))
+//        body.plus(Pair("password", password))
+//        mRegistrationUserCase.buildFlowable(body)
     }
 }

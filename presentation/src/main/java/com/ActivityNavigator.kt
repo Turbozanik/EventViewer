@@ -48,6 +48,8 @@ class ActivityNavigator(context: Context) {
             ActivityAction.OPEN_MAIN_ACTIVITY -> {
                 MAIN_ACTIVITY
             }
+            ActivityAction.OPEN_AUTH_ACTIVITY_WITH_NO_SAVED_CREDENTIALS -> TODO()
+            ActivityAction.DEFAULT -> TODO()
         }
     }
 
