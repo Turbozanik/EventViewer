@@ -42,9 +42,9 @@ class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.Login
 
     private fun login() {
         loginFragmentData = getView()?.getViewData()
-        val body: Map<String, String> = HashMap()
-        body.plus(Pair("email", loginFragmentData?.userCredentials?.email))
-        body.plus(Pair("password", loginFragmentData?.userCredentials?.password))
+        val body: Map<String, String?> = hashMapOf(
+                "email" to loginFragmentData?.userCredentials?.email,
+                "password" to loginFragmentData?.userCredentials?.password)
         mLoginUseCase.buildFlowable(body)
     }
 
@@ -53,9 +53,19 @@ class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.Login
         Flowable.zip(mGetUserEmailUseCase.buildFlowable(Any()),
                      mGetUserPasswordUserCase.buildFlowable(Any()),
                      BiFunction { email: String?, password: String? ->
-                         LoginFragmentContract.UserCredentials(email, password)
+                         when {
+                             email != null && password != null -> {
+                                 LoginFragmentContract.UserCredentials(email, password)
+                             }
+                             email != null && password == null -> {
+                                 LoginFragmentContract.UserCredentials(email, "")
+                             }
+                             else -> {
+                                 LoginFragmentContract.UserCredentials("", "")
+                             }
+                         }
                      }).subscribe {
-            userCredentials = it ?: LoginFragmentContract.UserCredentials(null, null)
+            userCredentials = it
         }
         return userCredentials
     }
