@@ -7,8 +7,8 @@ interface PrefsRepository {
 
     fun saveUserPassword(password: String)
 
-    fun getUserEmail(): String
+    fun getUserEmail(): String?
 
-    fun getUserPassword(): String
+    fun getUserPassword(): String?
 
 }

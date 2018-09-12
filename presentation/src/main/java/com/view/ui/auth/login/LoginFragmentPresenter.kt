@@ -52,19 +52,10 @@ class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.Login
         lateinit var userCredentials: LoginFragmentContract.UserCredentials
         Flowable.zip(mGetUserEmailUseCase.buildFlowable(Any()),
                      mGetUserPasswordUserCase.buildFlowable(Any()),
-                     BiFunction { email: String?, password: String? ->
-                         when {
-                             email != null && password != null -> {
-                                 LoginFragmentContract.UserCredentials(email, password)
-                             }
-                             email != null && password == null -> {
-                                 LoginFragmentContract.UserCredentials(email, "")
-                             }
-                             else -> {
-                                 LoginFragmentContract.UserCredentials("", "")
-                             }
-                         }
-                     }).subscribe {
+                     BiFunction { email: String, password: String ->
+                         LoginFragmentContract.UserCredentials(email, password)
+                     }
+        ).subscribe {
             userCredentials = it
         }
         return userCredentials
