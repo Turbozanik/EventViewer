@@ -16,9 +16,9 @@ class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.Login
     @Inject
     protected lateinit var mLoginUseCase: LoginUseCase
     @Inject
-    lateinit var mGetUserPasswordUserCase: GetUserPasswordUseCase
+    protected lateinit var mGetUserPasswordUserCase: GetUserPasswordUseCase
     @Inject
-    lateinit var mGetUserEmailUseCase: GetUserEmailUseCase
+    protected lateinit var mGetUserEmailUseCase: GetUserEmailUseCase
 
     private var loginFragmentData: LoginFragmentContract.LoginFragmentDto? = getView()?.getViewData()
 
