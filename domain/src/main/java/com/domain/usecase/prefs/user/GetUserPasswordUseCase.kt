@@ -5,7 +5,7 @@ import com.domain.usecase.UseCase
 import io.reactivex.Flowable
 
 
-class GetUserPasswordUseCase(sharedPrefsRepository: PrefsRepository) : UseCase<String, Any>() {
+class GetUserPasswordUseCase(sharedPrefsRepository: PrefsRepository) : UseCase<Any, String>() {
 
     private val mPrefsRepository: PrefsRepository = sharedPrefsRepository
 

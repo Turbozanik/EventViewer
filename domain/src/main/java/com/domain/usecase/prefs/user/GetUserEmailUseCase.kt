@@ -5,7 +5,7 @@ import com.domain.usecase.UseCase
 import io.reactivex.Flowable
 
 
-class GetUserEmailUseCase(sharedPrefsRepository: PrefsRepository) : UseCase<String, Any>() {
+class GetUserEmailUseCase(sharedPrefsRepository: PrefsRepository) : UseCase<Any, String>() {
 
     private val mPrefsRepository: PrefsRepository = sharedPrefsRepository
 

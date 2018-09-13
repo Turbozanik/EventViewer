@@ -6,7 +6,7 @@ import com.domain.usecase.UseCase
 import io.reactivex.Flowable
 
 class LoginUseCase(
-        retrofitNetRepository: NetRepository) : UseCase<UserDto, Map<String, String?>>() {
+        retrofitNetRepository: NetRepository) : UseCase<Map<String, String?>, UserDto>() {
 
     private val mRetrofitNetRepository: NetRepository = retrofitNetRepository
 

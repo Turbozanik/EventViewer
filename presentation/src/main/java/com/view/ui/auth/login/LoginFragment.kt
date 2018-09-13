@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.Constants
 import com.view.R
+import com.view.base.configurator.ActionProducer
 import com.view.base.fragment.PresenterFragment
 import com.view.ui.auth.login.configurator.LoginFragmentAction
+import kotlinx.android.synthetic.main.fragment_login.*
 import javax.inject.Inject
 
 
-class LoginFragment : PresenterFragment<LoginFragmentContract.LoginFragmentPresenter>(), LoginFragmentContract.LoginFragmentView {
+class LoginFragment : PresenterFragment<LoginFragmentContract.LoginFragmentPresenter>(), LoginFragmentContract.LoginFragmentView, ActionProducer<LoginFragmentAction> {
 
     @Inject
     lateinit var mPresenter: LoginFragmentPresenter
@@ -42,12 +44,19 @@ class LoginFragment : PresenterFragment<LoginFragmentContract.LoginFragmentPrese
         get() = R.layout.fragment_login
 
     override fun initView() {
+        mBtnSignIn.setOnClickListener {
+            sendAction(LoginFragmentAction.LOGIN)
+        }
     }
 
     override val presenter: LoginFragmentPresenter
         get() {
             return mPresenter
         }
+
+    override fun sendAction(action: LoginFragmentAction?) {
+        mPresenter.consumeAction(action)
+    }
 
     private fun getUserCredentials(): LoginFragmentContract.UserCredentials {
         return when (initialAction) {

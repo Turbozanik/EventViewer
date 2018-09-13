@@ -3,7 +3,7 @@ package com.domain.usecase
 import io.reactivex.Flowable
 
 
-abstract class UseCase<Result, Params : Any> {
+abstract class UseCase<Params : Any, Result> {
 
     private lateinit var mParams: Params
 

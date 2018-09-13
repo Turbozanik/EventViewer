@@ -7,7 +7,7 @@ import io.reactivex.Flowable
 
 
 class RegisterUserCase(
-        retrofitNetRepository: NetRepository) : UseCase<UserDto, Map<String, String>>() {
+        retrofitNetRepository: NetRepository) : UseCase<Map<String, String>, UserDto>() {
 
     private val mRetrofitNetRepository: NetRepository = retrofitNetRepository
 
