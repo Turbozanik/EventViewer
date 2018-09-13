@@ -73,7 +73,8 @@ class LoginFragment : PresenterFragment<LoginFragmentContract.LoginFragmentPrese
     }
 
     override fun getViewData(): LoginFragmentContract.LoginFragmentDto {
-        return LoginFragmentContract.LoginFragmentDto(getUserCredentials())
+        return LoginFragmentContract.LoginFragmentDto(getUserCredentials(),
+                                                      mCbSaveCredentials.isChecked)
     }
 
 }

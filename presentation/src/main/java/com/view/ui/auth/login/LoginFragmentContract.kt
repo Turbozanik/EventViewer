@@ -11,7 +11,8 @@ interface LoginFragmentContract : BasePresenterContract {
 
     data class UserCredentials(val email: String, val password: String)
 
-    data class LoginFragmentDto(val userCredentials: UserCredentials)
+    data class LoginFragmentDto(val userCredentials: UserCredentials,
+                                val shouldSaveCredentials: Boolean)
 
     interface LoginFragmentView : BaseView {
 

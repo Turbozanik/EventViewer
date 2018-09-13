@@ -1,9 +1,10 @@
 package com.dagger.module
 
 import com.dagger.scoupe.AuthActivityScope
-import com.data.prefs.repository.PrefsRepositoryImpl
+import com.data.prefs.repository.SharedPrefsRepositoryImpl
 import com.domain.usecase.prefs.user.GetUserEmailUseCase
 import com.domain.usecase.prefs.user.GetUserPasswordUseCase
+import com.domain.usecase.prefs.user.SaveUserUseCase
 import dagger.Module
 import dagger.Provides
 
@@ -13,14 +14,21 @@ class AuthActivityModule {
     @Provides
     @AuthActivityScope
     fun provideGetUserPasswordUseCase(
-            prefsRepositoryImpl: PrefsRepositoryImpl): GetUserPasswordUseCase {
+            prefsRepositoryImpl: SharedPrefsRepositoryImpl): GetUserPasswordUseCase {
         return GetUserPasswordUseCase(prefsRepositoryImpl)
     }
 
     @Provides
     @AuthActivityScope
-    fun provideGetUserEmailUseCase(prefsRepositoryImpl: PrefsRepositoryImpl): GetUserEmailUseCase {
+    fun provideGetUserEmailUseCase(
+            prefsRepositoryImpl: SharedPrefsRepositoryImpl): GetUserEmailUseCase {
         return GetUserEmailUseCase(prefsRepositoryImpl)
+    }
+
+    @Provides
+    @AuthActivityScope
+    fun provideSaveUserUseCase(prefsRepositoryImpl: SharedPrefsRepositoryImpl): SaveUserUseCase {
+        return SaveUserUseCase(prefsRepositoryImpl)
     }
 
 }

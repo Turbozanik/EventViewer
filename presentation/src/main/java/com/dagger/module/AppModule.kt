@@ -2,7 +2,7 @@ package com.dagger.module
 
 import android.content.Context
 import com.data.prefs.datasource.PrefsDataSource
-import com.data.prefs.repository.PrefsRepositoryImpl
+import com.data.prefs.repository.SharedPrefsRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -23,7 +23,7 @@ class AppModule(context: Context) {
     @Provides
     @Singleton
     fun providePrefsRepository(
-            prefsDataSource: PrefsDataSource): PrefsRepositoryImpl = PrefsRepositoryImpl(
+            prefsDataSource: PrefsDataSource): SharedPrefsRepositoryImpl = SharedPrefsRepositoryImpl(
             prefsDataSource)
 
 }

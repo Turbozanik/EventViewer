@@ -1,8 +1,10 @@
 package com.view.ui.auth.login
 
+import com.domain.models.UserDto
 import com.domain.usecase.net.login.LoginUseCase
 import com.domain.usecase.prefs.user.GetUserEmailUseCase
 import com.domain.usecase.prefs.user.GetUserPasswordUseCase
+import com.domain.usecase.prefs.user.SaveUserUseCase
 import com.view.ui.auth.login.configurator.LoginFragmentAction
 import com.view.ui.auth.login.configurator.LoginFragmentConfigurator
 import com.view.ui.auth.login.configurator.LoginFragmentViewCommand
@@ -19,6 +21,8 @@ class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.Login
     protected lateinit var mGetUserPasswordUserCase: GetUserPasswordUseCase
     @Inject
     protected lateinit var mGetUserEmailUseCase: GetUserEmailUseCase
+    @Inject
+    protected lateinit var mSaveUserUseCase: SaveUserUseCase
 
     private var loginFragmentData: LoginFragmentContract.LoginFragmentDto? = getView()?.getViewData()
 
@@ -45,7 +49,9 @@ class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.Login
         val body: Map<String, String?> = hashMapOf(
                 "email" to loginFragmentData?.userCredentials?.email,
                 "password" to loginFragmentData?.userCredentials?.password)
-        mLoginUseCase.buildFlowable(body)
+        mLoginUseCase.buildFlowable(body).subscribe { userDto: UserDto ->
+            mSaveUserUseCase.buildFlowable(Pair(userDto.mUserName, userDto.mUserSecondName))
+        }
     }
 
     fun getUserCredentialsFromSharedPrefs(): LoginFragmentContract.UserCredentials {

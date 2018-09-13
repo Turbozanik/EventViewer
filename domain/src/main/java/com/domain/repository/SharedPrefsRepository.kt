@@ -1,7 +1,7 @@
 package com.domain.repository
 
 
-interface PrefsRepository {
+interface SharedPrefsRepository {
 
     fun saveUserEmail(email: String)
 
