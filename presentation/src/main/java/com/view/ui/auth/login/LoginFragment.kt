@@ -2,6 +2,7 @@ package com.view.ui.auth.login
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.view.inputmethod.EditorInfo
 import com.Constants
 import com.view.R
 import com.view.base.configurator.ActionProducer
@@ -44,6 +45,12 @@ class LoginFragment : PresenterFragment<LoginFragmentContract.LoginFragmentPrese
 		get() = R.layout.fragment_login
 
 	override fun initView() {
+		mEtPassword?.setOnEditorActionListener { v, actionId, event ->
+			if (actionId == EditorInfo.IME_ACTION_DONE) {
+				sendAction(LoginFragmentAction.LOGIN)
+			}
+			false
+		}
 		mBtnSignIn.setOnClickListener {
 			sendAction(LoginFragmentAction.LOGIN)
 		}
