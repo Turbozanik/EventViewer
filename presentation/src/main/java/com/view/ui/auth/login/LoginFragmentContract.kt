@@ -9,16 +9,20 @@ import com.view.ui.auth.login.configurator.LoginFragmentConfigurator
 
 interface LoginFragmentContract : BasePresenterContract {
 
-    data class UserCredentials(val email: String, val password: String)
+	data class UserCredentials(val email: String, val password: String)
 
-    data class LoginFragmentDto(val userCredentials: UserCredentials,
-                                val shouldSaveCredentials: Boolean)
+	data class LoginFragmentDto(val userCredentials: UserCredentials,
+								val shouldSaveCredentials: Boolean)
 
-    interface LoginFragmentView : BaseView {
+	interface LoginFragmentView : BaseView {
 
-        fun getViewData(): LoginFragmentDto
+		fun getViewData(): LoginFragmentDto
 
-    }
+	}
 
-    abstract class LoginFragmentPresenter : BaseFragmentPresenter<LoginFragmentConfigurator, LoginFragmentAction, LoginFragmentContract.LoginFragmentView>()
+	abstract class LoginFragmentPresenter : BaseFragmentPresenter<LoginFragmentConfigurator, LoginFragmentAction, LoginFragmentContract.LoginFragmentView>() {
+		init {
+			this.intiConfigurator()
+		}
+	}
 }

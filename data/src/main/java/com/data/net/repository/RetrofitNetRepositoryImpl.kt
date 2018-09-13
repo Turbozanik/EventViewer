@@ -16,7 +16,7 @@ class RetrofitNetRepositoryImpl(netDataSource: NetDataSource) : NetRepository {
     override fun register(body: Map<String, String?>): Flowable<UserDto> {
         return mResponseHelper.unwrapBaseResponse(
                 mResponseHelper.validateFlowable(mNetDataSource.register(body)))
-                .flatMap { user: User? ->
+                .flatMap { user: User ->
                     Flowable.just(mUserTransformer.transform(user))
                 }
     }
@@ -24,7 +24,7 @@ class RetrofitNetRepositoryImpl(netDataSource: NetDataSource) : NetRepository {
     override fun login(body: Map<String, String?>): Flowable<UserDto> {
         return mResponseHelper.unwrapBaseResponse(
                 mResponseHelper.validateFlowable(mNetDataSource.login(body)))
-                .flatMap { user: User? -> Flowable.just(mUserTransformer.transform(user)) }
+                .flatMap { user: User -> Flowable.just(mUserTransformer.transform(user)) }
     }
 
 }

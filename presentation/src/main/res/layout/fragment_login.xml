@@ -64,9 +64,10 @@
         app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents">
 
         <EditText
+            android:id="@+id/mEtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
+            android:hint="@string/hint_email"
             android:inputType="textWebEmailAddress" />
     </android.support.design.widget.TextInputLayout>
 
@@ -81,9 +82,10 @@
         app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents">
 
         <EditText
+            android:id="@+id/mEtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="@string/hint_password"
             android:inputType="textPassword" />
     </android.support.design.widget.TextInputLayout>
 
@@ -91,7 +93,7 @@
         android:id="@+id/mCbSaveCredentials"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Remember me"
+        android:text="@string/remember_me"
         app:layout_constraintBottom_toTopOf="@+id/mBtnSignIn"
         app:layout_constraintStart_toStartOf="@+id/emailPasswordLayout"
         app:layout_constraintTop_toBottomOf="@+id/emailPasswordLayout" />
@@ -100,7 +102,7 @@
         android:id="@+id/mBtnSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="@string/login"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalBottom"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft" />
