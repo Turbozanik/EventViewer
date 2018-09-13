@@ -56,11 +56,11 @@
         android:id="@+id/emailInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintBottom_toTopOf="@+id/emailPasswordLayout"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
         app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontalCenter"
-        app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents">
 
         <EditText
@@ -74,7 +74,7 @@
         android:id="@+id/emailPasswordLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/mBtnSignIn"
+        app:layout_constraintBottom_toTopOf="@+id/mCbSaveCredentials"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
         app:layout_constraintTop_toBottomOf="@+id/emailInputLayout"
@@ -86,6 +86,15 @@
             android:hint="Password"
             android:inputType="textPassword" />
     </android.support.design.widget.TextInputLayout>
+
+    <CheckBox
+        android:id="@+id/mCbSaveCredentials"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remember me"
+        app:layout_constraintBottom_toTopOf="@+id/mBtnSignIn"
+        app:layout_constraintStart_toStartOf="@+id/emailPasswordLayout"
+        app:layout_constraintTop_toBottomOf="@+id/emailPasswordLayout" />
 
     <Button
         android:id="@+id/mBtnSignIn"
