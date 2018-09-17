@@ -37,19 +37,23 @@ class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.Login
 		if (action != null) {
 			when (actionConfigurator.produceViewCommand(mLoginFragmentState, action)) {
 				LoginFragmentViewCommand.LOGIN -> {
-					login()
+					loginFragmentData = getView()?.getViewData()
+					login(loginFragmentData?.userCredentials)
 				}
 				LoginFragmentViewCommand.DEFAULT -> TODO()
-				LoginFragmentViewCommand.LOGIN_WITH_SAVED_CREDENTIALS -> TODO()
+				LoginFragmentViewCommand.LOGIN_WITH_SAVED_CREDENTIALS -> {
+					loginFragmentData = getView()?.getViewData()
+					loginFragmentData?.userCredentials = getUserCredentialsFromSharedPrefs()
+					login(loginFragmentData?.userCredentials)
+				}
 			}
 		}
 	}
 
-	private fun login() {
-		loginFragmentData = getView()?.getViewData()
+	private fun login(credentials: LoginFragmentContract.UserCredentials?) {
 		val body: Map<String, String?> = hashMapOf(
-				"email" to loginFragmentData?.userCredentials?.email,
-				"password" to loginFragmentData?.userCredentials?.password)
+				"email" to credentials?.email,
+				"password" to credentials?.password)
 		addDisposable(
 				inBackground(mLoginUseCase.buildFlowable(body)).subscribe(
 						{ userDto: UserDto ->
@@ -60,7 +64,7 @@ class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.Login
 				))
 	}
 
-	fun getUserCredentialsFromSharedPrefs(): LoginFragmentContract.UserCredentials {
+	private fun getUserCredentialsFromSharedPrefs(): LoginFragmentContract.UserCredentials {
 		lateinit var userCredentials: LoginFragmentContract.UserCredentials
 		Flowable.zip(mGetUserEmailUseCase.buildFlowable(Any()),
 					 mGetUserPasswordUserCase.buildFlowable(Any()),
