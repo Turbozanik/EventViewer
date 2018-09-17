@@ -20,7 +20,7 @@ class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.Login
 	@Inject
 	protected lateinit var mLoginUseCase: LoginUseCase
 	@Inject
-	protected lateinit var mGetUserPasswordUserCase: GetUserPasswordUseCase
+	protected lateinit var mGetUserPasswordUseCase: GetUserPasswordUseCase
 	@Inject
 	protected lateinit var mGetUserEmailUseCase: GetUserEmailUseCase
 	@Inject
@@ -57,13 +57,12 @@ class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.Login
 		val body: Map<String, String?> = hashMapOf(
 				"email" to credentials?.email,
 				"password" to credentials?.password)
-		mLoginUseCase.setParams(body)
 		addDisposable(
-				inBackground(mLoginUseCase.execute())
+				inBackground(mLoginUseCase.setParams(body).execute())
 						.flatMap { userDto: UserDto ->
-							mSaveUserUseCase.setParams(
-									Pair(userDto.mUserName, userDto.mUserSecondName))
-							mSaveUserUseCase.execute()
+							mSaveUserUseCase
+									.setParams(Pair(userDto.mUserName, userDto.mUserSecondName))
+									.execute()
 									.map { mUserKeeper.user = userDto }
 						}.subscribe({}, { DefaultErrorConsumer() })
 		)
@@ -72,7 +71,7 @@ class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.Login
 	private fun getUserCredentialsFromSharedPrefs(): LoginFragmentContract.UserCredentials {
 		lateinit var userCredentials: LoginFragmentContract.UserCredentials
 		Flowable.zip(mGetUserEmailUseCase.execute(),
-					 mGetUserPasswordUserCase.execute(),
+					 mGetUserPasswordUseCase.execute(),
 					 BiFunction { email: String, password: String ->
 						 LoginFragmentContract.UserCredentials(email, password)
 					 }

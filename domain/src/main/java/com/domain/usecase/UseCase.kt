@@ -11,8 +11,9 @@ abstract class UseCase<Params : Any, Result> {
 
 	abstract val isParamsRequired: Boolean
 
-	fun setParams(params: Params) {
+	fun setParams(params: Params): UseCase<Params, Result> {
 		mParams = params
+		return this
 	}
 
 	fun execute(): Flowable<Result> {
