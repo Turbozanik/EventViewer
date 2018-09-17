@@ -9,6 +9,7 @@ import com.utils.DefaultErrorConsumer
 import com.view.ui.auth.login.configurator.LoginFragmentAction
 import com.view.ui.auth.login.configurator.LoginFragmentConfigurator
 import com.view.ui.auth.login.configurator.LoginFragmentViewCommand
+import com.watchers.keepers.UserKeeper
 import io.reactivex.Flowable
 import io.reactivex.functions.BiFunction
 import javax.inject.Inject
@@ -24,6 +25,8 @@ class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.Login
 	protected lateinit var mGetUserEmailUseCase: GetUserEmailUseCase
 	@Inject
 	protected lateinit var mSaveUserUseCase: SaveUserUseCase
+	@Inject
+	protected lateinit var mUserKeeper: UserKeeper
 
 	private var loginFragmentData: LoginFragmentContract.LoginFragmentDto? = getView()?.getViewData()
 
@@ -40,12 +43,12 @@ class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.Login
 					loginFragmentData = getView()?.getViewData()
 					login(loginFragmentData?.userCredentials)
 				}
-				LoginFragmentViewCommand.DEFAULT -> TODO()
 				LoginFragmentViewCommand.LOGIN_WITH_SAVED_CREDENTIALS -> {
 					loginFragmentData = getView()?.getViewData()
 					loginFragmentData?.userCredentials = getUserCredentialsFromSharedPrefs()
 					login(loginFragmentData?.userCredentials)
 				}
+				LoginFragmentViewCommand.DEFAULT -> TODO()
 			}
 		}
 	}
@@ -59,6 +62,7 @@ class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.Login
 						{ userDto: UserDto ->
 							mSaveUserUseCase.buildFlowable(
 									Pair(userDto.mUserName, userDto.mUserSecondName))
+							mUserKeeper.user = userDto
 						},
 						{ DefaultErrorConsumer() }
 				))
