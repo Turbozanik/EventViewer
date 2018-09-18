@@ -9,11 +9,11 @@ import dagger.Provides
 @Module
 class RegistrationFragmentModule {
 
-    @Provides
-    @RegistrationFragmentScope
-    fun provideRegistrationUseCase(
-            retrofitNetRepositoryImpl: RetrofitNetRepositoryImpl): RegisterUserCase {
-        return RegisterUserCase(retrofitNetRepositoryImpl)
-    }
+	@Provides
+	@RegistrationFragmentScope
+	fun provideRegistrationUseCase(
+			retrofitNetRepositoryImpl: RetrofitNetRepositoryImpl): RegisterUserCase {
+		return RegisterUserCase(retrofitNetRepositoryImpl)
+	}
 
 }

@@ -12,4 +12,5 @@
     <string name="hint_password">Password</string>
     <string name="remember_me">Remember me</string>
     <string name="login">Login</string>
+    <string name="not_registered_yet">Not registered yet?</string>
 </resources>

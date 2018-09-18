@@ -8,11 +8,11 @@ import com.view.ui.auth.register.configurator.RegistrationFragmentConfigurator
 
 
 interface RegistrationFragmentContract : BasePresenterContract {
-    interface RegistrationFragmentView : BaseView {
+	interface RegistrationFragmentView : BaseView {
 
-        fun register()
+		fun register()
 
-    }
+	}
 
-    abstract class RegistrationFragmentPresenter : BaseFragmentPresenter<RegistrationFragmentConfigurator, RegistrationFragmentAction, RegistrationFragmentView>()
+	abstract class RegistrationFragmentPresenter : BaseFragmentPresenter<RegistrationFragmentConfigurator, RegistrationFragmentAction, RegistrationFragmentView>()
 }

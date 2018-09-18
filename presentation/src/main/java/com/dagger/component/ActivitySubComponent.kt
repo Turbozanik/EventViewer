@@ -11,8 +11,8 @@ import dagger.Subcomponent
 @Subcomponent(modules = [ActivityModule::class, NetModule::class])
 interface ActivitySubComponent {
 
-    fun add(mainActivityModule: MainActivityModule): MainActivitySubComponent
+	fun add(mainActivityModule: MainActivityModule): MainActivitySubComponent
 
-    fun add(authActivityModule: AuthActivityModule): AuthActivitySubComponent
+	fun add(authActivityModule: AuthActivityModule): AuthActivitySubComponent
 
 }

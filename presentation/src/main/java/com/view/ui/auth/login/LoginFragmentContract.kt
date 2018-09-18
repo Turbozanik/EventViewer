@@ -1,5 +1,7 @@
 package com.view.ui.auth.login
 
+import com.view.base.configurator.ActionProducer
+import com.view.base.fragment.PresenterFragment
 import com.view.base.presenter.BaseFragmentPresenter
 import com.view.base.presenter.BasePresenterContract
 import com.view.base.view.BaseView
@@ -18,6 +20,8 @@ interface LoginFragmentContract : BasePresenterContract {
 
 		fun getViewData(): LoginFragmentDto
 
+		fun goToRegistrationFragment()
+
 	}
 
 	abstract class LoginFragmentPresenter : BaseFragmentPresenter<LoginFragmentConfigurator, LoginFragmentAction, LoginFragmentContract.LoginFragmentView>() {
@@ -25,4 +29,16 @@ interface LoginFragmentContract : BasePresenterContract {
 			this.intiConfigurator()
 		}
 	}
+
+	abstract class LoginFragment : PresenterFragment<LoginFragmentPresenter>(), LoginFragmentContract.LoginFragmentView, ActionProducer<LoginFragmentAction> {
+
+		override fun initView() {
+			attachView()
+		}
+
+		private fun attachView() {
+			this.presenter.attachView(this)
+		}
+	}
+
 }

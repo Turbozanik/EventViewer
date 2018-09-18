@@ -4,5 +4,5 @@ import com.view.base.view.BaseView
 
 
 interface BasePresenterContract {
-    fun attachView(view: BaseView)
+	fun attachView(view: BaseView)
 }

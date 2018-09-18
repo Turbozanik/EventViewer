@@ -10,6 +10,6 @@ import dagger.Subcomponent
 @Subcomponent(modules = [LoginFragmentModule::class])
 interface LoginFragmentSubComponent {
 
-    fun inject(loginFragment: LoginFragment)
+	fun inject(loginFragment: LoginFragment)
 
 }

@@ -7,18 +7,18 @@ import io.reactivex.Flowable
 
 
 class SaveUserUseCase(
-        sharedSharedPrefsRepo: SharedPrefsRepository) : UseCase<Pair<String, String>, Any>() {
+		sharedSharedPrefsRepo: SharedPrefsRepository) : UseCase<Pair<String, String>, Any>() {
 
-    private val mSharedPrefsRepository: SharedPrefsRepository = sharedSharedPrefsRepo
+	private val mSharedPrefsRepository: SharedPrefsRepository = sharedSharedPrefsRepo
 
-    override fun buildFlowable(params: Pair<String, String>): Flowable<Any> {
-        return Flowable.create<Any>({
-                                        mSharedPrefsRepository.saveUserEmail(params.first)
-                                        mSharedPrefsRepository.saveUserPassword(params.second)
-                                    }, BackpressureStrategy.DROP)
-    }
+	override fun buildFlowable(params: Pair<String, String>): Flowable<Any> {
+		return Flowable.create<Any>({
+										mSharedPrefsRepository.saveUserEmail(params.first)
+										mSharedPrefsRepository.saveUserPassword(params.second)
+									}, BackpressureStrategy.DROP)
+	}
 
-    override val isParamsRequired: Boolean
-        get() = true
+	override val isParamsRequired: Boolean
+		get() = true
 
 }

@@ -6,15 +6,15 @@ import com.domain.usecase.UseCase
 import io.reactivex.Flowable
 
 class LoginUseCase(
-        retrofitNetRepository: NetRepository) : UseCase<Map<String, String?>, UserDto>() {
+		retrofitNetRepository: NetRepository) : UseCase<Map<String, String?>, UserDto>() {
 
-    private val mRetrofitNetRepository: NetRepository = retrofitNetRepository
+	private val mRetrofitNetRepository: NetRepository = retrofitNetRepository
 
-    override fun buildFlowable(params: Map<String, String?>): Flowable<UserDto> {
-        return mRetrofitNetRepository.login(params)
-    }
+	override fun buildFlowable(params: Map<String, String?>): Flowable<UserDto> {
+		return mRetrofitNetRepository.login(params)
+	}
 
-    override val isParamsRequired: Boolean
-        get() = true
+	override val isParamsRequired: Boolean
+		get() = true
 
 }

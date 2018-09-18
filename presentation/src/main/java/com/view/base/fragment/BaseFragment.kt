@@ -15,36 +15,36 @@ import com.watchers.keepers.UserKeeper
 
 abstract class BaseFragment : Fragment() {
 
-    @get:LayoutRes
-    protected abstract val layoutId: Int
+	@get:LayoutRes
+	protected abstract val layoutId: Int
 
-    protected val initialAction: Any?
-        get() = if (arguments != null)
-            arguments!!.getSerializable(Constants.FRAGMENT_DATA_KEY)
-        else
-            null
+	protected val initialAction: Any?
+		get() = if (arguments != null)
+			arguments!!.getSerializable(Constants.FRAGMENT_DATA_KEY)
+		else
+			null
 
-    protected val daggerController: DaggerController
-        get() = (activity as BaseActivity).daggerController
+	protected val daggerController: DaggerController
+		get() = (activity as BaseActivity).daggerController
 
-    protected val activityNavigator: ActivityNavigator
-        get() = (activity as BaseActivity).activityNavigator
+	protected val activityNavigator: ActivityNavigator
+		get() = (activity as BaseActivity).activityNavigator
 
-    @CallSuper
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        return inflater.inflate(layoutId, null)
-    }
+	@CallSuper
+	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+							  savedInstanceState: Bundle?): View? {
+		return inflater.inflate(layoutId, null)
+	}
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initView()
-    }
+	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+		super.onViewCreated(view, savedInstanceState)
+		initView()
+	}
 
-    protected abstract fun initView()
+	protected abstract fun initView()
 
-    protected fun getUserKeeper(): UserKeeper {
-        return (activity as BaseActivity).userKeeper
-    }
+	protected fun getUserKeeper(): UserKeeper {
+		return (activity as BaseActivity).userKeeper
+	}
 
 }

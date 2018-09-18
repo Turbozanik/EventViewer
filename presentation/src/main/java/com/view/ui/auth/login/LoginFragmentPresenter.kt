@@ -49,6 +49,9 @@ class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.Login
 					login(loginFragmentData?.userCredentials)
 				}
 				LoginFragmentViewCommand.DEFAULT -> TODO()
+				LoginFragmentViewCommand.GOT_TO_REGISTRATION -> {
+					getView()?.goToRegistrationFragment()
+				}
 			}
 		}
 	}

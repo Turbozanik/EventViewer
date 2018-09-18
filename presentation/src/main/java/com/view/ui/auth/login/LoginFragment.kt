@@ -5,14 +5,13 @@ import android.support.v4.app.Fragment
 import android.view.inputmethod.EditorInfo
 import com.Constants
 import com.view.R
-import com.view.base.configurator.ActionProducer
-import com.view.base.fragment.PresenterFragment
+import com.view.ui.auth.AuthActivity
 import com.view.ui.auth.login.configurator.LoginFragmentAction
 import kotlinx.android.synthetic.main.fragment_login.*
 import javax.inject.Inject
 
 
-class LoginFragment : PresenterFragment<LoginFragmentContract.LoginFragmentPresenter>(), LoginFragmentContract.LoginFragmentView, ActionProducer<LoginFragmentAction> {
+class LoginFragment : LoginFragmentContract.LoginFragment() {
 
 	@Inject
 	lateinit var mPresenter: LoginFragmentPresenter
@@ -45,14 +44,18 @@ class LoginFragment : PresenterFragment<LoginFragmentContract.LoginFragmentPrese
 		get() = R.layout.fragment_login
 
 	override fun initView() {
+		super.initView()
 		mEtPassword?.setOnEditorActionListener { v, actionId, event ->
 			if (actionId == EditorInfo.IME_ACTION_DONE) {
-				sendAction(LoginFragmentAction.LOGIN)
+				sendAction(LoginFragmentAction.LOGIN_CLICK)
 			}
 			false
 		}
 		mBtnSignIn.setOnClickListener {
-			sendAction(LoginFragmentAction.LOGIN)
+			sendAction(LoginFragmentAction.LOGIN_CLICK)
+		}
+		mTvNotRegistered.setOnClickListener {
+			sendAction(LoginFragmentAction.NOT_REGISTERED_CLICK)
 		}
 	}
 
@@ -70,6 +73,10 @@ class LoginFragment : PresenterFragment<LoginFragmentContract.LoginFragmentPrese
 				LoginFragmentContract.UserCredentials(mEtEmail.text.toString(),
 													  mEtPassword.text.toString()),
 				mCbSaveCredentials.isChecked)
+	}
+
+	override fun goToRegistrationFragment() {
+		(activity as AuthActivity).showRegistrationFragment(null)
 	}
 
 }

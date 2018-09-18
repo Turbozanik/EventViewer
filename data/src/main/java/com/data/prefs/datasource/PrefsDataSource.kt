@@ -9,15 +9,15 @@ import com.data.prefs.USER_PASSWORD
 
 open class PrefsDataSource(context: Context) {
 
-    private val mPrefsDataSource: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(
-            context)
+	private val mPrefsDataSource: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(
+			context)
 
-    fun saveUserEmail(email: String) {
-        mPrefsDataSource.edit().putString(USER_EMAIL, email).apply()
-    }
+	fun saveUserEmail(email: String) {
+		mPrefsDataSource.edit().putString(USER_EMAIL, email).apply()
+	}
 
-    fun saveUserPassword(password: String) {
-        mPrefsDataSource.edit().putString(USER_PASSWORD, password).apply()
-    }
+	fun saveUserPassword(password: String) {
+		mPrefsDataSource.edit().putString(USER_PASSWORD, password).apply()
+	}
 
 }

@@ -15,40 +15,41 @@ import java.lang.reflect.Modifier
 
 abstract class BaseApiCreator {
 
-    private class LoggingInterceptor : Interceptor {
-        private val mInterceptor = HttpLoggingInterceptor()
+	private class LoggingInterceptor : Interceptor {
+		private val mInterceptor = HttpLoggingInterceptor()
 
-        init {
-            if (BuildConfig.DEBUG) mInterceptor.level = HttpLoggingInterceptor.Level.BODY
-            else mInterceptor.level = HttpLoggingInterceptor.Level.NONE
-        }
+		init {
+			if (BuildConfig.DEBUG) mInterceptor.level = HttpLoggingInterceptor.Level.BODY
+			else mInterceptor.level = HttpLoggingInterceptor.Level.NONE
+		}
 
-        override fun intercept(chain: Interceptor.Chain): Response {
-            return mInterceptor.intercept(chain)
-        }
+		override fun intercept(chain: Interceptor.Chain): Response {
+			return mInterceptor.intercept(chain)
+		}
 
-    }
+	}
 
-    protected fun <T> createApi(dest: Class<T>, httpClientBuilder: OkHttpClient.Builder): T {
-        //.baseUrl(BuildConfig.BASE_URL + "/" + SyncStateContract.Constants.API_SUFFIX + BuildConfig.API_VERSION_SUFFIX + "/")
-        httpClientBuilder.addInterceptor(LoggingInterceptor())
-        val restAdapter: Retrofit = Retrofit.Builder()
-                .baseUrl("http://onliner.by")
-                .client(httpClientBuilder.build())
-                .addConverterFactory(getGsonConverterFactory())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build()
-        return restAdapter.create(dest)
-    }
+	protected fun <T> createApi(dest: Class<T>, httpClientBuilder: OkHttpClient.Builder): T {
+		//.baseUrl(BuildConfig.BASE_URL + "/" + SyncStateContract.Constants.API_SUFFIX + BuildConfig.API_VERSION_SUFFIX + "/")
+		httpClientBuilder.addInterceptor(LoggingInterceptor())
+		val restAdapter: Retrofit = Retrofit.Builder()
+				.baseUrl("http://onliner.by")
+				.client(httpClientBuilder.build())
+				.addConverterFactory(getGsonConverterFactory())
+				.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+				.build()
+		return restAdapter.create(dest)
+	}
 
-    private fun getGson(): Gson {
-        val gsonBuilder = GsonBuilder()
-        gsonBuilder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-                .excludeFieldsWithoutExposeAnnotation()
-                .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
-        return gsonBuilder.create()
-    }
+	private fun getGson(): Gson {
+		val gsonBuilder = GsonBuilder()
+		gsonBuilder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+				.excludeFieldsWithoutExposeAnnotation()
+				.excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
+		return gsonBuilder.create()
+	}
 
-    private fun getGsonConverterFactory(): GsonConverterFactory = GsonConverterFactory.create(getGson())
+	private fun getGsonConverterFactory(): GsonConverterFactory = GsonConverterFactory.create(
+			getGson())
 
 }

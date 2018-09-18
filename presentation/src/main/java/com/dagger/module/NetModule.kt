@@ -11,20 +11,20 @@ import dagger.Provides
 @Module
 class NetModule {
 
-    @Provides
-    @ActivityScope
-    fun provideRetrofitApiCreator(): RetrofitApiCreator = RetrofitApiCreator()
+	@Provides
+	@ActivityScope
+	fun provideRetrofitApiCreator(): RetrofitApiCreator = RetrofitApiCreator()
 
-    @Provides
-    @ActivityScope
-    fun provideNetDataSource(prefsDataSource: PrefsDataSource,
-                             retrofitApiCreator: RetrofitApiCreator): NetDataSource = NetDataSource(
-            prefsDataSource, retrofitApiCreator)
+	@Provides
+	@ActivityScope
+	fun provideNetDataSource(prefsDataSource: PrefsDataSource,
+							 retrofitApiCreator: RetrofitApiCreator): NetDataSource = NetDataSource(
+			prefsDataSource, retrofitApiCreator)
 
-    @Provides
-    @ActivityScope
-    fun provideNetRepository(
-            netDataSource: NetDataSource): RetrofitNetRepositoryImpl = RetrofitNetRepositoryImpl(
-            netDataSource)
+	@Provides
+	@ActivityScope
+	fun provideNetRepository(
+			netDataSource: NetDataSource): RetrofitNetRepositoryImpl = RetrofitNetRepositoryImpl(
+			netDataSource)
 
 }

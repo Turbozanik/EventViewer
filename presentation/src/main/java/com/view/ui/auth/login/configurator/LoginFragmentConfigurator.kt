@@ -4,18 +4,21 @@ import com.view.base.configurator.BaseFragmentConfigurator
 import com.view.ui.auth.login.LoginFragmentState
 
 class LoginFragmentConfigurator : BaseFragmentConfigurator<LoginFragmentState, LoginFragmentAction, LoginFragmentViewCommand>() {
-    override fun produceViewCommand(viewState: LoginFragmentState,
-                                    action: LoginFragmentAction): LoginFragmentViewCommand {
-        return when (action) {
-            LoginFragmentAction.DEFAULT -> {
-                LoginFragmentViewCommand.DEFAULT
-            }
-            LoginFragmentAction.LOGIN -> {
-                LoginFragmentViewCommand.LOGIN
-            }
-            LoginFragmentAction.LOGIN_WITH_SAVED_CREDENTIALS -> {
-                LoginFragmentViewCommand.LOGIN_WITH_SAVED_CREDENTIALS
-            }
-        }
-    }
+	override fun produceViewCommand(viewState: LoginFragmentState,
+									action: LoginFragmentAction): LoginFragmentViewCommand {
+		return when (action) {
+			LoginFragmentAction.DEFAULT -> {
+				LoginFragmentViewCommand.DEFAULT
+			}
+			LoginFragmentAction.LOGIN_CLICK -> {
+				LoginFragmentViewCommand.LOGIN
+			}
+			LoginFragmentAction.LOGIN_WITH_SAVED_CREDENTIALS -> {
+				LoginFragmentViewCommand.LOGIN_WITH_SAVED_CREDENTIALS
+			}
+			LoginFragmentAction.NOT_REGISTERED_CLICK -> {
+				LoginFragmentViewCommand.GOT_TO_REGISTRATION
+			}
+		}
+	}
 }
