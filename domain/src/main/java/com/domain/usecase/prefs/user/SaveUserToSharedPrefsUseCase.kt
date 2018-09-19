@@ -6,7 +6,7 @@ import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
 
 
-class SaveUserUseCase(
+class SaveUserToSharedPrefsUseCase(
 		sharedSharedPrefsRepo: SharedPrefsRepository) : UseCase<Pair<String, String>, Any>() {
 
 	private val mSharedPrefsRepository: SharedPrefsRepository = sharedSharedPrefsRepo

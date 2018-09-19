@@ -1,6 +1,7 @@
 package com.data.net.repository
 
 import com.data.net.datasource.NetDataSource
+import com.data.net.helpers.BaseResponseHelper
 import com.data.net.pojo.User
 import com.data.transformers.user.UserToUserDtoTransformer
 import com.domain.models.UserDto
@@ -16,9 +17,7 @@ class RetrofitNetRepositoryImpl(netDataSource: NetDataSource) : NetRepository {
 	override fun register(body: Map<String, String?>): Flowable<UserDto> {
 		return mResponseHelper.unwrapBaseResponse(
 				mResponseHelper.validateFlowable(mNetDataSource.register(body)))
-				.flatMap { user: User ->
-					Flowable.just(mUserTransformer.transform(user))
-				}
+				.flatMap { user: User -> Flowable.just(mUserTransformer.transform(user)) }
 	}
 
 	override fun login(body: Map<String, String?>): Flowable<UserDto> {

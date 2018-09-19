@@ -4,7 +4,7 @@ import com.domain.models.UserDto
 import com.domain.usecase.net.login.LoginUseCase
 import com.domain.usecase.prefs.user.GetUserEmailUseCase
 import com.domain.usecase.prefs.user.GetUserPasswordUseCase
-import com.domain.usecase.prefs.user.SaveUserUseCase
+import com.domain.usecase.prefs.user.SaveUserToSharedPrefsUseCase
 import com.utils.DefaultErrorConsumer
 import com.view.ui.auth.login.configurator.LoginFragmentAction
 import com.view.ui.auth.login.configurator.LoginFragmentConfigurator
@@ -24,7 +24,7 @@ class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.Login
 	@Inject
 	protected lateinit var mGetUserEmailUseCase: GetUserEmailUseCase
 	@Inject
-	protected lateinit var mSaveUserUseCase: SaveUserUseCase
+	protected lateinit var mSaveUserToSharedPrefsUseCase: SaveUserToSharedPrefsUseCase
 	@Inject
 	protected lateinit var mUserKeeper: UserKeeper
 
@@ -62,12 +62,15 @@ class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.Login
 				"password" to credentials?.password)
 		addDisposable(
 				inBackground(mLoginUseCase.setParams(body).execute())
-						.flatMap { userDto: UserDto ->
-							mSaveUserUseCase
+						.doOnNext { userDto: UserDto ->
+							mUserKeeper.user = userDto
+						}.flatMap { userDto: UserDto ->
+							mSaveUserToSharedPrefsUseCase
 									.setParams(Pair(userDto.mUserName, userDto.mUserSecondName))
 									.execute()
-									.map { mUserKeeper.user = userDto }
-						}.subscribe({}, { DefaultErrorConsumer() })
+						}.subscribe(
+								{ getView()?.goToRegistrationFragment() },
+								{ DefaultErrorConsumer() })
 		)
 	}
 

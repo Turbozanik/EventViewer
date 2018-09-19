@@ -9,17 +9,21 @@ import com.data.net.exception.TokenExpiredException
 import com.google.gson.annotations.Expose
 
 class BaseResponse<T> {
-	private val EMPTY
-		get() = BaseResponse<T>()
+
+	private var EMPTY: BaseResponse<T> = BaseResponse()
+
+	init {
+		EMPTY.status = STATUS_ERROR
+	}
 
 	@Expose
-	private val status: Int = 0
+	var status: Int = 0
 	@Expose
 	var message: List<String>? = null
 	@Expose
-	private val token: String? = null
+	val token: String? = null
 	@Expose
-	private val result: T? = null
+	protected val result: T? = null
 
 	override fun toString(): String {
 		return ("BaseResponse{"
@@ -29,19 +33,21 @@ class BaseResponse<T> {
 				+ "result=" + result)
 	}
 
-	fun empty(): BaseResponse<*> {
-		return EMPTY
-	}
+	val empty: BaseResponse<T>
+		get() {
+			return EMPTY
+		}
 
 	fun hasToken(): Boolean {
 		return !TextUtils.isEmpty(token)
 	}
 
-	fun getErrorMessage(): String {
-		return if (message != null && !message!!.isEmpty()) {
-			message!![0]
-		} else ""
-	}
+	val errorMessage: String
+		get() {
+			return if (message != null && !message!!.isEmpty()) {
+				message!![0]
+			} else ""
+		}
 
 	private fun getAllErrorMessages(): String {
 		return if (message != null && !message!!.isEmpty()) {
@@ -54,7 +60,7 @@ class BaseResponse<T> {
 	}
 
 	@Throws(BaseException::class)
-	fun getResult(): T? {
+	fun getBaseResponseResult(): T? {
 		when (status) {
 			STATUS_SUCCESS -> return result
 			STATUS_PAYMENT_ERROR -> throw PaymentException(getAllErrorMessages())
