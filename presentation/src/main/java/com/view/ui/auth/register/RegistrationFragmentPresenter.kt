@@ -8,7 +8,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 
-class RegistrationFragmentPresenter @Inject constructor() : RegistrationFragmentContract.RegistrationFragmentPresenter(), RegistrationFragmentContract.RegistrationFragmentView {
+class RegistrationFragmentPresenter @Inject constructor() : RegistrationFragmentContract.RegistrationFragmentPresenter() {
 
 	@Inject
 	lateinit var mRegistrationUserCase: RegisterUserCase
@@ -22,17 +22,19 @@ class RegistrationFragmentPresenter @Inject constructor() : RegistrationFragment
 	override fun consumeAction(action: RegistrationFragmentAction?) {
 		if (action != null) {
 			when (actionConfigurator.produceViewCommand(mRegistrationFragmentState, action)) {
-				RegistrationFragmentViewCommand.DUMMY_COMMAND -> {
+				RegistrationFragmentViewCommand.DEFAULT -> {
 					Timber.d("default message")
 				}
 			}
 		}
 	}
 
-	override fun register() {
-//        val body: Map<String, String> = HashMap()
-//        body.plus(Pair("email", email))
-//        body.plus(Pair("password", password))
-//        mRegistrationUserCase.buildFlowable(body)
+	private fun register() {
+		val credentials = getView()?.getViewData()?.registrationInfo
+		val body: Map<String, String?> = hashMapOf(
+				"email" to credentials?.email,
+				"password" to credentials?.password)
+		mRegistrationUserCase.setParams(body).execute()
 	}
+
 }
