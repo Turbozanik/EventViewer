@@ -15,7 +15,7 @@ import javax.inject.Inject
 class RegistrationFragmentPresenter @Inject constructor() : RegistrationFragmentContract.RegistrationFragmentPresenter() {
 
 	@Inject
-	lateinit var mRegistrationUserCase: RegisterUserCase
+	protected lateinit var mRegistrationUserCase: RegisterUserCase
 	@Inject
 	protected lateinit var mSaveUserToSharedPrefsUseCase: SaveUserToSharedPrefsUseCase
 	@Inject
