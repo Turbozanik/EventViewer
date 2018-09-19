@@ -4,13 +4,11 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.Constants
 import com.view.R
-import com.view.base.configurator.ActionProducer
-import com.view.base.fragment.PresenterFragment
 import com.view.ui.auth.register.configurator.RegistrationFragmentAction
 import javax.inject.Inject
 
 
-class RegistrationFragment : PresenterFragment<RegistrationFragmentContract.RegistrationFragmentPresenter>(), ActionProducer<RegistrationFragmentAction>, RegistrationFragmentContract.RegistrationFragmentView {
+class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment() {
 
 	companion object {
 		fun createNewInstance(): RegistrationFragment {
@@ -54,7 +52,12 @@ class RegistrationFragment : PresenterFragment<RegistrationFragmentContract.Regi
 		mPresenter.consumeAction(action)
 	}
 
-	override fun register() {
+	override fun getViewData(): RegistrationFragmentContract.RegistrationFragmentDto {
+		return RegistrationFragmentContract.RegistrationFragmentDto(
+				RegistrationFragmentContract.RegistrationInfo("", ""), true)
+	}
+
+	override fun goToEventsFragment() {
 		TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 	}
 
