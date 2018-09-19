@@ -2,7 +2,8 @@ package com.view.ui.auth.register.configurator
 
 
 enum class RegistrationFragmentViewCommand(command: Int) {
-	DEFAULT(command = 0);
+	DEFAULT(command = 0),
+	REGISTER(command = 1);
 
 	private val mCommand: Int = command
 
