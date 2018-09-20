@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ActivityNavigator
-import com.Constants
+import com.FRAGMENT_DATA_KEY
 import com.dagger.DaggerController
 import com.view.base.activity.BaseActivity
 import com.watchers.keepers.UserKeeper
@@ -20,7 +20,7 @@ abstract class BaseFragment : Fragment() {
 
 	protected val initialAction: Any?
 		get() = if (arguments != null)
-			arguments!!.getSerializable(Constants.FRAGMENT_DATA_KEY)
+			arguments!!.getSerializable(FRAGMENT_DATA_KEY)
 		else
 			null
 

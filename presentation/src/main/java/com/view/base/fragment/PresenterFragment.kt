@@ -4,12 +4,17 @@ import android.content.Context
 import android.os.Bundle
 import com.view.base.presenter.BaseFragmentPresenter
 import com.view.base.view.BaseView
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 
 abstract class PresenterFragment<PresenterType : BaseFragmentPresenter<*, *, *>> : BaseFragment(), BaseView {
+
+	private val compositeSubscription = CompositeDisposable()
 
 	override fun onDestroyView() {
 		super.onDestroyView()
 		presenter.detachView()
+		compositeSubscription.clear()
 	}
 
 	override fun onAttach(context: Context?) {
@@ -26,6 +31,11 @@ abstract class PresenterFragment<PresenterType : BaseFragmentPresenter<*, *, *>>
 		super.onDetach()
 		removeCurrentSubComponent()
 	}
+
+	protected fun addDisposable(disposable: Disposable) {
+		compositeSubscription.add(disposable)
+	}
+
 
 	protected abstract val presenter: PresenterType
 

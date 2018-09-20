@@ -19,4 +19,7 @@
     <dimen name="dp8">8dp</dimen>
     <dimen name="dp16">16dp</dimen>
 
+    <!--Text length-->
+    <integer name="max_password_length">20</integer>
+
 </resources>

@@ -25,14 +25,14 @@ class AuthActivity : BaseActivity(), HasProgress {
 				override fun createFragment(screenKey: String?, data: Any?): Fragment {
 					val fragment: Fragment
 					when (screenKey) {
-						AuthActivityScreens.LOGIN_SCREEN -> {
+						LOGIN_SCREEN -> {
 							fragment = LoginFragment.createNewInstance()
 							if (activityInitAction == com.ActivityAction.OPEN_AUTH_ACTIVITY_WITH_NO_SAVED_CREDENTIALS) {
 								LoginFragment.addInitialAction(fragment,
 															   LoginFragmentAction.DEFAULT)
 							}
 						}
-						AuthActivityScreens.REGISTRATION_SCREEN -> {
+						REGISTRATION_SCREEN -> {
 							fragment = RegistrationFragment.createNewInstance()
 							LoginFragment.addInitialAction(fragment, LoginFragmentAction.DEFAULT)
 						}
@@ -69,10 +69,10 @@ class AuthActivity : BaseActivity(), HasProgress {
 	override fun getRootScreenKey(activityAction: ActivityAction?): String {
 		return when (activityAction) {
 			ActivityAction.OPEN_AUTH_ACTIVITY_WITH_NO_SAVED_CREDENTIALS -> {
-				AuthActivityScreens.LOGIN_SCREEN
+				LOGIN_SCREEN
 			}
 			else -> {
-				AuthActivityScreens.LOGIN_SCREEN
+				LOGIN_SCREEN
 			}
 		}
 	}
@@ -91,7 +91,7 @@ class AuthActivity : BaseActivity(), HasProgress {
 		}
 
 	fun showRegistrationFragment(data: Any?) {
-		showFragment(AuthActivityScreens.REGISTRATION_SCREEN, data)
+		showFragment(REGISTRATION_SCREEN, data)
 	}
 
 }

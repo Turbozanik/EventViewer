@@ -7,10 +7,15 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <!--Login Fragment-->
     <string name="title_activity_start_up">StartUpActivity</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
     <string name="remember_me">Remember me</string>
     <string name="login">Login</string>
     <string name="not_registered_yet">Not registered yet?</string>
+    <string name="error_invalid_email">Email is invalid</string>
+    <string name="error_invalid_password">Password is invalid</string>
+    <!--Registration Fragment-->
+    <string name="hint_registration_password">Password</string>
 </resources>

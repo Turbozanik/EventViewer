@@ -13,7 +13,7 @@ class ActivityNavigator(context: Context) {
 	}
 
 	private fun applyAction(intent: Intent, activityAction: ActivityAction): Intent {
-		return intent.putExtra(Constants.ACTIVITY_ACTION_DATA_KEY, activityAction)
+		return intent.putExtra(ACTIVITY_ACTION_DATA_KEY, activityAction)
 	}
 
 	fun startActivity(stringKey: String) {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cardview_light_background"
@@ -52,17 +53,21 @@
         app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
         app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalTop" />
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/emailInputLayout"
+    <com.view.base.view.ValidatableInputLayout
+        android:id="@+id/mEmailInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/emailPasswordLayout"
+        app:errorEnabled="true"
+        app:errorStringRes="@string/error_invalid_email"
+        app:errorTextAppearance="@style/error_appearance"
+        app:layout_constraintBottom_toTopOf="@+id/mPasswordLayout"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
         app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontalCenter"
         app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents">
+        app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents"
+        app:validationType="EMAIL">
 
         <EditText
             android:id="@+id/mEtEmail"
@@ -71,26 +76,32 @@
             android:hint="@string/hint_email"
             android:inputType="textWebEmailAddress"
             android:singleLine="true" />
-    </android.support.design.widget.TextInputLayout>
+    </com.view.base.view.ValidatableInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/emailPasswordLayout"
+    <com.view.base.view.ValidatableInputLayout
+        android:id="@+id/mPasswordLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:errorEnabled="true"
+        app:errorStringRes="@string/error_invalid_password"
+        app:errorTextAppearance="@style/error_appearance"
         app:layout_constraintBottom_toTopOf="@+id/mCbSaveCredentials"
-        app:layout_constraintEnd_toEndOf="@+id/emailInputLayout"
-        app:layout_constraintStart_toStartOf="@+id/emailInputLayout"
-        app:layout_constraintTop_toBottomOf="@+id/emailInputLayout"
-        app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents">
+        app:layout_constraintEnd_toEndOf="@+id/mEmailInputLayout"
+        app:layout_constraintStart_toStartOf="@+id/mEmailInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/mEmailInputLayout"
+        app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents"
+        app:passwordToggleDrawable="@drawable/password_visibility_selector"
+        app:passwordToggleEnabled="true"
+        app:validationType="PASSWORD">
 
-        <EditText
+        <android.support.design.widget.TextInputEditText
             android:id="@+id/mEtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hint_password"
             android:inputType="textPassword"
             android:singleLine="true" />
-    </android.support.design.widget.TextInputLayout>
+    </com.view.base.view.ValidatableInputLayout>
 
     <CheckBox
         android:id="@+id/mCbSaveCredentials"
@@ -98,8 +109,8 @@
         android:layout_height="wrap_content"
         android:text="@string/remember_me"
         app:layout_constraintBottom_toTopOf="@+id/mTvNotRegistered"
-        app:layout_constraintStart_toStartOf="@+id/emailPasswordLayout"
-        app:layout_constraintTop_toBottomOf="@+id/emailPasswordLayout" />
+        app:layout_constraintStart_toStartOf="@+id/mPasswordLayout"
+        app:layout_constraintTop_toBottomOf="@+id/mPasswordLayout" />
 
     <TextView
         android:id="@+id/mTvNotRegistered"

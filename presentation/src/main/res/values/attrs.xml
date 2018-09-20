@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ValidatableInputLayout">
+        <attr name="validationType" format="enum">
+            <enum name="NONE" value="0" />
+            <enum name="EMAIL" value="1" />
+            <enum name="PASSWORD" value="2" />
+            <enum name="USER_NAME" value="3" />
+            <enum name="SURE_NAME" value="4" />
+        </attr>
+        <attr name="errorStringRes" format="reference" />
+    </declare-styleable>
+
+</resources>

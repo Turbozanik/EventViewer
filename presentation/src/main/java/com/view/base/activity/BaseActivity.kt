@@ -5,9 +5,9 @@ import android.support.annotation.LayoutRes
 import android.support.annotation.StringRes
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
+import com.ACTIVITY_ACTION_DATA_KEY
 import com.ActivityAction
 import com.ActivityNavigator
-import com.Constants
 import com.EventViewerApp
 import com.dagger.DaggerController
 import com.view.base.view.HasRootScreen
@@ -137,9 +137,9 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
 
 	private fun readActivityInitialAction() {
 		var activityAction: ActivityAction? = null
-		intent.getSerializableExtra(Constants.ACTIVITY_ACTION_DATA_KEY)?.let {
+		intent.getSerializableExtra(ACTIVITY_ACTION_DATA_KEY)?.let {
 			activityAction = intent.getSerializableExtra(
-					Constants.ACTIVITY_ACTION_DATA_KEY) as ActivityAction
+					ACTIVITY_ACTION_DATA_KEY) as ActivityAction
 		}
 		mActivityInitAction = activityAction ?: ActivityAction.DEFAULT
 	}

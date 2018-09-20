@@ -2,7 +2,7 @@ package com.view.ui.auth.register
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import com.Constants
+import com.FRAGMENT_DATA_KEY
 import com.view.R
 import com.view.ui.auth.register.configurator.RegistrationFragmentAction
 import javax.inject.Inject
@@ -17,7 +17,7 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
 
 		fun addInitialAction(fragment: Fragment, initialAction: RegistrationFragmentAction) {
 			val args = Bundle()
-			args.putSerializable(Constants.FRAGMENT_DATA_KEY, initialAction)
+			args.putSerializable(FRAGMENT_DATA_KEY, initialAction)
 			fragment.arguments = args
 		}
 	}
