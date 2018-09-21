@@ -1,135 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/root"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cardview_light_background"
-    android:focusable="true"
-    android:focusableInTouchMode="true">
+    android:fillViewport="true">
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineVerticalLeft"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="@dimen/left_side_content_margin" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineVerticalRight"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="@dimen/right_side_content_margin" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineHorizontalTop"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="@dimen/top_side_content_margin" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineHorizontalBottom"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="@dimen/bottom_side_content_margin" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineHorizontalCenter"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4" />
-
-    <ImageView
-        android:id="@+id/mIvLogo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@color/colorPrimary"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalCenter"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
-        app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
-        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalTop" />
-
-    <com.view.base.view.ValidatableInputLayout
-        android:id="@+id/mEmailInputLayout"
-        android:layout_width="0dp"
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:errorEnabled="true"
-        app:errorStringRes="@string/error_invalid_email"
-        app:errorTextAppearance="@style/error_appearance"
-        app:layout_constraintBottom_toTopOf="@+id/mPasswordLayout"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontalCenter"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents"
-        app:validationType="EMAIL">
+        android:background="@color/cardview_light_background"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/mEtEmail"
-            android:layout_width="match_parent"
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineVerticalLeft"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="@dimen/left_side_content_margin" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineVerticalRight"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="@dimen/right_side_content_margin" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineHorizontalTop"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="@dimen/top_side_content_margin" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineHorizontalBottom"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="@dimen/bottom_side_content_margin" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineHorizontalCenter"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.4" />
+
+        <ImageView
+            android:id="@+id/mIvLogo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalCenter"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
+            app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
+            app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalTop" />
+
+        <com.view.base.view.ValidatableInputLayout
+            android:id="@+id/mEmailInputLayout"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_email"
-            android:inputType="textWebEmailAddress"
-            android:singleLine="true" />
-    </com.view.base.view.ValidatableInputLayout>
+            app:errorEnabled="true"
+            app:errorStringRes="@string/error_invalid_email"
+            app:errorTextAppearance="@style/error_appearance"
+            app:layout_constraintBottom_toTopOf="@+id/mPasswordLayout"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
+            app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontalCenter"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents"
+            app:validationType="EMAIL">
 
-    <com.view.base.view.ValidatableInputLayout
-        android:id="@+id/mPasswordLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:errorEnabled="true"
-        app:errorStringRes="@string/error_invalid_password"
-        app:errorTextAppearance="@style/error_appearance"
-        app:layout_constraintBottom_toTopOf="@+id/mCbSaveCredentials"
-        app:layout_constraintEnd_toEndOf="@+id/mEmailInputLayout"
-        app:layout_constraintStart_toStartOf="@+id/mEmailInputLayout"
-        app:layout_constraintTop_toBottomOf="@+id/mEmailInputLayout"
-        app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents"
-        app:passwordToggleDrawable="@drawable/password_visibility_selector"
-        app:passwordToggleEnabled="true"
-        app:validationType="PASSWORD">
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/mEtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_email"
+                android:inputType="textWebEmailAddress"
+                android:singleLine="true" />
+        </com.view.base.view.ValidatableInputLayout>
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/mEtPassword"
-            android:layout_width="match_parent"
+        <com.view.base.view.ValidatableInputLayout
+            android:id="@+id/mPasswordLayout"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_password"
-            android:inputType="textPassword"
-            android:singleLine="true" />
-    </com.view.base.view.ValidatableInputLayout>
+            app:errorEnabled="true"
+            app:errorStringRes="@string/error_invalid_password"
+            app:errorTextAppearance="@style/error_appearance"
+            app:layout_constraintBottom_toTopOf="@+id/mCbSaveCredentials"
+            app:layout_constraintEnd_toEndOf="@+id/mEmailInputLayout"
+            app:layout_constraintStart_toStartOf="@+id/mEmailInputLayout"
+            app:layout_constraintTop_toBottomOf="@+id/mEmailInputLayout"
+            app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents"
+            app:passwordToggleDrawable="@drawable/password_visibility_selector"
+            app:passwordToggleEnabled="true"
+            app:validationType="PASSWORD">
 
-    <CheckBox
-        android:id="@+id/mCbSaveCredentials"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/remember_me"
-        app:layout_constraintBottom_toTopOf="@+id/mTvNotRegistered"
-        app:layout_constraintStart_toStartOf="@+id/mPasswordLayout"
-        app:layout_constraintTop_toBottomOf="@+id/mPasswordLayout" />
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/mEtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_password"
+                android:inputType="textPassword"
+                android:singleLine="true" />
+        </com.view.base.view.ValidatableInputLayout>
 
-    <TextView
-        android:id="@+id/mTvNotRegistered"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp8"
-        android:text="@string/not_registered_yet"
-        app:layout_constraintBottom_toTopOf="@+id/mBtnSignIn"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
-        app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
-        app:layout_constraintTop_toBottomOf="@+id/mCbSaveCredentials" />
+        <CheckBox
+            android:id="@+id/mCbSaveCredentials"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/remember_me"
+            app:layout_constraintBottom_toTopOf="@+id/mTvNotRegistered"
+            app:layout_constraintStart_toStartOf="@+id/mPasswordLayout"
+            app:layout_constraintTop_toBottomOf="@+id/mPasswordLayout" />
 
-    <Button
-        android:id="@+id/mBtnSignIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/login"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalBottom"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
-        app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft" />
+        <TextView
+            android:id="@+id/mTvNotRegistered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp8"
+            android:text="@string/not_registered_yet"
+            app:layout_constraintBottom_toTopOf="@+id/mBtnSignIn"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
+            app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
+            app:layout_constraintTop_toBottomOf="@+id/mCbSaveCredentials" />
 
-</android.support.constraint.ConstraintLayout>
+        <Button
+            android:id="@+id/mBtnSignIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalBottom"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
+            app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
