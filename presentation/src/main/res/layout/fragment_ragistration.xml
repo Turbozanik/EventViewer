@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
-    <android.support.design.widget.TextInputLayout
+    <com.view.base.view.ValidatableInputLayout
         android:id="@+id/passwordLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents">
 
-        <EditText
+        <android.support.design.widget.TextInputEditText
             android:id="@+id/mEtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,6 +24,6 @@
             android:hint="@string/hint_registration_password"
             android:inputType="textPassword"
             android:singleLine="true" />
-    </android.support.design.widget.TextInputLayout>
+    </com.view.base.view.ValidatableInputLayout>
 
 </android.support.constraint.ConstraintLayout>
