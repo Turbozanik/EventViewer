@@ -85,7 +85,7 @@ class ValidatableInputLayout : TextInputLayout {
 				?.observeOn(AndroidSchedulers.mainThread())
 	}
 
-	fun initEditTextWatcher() {
+	private fun initEditTextWatcher() {
 		editText?.addTextChangedListener(object : DefaultTextWatcher() {
 			override fun afterTextChanged(editable: Editable) {
 				updatesPublisher?.onNext(isValid())
