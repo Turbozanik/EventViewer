@@ -17,74 +17,74 @@ import javax.inject.Inject
 
 class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.LoginFragmentPresenter() {
 
-	@Inject
-	protected lateinit var mLoginUseCase: LoginUseCase
-	@Inject
-	protected lateinit var mGetUserPasswordUseCase: GetUserPasswordUseCase
-	@Inject
-	protected lateinit var mGetUserEmailUseCase: GetUserEmailUseCase
-	@Inject
-	protected lateinit var mSaveUserToSharedPrefsUseCase: SaveUserToSharedPrefsUseCase
-	@Inject
-	protected lateinit var mUserKeeper: UserKeeper
+    @Inject
+    protected lateinit var mLoginUseCase: LoginUseCase
+    @Inject
+    protected lateinit var mGetUserPasswordUseCase: GetUserPasswordUseCase
+    @Inject
+    protected lateinit var mGetUserEmailUseCase: GetUserEmailUseCase
+    @Inject
+    protected lateinit var mSaveUserToSharedPrefsUseCase: SaveUserToSharedPrefsUseCase
+    @Inject
+    protected lateinit var mUserKeeper: UserKeeper
 
-	private var loginFragmentData: LoginFragmentContract.LoginFragmentDto? = getView()?.getViewData()
+    private var loginFragmentData: LoginFragmentContract.LoginFragmentDto? = getView()?.getViewData()
 
-	private val mLoginFragmentState: LoginFragmentState = LoginFragmentState()
+    private val mLoginFragmentState: LoginFragmentState = LoginFragmentState()
 
-	override fun intiConfigurator(): LoginFragmentConfigurator {
-		return LoginFragmentConfigurator()
-	}
+    override fun intiConfigurator(): LoginFragmentConfigurator {
+        return LoginFragmentConfigurator()
+    }
 
-	override fun consumeAction(action: LoginFragmentAction?) {
-		if (action != null) {
-			when (actionConfigurator.produceViewCommand(mLoginFragmentState, action)) {
-				LoginFragmentViewCommand.LOGIN -> {
-					loginFragmentData = getView()?.getViewData()
-					login(loginFragmentData?.userCredentials)
-				}
-				LoginFragmentViewCommand.LOGIN_WITH_SAVED_CREDENTIALS -> {
-					loginFragmentData = getView()?.getViewData()
-					loginFragmentData?.userCredentials = getUserCredentialsFromSharedPrefs()
-					login(loginFragmentData?.userCredentials)
-				}
-				LoginFragmentViewCommand.DEFAULT -> TODO()
-				LoginFragmentViewCommand.GOT_TO_REGISTRATION -> {
-					getView()?.goToRegistrationFragment()
-				}
-			}
-		}
-	}
+    override fun consumeAction(action: LoginFragmentAction?) {
+        if (action != null) {
+            when (actionConfigurator.produceViewCommand(mLoginFragmentState, action)) {
+                LoginFragmentViewCommand.LOGIN -> {
+                    loginFragmentData = getView()?.getViewData()
+                    login(loginFragmentData?.userCredentials)
+                }
+                LoginFragmentViewCommand.LOGIN_WITH_SAVED_CREDENTIALS -> {
+                    loginFragmentData = getView()?.getViewData()
+                    loginFragmentData?.userCredentials = getUserCredentialsFromSharedPrefs()
+                    login(loginFragmentData?.userCredentials)
+                }
+                LoginFragmentViewCommand.DEFAULT -> TODO()
+                LoginFragmentViewCommand.GOT_TO_REGISTRATION -> {
+                    getView()?.goToRegistrationFragment()
+                }
+            }
+        }
+    }
 
-	private fun login(credentials: LoginFragmentContract.UserCredentials?) {
-		val body: Map<String, String?> = hashMapOf(
-				"email" to credentials?.email,
-				"password" to credentials?.password)
-		addDisposable(
-				inBackground(mLoginUseCase.setParams(body).execute())
-						.doOnNext { userDto: UserDto ->
-							mUserKeeper.user = userDto
-						}.flatMap { userDto: UserDto ->
-							mSaveUserToSharedPrefsUseCase
-									.setParams(Pair(userDto.mUserName, userDto.mUserSecondName))
-									.execute()
-						}.subscribe(
-								{ getView()?.goToRegistrationFragment() },
-								{ DefaultErrorConsumer() })
-		)
-	}
+    private fun login(credentials: LoginFragmentContract.UserCredentials?) {
+        val body: Map<String, String?> = hashMapOf(
+                "email" to credentials?.email,
+                "password" to credentials?.password)
+        addDisposable(
+                inBackground(mLoginUseCase.setParams(body).execute())
+                        .doOnNext { userDto: UserDto ->
+                            mUserKeeper.user = userDto
+                        }.flatMap { userDto: UserDto ->
+                            mSaveUserToSharedPrefsUseCase
+                                    .setParams(Pair(userDto.mUserName, userDto.mUserSecondName))
+                                    .execute()
+                        }.subscribe(
+                                { getView()?.goToRegistrationFragment() },
+                                { DefaultErrorConsumer() })
+        )
+    }
 
-	private fun getUserCredentialsFromSharedPrefs(): LoginFragmentContract.UserCredentials {
-		lateinit var userCredentials: LoginFragmentContract.UserCredentials
-		Flowable.zip(mGetUserEmailUseCase.execute(),
-					 mGetUserPasswordUseCase.execute(),
-					 BiFunction { email: String, password: String ->
-						 LoginFragmentContract.UserCredentials(email, password)
-					 }
-		).subscribe {
-			userCredentials = it
-		}
-		return userCredentials
-	}
+    private fun getUserCredentialsFromSharedPrefs(): LoginFragmentContract.UserCredentials {
+        lateinit var userCredentials: LoginFragmentContract.UserCredentials
+        Flowable.zip(mGetUserEmailUseCase.execute(),
+                mGetUserPasswordUseCase.execute(),
+                BiFunction { email: String, password: String ->
+                    LoginFragmentContract.UserCredentials(email, password)
+                }
+        ).subscribe {
+            userCredentials = it
+        }
+        return userCredentials
+    }
 
 }

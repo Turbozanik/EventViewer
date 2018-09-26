@@ -11,34 +11,34 @@ import com.view.ui.auth.login.configurator.LoginFragmentConfigurator
 
 interface LoginFragmentContract : BasePresenterContract {
 
-	data class UserCredentials(val email: String, val password: String)
+    data class UserCredentials(val email: String, val password: String)
 
-	data class LoginFragmentDto(var userCredentials: UserCredentials,
-								val shouldSaveCredentials: Boolean)
+    data class LoginFragmentDto(var userCredentials: UserCredentials,
+                                val shouldSaveCredentials: Boolean)
 
-	interface LoginFragmentView : BaseView {
+    interface LoginFragmentView : BaseView {
 
-		fun getViewData(): LoginFragmentDto
+        fun getViewData(): LoginFragmentDto
 
-		fun goToRegistrationFragment()
+        fun goToRegistrationFragment()
 
-	}
+    }
 
-	abstract class LoginFragmentPresenter : BaseFragmentPresenter<LoginFragmentConfigurator, LoginFragmentAction, LoginFragmentContract.LoginFragmentView>() {
-		init {
-			this.intiConfigurator()
-		}
-	}
+    abstract class LoginFragmentPresenter : BaseFragmentPresenter<LoginFragmentConfigurator, LoginFragmentAction, LoginFragmentContract.LoginFragmentView>() {
+        init {
+            this.intiConfigurator()
+        }
+    }
 
-	abstract class LoginFragment : PresenterFragment<LoginFragmentPresenter>(), LoginFragmentContract.LoginFragmentView, ActionProducer<LoginFragmentAction> {
+    abstract class LoginFragment : PresenterFragment<LoginFragmentPresenter>(), LoginFragmentContract.LoginFragmentView, ActionProducer<LoginFragmentAction> {
 
-		override fun initView() {
-			attachView()
-		}
+        override fun initView() {
+            attachView()
+        }
 
-		private fun attachView() {
-			this.presenter.attachView(this)
-		}
-	}
+        private fun attachView() {
+            this.presenter.attachView(this)
+        }
+    }
 
 }

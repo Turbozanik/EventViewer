@@ -15,83 +15,83 @@ import ru.terrakok.cicerone.Navigator
 
 class AuthActivity : BaseActivity(), HasProgress {
 
-	override val layoutId: Int
-		get() = R.layout.activity_auth
+    override val layoutId: Int
+        get() = R.layout.activity_auth
 
-	override val navigator: Navigator
-		get() {
-			mNavigator = object : FragmentNavigator(supportFragmentManager,
-													fragmentContainerViewId) {
-				override fun createFragment(screenKey: String?, data: Any?): Fragment {
-					val fragment: Fragment
-					when (screenKey) {
-						LOGIN_SCREEN -> {
-							fragment = LoginFragment.createNewInstance()
-							if (activityInitAction == com.ActivityAction.OPEN_AUTH_ACTIVITY_WITH_NO_SAVED_CREDENTIALS) {
-								LoginFragment.addInitialAction(fragment,
-															   LoginFragmentAction.DEFAULT)
-							}
-						}
-						REGISTRATION_SCREEN -> {
-							fragment = RegistrationFragment.createNewInstance()
-							LoginFragment.addInitialAction(fragment, LoginFragmentAction.DEFAULT)
-						}
-						else -> {
-							fragment = LoginFragment.createNewInstance()
-							LoginFragment.addInitialAction(fragment, LoginFragmentAction.DEFAULT)
-						}
-					}
-					return fragment
-				}
-			}
-			return mNavigator
-		}
+    override val navigator: Navigator
+        get() {
+            mNavigator = object : FragmentNavigator(supportFragmentManager,
+                    fragmentContainerViewId) {
+                override fun createFragment(screenKey: String?, data: Any?): Fragment {
+                    val fragment: Fragment
+                    when (screenKey) {
+                        LOGIN_SCREEN -> {
+                            fragment = LoginFragment.createNewInstance()
+                            if (activityInitAction == com.ActivityAction.OPEN_AUTH_ACTIVITY_WITH_NO_SAVED_CREDENTIALS) {
+                                LoginFragment.addInitialAction(fragment,
+                                        LoginFragmentAction.DEFAULT)
+                            }
+                        }
+                        REGISTRATION_SCREEN -> {
+                            fragment = RegistrationFragment.createNewInstance()
+                            LoginFragment.addInitialAction(fragment, LoginFragmentAction.DEFAULT)
+                        }
+                        else -> {
+                            fragment = LoginFragment.createNewInstance()
+                            LoginFragment.addInitialAction(fragment, LoginFragmentAction.DEFAULT)
+                        }
+                    }
+                    return fragment
+                }
+            }
+            return mNavigator
+        }
 
-	override fun initView() {
-		setSupportActionBar(mToolbar)
-	}
+    override fun initView() {
+        setSupportActionBar(mToolbar)
+    }
 
-	override val fragmentContainerViewId: Int
-		get() = R.id.mAuthFragmentContainer
+    override val fragmentContainerViewId: Int
+        get() = R.id.mAuthFragmentContainer
 
-	override fun addActivitySubComponent() {
-		daggerController.addActivitySubComponent()
-	}
+    override fun addActivitySubComponent() {
+        daggerController.addActivitySubComponent()
+    }
 
-	override fun addCurrentActivitySubComponent() {
-		daggerController.addAuthActivitySubComponent()
-	}
+    override fun addCurrentActivitySubComponent() {
+        daggerController.addAuthActivitySubComponent()
+    }
 
-	override fun removeCurrentSubComponent() {
-		daggerController.removeAuthActivitySubComponent()
-	}
+    override fun removeCurrentSubComponent() {
+        daggerController.removeAuthActivitySubComponent()
+    }
 
-	override fun getRootScreenKey(activityAction: ActivityAction?): String {
-		return when (activityAction) {
-			ActivityAction.OPEN_AUTH_ACTIVITY_WITH_NO_SAVED_CREDENTIALS -> {
-				LOGIN_SCREEN
-			}
-			else -> {
-				LOGIN_SCREEN
-			}
-		}
-	}
+    override fun getRootScreenKey(activityAction: ActivityAction?): String {
+        return when (activityAction) {
+            ActivityAction.OPEN_AUTH_ACTIVITY_WITH_NO_SAVED_CREDENTIALS -> {
+                LOGIN_SCREEN
+            }
+            else -> {
+                LOGIN_SCREEN
+            }
+        }
+    }
 
-	override fun showProgress() {
-		progressView.visibility = View.VISIBLE
-	}
+    override fun showProgress() {
+        progressView.visibility = View.VISIBLE
+    }
 
-	override fun hideProgress() {
-		progressView.visibility = View.GONE
-	}
+    override fun hideProgress() {
+        progressView.visibility = View.GONE
+    }
 
-	override val progressView: View
-		get() {
-			return mProgressBar
-		}
+    override val progressView: View
+        get() {
+            return mProgressBar
+        }
 
-	fun showRegistrationFragment(data: Any?) {
-		showFragment(REGISTRATION_SCREEN, data)
-	}
+    fun showRegistrationFragment(data: Any?) {
+        showFragment(REGISTRATION_SCREEN, data)
+    }
 
 }

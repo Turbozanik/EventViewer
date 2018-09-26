@@ -10,8 +10,8 @@ import dagger.Subcomponent
 @Subcomponent(modules = [AuthActivityModule::class])
 interface AuthActivitySubComponent {
 
-	fun add(registrationModule: RegistrationFragmentModule): RegistrationFragmentSubComponent
+    fun add(registrationModule: RegistrationFragmentModule): RegistrationFragmentSubComponent
 
-	fun add(loginFragmentModule: LoginFragmentModule): LoginFragmentSubComponent
+    fun add(loginFragmentModule: LoginFragmentModule): LoginFragmentSubComponent
 
 }

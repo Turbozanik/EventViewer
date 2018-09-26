@@ -5,8 +5,8 @@ import timber.log.Timber
 
 
 class DefaultErrorConsumer : Consumer<Throwable> {
-	override fun accept(throwable: Throwable) {
-		Timber.e(throwable)
-	}
+    override fun accept(throwable: Throwable) {
+        Timber.e(throwable)
+    }
 
 }

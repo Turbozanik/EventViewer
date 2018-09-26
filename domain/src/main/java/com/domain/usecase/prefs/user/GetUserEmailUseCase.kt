@@ -6,17 +6,17 @@ import io.reactivex.Flowable
 
 
 class GetUserEmailUseCase(
-		sharedSharedPrefsRepository: SharedPrefsRepository) : UseCase<Any, String>() {
+        sharedSharedPrefsRepository: SharedPrefsRepository) : UseCase<Any, String>() {
 
-	private val mSharedPrefsRepository: SharedPrefsRepository = sharedSharedPrefsRepository
+    private val mSharedPrefsRepository: SharedPrefsRepository = sharedSharedPrefsRepository
 
-	override fun buildFlowable(params: Any): Flowable<String> {
-		return when (mSharedPrefsRepository.getUserEmail()) {
-			null -> Flowable.just("")
-			else -> Flowable.just(mSharedPrefsRepository.getUserEmail())
-		}
-	}
+    override fun buildFlowable(params: Any): Flowable<String> {
+        return when (mSharedPrefsRepository.getUserEmail()) {
+            null -> Flowable.just("")
+            else -> Flowable.just(mSharedPrefsRepository.getUserEmail())
+        }
+    }
 
-	override val isParamsRequired: Boolean
-		get() = false
+    override val isParamsRequired: Boolean
+        get() = false
 }

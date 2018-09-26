@@ -11,25 +11,25 @@ import dagger.Provides
 @Module
 class AuthActivityModule {
 
-	@Provides
-	@AuthActivityScope
-	fun provideGetUserPasswordUseCase(
-			prefsRepositoryImpl: SharedPrefsRepositoryImpl): GetUserPasswordUseCase {
-		return GetUserPasswordUseCase(prefsRepositoryImpl)
-	}
+    @Provides
+    @AuthActivityScope
+    fun provideGetUserPasswordUseCase(
+            prefsRepositoryImpl: SharedPrefsRepositoryImpl): GetUserPasswordUseCase {
+        return GetUserPasswordUseCase(prefsRepositoryImpl)
+    }
 
-	@Provides
-	@AuthActivityScope
-	fun provideGetUserEmailUseCase(
-			prefsRepositoryImpl: SharedPrefsRepositoryImpl): GetUserEmailUseCase {
-		return GetUserEmailUseCase(prefsRepositoryImpl)
-	}
+    @Provides
+    @AuthActivityScope
+    fun provideGetUserEmailUseCase(
+            prefsRepositoryImpl: SharedPrefsRepositoryImpl): GetUserEmailUseCase {
+        return GetUserEmailUseCase(prefsRepositoryImpl)
+    }
 
-	@Provides
-	@AuthActivityScope
-	fun provideSaveUserUseCase(
-			prefsRepositoryImpl: SharedPrefsRepositoryImpl): SaveUserToSharedPrefsUseCase {
-		return SaveUserToSharedPrefsUseCase(prefsRepositoryImpl)
-	}
+    @Provides
+    @AuthActivityScope
+    fun provideSaveUserUseCase(
+            prefsRepositoryImpl: SharedPrefsRepositoryImpl): SaveUserToSharedPrefsUseCase {
+        return SaveUserToSharedPrefsUseCase(prefsRepositoryImpl)
+    }
 
 }

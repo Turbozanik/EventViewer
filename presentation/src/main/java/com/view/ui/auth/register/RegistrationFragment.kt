@@ -10,55 +10,55 @@ import javax.inject.Inject
 
 class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment() {
 
-	companion object {
-		fun createNewInstance(): RegistrationFragment {
-			return RegistrationFragment()
-		}
+    companion object {
+        fun createNewInstance(): RegistrationFragment {
+            return RegistrationFragment()
+        }
 
-		fun addInitialAction(fragment: Fragment, initialAction: RegistrationFragmentAction) {
-			val args = Bundle()
-			args.putSerializable(FRAGMENT_DATA_KEY, initialAction)
-			fragment.arguments = args
-		}
-	}
+        fun addInitialAction(fragment: Fragment, initialAction: RegistrationFragmentAction) {
+            val args = Bundle()
+            args.putSerializable(FRAGMENT_DATA_KEY, initialAction)
+            fragment.arguments = args
+        }
+    }
 
-	@Inject
-	lateinit var mPresenter: RegistrationFragmentPresenter
+    @Inject
+    lateinit var mPresenter: RegistrationFragmentPresenter
 
-	override fun inject() {
-		daggerController.registrationFragmentSubComponent?.inject(this)
-	}
+    override fun inject() {
+        daggerController.registrationFragmentSubComponent?.inject(this)
+    }
 
-	override fun addCurrentSubComponent() {
-		daggerController.addRegistrationFragmentSubComponent()
-	}
+    override fun addCurrentSubComponent() {
+        daggerController.addRegistrationFragmentSubComponent()
+    }
 
-	override fun removeCurrentSubComponent() {
-		daggerController.removeRegistrationFragmentSubComponent()
-	}
+    override fun removeCurrentSubComponent() {
+        daggerController.removeRegistrationFragmentSubComponent()
+    }
 
-	override val layoutId: Int
-		get() = R.layout.fragment_ragistration
+    override val layoutId: Int
+        get() = R.layout.fragment_ragistration
 
-	override fun initView() {
-	}
+    override fun initView() {
+    }
 
-	override val presenter: RegistrationFragmentPresenter
-		get() {
-			return mPresenter
-		}
+    override val presenter: RegistrationFragmentPresenter
+        get() {
+            return mPresenter
+        }
 
-	override fun sendAction(action: RegistrationFragmentAction?) {
-		mPresenter.consumeAction(action)
-	}
+    override fun sendAction(action: RegistrationFragmentAction?) {
+        mPresenter.consumeAction(action)
+    }
 
-	override fun getViewData(): RegistrationFragmentContract.RegistrationFragmentDto {
-		return RegistrationFragmentContract.RegistrationFragmentDto(
-				RegistrationFragmentContract.RegistrationInfo("", ""), true)
-	}
+    override fun getViewData(): RegistrationFragmentContract.RegistrationFragmentDto {
+        return RegistrationFragmentContract.RegistrationFragmentDto(
+                RegistrationFragmentContract.RegistrationInfo("", ""), true)
+    }
 
-	override fun goToEventsFragment() {
-		TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-	}
+    override fun goToEventsFragment() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
 }

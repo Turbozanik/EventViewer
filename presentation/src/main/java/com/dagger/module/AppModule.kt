@@ -9,21 +9,21 @@ import javax.inject.Singleton
 
 @Module
 class AppModule(context: Context) {
-	private val mContext = context
+    private val mContext = context
 
-	@Provides
-	@Singleton
-	fun provideContext(): Context = mContext
+    @Provides
+    @Singleton
+    fun provideContext(): Context = mContext
 
 
-	@Provides
-	@Singleton
-	fun providePrefsDataSource(context: Context): PrefsDataSource = PrefsDataSource(context)
+    @Provides
+    @Singleton
+    fun providePrefsDataSource(context: Context): PrefsDataSource = PrefsDataSource(context)
 
-	@Provides
-	@Singleton
-	fun providePrefsRepository(
-			prefsDataSource: PrefsDataSource): SharedPrefsRepositoryImpl = SharedPrefsRepositoryImpl(
-			prefsDataSource)
+    @Provides
+    @Singleton
+    fun providePrefsRepository(
+            prefsDataSource: PrefsDataSource): SharedPrefsRepositoryImpl = SharedPrefsRepositoryImpl(
+            prefsDataSource)
 
 }

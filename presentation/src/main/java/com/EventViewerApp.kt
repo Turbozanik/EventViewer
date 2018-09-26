@@ -11,45 +11,45 @@ import timber.log.Timber
 
 class EventViewerApp : Application() {
 
-	companion object {
-		private lateinit var sInstance: EventViewerApp
-		fun getInstance(): EventViewerApp {
-			return sInstance
-		}
-	}
+    companion object {
+        private lateinit var sInstance: EventViewerApp
+        fun getInstance(): EventViewerApp {
+            return sInstance
+        }
+    }
 
-	private lateinit var mDaggerController: DaggerController
-	private lateinit var mCicerone: Cicerone<Router>
+    private lateinit var mDaggerController: DaggerController
+    private lateinit var mCicerone: Cicerone<Router>
 
-	override fun onCreate() {
-		super.onCreate()
-		sInstance = this
-		mDaggerController = DaggerController(this)
-		initCicerone()
-		initTimber()
-	}
+    override fun onCreate() {
+        super.onCreate()
+        sInstance = this
+        mDaggerController = DaggerController(this)
+        initCicerone()
+        initTimber()
+    }
 
-	fun getNavigatorHolder(): NavigatorHolder {
-		return mCicerone.navigatorHolder
-	}
+    fun getNavigatorHolder(): NavigatorHolder {
+        return mCicerone.navigatorHolder
+    }
 
-	fun getRouter(): Router {
-		return mCicerone.router
-	}
+    fun getRouter(): Router {
+        return mCicerone.router
+    }
 
 
-	private fun initTimber() {
-		if (BuildConfig.DEBUG) {
-			Timber.plant(Timber.DebugTree())
-		}
-	}
+    private fun initTimber() {
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
+    }
 
-	private fun initCicerone() {
-		mCicerone = Cicerone.create()
-	}
+    private fun initCicerone() {
+        mCicerone = Cicerone.create()
+    }
 
-	fun getDaggerController(): DaggerController {
-		return mDaggerController
-	}
+    fun getDaggerController(): DaggerController {
+        return mDaggerController
+    }
 
 }

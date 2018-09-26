@@ -11,30 +11,30 @@ import com.view.ui.auth.register.configurator.RegistrationFragmentConfigurator
 
 interface RegistrationFragmentContract : BasePresenterContract {
 
-	data class RegistrationInfo(var email: String, var password: String)
+    data class RegistrationInfo(var email: String, var password: String)
 
-	data class RegistrationFragmentDto(var registrationInfo: RegistrationInfo,
-									   val shouldSaveCredentials: Boolean)
+    data class RegistrationFragmentDto(var registrationInfo: RegistrationInfo,
+                                       val shouldSaveCredentials: Boolean)
 
-	interface RegistrationFragmentView : BaseView {
+    interface RegistrationFragmentView : BaseView {
 
-		fun getViewData(): RegistrationFragmentDto
+        fun getViewData(): RegistrationFragmentDto
 
-		fun goToEventsFragment()
+        fun goToEventsFragment()
 
-	}
+    }
 
-	abstract class RegistrationFragmentPresenter : BaseFragmentPresenter<RegistrationFragmentConfigurator, RegistrationFragmentAction, RegistrationFragmentView>()
+    abstract class RegistrationFragmentPresenter : BaseFragmentPresenter<RegistrationFragmentConfigurator, RegistrationFragmentAction, RegistrationFragmentView>()
 
-	abstract class RegistrationFragment : PresenterFragment<RegistrationFragmentContract.RegistrationFragmentPresenter>(), ActionProducer<RegistrationFragmentAction>, RegistrationFragmentContract.RegistrationFragmentView {
+    abstract class RegistrationFragment : PresenterFragment<RegistrationFragmentContract.RegistrationFragmentPresenter>(), ActionProducer<RegistrationFragmentAction>, RegistrationFragmentContract.RegistrationFragmentView {
 
-		override fun initView() {
-			attachView()
-		}
+        override fun initView() {
+            attachView()
+        }
 
-		private fun attachView() {
-			this.presenter.attachView(this)
-		}
-	}
+        private fun attachView() {
+            this.presenter.attachView(this)
+        }
+    }
 
 }

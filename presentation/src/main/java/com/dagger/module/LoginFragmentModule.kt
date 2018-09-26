@@ -10,11 +10,11 @@ import dagger.Provides
 @Module
 class LoginFragmentModule {
 
-	@Provides
-	@LoginFragmentScope
-	fun provideLoginUseCase(
-			retrofitNetRepositoryImpl: RetrofitNetRepositoryImpl): LoginUseCase {
-		return LoginUseCase(retrofitNetRepositoryImpl)
-	}
+    @Provides
+    @LoginFragmentScope
+    fun provideLoginUseCase(
+            retrofitNetRepositoryImpl: RetrofitNetRepositoryImpl): LoginUseCase {
+        return LoginUseCase(retrofitNetRepositoryImpl)
+    }
 
 }

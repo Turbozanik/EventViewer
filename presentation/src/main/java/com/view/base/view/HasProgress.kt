@@ -4,7 +4,7 @@ import android.view.View
 
 
 interface HasProgress {
-	fun showProgress()
-	fun hideProgress()
-	val progressView: View
+    fun showProgress()
+    fun hideProgress()
+    val progressView: View
 }
