@@ -1,30 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:fillViewport="true">
 
-    <com.view.base.view.ValidatableInputLayout
-        android:id="@+id/passwordLayout"
-        android:layout_width="0dp"
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:counterEnabled="true"
-        app:counterMaxLength="@integer/max_password_length"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:counterOverflowTextAppearance="@style/TextLimitError"
-        app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents">
+        android:background="@android:color/white">
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/mEtPassword"
-            android:layout_width="match_parent"
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineVerticalLeft"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="@dimen/left_side_content_margin" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineVerticalRight"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="@dimen/right_side_content_margin" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineHorizontalTop"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="@dimen/top_side_content_margin" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineHorizontalBottom"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="@dimen/bottom_side_content_margin" />
+
+        <ImageView
+            android:id="@+id/ivName"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_lock_black_24dp"
-            android:hint="@string/hint_registration_password"
-            android:inputType="textPassword"
-            android:singleLine="true" />
-    </com.view.base.view.ValidatableInputLayout>
+            android:background="@drawable/ic_account_box_black_36dp"
+            app:layout_constraintBottom_toBottomOf="@+id/nameLayout"
+            app:layout_constraintEnd_toStartOf="@+id/nameLayout"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/nameLayout" />
 
-</android.support.constraint.ConstraintLayout>
+        <com.view.base.view.ValidatableInputLayout
+            android:id="@+id/nameLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:counterOverflowTextAppearance="@style/TextLimitError"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivName"
+            app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalTop"
+            app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/mEtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_registration_name"
+                android:inputType="textCapWords"
+                android:singleLine="true" />
+        </com.view.base.view.ValidatableInputLayout>
+
+        <ImageView
+            android:id="@+id/ivNickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_account_circle_black_36dp"
+            app:layout_constraintBottom_toBottomOf="@+id/nicknameLayout"
+            app:layout_constraintEnd_toStartOf="@+id/nicknameLayout"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/nicknameLayout" />
+
+        <com.view.base.view.ValidatableInputLayout
+            android:id="@+id/nicknameLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivNickname"
+            app:layout_constraintTop_toBottomOf="@+id/nameLayout"
+            app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/mEtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_registration_nickname"
+                android:inputType="textCapWords"
+                android:singleLine="true" />
+        </com.view.base.view.ValidatableInputLayout>
+
+        <ImageView
+            android:id="@+id/ivBirthday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_cake_black_36dp"
+            app:layout_constraintBottom_toBottomOf="@+id/birthdayLayout"
+            app:layout_constraintEnd_toStartOf="@+id/birthdayLayout"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/birthdayLayout" />
+
+        <com.view.base.view.ValidatableInputLayout
+            android:id="@+id/birthdayLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivBirthday"
+            app:layout_constraintTop_toBottomOf="@+id/nicknameLayout"
+            app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/mEtBirthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_registration_birthday"
+                android:inputType="text"
+                android:singleLine="true" />
+        </com.view.base.view.ValidatableInputLayout>
+
+        <ImageView
+            android:id="@+id/ivLock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_lock_black_36dp"
+            app:layout_constraintBottom_toBottomOf="@+id/passwordLayout"
+            app:layout_constraintEnd_toStartOf="@+id/passwordLayout"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/passwordLayout" />
+
+        <com.view.base.view.ValidatableInputLayout
+            android:id="@+id/passwordLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivLock"
+            app:layout_constraintTop_toBottomOf="@+id/birthdayLayout"
+            app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/mEtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_password"
+                android:inputType="textPassword"
+                android:singleLine="true" />
+        </com.view.base.view.ValidatableInputLayout>
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register"
+            app:layout_constraintEnd_toEndOf="@+id/passwordLayout"
+            app:layout_constraintTop_toBottomOf="@+id/passwordLayout" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

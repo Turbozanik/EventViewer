@@ -70,7 +70,7 @@ class LoginFragment : LoginFragmentContract.LoginFragment() {
     override fun getViewData(): LoginFragmentContract.LoginFragmentDto {
         return LoginFragmentContract.LoginFragmentDto(
                 LoginFragmentContract.UserCredentials(mEtEmail.text.toString(),
-                        mEtPassword.text.toString()),
+                        mEtName.text.toString()),
                 mCbSaveCredentials.isChecked)
     }
 
@@ -93,7 +93,7 @@ class LoginFragment : LoginFragmentContract.LoginFragment() {
     }
 
     private fun initPasswordEditText() {
-        mEtPassword?.setOnEditorActionListener { v, actionId, event ->
+        mEtName?.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 sendAction(LoginFragmentAction.LOGIN_CLICK)
             }

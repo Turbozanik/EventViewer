@@ -17,6 +17,11 @@
     <string name="error_invalid_email">Email is invalid</string>
     <string name="error_invalid_password">Password is invalid</string>
     <!--Registration Fragment-->
-    <string name="hint_registration_password">Password</string>
     <string name="registration">Registration</string>
+    <string name="hint_registration_name">Name</string>
+    <string name="hint_registration_nickname">Nickname</string>
+    <string name="hint_registration_email">Email</string>
+    <string name="hint_registration_birthday">Birthday</string>
+    <string name="hint_registration_password">Password</string>
+    <string name="register">Register</string>
 </resources>
