@@ -3,13 +3,14 @@ package com.view.ui.auth
 import android.support.v4.app.Fragment
 import android.view.View
 import com.ActivityAction
+import com.BACK_CONTENT_DESCRIPTOR
 import com.view.R
 import com.view.base.activity.BaseActivity
 import com.view.base.view.HasProgress
 import com.view.ui.auth.login.LoginFragment
 import com.view.ui.auth.login.configurator.LoginFragmentAction
 import com.view.ui.auth.register.RegistrationFragment
-import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.activity_auth.*
 import kotlinx.android.synthetic.main.content_auth.*
 import ru.terrakok.cicerone.Navigator
 
@@ -90,8 +91,40 @@ class AuthActivity : BaseActivity(), HasProgress {
             return mProgressBar
         }
 
-    fun showRegistrationFragment(data: Any?) {
+    fun prepareAndShowRegistrationFragment(data: Any?) {
+        prepareFragmentToolbar(REGISTRATION_SCREEN)
         showFragment(REGISTRATION_SCREEN, data)
+    }
+
+    private fun prepareAndShowLoginFragment(data: Any?) {
+        prepareFragmentToolbar(LOGIN_SCREEN)
+        showFragment(LOGIN_SCREEN, data)
+    }
+
+    override fun prepareFragmentToolbar(screenKey: String) {
+        when (screenKey) {
+            REGISTRATION_SCREEN -> {
+                prepareRegistrationToolbar()
+            }
+            LOGIN_SCREEN -> {
+                prepareLoginToolbar()
+            }
+        }
+    }
+
+    private fun prepareRegistrationToolbar() {
+        mToolbar?.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp)
+        mToolbar?.navigationContentDescription = BACK_CONTENT_DESCRIPTOR
+        mToolbar?.title = getString(R.string.registration)
+        mToolbar?.setNavigationOnClickListener {
+            mToolbar?.navigationIcon = null
+            prepareAndShowLoginFragment(null)
+        }
+    }
+
+    private fun prepareLoginToolbar() {
+        mToolbar?.navigationIcon = null
+        mToolbar?.title = getString(R.string.login)
     }
 
 }

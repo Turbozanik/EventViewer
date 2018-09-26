@@ -119,6 +119,8 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
 
     protected abstract fun initView()
 
+    protected abstract fun prepareFragmentToolbar(screenKey: String)
+
     private fun removeNavigator() {
         mNavigatorHolder.removeNavigator()
     }
@@ -159,7 +161,10 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
     }
 
     override fun showRootScreen(screenKey: String?) {
-        screenKey?.let { router.newRootScreen(screenKey) }
+        screenKey?.let {
+            prepareFragmentToolbar(screenKey)
+            router.newRootScreen(screenKey)
+        }
     }
 
 }

@@ -25,4 +25,8 @@
         <item name="android:textColor">@color/errorRed</item>
     </style>
 
+    <style name="TextLimitError">
+        <item name="android:textColor">@color/errorRed</item>
+    </style>
+
 </resources>

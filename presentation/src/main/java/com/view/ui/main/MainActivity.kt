@@ -163,4 +163,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             return mProgressBar
         }
 
+    override fun prepareFragmentToolbar(screenKey: String) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
 }

@@ -18,4 +18,5 @@
     <string name="error_invalid_password">Password is invalid</string>
     <!--Registration Fragment-->
     <string name="hint_registration_password">Password</string>
+    <string name="registration">Registration</string>
 </resources>
