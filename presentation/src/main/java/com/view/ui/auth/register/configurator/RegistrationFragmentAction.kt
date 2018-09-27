@@ -1,10 +1,11 @@
 package com.view.ui.auth.register.configurator
 
 
-enum class RegistrationFragmentAction(action: Int) {
-    INITIAL_ACTION_DEFAULT(action = 0);
+enum class RegistrationFragmentAction(action: Int, isInitialAction: Boolean) {
+    INITIAL_ACTION_DEFAULT(action = 0, isInitialAction = true);
 
     internal val mAction: Int = action
+    internal val mIsInitialAction: Boolean = isInitialAction
 
     companion object {
         private val map = RegistrationFragmentAction.values()
