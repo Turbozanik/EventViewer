@@ -47,12 +47,7 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
 
     override fun initView() {
         initEtBirthday()
-        mEtRepeatPassword.setOnEditorActionListener { v, actionId, event ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                sendAction(RegistrationFragmentAction.REGISTER)
-            }
-            false
-        }
+        initEtRepeatPassword()
     }
 
     override val presenter: RegistrationFragmentPresenter
@@ -71,6 +66,15 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
 
     override fun goToEventsFragment() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    private fun initEtRepeatPassword() {
+        mEtRepeatPassword.setOnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                sendAction(RegistrationFragmentAction.REGISTER)
+            }
+            false
+        }
     }
 
     private fun initEtBirthday() {
