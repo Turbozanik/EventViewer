@@ -3,6 +3,7 @@ package com.view.base.activity
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.support.annotation.StringRes
+import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
 import com.ACTIVITY_ACTION_DATA_KEY
@@ -43,8 +44,10 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
             return mUserKeeper
         }
     protected lateinit var mNavigator: Navigator
+    protected lateinit var mCurrentFragment: Fragment
     private lateinit var mActivityNavigator: ActivityNavigator
     private lateinit var mActivityInitAction: ActivityAction
+
 
     private val router: Router
         get() {
@@ -120,6 +123,8 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
     protected abstract fun initView()
 
     protected abstract fun prepareFragmentToolbar(screenKey: String)
+
+    protected abstract fun saveCurrentFragment(fragment: Fragment)
 
     private fun removeNavigator() {
         mNavigatorHolder.removeNavigator()

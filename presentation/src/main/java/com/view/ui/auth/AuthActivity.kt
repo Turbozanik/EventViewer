@@ -42,6 +42,7 @@ class AuthActivity : BaseActivity(), HasProgress {
                             LoginFragment.addInitialAction(fragment, LoginFragmentAction.DEFAULT)
                         }
                     }
+                    saveCurrentFragment(fragment)
                     return fragment
                 }
             }
@@ -76,6 +77,10 @@ class AuthActivity : BaseActivity(), HasProgress {
                 LOGIN_SCREEN
             }
         }
+    }
+
+    override fun saveCurrentFragment(fragment: Fragment) {
+        mCurrentFragment = fragment
     }
 
     override fun showProgress() {

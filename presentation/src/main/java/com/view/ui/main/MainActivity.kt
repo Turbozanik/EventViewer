@@ -144,6 +144,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 //                            throw IllegalArgumentException(Throwable("Unknown screen"))
 //                        }
                     }
+                    saveCurrentFragment(Fragment())
                     return Fragment()
                 }
             }
@@ -165,6 +166,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun prepareFragmentToolbar(screenKey: String) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun saveCurrentFragment(fragment: Fragment) {
+        mCurrentFragment = fragment
     }
 
 }
