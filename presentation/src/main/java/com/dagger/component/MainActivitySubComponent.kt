@@ -1,9 +1,14 @@
 package com.dagger.component
 
+import com.dagger.module.EventListFragmentModule
 import com.dagger.module.MainActivityModule
 import com.dagger.scoupe.MainActivityScope
 import dagger.Subcomponent
 
 @MainActivityScope
 @Subcomponent(modules = [MainActivityModule::class])
-interface MainActivitySubComponent
+interface MainActivitySubComponent {
+
+    fun add(eventListFragmentModule: EventListFragmentModule): EventListFragmentSubComponent
+
+}

@@ -76,14 +76,14 @@ class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.Login
 
     private fun getUserCredentialsFromSharedPrefs(): LoginFragmentContract.UserCredentials {
         lateinit var userCredentials: LoginFragmentContract.UserCredentials
-        Flowable.zip(mGetUserEmailUseCase.execute(),
+        addDisposable(Flowable.zip(mGetUserEmailUseCase.execute(),
                 mGetUserPasswordUseCase.execute(),
                 BiFunction { email: String, password: String ->
                     LoginFragmentContract.UserCredentials(email, password)
                 }
         ).subscribe {
             userCredentials = it
-        }
+        })
         return userCredentials
     }
 
