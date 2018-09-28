@@ -2,7 +2,8 @@ package com.view.ui.auth.register.configurator
 
 
 enum class RegistrationFragmentAction(action: Int, isInitialAction: Boolean) {
-    INITIAL_ACTION_DEFAULT(action = 0, isInitialAction = true);
+    INITIAL_ACTION_DEFAULT(action = 0, isInitialAction = true),
+    REGISTER(action = 1, isInitialAction = false);
 
     internal val mAction: Int = action
     internal val mIsInitialAction: Boolean = isInitialAction

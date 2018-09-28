@@ -7,7 +7,14 @@ class RegistrationFragmentConfigurator : BaseFragmentConfigurator<RegistrationFr
 
     override fun produceViewCommand(viewState: RegistrationFragmentState,
                                     action: RegistrationFragmentAction): RegistrationFragmentViewCommand {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return when (action) {
+            RegistrationFragmentAction.INITIAL_ACTION_DEFAULT -> {
+                RegistrationFragmentViewCommand.DEFAULT
+            }
+            RegistrationFragmentAction.REGISTER -> {
+                RegistrationFragmentViewCommand.REGISTER
+            }
+        }
     }
 
     override fun saveAction(action: RegistrationFragmentAction, viewState: RegistrationFragmentState) {

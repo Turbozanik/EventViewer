@@ -1,10 +1,14 @@
 package com.view.ui.auth.register
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.view.inputmethod.EditorInfo
 import com.FRAGMENT_DATA_KEY
 import com.view.R
 import com.view.ui.auth.register.configurator.RegistrationFragmentAction
+import kotlinx.android.synthetic.main.fragment_ragistration.*
+import java.util.*
 import javax.inject.Inject
 
 
@@ -24,6 +28,7 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
 
     @Inject
     lateinit var mPresenter: RegistrationFragmentPresenter
+    private lateinit var datePickerDialog: DatePickerDialog
 
     override fun inject() {
         daggerController.registrationFragmentSubComponent?.inject(this)
@@ -41,6 +46,13 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
         get() = R.layout.fragment_ragistration
 
     override fun initView() {
+        initEtBirthday()
+        mEtRepeatPassword.setOnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                sendAction(RegistrationFragmentAction.REGISTER)
+            }
+            false
+        }
     }
 
     override val presenter: RegistrationFragmentPresenter
@@ -59,6 +71,18 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
 
     override fun goToEventsFragment() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    private fun initEtBirthday() {
+        val calendar = Calendar.getInstance()
+
+        datePickerDialog = DatePickerDialog(context, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+            mEtBirthday.setText(getString(R.string.view_date_format, dayOfMonth.toString(), (monthOfYear + 1).toString(), year.toString()))
+            datePickerDialog.dismiss()
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
+        mEtBirthday.setOnClickListener {
+            datePickerDialog.show()
+        }
     }
 
 }

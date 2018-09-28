@@ -123,6 +123,7 @@
                 android:id="@+id/mEtBirthday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:focusable="false"
                 android:hint="@string/hint_registration_birthday"
                 android:inputType="text"
                 android:singleLine="true" />
@@ -143,7 +144,7 @@
             android:id="@+id/passwordLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/dp16"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/ivLock"
             app:layout_constraintTop_toBottomOf="@+id/birthdayLayout"
@@ -158,13 +159,44 @@
                 android:singleLine="true" />
         </com.view.base.view.ValidatableInputLayout>
 
-        <Button
-            android:id="@+id/btnRegister"
+        <ImageView
+            android:id="@+id/ivRepeatLock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/ic_lock_black_36dp"
+            app:layout_constraintBottom_toBottomOf="@+id/mRepeatPasswordLayout"
+            app:layout_constraintEnd_toStartOf="@+id/mRepeatPasswordLayout"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/mRepeatPasswordLayout" />
+
+        <com.view.base.view.ValidatableInputLayout
+            android:id="@+id/mRepeatPasswordLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivRepeatLock"
+            app:layout_constraintTop_toBottomOf="@+id/passwordLayout"
+            app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/mEtRepeatPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_registration_repeat_password"
+                android:inputType="textPassword"
+                android:singleLine="true" />
+        </com.view.base.view.ValidatableInputLayout>
+
+        <Button
+            android:id="@+id/mBtnRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp8"
             android:text="@string/register"
-            app:layout_constraintEnd_toEndOf="@+id/passwordLayout"
-            app:layout_constraintTop_toBottomOf="@+id/passwordLayout" />
+            app:layout_constraintEnd_toEndOf="@+id/mRepeatPasswordLayout"
+            app:layout_constraintTop_toBottomOf="@+id/mRepeatPasswordLayout" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
