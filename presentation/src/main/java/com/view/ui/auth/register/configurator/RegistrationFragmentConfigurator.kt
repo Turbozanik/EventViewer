@@ -10,7 +10,7 @@ class RegistrationFragmentConfigurator : BaseFragmentConfigurator<RegistrationFr
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun handleActionType(action: RegistrationFragmentAction, viewState: RegistrationFragmentState) {
+    override fun saveAction(action: RegistrationFragmentAction, viewState: RegistrationFragmentState) {
         if (action.mIsInitialAction) {
             viewState.mInitialAction = action
             viewState.actionList.add(action)

@@ -7,27 +7,24 @@ class LoginFragmentConfigurator : BaseFragmentConfigurator<LoginFragmentAction, 
 
     override fun produceViewCommand(viewState: LoginFragmentState,
                                     action: LoginFragmentAction): LoginFragmentViewCommand {
+        saveAction(action, viewState)
         return when (action) {
             LoginFragmentAction.DEFAULT -> {
-                handleActionType(action, viewState)
                 LoginFragmentViewCommand.DEFAULT
             }
             LoginFragmentAction.LOGIN_CLICK -> {
-                handleActionType(action, viewState)
                 LoginFragmentViewCommand.LOGIN
             }
             LoginFragmentAction.LOGIN_WITH_SAVED_CREDENTIALS -> {
-                handleActionType(action, viewState)
                 LoginFragmentViewCommand.LOGIN_WITH_SAVED_CREDENTIALS
             }
             LoginFragmentAction.NOT_REGISTERED_CLICK -> {
-                handleActionType(action, viewState)
                 LoginFragmentViewCommand.GOT_TO_REGISTRATION
             }
         }
     }
 
-    override fun handleActionType(action: LoginFragmentAction, viewState: LoginFragmentState) {
+    override fun saveAction(action: LoginFragmentAction, viewState: LoginFragmentState) {
         if (action.mIsInitialState) {
             viewState.mInitialAction = action
             viewState.actionList.add(action)

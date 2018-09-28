@@ -6,6 +6,6 @@ abstract class BaseFragmentConfigurator<ActionType, StateType : BaseState<Action
 
     abstract fun produceViewCommand(viewState: StateType, action: ActionType): ViewCommandType
 
-    abstract fun handleActionType(action: ActionType, viewState: StateType)
+    abstract fun saveAction(action: ActionType, viewState: StateType)
 
 }
