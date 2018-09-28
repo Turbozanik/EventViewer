@@ -28,7 +28,7 @@ class EventListFragment : EventListFragmentContract.EventListFragment() {
         get() = R.layout.fragment_event_list
 
     override fun getViewData(): EventListFragmentContract.EventListFragmentDto {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return EventListFragmentContract.EventListFragmentDto(false)
     }
 
     override fun sendAction(action: EventListFragmentAction?) {
