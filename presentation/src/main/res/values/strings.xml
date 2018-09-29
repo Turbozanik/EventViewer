@@ -26,4 +26,6 @@
     <string name="hint_registration_password">Password</string>
     <string name="hint_registration_repeat_password">Repeat password</string>
     <string name="register">Register</string>
+    <!--Event list-->
+    <string name="event_list">Event list</string>
 </resources>

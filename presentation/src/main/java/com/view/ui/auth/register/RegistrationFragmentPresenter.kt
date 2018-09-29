@@ -1,9 +1,7 @@
 package com.view.ui.auth.register
 
-import com.domain.models.UserDto
 import com.domain.usecase.net.registration.RegisterUserCase
 import com.domain.usecase.prefs.user.SaveUserToSharedPrefsUseCase
-import com.utils.DefaultErrorConsumer
 import com.view.ui.auth.register.configurator.RegistrationFragmentAction
 import com.view.ui.auth.register.configurator.RegistrationFragmentConfigurator
 import com.view.ui.auth.register.configurator.RegistrationFragmentViewCommand
@@ -41,21 +39,22 @@ class RegistrationFragmentPresenter @Inject constructor() : RegistrationFragment
     }
 
     private fun register() {
-        val credentials = getView()?.getViewData()?.registrationInfo
-        val body: Map<String, String?> = hashMapOf(
-                "email" to credentials?.email,
-                "password" to credentials?.password)
-        addDisposable(
-                inBackground(mRegistrationUserCase.setParams(body).execute())
-                        .doOnNext { userDto: UserDto -> mUserKeeper.user = userDto }
-                        .flatMap { userDto: UserDto ->
-                            mSaveUserToSharedPrefsUseCase.setParams(
-                                    Pair(userDto.mUserName, userDto.mUserSecondName)).execute()
-                        }
-                        .subscribe(
-                                { getView()?.goToEventsFragment() },
-                                { DefaultErrorConsumer() })
-        )
+        getView()?.goToEventsFragment()
+//        val credentials = getView()?.getViewData()?.registrationInfo
+//        val body: Map<String, String?> = hashMapOf(
+//                "email" to credentials?.email,
+//                "password" to credentials?.password)
+//        addDisposable(
+//                inBackground(mRegistrationUserCase.setParams(body).execute())
+//                        .doOnNext { userDto: UserDto -> mUserKeeper.user = userDto }
+//                        .flatMap { userDto: UserDto ->
+//                            mSaveUserToSharedPrefsUseCase.setParams(
+//                                    Pair(userDto.mUserName, userDto.mUserSecondName)).execute()
+//                        }
+//                        .subscribe(
+//                                { getView()?.goToEventsFragment() },
+//                                { DefaultErrorConsumer() })
+//        )
     }
 
 }

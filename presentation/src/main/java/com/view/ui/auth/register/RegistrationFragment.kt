@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.inputmethod.EditorInfo
 import com.FRAGMENT_DATA_KEY
 import com.view.R
+import com.view.ui.auth.AuthActivity
 import com.view.ui.auth.register.configurator.RegistrationFragmentAction
 import kotlinx.android.synthetic.main.fragment_ragistration.*
 import java.util.*
@@ -46,8 +47,10 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
         get() = R.layout.fragment_ragistration
 
     override fun initView() {
+        super.initView()
         initEtBirthday()
         initEtRepeatPassword()
+        initRegisterButton()
     }
 
     override val presenter: RegistrationFragmentPresenter
@@ -65,7 +68,7 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
     }
 
     override fun goToEventsFragment() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        (activity as AuthActivity).goToMainActivityEventListFragment()
     }
 
     private fun initEtRepeatPassword() {
@@ -86,6 +89,12 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
         mEtBirthday.setOnClickListener {
             datePickerDialog.show()
+        }
+    }
+
+    private fun initRegisterButton() {
+        mBtnRegister.setOnClickListener {
+            sendAction(RegistrationFragmentAction.REGISTER)
         }
     }
 

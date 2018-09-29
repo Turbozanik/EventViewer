@@ -10,10 +10,14 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.ActivityAction
+import com.ActivityAction.*
 import com.EventViewerApp
 import com.view.R
 import com.view.base.activity.BaseActivity
 import com.view.base.view.HasProgress
+import com.view.ui.auth.login.LoginFragment
+import com.view.ui.auth.login.configurator.LoginFragmentAction
+import com.view.ui.main.eventlist.EventListFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -105,15 +109,14 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun getRootScreenKey(activityAction: ActivityAction?): String {
-//        return when (activityAction) {
-//            AuthActivityAction.NOT_LOGGED_IN -> {
-//                MainActivityScreens.REGISTRATION_SCREEN
-//            }
-//            else -> {
-//                MainActivityScreens.REGISTRATION_SCREEN
-//            }
-//        }
-        return ""
+        return when (activityAction) {
+            DEFAULT -> TODO()
+            OPEN_MAIN_ACTIVITY -> TODO()
+            OPEN_AUTH_ACTIVITY -> TODO()
+            OPEN_AUTH_ACTIVITY_WITH_NO_SAVED_CREDENTIALS -> TODO()
+            OPEN_MAIN_ACTIVITY_WITH_EVENT_LIST_FRAGMENT -> EVENT_LIST_SCREEN
+            null -> TODO()
+        }
     }
 
     override fun removeCurrentSubComponent() {
@@ -131,21 +134,20 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             mNavigator = object : FragmentNavigator(supportFragmentManager,
                     fragmentContainerViewId) {
                 override fun createFragment(screenKey: String?, data: Any?): Fragment {
+                    val fragment: Fragment
                     when (screenKey) {
-//                        MainActivityScreens.REGISTRATION_SCREEN -> {
-//                            val fragment = RegistrationFragment.createNewInstance()
-//                            if (activityInitAction === com.AuthActivityAction.NOT_LOGGED_IN) {
-//                                RegistrationFragment.addInitialAction(fragment,
-//                                                                      RegistrationFragmentAction.INITIAL_ACTION_DEFAULT)
-//                            }
-//                            return fragment
-//                        }
-//                        else -> {
-//                            throw IllegalArgumentException(Throwable("Unknown screen"))
-//                        }
+                        EVENT_LIST_SCREEN -> {
+                            fragment = EventListFragment.createNewInstance()
+                            if (activityInitAction == com.ActivityAction.OPEN_AUTH_ACTIVITY_WITH_NO_SAVED_CREDENTIALS) {
+                                LoginFragment.addInitialAction(fragment, LoginFragmentAction.DEFAULT)
+                            }
+                        }
+                        else -> {
+                            fragment = EventListFragment.createNewInstance()
+                        }
                     }
-                    saveCurrentFragment(Fragment())
-                    return Fragment()
+                    saveCurrentFragment(fragment)
+                    return fragment
                 }
             }
             return mNavigator
@@ -165,7 +167,15 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
 
     override fun prepareFragmentToolbar(screenKey: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        when (screenKey) {
+            EVENT_LIST_SCREEN -> {
+                prepareEventListToolbar()
+            }
+        }
+    }
+
+    private fun prepareEventListToolbar() {
+        mToolbar.title = getString(R.string.event_list)
     }
 
     override fun saveCurrentFragment(fragment: Fragment) {

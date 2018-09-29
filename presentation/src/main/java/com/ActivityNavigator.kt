@@ -2,6 +2,7 @@ package com
 
 import android.content.Context
 import android.content.Intent
+import com.view.ui.main.MainActivity
 
 
 class ActivityNavigator(context: Context) {
@@ -27,8 +28,7 @@ class ActivityNavigator(context: Context) {
     private fun getNewActivityIntent(stringKey: String): Intent {
         return when (stringKey) {
             MAIN_ACTIVITY -> {
-                Intent()
-                //TODO
+                Intent(mContext, MainActivity::class.java)
             }
             AUTH_ACTIVITY -> {
                 Intent()
@@ -50,6 +50,9 @@ class ActivityNavigator(context: Context) {
             }
             ActivityAction.OPEN_AUTH_ACTIVITY_WITH_NO_SAVED_CREDENTIALS -> TODO()
             ActivityAction.DEFAULT -> TODO()
+            ActivityAction.OPEN_MAIN_ACTIVITY_WITH_EVENT_LIST_FRAGMENT -> {
+                MAIN_ACTIVITY
+            }
         }
     }
 

@@ -106,6 +106,10 @@ class AuthActivity : BaseActivity(), HasProgress {
         showFragment(LOGIN_SCREEN, data)
     }
 
+    fun goToMainActivityEventListFragment(){
+        activityNavigator.startActivityWithInitialAction(ActivityAction.OPEN_MAIN_ACTIVITY_WITH_EVENT_LIST_FRAGMENT)
+    }
+
     override fun prepareFragmentToolbar(screenKey: String) {
         when (screenKey) {
             REGISTRATION_SCREEN -> {

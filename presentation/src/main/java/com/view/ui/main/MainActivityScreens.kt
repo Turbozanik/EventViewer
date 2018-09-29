@@ -1,3 +1,3 @@
 package com.view.ui.main
 
-const val REGISTRATION_SCREEN = "REGISTRATION_SCREEN"
+const val EVENT_LIST_SCREEN= "EVENT_LIST_SCREEN"

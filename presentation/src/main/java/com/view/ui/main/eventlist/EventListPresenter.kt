@@ -6,11 +6,17 @@ import javax.inject.Inject
 
 class EventListPresenter @Inject constructor() : EventListFragmentContract.EventListPresenter() {
 
+    private val mEventListFragmentState: EventListFragmentState = EventListFragmentState()
+
     override fun intiConfigurator(): EventListFragmentConfigurator {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return EventListFragmentConfigurator()
     }
 
     override fun consumeAction(action: EventListFragmentAction?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        if (action != null) {
+            when (actionConfigurator.produceViewCommand(mEventListFragmentState, action)) {
+
+            }
+        }
     }
 }
