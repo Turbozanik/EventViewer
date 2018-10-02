@@ -167,7 +167,6 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
 
     override fun showRootScreen(screenKey: String?) {
         screenKey?.let {
-            prepareFragmentToolbar(screenKey)
             router.newRootScreen(screenKey)
         }
     }

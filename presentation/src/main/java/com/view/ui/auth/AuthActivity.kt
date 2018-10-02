@@ -43,6 +43,7 @@ class AuthActivity : BaseActivity(), HasProgress {
 						}
 					}
 					saveCurrentFragment(fragment)
+					screenKey?.let { prepareFragmentToolbar(it) }
 					return fragment
 				}
 			}
@@ -97,12 +98,10 @@ class AuthActivity : BaseActivity(), HasProgress {
 		}
 
 	fun prepareAndShowRegistrationFragment(data: Any?) {
-		prepareFragmentToolbar(REGISTRATION_SCREEN)
 		showFragment(REGISTRATION_SCREEN, data)
 	}
 
 	private fun prepareAndShowLoginFragment(data: Any?) {
-		prepareFragmentToolbar(LOGIN_SCREEN)
 		showFragment(LOGIN_SCREEN, data)
 	}
 
