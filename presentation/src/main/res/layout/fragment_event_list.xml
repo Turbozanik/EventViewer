@@ -36,18 +36,29 @@
         android:id="@+id/mIvSorting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_sort_black_36dp"
         android:background="@color/gray"
+        android:src="@drawable/ic_sort_black_36dp"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
         app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalTop" />
+
+    <View
+        android:id="@+id/mSortingDivider"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/dp8"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/mIvSorting"
+        app:layout_constraintEnd_toStartOf="@+id/mIvSorting"
+        app:layout_constraintTop_toTopOf="@id/mIvSorting" />
 
     <Spinner
         android:id="@+id/mSpinnerTypeSort"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/gray"
+        android:layout_marginEnd="@dimen/dp8"
+        android:background="@drawable/bg_spinner"
         app:layout_constraintBottom_toBottomOf="@+id/mIvSorting"
-        app:layout_constraintEnd_toStartOf="@+id/mIvSorting"
+        app:layout_constraintEnd_toStartOf="@+id/mSortingDivider"
         app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
         app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalTop" />
 
@@ -57,7 +68,9 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalBottom"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
-        app:layout_constraintTop_toBottomOf="@+id/mIvSorting" />
+        app:layout_constraintTop_toBottomOf="@+id/mIvSorting"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>
