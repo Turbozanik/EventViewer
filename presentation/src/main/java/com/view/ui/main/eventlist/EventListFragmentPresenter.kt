@@ -4,7 +4,7 @@ import com.view.ui.main.eventlist.configurator.EventListFragmentAction
 import com.view.ui.main.eventlist.configurator.EventListFragmentConfigurator
 import javax.inject.Inject
 
-class EventListPresenter @Inject constructor() : EventListFragmentContract.EventListPresenter() {
+class EventListFragmentPresenter @Inject constructor() : EventListFragmentContract.EventListPresenter() {
 
     private val mEventListFragmentState: EventListFragmentState = EventListFragmentState()
 

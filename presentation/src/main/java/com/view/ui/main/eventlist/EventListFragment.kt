@@ -12,7 +12,7 @@ import javax.inject.Inject
 class EventListFragment : EventListFragmentContract.EventListFragment() {
 
     @Inject
-    protected lateinit var mPresenter: EventListPresenter
+    protected lateinit var mFragmentPresenter: EventListFragmentPresenter
     private lateinit var mAdapter: EventListAdapter
 
     companion object {
@@ -28,7 +28,7 @@ class EventListFragment : EventListFragmentContract.EventListFragment() {
     }
 
     override val presenter: EventListFragmentContract.EventListPresenter
-        get() = mPresenter
+        get() = mFragmentPresenter
 
     override fun inject() {
         daggerController.eventListFragmentSubComponent?.inject(this)
@@ -56,7 +56,7 @@ class EventListFragment : EventListFragmentContract.EventListFragment() {
     }
 
     override fun sendAction(action: EventListFragmentAction?) {
-        mPresenter.consumeAction(action)
+        mFragmentPresenter.consumeAction(action)
     }
 
     private fun initAdapter() {

@@ -4,42 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineVerticalLeft"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="@dimen/left_side_content_margin" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineVerticalRight"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="@dimen/right_side_content_margin" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineHorizontalTop"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="@dimen/top_side_content_margin" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineHorizontalBottom"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="@dimen/bottom_side_content_margin" />
-
     <ImageView
         android:id="@+id/mIvSorting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/gray"
         android:src="@drawable/ic_sort_black_36dp"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
-        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalTop" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/mSortingDivider"
@@ -59,18 +31,16 @@
         android:background="@drawable/bg_spinner"
         app:layout_constraintBottom_toBottomOf="@+id/mIvSorting"
         app:layout_constraintEnd_toStartOf="@+id/mSortingDivider"
-        app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
-        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalTop" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/mRvEventList"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalBottom"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
-        app:layout_constraintTop_toBottomOf="@+id/mIvSorting"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mIvSorting" />
 
 </android.support.constraint.ConstraintLayout>
