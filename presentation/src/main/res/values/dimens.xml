@@ -19,6 +19,9 @@
     <dimen name="dp8">8dp</dimen>
     <dimen name="dp16">16dp</dimen>
 
+    <!--Defaulet sizes-->
+    <dimen name="list_progress_size">32dp</dimen>
+
     <!--Text length-->
     <integer name="max_password_length">20</integer>
 

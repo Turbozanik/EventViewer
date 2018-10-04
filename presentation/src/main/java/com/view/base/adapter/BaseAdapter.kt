@@ -6,10 +6,10 @@ import java.util.*
 
 abstract class BaseAdapter<ItemType> : RecyclerView.Adapter<BaseAdapter.BaseViewHolder>() {
 
-    private var mList: MutableList<ItemType> = ArrayList()
+    private var mList: MutableList<ItemType?> = ArrayList()
     private lateinit var mOnItemClickListener: OnItemClickListener
 
-    val items: List<ItemType>
+    val items: List<ItemType?>
         get() = mList
 
     val isEmpty: Boolean
@@ -39,28 +39,28 @@ abstract class BaseAdapter<ItemType> : RecyclerView.Adapter<BaseAdapter.BaseView
         return mList.size
     }
 
-    protected fun getItem(position: Int): ItemType {
+    protected fun getItem(position: Int): ItemType? {
         return mList[position]
     }
 
-    protected fun update(list: List<ItemType>) {
+    protected fun update(list: List<ItemType?>) {
         this.mList.clear()
         addAll(list)
     }
 
-    protected fun addAll(list: List<ItemType>?) {
+    protected fun addAll(list: List<ItemType?>?) {
         if (list != null && !list.isEmpty()) {
             this.mList.addAll(list)
         }
         notifyDataSetChanged()
     }
 
-    protected fun add(item: ItemType) {
+    protected fun add(item: ItemType?) {
         mList.add(item)
         notifyDataSetChanged()
     }
 
-    protected fun add(pos: Int, item: ItemType) {
+    protected fun add(pos: Int, item: ItemType?) {
         mList.add(pos, item)
         notifyDataSetChanged()
     }
@@ -70,7 +70,7 @@ abstract class BaseAdapter<ItemType> : RecyclerView.Adapter<BaseAdapter.BaseView
         notifyDataSetChanged()
     }
 
-    protected fun updateItem(item: ItemType, position: Int) {
+    protected fun updateItem(item: ItemType?, position: Int) {
         mList.removeAt(position)
         mList.add(position, item)
         notifyDataSetChanged()
