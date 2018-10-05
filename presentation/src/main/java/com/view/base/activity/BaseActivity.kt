@@ -6,12 +6,12 @@ import android.support.annotation.StringRes
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
-import android.text.TextUtils.isEmpty
 import com.ACTIVITY_ACTION_DATA_KEY
 import com.ActivityAction
 import com.ActivityNavigator
 import com.EventViewerApp
 import com.dagger.DaggerController
+import com.view.base.fragment.BaseFragment
 import com.view.base.view.HasRootScreen
 import com.watchers.keepers.UserKeeper
 import ru.terrakok.cicerone.Navigator
@@ -24,7 +24,7 @@ import javax.inject.Inject
 
 abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
 
-    private val CURRENT_FRAGMENT_KEY = "CURRENT_FRAGMENT_KEY"
+    private val CURRENT_FRAGMENT_ID_KEY = "CURRENT_FRAGMENT_ID_KEY"
 
     protected abstract inner class FragmentNavigator(fragmentManager: FragmentManager?,
                                                      containerId: Int)
@@ -50,7 +50,6 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
     protected var mCurrentFragment: Fragment? = null
     private lateinit var mActivityNavigator: ActivityNavigator
     private lateinit var mActivityInitAction: ActivityAction
-    protected var mCurrentFragmentScreenKey: String? = null
 
     private val router: Router
         get() {
@@ -82,39 +81,33 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
         handleDaggerDependencies()
         super.onCreate(savedInstanceState)
         setContentView(layoutId)
-        readActivityInitialAction()
         initView()
         initActivityNavigator()
-        initNavigator()
-        showRootScreen(getRootScreenKey(activityInitAction))
+        readActivityInitialAction()
+        if (activityInitAction == ActivityAction.DEFAULT
+                && savedInstanceState?.get(CURRENT_FRAGMENT_ID_KEY) == null) {
+            showRootScreen(getRootScreenKey(activityInitAction))
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
         super.onSaveInstanceState(outState)
-        outState?.putString(CURRENT_FRAGMENT_KEY, mCurrentFragmentScreenKey)
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
-        super.onRestoreInstanceState(savedInstanceState)
-        if (savedInstanceState?.getString(CURRENT_FRAGMENT_KEY) != null
-                && !isEmpty(savedInstanceState.getString(CURRENT_FRAGMENT_KEY))) {
-            showFragment(savedInstanceState.getString(CURRENT_FRAGMENT_KEY), null)
-        }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        removeCurrentSubComponent()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        removeNavigator()
+        outState?.putInt(CURRENT_FRAGMENT_ID_KEY, currentFragment?.id ?: -1)
     }
 
     override fun onResume() {
         super.onResume()
         initNavigator()
+    }
+
+    override fun onPause() {
+        removeNavigator()
+        super.onPause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        removeCurrentSubComponent()
     }
 
     private fun setActivityNavigator(activityNavigator: ActivityNavigator) {
@@ -140,17 +133,19 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
 
     protected abstract fun saveCurrentFragment(fragment: Fragment, screenKey: String?)
 
-    private val currentFragment: Fragment?
-        get() {
-            return mCurrentFragment
-        }
+    private val currentFragment: BaseFragment?
+        get() = supportFragmentManager.findFragmentById(fragmentContainerViewId) as? BaseFragment
 
     private fun removeNavigator() {
         mNavigatorHolder.removeNavigator()
     }
 
-    protected fun showFragment(screenKey: String, data: Any?) {
+    protected fun addFragment(screenKey: String, data: Any?) {
         router.navigateTo(screenKey, data)
+    }
+
+    protected fun goToPreviousFragment(screenKey: String?) {
+        router.backTo(screenKey)
     }
 
     private fun initNavigator() {

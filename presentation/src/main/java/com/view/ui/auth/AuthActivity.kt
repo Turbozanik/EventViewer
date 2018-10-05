@@ -80,7 +80,6 @@ class AuthActivity : BaseActivity(), HasProgress {
     }
 
     override fun saveCurrentFragment(fragment: Fragment, screenKey: String?) {
-        mCurrentFragmentScreenKey = screenKey
         mCurrentFragment = fragment
     }
 
@@ -98,11 +97,11 @@ class AuthActivity : BaseActivity(), HasProgress {
         }
 
     fun showRegistrationFragment(data: Any?) {
-        showFragment(REGISTRATION_SCREEN, data)
+        addFragment(REGISTRATION_SCREEN, data)
     }
 
     private fun showLoginFragment(data: Any?) {
-        showFragment(LOGIN_SCREEN, data)
+        addFragment(LOGIN_SCREEN, data)
     }
 
     fun goToMainActivityEventListFragment() {
@@ -116,7 +115,7 @@ class AuthActivity : BaseActivity(), HasProgress {
         mToolbar?.title = getString(R.string.registration)
         mToolbar?.setNavigationOnClickListener {
             mToolbar?.navigationIcon = null
-            showLoginFragment(null)
+            goToPreviousFragment(LOGIN_SCREEN)
         }
     }
 

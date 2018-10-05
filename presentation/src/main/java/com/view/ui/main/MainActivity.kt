@@ -176,7 +176,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun saveCurrentFragment(fragment: Fragment, screenKey: String?) {
-        mCurrentFragmentScreenKey = screenKey
         mCurrentFragment = fragment
     }
 
