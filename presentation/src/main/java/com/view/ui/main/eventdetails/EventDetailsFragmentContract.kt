@@ -6,7 +6,7 @@ import com.view.base.presenter.BaseFragmentPresenter
 import com.view.base.presenter.BasePresenterContract
 import com.view.base.view.BaseView
 import com.view.ui.main.eventdetails.configurator.EventDetailsFragmentAction
-import com.view.ui.main.eventlist.configurator.EventListFragmentConfigurator
+import com.view.ui.main.eventdetails.configurator.EventDetailsFragmentConfigurator
 
 
 interface EventDetailsFragmentContract : BasePresenterContract {
@@ -19,7 +19,7 @@ interface EventDetailsFragmentContract : BasePresenterContract {
 
     }
 
-    abstract class EventDetailsFragmentPresenter : BaseFragmentPresenter<EventListFragmentConfigurator, EventDetailsFragmentAction, EventDetailsFragmentContract.EventDetailsFragmentView>() {
+    abstract class EventDetailsFragmentPresenter : BaseFragmentPresenter<EventDetailsFragmentConfigurator, EventDetailsFragmentAction, EventDetailsFragmentContract.EventDetailsFragmentView>() {
         init {
             this.intiConfigurator()
         }

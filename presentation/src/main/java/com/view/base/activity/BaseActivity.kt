@@ -6,6 +6,7 @@ import android.support.annotation.StringRes
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
+import android.text.TextUtils.isEmpty
 import com.ACTIVITY_ACTION_DATA_KEY
 import com.ActivityAction
 import com.ActivityNavigator
@@ -22,6 +23,8 @@ import javax.inject.Inject
 
 
 abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
+
+    private val CURRENT_FRAGMENT_KEY = "CURRENT_FRAGMENT_KEY"
 
     protected abstract inner class FragmentNavigator(fragmentManager: FragmentManager?,
                                                      containerId: Int)
@@ -44,10 +47,10 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
             return mUserKeeper
         }
     protected lateinit var mNavigator: Navigator
-    protected lateinit var mCurrentFragment: Fragment
+    protected var mCurrentFragment: Fragment? = null
     private lateinit var mActivityNavigator: ActivityNavigator
     private lateinit var mActivityInitAction: ActivityAction
-
+    protected var mCurrentFragmentScreenKey: String? = null
 
     private val router: Router
         get() {
@@ -86,6 +89,19 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
         showRootScreen(getRootScreenKey(activityInitAction))
     }
 
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        outState?.putString(CURRENT_FRAGMENT_KEY, mCurrentFragmentScreenKey)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+        if (savedInstanceState?.getString(CURRENT_FRAGMENT_KEY) != null
+                && !isEmpty(savedInstanceState.getString(CURRENT_FRAGMENT_KEY))) {
+            showFragment(savedInstanceState.getString(CURRENT_FRAGMENT_KEY), null)
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         removeCurrentSubComponent()
@@ -122,9 +138,12 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
 
     protected abstract fun initView()
 
-    protected abstract fun prepareFragmentToolbar(screenKey: String)
+    protected abstract fun saveCurrentFragment(fragment: Fragment, screenKey: String?)
 
-    protected abstract fun saveCurrentFragment(fragment: Fragment)
+    private val currentFragment: Fragment?
+        get() {
+            return mCurrentFragment
+        }
 
     private fun removeNavigator() {
         mNavigatorHolder.removeNavigator()

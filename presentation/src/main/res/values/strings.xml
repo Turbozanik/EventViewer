@@ -28,4 +28,6 @@
     <string name="register">Register</string>
     <!--Event list-->
     <string name="event_list">Event list</string>
+    <!--Event details-->
+    <string name="event_details">Event details</string>
 </resources>

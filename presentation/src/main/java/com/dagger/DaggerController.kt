@@ -13,6 +13,7 @@ open class DaggerController(eventViewerApp: Context) {
     private var mRegistrationFragmentSubComponent: RegistrationFragmentSubComponent? = null
     private var mLoginSubComponent: LoginFragmentSubComponent? = null
     private var mEventListFragmentSubComponent: EventListFragmentSubComponent? = null
+    private var mEventDetailsSubComponent: EventDetailsFragmentSubComponent? = null
 
     private val mAppComponent: AppComponent = DaggerAppComponent.builder()
             .appModule(AppModule(eventViewerApp))
@@ -106,6 +107,20 @@ open class DaggerController(eventViewerApp: Context) {
     val eventListFragmentSubComponent: EventListFragmentSubComponent?
         get() {
             return mEventListFragmentSubComponent
+        }
+
+    //EventDetails
+    fun addEventDetailsFragmentSubComponent() {
+        mEventDetailsSubComponent = mMainActivitySubComponent?.add(EventDetailsFragmentModule())
+    }
+
+    fun removeEventDetailsFragmentSubComponent() {
+        mEventDetailsSubComponent?.let { mEventDetailsSubComponent = null }
+    }
+
+    val eventDetailsFragmentSubComponent: EventDetailsFragmentSubComponent?
+        get() {
+            return mEventDetailsSubComponent
         }
 
 }

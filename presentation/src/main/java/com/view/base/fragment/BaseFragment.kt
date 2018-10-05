@@ -39,9 +39,12 @@ abstract class BaseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+        updateToolbar()
     }
 
     protected abstract fun initView()
+
+    protected abstract fun updateToolbar()
 
     protected fun getUserKeeper(): UserKeeper {
         return (activity as BaseActivity).userKeeper

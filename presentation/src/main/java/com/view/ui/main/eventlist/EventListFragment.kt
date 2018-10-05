@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.FRAGMENT_DATA_KEY
 import com.view.R
+import com.view.ui.main.MainActivity
 import com.view.ui.main.eventlist.adapter.EventListAdapter
 import com.view.ui.main.eventlist.configurator.EventListFragmentAction
 import kotlinx.android.synthetic.main.fragment_event_list.*
@@ -61,6 +62,10 @@ class EventListFragment : EventListFragmentContract.EventListFragment() {
 
     private fun initAdapter() {
         mAdapter = EventListAdapter()
+    }
+
+    override fun updateToolbar() {
+        (activity as MainActivity).prepareEventListToolbar()
     }
 
 }

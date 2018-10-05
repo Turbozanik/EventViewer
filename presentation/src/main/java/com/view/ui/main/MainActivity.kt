@@ -132,21 +132,22 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     override val navigator: Navigator
         get() {
             mNavigator = object : FragmentNavigator(supportFragmentManager,
-                    fragmentContainerViewId) {
+                                                    fragmentContainerViewId) {
                 override fun createFragment(screenKey: String?, data: Any?): Fragment {
                     val fragment: Fragment
                     when (screenKey) {
                         EVENT_LIST_SCREEN -> {
                             fragment = EventListFragment.createNewInstance()
                             if (activityInitAction == com.ActivityAction.OPEN_AUTH_ACTIVITY_WITH_NO_SAVED_CREDENTIALS) {
-                                LoginFragment.addInitialAction(fragment, LoginFragmentAction.DEFAULT)
+                                LoginFragment.addInitialAction(fragment,
+                                                               LoginFragmentAction.DEFAULT)
                             }
                         }
                         else -> {
                             fragment = EventListFragment.createNewInstance()
                         }
                     }
-                    saveCurrentFragment(fragment)
+                    saveCurrentFragment(fragment, screenKey)
                     return fragment
                 }
             }
@@ -166,19 +167,16 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             return mProgressBar
         }
 
-    override fun prepareFragmentToolbar(screenKey: String) {
-        when (screenKey) {
-            EVENT_LIST_SCREEN -> {
-                prepareEventListToolbar()
-            }
-        }
-    }
-
-    private fun prepareEventListToolbar() {
+    fun prepareEventListToolbar() {
         mToolbar.title = getString(R.string.event_list)
     }
 
-    override fun saveCurrentFragment(fragment: Fragment) {
+    fun prepareEventDetailsToolbar() {
+        mToolbar.title = getString(R.string.event_details)
+    }
+
+    override fun saveCurrentFragment(fragment: Fragment, screenKey: String?) {
+        mCurrentFragmentScreenKey = screenKey
         mCurrentFragment = fragment
     }
 

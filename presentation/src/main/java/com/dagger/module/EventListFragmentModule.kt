@@ -11,7 +11,8 @@ class EventListFragmentModule {
 
     @Provides
     @EventListFragmentScope
-    fun provideRegistrationUseCase(retrofitNetRepositoryImpl: RetrofitNetRepositoryImpl): EventListUseCase {
+    fun provideEventListUseCase(
+            retrofitNetRepositoryImpl: RetrofitNetRepositoryImpl): EventListUseCase {
         return EventListUseCase(retrofitNetRepositoryImpl)
     }
 

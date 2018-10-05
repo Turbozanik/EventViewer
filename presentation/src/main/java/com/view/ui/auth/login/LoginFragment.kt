@@ -70,12 +70,12 @@ class LoginFragment : LoginFragmentContract.LoginFragment() {
     override fun getViewData(): LoginFragmentContract.LoginFragmentDto {
         return LoginFragmentContract.LoginFragmentDto(
                 LoginFragmentContract.UserCredentials(mEtEmail.text.toString(),
-                        mEtPassword.text.toString()),
+                                                      mEtPassword.text.toString()),
                 mCbSaveCredentials.isChecked)
     }
 
     override fun goToRegistrationFragment() {
-        (activity as AuthActivity).prepareAndShowRegistrationFragment(null)
+        (activity as AuthActivity).showRegistrationFragment(null)
     }
 
     private fun initSignInFieldsValidation() {
@@ -86,10 +86,10 @@ class LoginFragment : LoginFragmentContract.LoginFragment() {
                     isEmailValid && isPasswordValid
                 })
         addDisposable(mValidationObservable
-                .subscribe({ isValid: Boolean ->
-                    mIsFormValid = isValid
-                },
-                        { Timber.e("Error") }))
+                              .subscribe({ isValid: Boolean ->
+                                             mIsFormValid = isValid
+                                         },
+                                         { Timber.e("Error") }))
     }
 
     private fun initPasswordEditText() {
@@ -108,6 +108,10 @@ class LoginFragment : LoginFragmentContract.LoginFragment() {
             if (mIsFormValid)
                 sendAction(LoginFragmentAction.LOGIN_CLICK)
         }
+    }
+
+    override fun updateToolbar() {
+        (activity as AuthActivity).prepareLoginToolbar()
     }
 
 }
