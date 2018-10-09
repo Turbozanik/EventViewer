@@ -9,6 +9,8 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Настройки</string>
     <string name="view_date_format">%1$s/%2$s/%3$s</string>
+    <string name="error_invalid_email">Неверный email</string>
+    <string name="error_invalid_password">Неверый пароль</string>
     <!--Login Fragment-->
     <string name="title_activity_start_up">StartUpActivity</string>
     <string name="hint_email">Email</string>
@@ -16,8 +18,6 @@
     <string name="remember_me">Запомнить</string>
     <string name="login">Логин</string>
     <string name="not_registered_yet">Еще не зарегестрированы?</string>
-    <string name="error_invalid_email">Неверный email</string>
-    <string name="error_invalid_password">Неверый пароль</string>
     <!--Registration Fragment-->
     <string name="registration">Регистрация</string>
     <string name="hint_registration_name">Имя</string>
@@ -31,7 +31,8 @@
     <string name="event_list">Все события</string>
     <!--Event details-->
     <string name="event_details">Детали события</string>
-    <string name="date_format"><b>Дата начала</b>: %1$s</string>
+    <string name="start_date_format"><b>Дата начала</b>: %1$s</string>
+    <string name="end_date_format"><b>Дата завершения</b>: %1$s</string>
     <string name="local_timezone_format"><b>Локалная timezone</b>: %1$s</string>
     <string name="phone_format"><b>Телефон</b>: %1$s</string>
     <string name="email_format"><b>Почта</b>: %1$s</string>

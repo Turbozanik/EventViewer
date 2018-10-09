@@ -75,7 +75,7 @@
             app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
             app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
             app:layout_constraintTop_toBottomOf="@+id/mTvAddress"
-            tools:text="@string/date_format" />
+            tools:text="@string/start_date_format" />
 
         <TextView
             android:id="@+id/mTvEndDate"
@@ -84,7 +84,7 @@
             app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
             app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
             app:layout_constraintTop_toBottomOf="@+id/mTvStartDate"
-            tools:text="@string/date_format" />
+            tools:text="@string/end_date_format" />
 
         <TextView
             android:id="@+id/mTvLocalEventTimezone"
