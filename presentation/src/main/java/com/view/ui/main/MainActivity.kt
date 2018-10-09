@@ -17,6 +17,7 @@ import com.view.base.activity.BaseActivity
 import com.view.base.view.HasProgress
 import com.view.ui.auth.login.LoginFragment
 import com.view.ui.auth.login.configurator.LoginFragmentAction
+import com.view.ui.main.eventdetails.EventDetailsFragment
 import com.view.ui.main.eventlist.EventListFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -76,8 +77,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_camera -> {
-                // Handle the camera action
+            R.id.event_list -> {
+                addFragment(EVENT_DETAILS_SCREEN, null)
             }
             R.id.nav_gallery -> {
 
@@ -142,6 +143,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                                 LoginFragment.addInitialAction(fragment,
                                                                LoginFragmentAction.DEFAULT)
                             }
+                        }
+                        EVENT_DETAILS_SCREEN -> {
+                            fragment = EventDetailsFragment.createNewInstance()
                         }
                         else -> {
                             fragment = EventListFragment.createNewInstance()

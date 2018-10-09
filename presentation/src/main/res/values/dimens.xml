@@ -11,7 +11,7 @@
     <dimen name="left_side_content_margin">0.05</dimen>
     <dimen name="right_side_content_margin">0.95</dimen>
     <dimen name="top_side_content_margin">0.05</dimen>
-    <dimen name="bottom_side_content_margin">0.9</dimen>
+    <dimen name="bottom_side_content_margin">0.95</dimen>
     <dimen name="default_button_width_in_percents">0.6</dimen>
     <dimen name="half_screen">0.5</dimen>
 
@@ -21,6 +21,7 @@
 
     <!--Defaulet sizes-->
     <dimen name="list_progress_size">32dp</dimen>
+    <dimen name="event_details_image_height">160dp</dimen>
 
     <!--Text length-->
     <integer name="max_password_length">20</integer>

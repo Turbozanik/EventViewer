@@ -30,4 +30,9 @@
     <string name="event_list">Event list</string>
     <!--Event details-->
     <string name="event_details">Event details</string>
+    <string name="date_format"><b>Start date</b>: %1$s</string>
+    <string name="local_timezone_format"><b>Local event timezone</b>: %1$s</string>
+    <string name="phone_format"><b>Phone</b>: %1$s</string>
+    <string name="email_format"><b>Email</b>: %1$s</string>
+    <string name="address_format"><b>Address</b>: %1$s</string>
 </resources>
