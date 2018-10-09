@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">EventViewer</string>
+    <string name="title_activity_main">Main2Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Настройки</string>
+    <string name="view_date_format">%1$s/%2$s/%3$s</string>
+    <!--Login Fragment-->
+    <string name="title_activity_start_up">StartUpActivity</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Пароль</string>
+    <string name="remember_me">Запомнить</string>
+    <string name="login">Логин</string>
+    <string name="not_registered_yet">Еще не зарегестрированы?</string>
+    <string name="error_invalid_email">Неверный email</string>
+    <string name="error_invalid_password">Неверый пароль</string>
+    <!--Registration Fragment-->
+    <string name="registration">Регистрация</string>
+    <string name="hint_registration_name">Имя</string>
+    <string name="hint_registration_nickname">Отображаемое имя</string>
+    <string name="hint_registration_email">Email</string>
+    <string name="hint_registration_birthday">Дата рождения</string>
+    <string name="hint_registration_password">Пароль</string>
+    <string name="hint_registration_repeat_password">Повторите пароль</string>
+    <string name="register">Зарегестрироваться</string>
+    <!--Event list-->
+    <string name="event_list">Все события</string>
+    <!--Event details-->
+    <string name="event_details">Детали события</string>
+    <string name="date_format"><b>Дата начала</b>: %1$s</string>
+    <string name="local_timezone_format"><b>Локалная timezone</b>: %1$s</string>
+    <string name="phone_format"><b>Телефон</b>: %1$s</string>
+    <string name="email_format"><b>Почта</b>: %1$s</string>
+    <string name="address_format"><b>Адрес</b>: %1$s</string>
+</resources>
