@@ -90,11 +90,44 @@
             app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/mEtEmail"
+                android:id="@+id/mEtNickname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_registration_nickname"
                 android:inputType="textCapWords"
+                android:singleLine="true" />
+        </com.view.base.view.ValidatableInputLayout>
+
+        <ImageView
+            android:id="@+id/ivEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_mail_black_36dp"
+            app:layout_constraintBottom_toBottomOf="@+id/mEmailLayout"
+            app:layout_constraintEnd_toStartOf="@+id/mEmailLayout"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/guidelineVerticalLeft"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/mEmailLayout" />
+
+        <com.view.base.view.ValidatableInputLayout
+            android:id="@+id/mEmailLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivEmail"
+            app:layout_constraintTop_toBottomOf="@+id/nicknameLayout"
+            app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/mEtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:hint="@string/hint_email"
+                android:inputType="text"
                 android:singleLine="true" />
         </com.view.base.view.ValidatableInputLayout>
 
@@ -116,7 +149,7 @@
             android:layout_marginTop="@dimen/dp16"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/ivBirthday"
-            app:layout_constraintTop_toBottomOf="@+id/nicknameLayout"
+            app:layout_constraintTop_toBottomOf="@+id/mEmailLayout"
             app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents">
 
             <android.support.design.widget.TextInputEditText
