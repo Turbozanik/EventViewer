@@ -159,7 +159,7 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
 
     private fun readActivityInitialAction() {
         var activityAction: ActivityAction? = null
-        intent.getSerializableExtra(ACTIVITY_ACTION_DATA_KEY)?.let {
+        if (intent.hasExtra(ACTIVITY_ACTION_DATA_KEY)) {
             activityAction = intent.getSerializableExtra(
                     ACTIVITY_ACTION_DATA_KEY) as ActivityAction
         }

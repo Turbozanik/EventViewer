@@ -15,7 +15,8 @@ class ActivityNavigator(context: Context) {
     }
 
     private fun applyAction(intent: Intent, activityAction: ActivityAction): Intent {
-        return intent.putExtra(ACTIVITY_ACTION_DATA_KEY, activityAction)
+        intent.putExtra(ACTIVITY_ACTION_DATA_KEY, activityAction)
+        return intent
     }
 
     fun startActivity(stringKey: String) {
@@ -26,7 +27,6 @@ class ActivityNavigator(context: Context) {
         mContext.startActivity(intent)
     }
 
-    //todo add initial actions
     private fun getNewActivityIntent(stringKey: String): Intent {
         return when (stringKey) {
             MAIN_ACTIVITY -> {
