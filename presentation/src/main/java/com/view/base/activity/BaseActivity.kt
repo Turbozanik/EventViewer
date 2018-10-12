@@ -81,8 +81,8 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
         handleDaggerDependencies()
         super.onCreate(savedInstanceState)
         setContentView(layoutId)
-        initView()
         initActivityNavigator()
+        initView()
         readActivityInitialAction()
         if (activityInitAction == ActivityAction.DEFAULT
                 && savedInstanceState?.get(CURRENT_FRAGMENT_ID_KEY) == null) {
@@ -98,6 +98,7 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
     override fun onResume() {
         super.onResume()
         initNavigator()
+
     }
 
     override fun onPause() {

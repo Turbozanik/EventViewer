@@ -14,6 +14,7 @@ open class DaggerController(eventViewerApp: Context) {
     private var mLoginSubComponent: LoginFragmentSubComponent? = null
     private var mEventListFragmentSubComponent: EventListFragmentSubComponent? = null
     private var mEventDetailsSubComponent: EventDetailsFragmentSubComponent? = null
+    private var mSplashActivitySubComponent: SplashActivitySubComponent? = null
 
     private val mAppComponent: AppComponent = DaggerAppComponent.builder()
             .appModule(AppModule(eventViewerApp))
@@ -36,6 +37,20 @@ open class DaggerController(eventViewerApp: Context) {
     val activitySubComponent: ActivitySubComponent?
         get() {
             return mActivitySubComponent
+        }
+
+    //SplashActivity
+    fun addSplashActivitySubComponent() {
+        mSplashActivitySubComponent = mActivitySubComponent?.add(SplashActivityModule())
+    }
+
+    fun removeSplashActivitySubComponent() {
+        mSplashActivitySubComponent?.let { mSplashActivitySubComponent = null }
+    }
+
+    val splashActivitySubComponent: SplashActivitySubComponent?
+        get() {
+            return mSplashActivitySubComponent
         }
 
     //MainActivity module

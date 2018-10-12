@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.inputmethod.EditorInfo
 import com.FRAGMENT_DATA_KEY
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.view.R
 import com.view.ui.auth.AuthActivity
 import com.view.ui.auth.login.configurator.LoginFragmentAction
@@ -20,6 +21,7 @@ class LoginFragment : LoginFragmentContract.LoginFragment() {
     lateinit var mPresenter: LoginFragmentPresenter
     private lateinit var mValidationObservable: Observable<Boolean>
     private var mIsFormValid: Boolean = false
+    private var gso: GoogleSignInOptions? = null
 
     companion object {
         fun createNewInstance(): LoginFragment {
@@ -53,6 +55,7 @@ class LoginFragment : LoginFragmentContract.LoginFragment() {
         initPasswordEditText()
         initSignInFieldsValidation()
         initSignInButton()
+        initGoogleSignIn()
         mTvNotRegistered.setOnClickListener {
             sendAction(LoginFragmentAction.NOT_REGISTERED_CLICK)
         }
@@ -108,6 +111,12 @@ class LoginFragment : LoginFragmentContract.LoginFragment() {
             if (mIsFormValid)
                 sendAction(LoginFragmentAction.LOGIN_CLICK)
         }
+    }
+
+    private fun initGoogleSignIn() {
+        gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build()
     }
 
     override fun updateToolbar() {

@@ -6,7 +6,8 @@ enum class ActivityAction(action: Int) {
     OPEN_MAIN_ACTIVITY(action = 1),
     OPEN_AUTH_ACTIVITY(action = 2),
     OPEN_AUTH_ACTIVITY_WITH_NO_SAVED_CREDENTIALS(action = 3),
-    OPEN_MAIN_ACTIVITY_WITH_EVENT_LIST_FRAGMENT(action = 4);
+    OPEN_AUTH_ACTIVITY_WITH_SAVED_CREDENTIALS(action = 4),
+    OPEN_MAIN_ACTIVITY_WITH_EVENT_LIST_FRAGMENT(action = 5);
 
     private val mAction: Int = action
 

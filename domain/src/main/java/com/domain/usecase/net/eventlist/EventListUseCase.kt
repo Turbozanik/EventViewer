@@ -10,7 +10,7 @@ class EventListUseCase(
 
     private val mRetrofitNetRepository: NetRepository = retrofitNetRepository
 
-    override fun buildFlowable(params: Map<String, String?>): Flowable<UserDto> {
+    override fun buildFlowable(params: Map<String, String?>?): Flowable<UserDto> {
         return mRetrofitNetRepository.login(params)
     }
 

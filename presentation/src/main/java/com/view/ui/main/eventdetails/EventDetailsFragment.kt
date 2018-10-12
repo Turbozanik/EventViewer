@@ -32,6 +32,12 @@ class EventDetailsFragment : EventDetailsFragmentContract.EventDetailsFragment()
 
     override fun initView() {
         super.initView()
+        mTvTitle.text = "Title"
+        mTvDescription.text = "Description text"
+        mTvAddress.text = getString(R.string.address_format, "Kolasa 51/2")
+        mTvStartDate.text = getString(R.string.start_date_format, "14/11/1994")
+        mTvEndDate.text = getString(R.string.start_date_format, "14/11/1994")
+        mTvLocalEventTimezone.text = getString(R.string.local_timezone_format, "UTC")
         mTvPhone.text = getString(R.string.phone_format, "+375293070409")
         mTvEmail.text = getString(R.string.email_format, "roma_lapa@mail.ru")
     }

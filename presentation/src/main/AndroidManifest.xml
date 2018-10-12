@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".ui.auth.AuthActivity">
+        <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,6 +23,15 @@
             android:name=".ui.main.MainActivity"
             android:label="@string/title_activity_start_up"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".ui.auth.AuthActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="59440f117501d5a6b461d24f6b89ebd0e3cc8ac3" />
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

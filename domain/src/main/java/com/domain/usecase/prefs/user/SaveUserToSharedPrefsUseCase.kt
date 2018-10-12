@@ -11,10 +11,10 @@ class SaveUserToSharedPrefsUseCase(
 
     private val mSharedPrefsRepository: SharedPrefsRepository = sharedSharedPrefsRepo
 
-    override fun buildFlowable(params: Pair<String, String>): Flowable<Any> {
+    override fun buildFlowable(params: Pair<String, String>?): Flowable<Any> {
         return Flowable.create<Any>({
-            mSharedPrefsRepository.saveUserEmail(params.first)
-            mSharedPrefsRepository.saveUserPassword(params.second)
+                                        mSharedPrefsRepository.saveUserEmail(params?.first)
+                                        mSharedPrefsRepository.saveUserPassword(params?.second)
         }, BackpressureStrategy.DROP)
     }
 

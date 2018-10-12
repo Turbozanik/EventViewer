@@ -2,6 +2,7 @@ package com
 
 import android.content.Context
 import android.content.Intent
+import com.view.ui.auth.AuthActivity
 import com.view.ui.main.MainActivity
 
 
@@ -10,7 +11,7 @@ class ActivityNavigator(context: Context) {
 
     fun startActivityWithInitialAction(activityAction: ActivityAction) {
         startActivity(applyAction(getNewActivityIntent(getStringKeyByAction(activityAction)),
-                activityAction))
+                                  activityAction))
     }
 
     private fun applyAction(intent: Intent, activityAction: ActivityAction): Intent {
@@ -25,14 +26,14 @@ class ActivityNavigator(context: Context) {
         mContext.startActivity(intent)
     }
 
+    //todo add initial actions
     private fun getNewActivityIntent(stringKey: String): Intent {
         return when (stringKey) {
             MAIN_ACTIVITY -> {
                 Intent(mContext, MainActivity::class.java)
             }
             AUTH_ACTIVITY -> {
-                Intent()
-                //TODO
+                Intent(mContext, AuthActivity::class.java)
             }
             else -> {
                 throw IllegalArgumentException(Throwable("Unknown activity"))
@@ -48,10 +49,17 @@ class ActivityNavigator(context: Context) {
             ActivityAction.OPEN_MAIN_ACTIVITY -> {
                 MAIN_ACTIVITY
             }
-            ActivityAction.OPEN_AUTH_ACTIVITY_WITH_NO_SAVED_CREDENTIALS -> TODO()
-            ActivityAction.DEFAULT -> TODO()
+            ActivityAction.OPEN_AUTH_ACTIVITY_WITH_NO_SAVED_CREDENTIALS -> {
+                AUTH_ACTIVITY
+            }
+            ActivityAction.DEFAULT -> {
+                AUTH_ACTIVITY
+            }
             ActivityAction.OPEN_MAIN_ACTIVITY_WITH_EVENT_LIST_FRAGMENT -> {
                 MAIN_ACTIVITY
+            }
+            ActivityAction.OPEN_AUTH_ACTIVITY_WITH_SAVED_CREDENTIALS -> {
+                AUTH_ACTIVITY
             }
         }
     }

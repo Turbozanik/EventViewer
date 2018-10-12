@@ -1,8 +1,10 @@
 package com
 
 import android.app.Application
+import com.crashlytics.android.Crashlytics
 import com.dagger.DaggerController
 import com.data.BuildConfig
+import io.fabric.sdk.android.Fabric
 import ru.terrakok.cicerone.Cicerone
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
@@ -27,6 +29,7 @@ class EventViewerApp : Application() {
         mDaggerController = DaggerController(this)
         initCicerone()
         initTimber()
+        initCrashlytisc()
     }
 
     fun getNavigatorHolder(): NavigatorHolder {
@@ -46,6 +49,10 @@ class EventViewerApp : Application() {
 
     private fun initCicerone() {
         mCicerone = Cicerone.create()
+    }
+
+    private fun initCrashlytisc() {
+        Fabric.with(this, Crashlytics())
     }
 
     fun getDaggerController(): DaggerController {

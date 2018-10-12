@@ -5,9 +5,9 @@ import io.reactivex.Flowable
 
 abstract class UseCase<Params : Any, Result> {
 
-    private lateinit var mParams: Params
+    private var mParams: Params? = null
 
-    protected abstract fun buildFlowable(params: Params): Flowable<Result>
+    protected abstract fun buildFlowable(params: Params?): Flowable<Result>
 
     abstract val isParamsRequired: Boolean
 
@@ -17,7 +17,7 @@ abstract class UseCase<Params : Any, Result> {
     }
 
     fun execute(): Flowable<Result> {
-        if (isParamsRequired && !::mParams.isInitialized) {
+        if (isParamsRequired && mParams == null) {
             throw IllegalArgumentException("Params are required")
         } else {
             return buildFlowable(mParams)

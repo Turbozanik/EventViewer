@@ -5,6 +5,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion 27
@@ -22,6 +24,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url 'https://maven.fabric.io/public' }
+    }
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://maven.fabric.io/public' }
 }
 
 dependencies {
@@ -58,6 +75,8 @@ dependencies {
     kapt presentationDependencies.permissionsdispatcherProcessor
     implementation presentationDependencies.glide
     kapt presentationDependencies.glideCompiler
+    implementation presentationDependencies.googleAuth
+    implementation presentationDependencies.googleAppIndexing
 
     implementation(debugDependencies.crashlytics) {
         transitive = true

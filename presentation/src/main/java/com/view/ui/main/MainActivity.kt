@@ -10,7 +10,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.ActivityAction
-import com.ActivityAction.*
+import com.ActivityAction.DEFAULT
 import com.EventViewerApp
 import com.view.R
 import com.view.base.activity.BaseActivity
@@ -111,12 +111,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun getRootScreenKey(activityAction: ActivityAction?): String {
         return when (activityAction) {
-            DEFAULT -> TODO()
-            OPEN_MAIN_ACTIVITY -> TODO()
-            OPEN_AUTH_ACTIVITY -> TODO()
-            OPEN_AUTH_ACTIVITY_WITH_NO_SAVED_CREDENTIALS -> TODO()
-            OPEN_MAIN_ACTIVITY_WITH_EVENT_LIST_FRAGMENT -> EVENT_LIST_SCREEN
-            null -> TODO()
+            DEFAULT -> EVENT_LIST_SCREEN
+            null -> EVENT_LIST_SCREEN
+            else -> {
+                EVENT_LIST_SCREEN
+            }
         }
     }
 
