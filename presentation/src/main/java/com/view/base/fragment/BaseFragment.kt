@@ -50,6 +50,8 @@ abstract class BaseFragment : Fragment() {
 
     protected abstract fun updateToolbar()
 
+    protected abstract fun handleInitialAction()
+
     protected fun getUserKeeper(): UserKeeper {
         return (activity as BaseActivity).userKeeper
     }

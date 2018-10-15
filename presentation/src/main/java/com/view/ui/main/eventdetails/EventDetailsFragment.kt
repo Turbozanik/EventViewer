@@ -69,4 +69,8 @@ class EventDetailsFragment : EventDetailsFragmentContract.EventDetailsFragment()
         (activity as MainActivity).prepareEventDetailsToolbar()
     }
 
+    override fun handleInitialAction() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
 }

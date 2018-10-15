@@ -109,4 +109,8 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
         (activity as AuthActivity).prepareRegistrationToolbar()
     }
 
+    override fun handleInitialAction() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
 }

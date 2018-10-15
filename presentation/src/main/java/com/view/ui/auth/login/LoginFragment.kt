@@ -21,7 +21,7 @@ class LoginFragment : LoginFragmentContract.LoginFragment() {
     lateinit var mPresenter: LoginFragmentPresenter
     private lateinit var mValidationObservable: Observable<Boolean>
     private var mIsFormValid: Boolean = false
-    private var gso: GoogleSignInOptions? = null
+    private var mGso: GoogleSignInOptions? = null
 
     companion object {
         fun createNewInstance(): LoginFragment {
@@ -59,6 +59,7 @@ class LoginFragment : LoginFragmentContract.LoginFragment() {
         mTvNotRegistered.setOnClickListener {
             sendAction(LoginFragmentAction.NOT_REGISTERED_CLICK)
         }
+        handleInitialAction()
     }
 
     override val presenter: LoginFragmentPresenter
@@ -114,13 +115,23 @@ class LoginFragment : LoginFragmentContract.LoginFragment() {
     }
 
     private fun initGoogleSignIn() {
-        gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        mGso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build()
     }
 
     override fun updateToolbar() {
         (activity as AuthActivity).prepareLoginToolbar()
+    }
+
+    override fun handleInitialAction() {
+        when (initialAction as LoginFragmentAction) {
+            LoginFragmentAction.LOGIN_WITH_SAVED_CREDENTIALS -> {
+                sendAction(LoginFragmentAction.LOGIN_CLICK)
+            }
+            else -> {
+            }
+        }
     }
 
 }
