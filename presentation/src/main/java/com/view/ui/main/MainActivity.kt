@@ -109,7 +109,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         daggerController.addMainActivitySubComponent()
     }
 
-    override fun getRootScreenKey(activityAction: ActivityAction?): String {
+    override fun getScreenKeyByAction(activityAction: ActivityAction?): String {
         return when (activityAction) {
             DEFAULT -> EVENT_LIST_SCREEN
             null -> EVENT_LIST_SCREEN

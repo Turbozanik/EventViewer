@@ -84,9 +84,8 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
         initActivityNavigator()
         initView()
         readActivityInitialAction()
-        if (activityInitAction == ActivityAction.DEFAULT
-                && savedInstanceState?.get(CURRENT_FRAGMENT_ID_KEY) == null) {
-            showRootScreen(getRootScreenKey(activityInitAction))
+        if (savedInstanceState?.get(CURRENT_FRAGMENT_ID_KEY) == null) {
+            showRootScreen(getScreenKeyByAction(activityInitAction))
         }
     }
 
@@ -126,7 +125,7 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
 
     protected abstract fun addCurrentActivitySubComponent()
 
-    protected abstract fun getRootScreenKey(activityAction: ActivityAction?): String
+    protected abstract fun getScreenKeyByAction(activityAction: ActivityAction?): String
 
     protected abstract fun removeCurrentSubComponent()
 

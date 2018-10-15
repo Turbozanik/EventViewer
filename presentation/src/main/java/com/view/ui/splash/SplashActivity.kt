@@ -33,7 +33,7 @@ class SplashActivity : BaseActivity() {
         daggerController.addSplashActivitySubComponent()
     }
 
-    override fun getRootScreenKey(activityAction: ActivityAction?): String {
+    override fun getScreenKeyByAction(activityAction: ActivityAction?): String {
         return ""
     }
 

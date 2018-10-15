@@ -68,7 +68,7 @@ class AuthActivity : BaseActivity(), HasProgress {
         daggerController.removeAuthActivitySubComponent()
     }
 
-    override fun getRootScreenKey(activityAction: ActivityAction?): String {
+    override fun getScreenKeyByAction(activityAction: ActivityAction?): String {
         return when (activityAction) {
             ActivityAction.OPEN_AUTH_ACTIVITY_WITH_NO_SAVED_CREDENTIALS -> {
                 LOGIN_SCREEN
