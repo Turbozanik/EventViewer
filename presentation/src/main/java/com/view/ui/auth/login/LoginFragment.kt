@@ -59,7 +59,6 @@ class LoginFragment : LoginFragmentContract.LoginFragment() {
         mTvNotRegistered.setOnClickListener {
             sendAction(LoginFragmentAction.NOT_REGISTERED_CLICK)
         }
-        handleInitialAction()
     }
 
     override val presenter: LoginFragmentPresenter
@@ -125,9 +124,9 @@ class LoginFragment : LoginFragmentContract.LoginFragment() {
     }
 
     override fun handleInitialAction() {
-        when (initialAction as LoginFragmentAction) {
+        when (initialAction as LoginFragmentAction?) {
             LoginFragmentAction.LOGIN_WITH_SAVED_CREDENTIALS -> {
-                sendAction(LoginFragmentAction.LOGIN_CLICK)
+                sendAction(LoginFragmentAction.LOGIN_WITH_SAVED_CREDENTIALS)
             }
             else -> {
             }

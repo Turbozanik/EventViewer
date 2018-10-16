@@ -15,10 +15,9 @@ import com.EventViewerApp
 import com.view.R
 import com.view.base.activity.BaseActivity
 import com.view.base.view.HasProgress
-import com.view.ui.auth.login.LoginFragment
-import com.view.ui.auth.login.configurator.LoginFragmentAction
 import com.view.ui.main.eventdetails.EventDetailsFragment
 import com.view.ui.main.eventlist.EventListFragment
+import com.view.ui.main.eventlist.configurator.EventListFragmentAction
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -139,8 +138,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                         EVENT_LIST_SCREEN -> {
                             fragment = EventListFragment.createNewInstance()
                             if (activityInitAction == com.ActivityAction.OPEN_AUTH_ACTIVITY_WITH_NO_SAVED_CREDENTIALS) {
-                                LoginFragment.addInitialAction(fragment,
-                                                               LoginFragmentAction.DEFAULT)
+                                EventListFragment.addInitialAction(fragment,
+                                                                   EventListFragmentAction.INITIAL_ACTION_DEFAULT)
                             }
                         }
                         EVENT_DETAILS_SCREEN -> {

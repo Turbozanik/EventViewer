@@ -110,7 +110,11 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
     }
 
     override fun handleInitialAction() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        when (initialAction as RegistrationFragmentAction?) {
+
+            else -> {
+            }
+        }
     }
 
 }

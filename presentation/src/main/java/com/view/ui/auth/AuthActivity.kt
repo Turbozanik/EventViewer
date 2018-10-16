@@ -10,6 +10,7 @@ import com.view.base.view.HasProgress
 import com.view.ui.auth.login.LoginFragment
 import com.view.ui.auth.login.configurator.LoginFragmentAction
 import com.view.ui.auth.register.RegistrationFragment
+import com.view.ui.auth.register.configurator.RegistrationFragmentAction
 import kotlinx.android.synthetic.main.activity_auth.*
 import kotlinx.android.synthetic.main.content_auth.*
 import ru.terrakok.cicerone.Navigator
@@ -35,7 +36,8 @@ class AuthActivity : BaseActivity(), HasProgress {
                         }
                         REGISTRATION_SCREEN -> {
                             fragment = RegistrationFragment.createNewInstance()
-                            LoginFragment.addInitialAction(fragment, LoginFragmentAction.DEFAULT)
+                            RegistrationFragment.addInitialAction(fragment,
+                                                                  RegistrationFragmentAction.INITIAL_ACTION_DEFAULT)
                         }
                         else -> {
                             fragment = LoginFragment.createNewInstance()
