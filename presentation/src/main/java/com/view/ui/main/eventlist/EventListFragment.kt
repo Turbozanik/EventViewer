@@ -2,10 +2,8 @@ package com.view.ui.main.eventlist
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import com.EventViewerApp
 import com.FRAGMENT_DATA_KEY
 import com.view.R
-import com.view.ui.main.EVENT_DETAILS_SCREEN
 import com.view.ui.main.MainActivity
 import com.view.ui.main.eventlist.adapter.EventListAdapter
 import com.view.ui.main.eventlist.configurator.EventListFragmentAction
@@ -41,9 +39,6 @@ class EventListFragment : EventListFragmentContract.EventListFragment() {
         super.initView()
         initAdapter()
         mRvEventList.adapter = mAdapter
-        mRvEventList.setOnClickListener {
-            EventViewerApp.getInstance().getRouter().navigateTo(EVENT_DETAILS_SCREEN)
-        }
     }
 
     override fun addCurrentSubComponent() {
