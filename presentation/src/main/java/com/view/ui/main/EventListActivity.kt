@@ -1,13 +1,8 @@
 package com.view.ui.main
 
 import android.content.res.Configuration
-import android.support.design.widget.NavigationView
-import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
-import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import com.ActivityAction
 import com.ActivityAction.DEFAULT
@@ -18,86 +13,21 @@ import com.view.base.view.HasProgress
 import com.view.ui.main.eventdetails.EventDetailsFragment
 import com.view.ui.main.eventlist.EventListFragment
 import com.view.ui.main.eventlist.configurator.EventListFragmentAction
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.activity_event_list.*
+import kotlinx.android.synthetic.main.content_event_list.*
 import ru.terrakok.cicerone.Navigator
 
-class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, HasProgress {
+class EventListActivity : BaseActivity(), HasProgress {
 
     private lateinit var mToggle: ActionBarDrawerToggle
 
     override fun initView() {
         setSupportActionBar(mToolbar)
-
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
-
-        mToggle = ActionBarDrawerToggle(
-                this, mDrawerLayout, mToolbar, R.string.navigation_drawer_open,
-                R.string.navigation_drawer_close)
-        mDrawerLayout.addDrawerListener(mToggle)
-        mToggle.syncState()
-
-        mNavView.setNavigationItemSelectedListener(this)
-    }
-
-    override fun onBackPressed() {
-        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
-            mDrawerLayout.closeDrawer(GravityCompat.START)
-        } else {
-            super.onBackPressed()
-        }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 
     override fun onConfigurationChanged(newConfig: Configuration?) {
         super.onConfigurationChanged(newConfig)
         mToggle.onConfigurationChanged(newConfig)
-    }
-
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        // Handle navigation view item clicks here.
-        when (item.itemId) {
-            R.id.event_list -> {
-                addFragment(EVENT_DETAILS_SCREEN, null)
-            }
-            R.id.nav_gallery -> {
-
-            }
-            R.id.nav_slideshow -> {
-
-            }
-            R.id.nav_manage -> {
-
-            }
-            R.id.nav_share -> {
-
-            }
-            R.id.nav_send -> {
-
-            }
-        }
-
-        mDrawerLayout.closeDrawer(GravityCompat.START)
-        return true
     }
 
     override fun addActivitySubComponent() {
@@ -123,7 +53,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override val layoutId: Int
-        get() = R.layout.activity_main
+        get() = R.layout.activity_event_list
 
     override val fragmentContainerViewId: Int
         get() = R.id.mFragmentContainer
@@ -179,6 +109,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun saveCurrentFragment(fragment: Fragment, screenKey: String?) {
         mCurrentFragment = fragment
+    }
+
+    fun prepareUserProfileToolbar() {
+        mToolbar.title = getString(R.string.profile)
     }
 
 }

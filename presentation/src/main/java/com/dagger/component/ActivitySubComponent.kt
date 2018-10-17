@@ -14,4 +14,6 @@ interface ActivitySubComponent {
 
     fun add(mainActivityModule: MainActivityModule): MainActivitySubComponent
 
+    fun add(userProfileActivityModle: UserProfileActivityModle): UserProfileActvitySubCopmonent
+
 }

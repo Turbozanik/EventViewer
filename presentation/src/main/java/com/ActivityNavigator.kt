@@ -3,7 +3,7 @@ package com
 import android.content.Context
 import android.content.Intent
 import com.view.ui.auth.AuthActivity
-import com.view.ui.main.MainActivity
+import com.view.ui.main.EventListActivity
 
 
 class ActivityNavigator(context: Context) {
@@ -30,7 +30,7 @@ class ActivityNavigator(context: Context) {
     private fun getNewActivityIntent(stringKey: String): Intent {
         return when (stringKey) {
             MAIN_ACTIVITY -> {
-                Intent(mContext, MainActivity::class.java)
+                Intent(mContext, EventListActivity::class.java)
             }
             AUTH_ACTIVITY -> {
                 Intent(mContext, AuthActivity::class.java)

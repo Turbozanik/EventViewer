@@ -15,6 +15,8 @@ open class DaggerController(eventViewerApp: Context) {
     private var mEventListFragmentSubComponent: EventListFragmentSubComponent? = null
     private var mEventDetailsSubComponent: EventDetailsFragmentSubComponent? = null
     private var mSplashActivitySubComponent: SplashActivitySubComponent? = null
+    private var mUserProfileActivitySubComponent: UserProfileActvitySubCopmonent? = null
+    private var mUserProfileFragmentModule: UserProfileFragmentSubComponent? = null
 
     private val mAppComponent: AppComponent = DaggerAppComponent.builder()
             .appModule(AppModule(eventViewerApp))
@@ -53,7 +55,7 @@ open class DaggerController(eventViewerApp: Context) {
             return mSplashActivitySubComponent
         }
 
-    //MainActivity module
+    //EventListActivity module
     fun addMainActivitySubComponent() {
         mMainActivitySubComponent = mActivitySubComponent?.add(MainActivityModule())
     }
@@ -136,6 +138,35 @@ open class DaggerController(eventViewerApp: Context) {
     val eventDetailsFragmentSubComponent: EventDetailsFragmentSubComponent?
         get() {
             return mEventDetailsSubComponent
+        }
+
+    //UserProfileActivity
+    fun addUserProfileActivitySubComponent() {
+        mUserProfileActivitySubComponent = mActivitySubComponent?.add(UserProfileActivityModle())
+    }
+
+    fun removeUserProfileActivitySubComponent() {
+        mUserProfileActivitySubComponent?.let { mUserProfileActivitySubComponent = null }
+    }
+
+    val userProfileActvitySubCopmonent: UserProfileActvitySubCopmonent?
+        get() {
+            return mUserProfileActivitySubComponent
+        }
+
+    //UserProfileFragment
+    fun addUserProfileFragmentSubComponent() {
+        mUserProfileFragmentModule = mUserProfileActivitySubComponent?.add(
+                UserProfileFragmentModule())
+    }
+
+    fun removeUserProfileFragmentSubComponent() {
+        mUserProfileFragmentModule?.let { mEventDetailsSubComponent = null }
+    }
+
+    val userProfileFragmentSubComponent: UserProfileFragmentSubComponent?
+        get() {
+            return mUserProfileFragmentModule
         }
 
 }

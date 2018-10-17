@@ -1,4 +1,4 @@
-package com.view.ui.main.userprofile.configurator
+package com.view.ui.profile.userprofile.configurator
 
 
 enum class UserProfileFragmentViewCommand(command: Int) {

@@ -37,4 +37,6 @@
     <string name="phone_format"><b>Телефон</b>: %1$s</string>
     <string name="email_format"><b>Почта</b>: %1$s</string>
     <string name="address_format"><b>Адрес</b>: %1$s</string>
+    <!--Profile-->
+    <string name="profile">Профиль</string>
 </resources>

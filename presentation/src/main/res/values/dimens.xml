@@ -26,4 +26,7 @@
     <!--Text length-->
     <integer name="max_password_length">20</integer>
 
+    <!--User Profile-->
+    <dimen name="profile_photo_size">100dp</dimen>
+
 </resources>

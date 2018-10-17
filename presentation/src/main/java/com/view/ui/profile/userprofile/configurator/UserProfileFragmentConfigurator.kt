@@ -1,7 +1,7 @@
-package com.view.ui.main.userprofile.configurator
+package com.view.ui.profile.userprofile.configurator
 
 import com.view.base.configurator.BaseFragmentConfigurator
-import com.view.ui.main.userprofile.UserProfileFragmentState
+import com.view.ui.profile.userprofile.UserProfileFragmentState
 
 
 class UserProfileFragmentConfigurator : BaseFragmentConfigurator<UserProfileFragmentAction, UserProfileFragmentState, UserProfileFragmentViewCommand>() {

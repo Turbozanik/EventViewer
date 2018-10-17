@@ -1,18 +1,18 @@
-package com.view.ui.main.userprofile
+package com.view.ui.profile.userprofile
 
 import com.view.base.configurator.ActionProducer
 import com.view.base.fragment.PresenterFragment
 import com.view.base.presenter.BaseFragmentPresenter
 import com.view.base.presenter.BasePresenterContract
 import com.view.base.view.BaseView
-import com.view.ui.main.userprofile.configurator.UserProfileFragmentAction
-import com.view.ui.main.userprofile.configurator.UserProfileFragmentConfigurator
+import com.view.ui.profile.userprofile.configurator.UserProfileFragmentAction
+import com.view.ui.profile.userprofile.configurator.UserProfileFragmentConfigurator
 
 interface UserProfileFragmentContract : BasePresenterContract {
 
     data class UserProfileInfo(var email: String, var password: String)
 
-    data class UserProfileFragmentDto(var registrationInfo: UserProfileInfo)
+    data class UserProfileFragmentDto(var userProfileInfo: UserProfileInfo)
 
     interface UserProfileFragmentView : BaseView {
 
@@ -22,7 +22,7 @@ interface UserProfileFragmentContract : BasePresenterContract {
 
     abstract class UserProfileFragmentPresenter : BaseFragmentPresenter<UserProfileFragmentConfigurator, UserProfileFragmentAction, UserProfileFragmentView>()
 
-    abstract class UserpRofileFragment : PresenterFragment<UserProfileFragmentPresenter>(), ActionProducer<UserProfileFragmentAction>, UserProfileFragmentView {
+    abstract class UserProfileFragment : PresenterFragment<UserProfileFragmentPresenter>(), ActionProducer<UserProfileFragmentAction>, UserProfileFragmentView {
 
         override fun initView() {
             attachView()

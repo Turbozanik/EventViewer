@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardview_light_background"
+        android:descendantFocusability="blocksDescendants"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineVerticalLeft"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="@dimen/left_side_content_margin" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineVerticalRight"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="@dimen/right_side_content_margin" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineHorizontalTop"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="@dimen/top_side_content_margin" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineHorizontalBottom"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="@dimen/bottom_side_content_margin" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineBottomOfProfileInfo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.6" />
+
+        <TextView
+            android:id="@+id/mTvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
+            app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
+            app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalTop"
+            tools:text="Name" />
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/mIvProfilePhoto"
+            android:layout_width="@dimen/profile_photo_size"
+            android:layout_height="@dimen/profile_photo_size"
+            android:src="@color/colorPrimary"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineBottomOfProfileInfo"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
+            app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
+            app:layout_constraintTop_toBottomOf="@+id/mTvName"
+            app:layout_constraintVertical_bias="0.3"
+            app:riv_oval="true" />
+
+        <TextView
+            android:id="@+id/mEtEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/mEtNickname"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
+            app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
+            app:layout_constraintTop_toBottomOf="@+id/mIvProfilePhoto"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Email" />
+
+        <TextView
+            android:id="@+id/mEtNickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineBottomOfProfileInfo"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
+            app:layout_constraintTop_toBottomOf="@+id/mEtEmail"
+            tools:text="Nickname" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mRvUsersEventList"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guidelineBottomOfProfileInfo" />
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.NestedScrollView>
