@@ -7,8 +7,8 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.ActivityNavigator
 import com.FRAGMENT_DATA_KEY
+import com.ModulesNavigator
 import com.dagger.DaggerController
 import com.view.base.activity.BaseActivity
 import com.watchers.keepers.UserKeeper
@@ -27,8 +27,8 @@ abstract class BaseFragment : Fragment() {
     protected val daggerController: DaggerController
         get() = (activity as BaseActivity).daggerController
 
-    protected val activityNavigator: ActivityNavigator
-        get() = (activity as BaseActivity).activityNavigator
+    protected val modulesNavigator: ModulesNavigator
+        get() = (activity as BaseActivity).modulesNavigator
 
     @CallSuper
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

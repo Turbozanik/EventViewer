@@ -2,7 +2,7 @@ package com.dagger.component
 
 import com.dagger.module.RegistrationFragmentModule
 import com.dagger.scoupe.RegistrationFragmentScope
-import com.view.ui.auth.register.RegistrationFragment
+import com.view.ui.modules.auth.register.RegistrationFragment
 import dagger.Subcomponent
 
 

@@ -8,8 +8,8 @@ import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
 import com.ACTIVITY_ACTION_DATA_KEY
 import com.ActivityAction
-import com.ActivityNavigator
 import com.EventViewerApp
+import com.ModulesNavigator
 import com.dagger.DaggerController
 import com.view.base.fragment.BaseFragment
 import com.view.base.view.HasRootScreen
@@ -46,9 +46,9 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
         get() {
             return mUserKeeper
         }
-    protected lateinit var mNavigator: Navigator
+
     protected var mCurrentFragment: Fragment? = null
-    private lateinit var mActivityNavigator: ActivityNavigator
+    private lateinit var mModulesNavigator: ModulesNavigator
     private lateinit var mActivityInitAction: ActivityAction
 
     private val router: Router
@@ -72,16 +72,15 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
             return mActivityInitAction
         }
 
-    val activityNavigator: ActivityNavigator
+    val modulesNavigator: ModulesNavigator
         get() {
-            return mActivityNavigator
+            return mModulesNavigator
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         handleDaggerDependencies()
         super.onCreate(savedInstanceState)
         setContentView(layoutId)
-        initActivityNavigator()
         initView()
         readActivityInitialAction()
         if (savedInstanceState?.get(CURRENT_FRAGMENT_ID_KEY) == null) {
@@ -110,10 +109,6 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
         removeCurrentSubComponent()
     }
 
-    private fun setActivityNavigator(activityNavigator: ActivityNavigator) {
-        mActivityNavigator = activityNavigator
-    }
-
     @get:LayoutRes
     protected abstract val layoutId: Int
 
@@ -131,7 +126,7 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
 
     protected abstract fun initView()
 
-    protected abstract fun saveCurrentFragment(fragment: Fragment, screenKey: String?)
+    protected abstract fun saveCurrentFragment(fragment: Fragment)
 
     private val currentFragment: BaseFragment?
         get() = supportFragmentManager.findFragmentById(fragmentContainerViewId) as? BaseFragment
@@ -150,10 +145,6 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
 
     private fun initNavigator() {
         mNavigatorHolder.setNavigator(navigator)
-    }
-
-    private fun initActivityNavigator() {
-        setActivityNavigator(ActivityNavigator(this))
     }
 
     private fun readActivityInitialAction() {
