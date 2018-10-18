@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "982664967046",
+    "firebase_url": "https://eventviewer-18357.firebaseio.com",
+    "project_id": "eventviewer-18357",
+    "storage_bucket": "eventviewer-18357.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982664967046:android:c3437c72342d7223",
+        "android_client_info": {
+          "package_name": "com.eventviewer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "982664967046-t9or6ui35739v60gcgeftmmt1b3j4h85.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.eventviewer",
+            "certificate_hash": "cc5028a81b9ec575814a86f9b3de0d7307ee228e"
+          }
+        },
+        {
+          "client_id": "982664967046-2og8riru3uu7kshdiclv9ik9furjtpaf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9UcSovB8XxKQAYeussDUy2b9h2to7OAg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "982664967046-2og8riru3uu7kshdiclv9ik9furjtpaf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
