@@ -16,8 +16,9 @@ import com.InitialAction.DEFAULT
 import com.view.R
 import com.view.base.activity.BaseActivity
 import com.view.base.view.HasProgress
-import com.view.ui.modules.auth.AuthModuleNavigator
+import com.view.ui.modules.auth.AuthModuleFragmentHolder
 import com.view.ui.modules.auth.REGISTRATION_SCREEN
+import com.view.ui.modules.content.ContentFragmentHolder
 import kotlinx.android.synthetic.main.activity_root.*
 import kotlinx.android.synthetic.main.activity_root_content.*
 import kotlinx.android.synthetic.main.activity_root_with_toolbar.*
@@ -35,16 +36,24 @@ class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
                 REGISTRATION_SCREEN -> {
                     mAuthModuleHolder.createFragment(screenKey, null, initialAction)
                 }
+                EVENT_LIST_SCREEN -> {
+                    mContentHolder.createFragment(screenKey, null, initialAction)
+                }
+                EVENT_DETAILS_SCREEN -> {
+                    mContentHolder.createFragment(screenKey, null, initialAction)
+                }
                 else -> {
-                    mAuthModuleHolder.createFragment(screenKey, null, initialAction)
+                    mContentHolder.createFragment(EVENT_LIST_SCREEN, null, initialAction)
                 }
             }
         }
     }
 
     private lateinit var mToggle: ActionBarDrawerToggle
-    private var mAuthModuleHolder: AuthModuleNavigator = AuthModuleNavigator(this,
-                                                                             fragmentContainerViewId)
+    private var mAuthModuleHolder: AuthModuleFragmentHolder = AuthModuleFragmentHolder(this,
+                                                                                       fragmentContainerViewId)
+    private var mContentHolder: ContentFragmentHolder = ContentFragmentHolder(this,
+                                                                              fragmentContainerViewId)
     override val navigator: Navigator
         get() = mNavigator
 
@@ -144,7 +153,7 @@ class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
     override val fragmentContainerViewId: Int
         get() = R.id.mFragmentContainer
 
-    val authModuleNavigatorNavigator: AuthModuleNavigator
+    val authModuleNavigatorFragmentHolder: AuthModuleFragmentHolder
         get() = mAuthModuleHolder
 
     override fun showProgress() {
@@ -182,6 +191,10 @@ class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
 
     fun showRegistrationFragment(data: Bundle?) {
         addFragment(REGISTRATION_SCREEN, data)
+    }
+
+    fun goToMainActivityEventListFragment() {
+        createNewChain(EVENT_LIST_SCREEN, null)
     }
 
 }

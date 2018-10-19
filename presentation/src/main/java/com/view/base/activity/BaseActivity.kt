@@ -143,6 +143,10 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
         router.backTo(screenKey)
     }
 
+    protected fun createNewChain(screenKey: String?, data: Any?) {
+        router.newScreenChain(screenKey, data)
+    }
+
     private fun initNavigator() {
         mNavigatorHolder.setNavigator(navigator)
     }

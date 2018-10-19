@@ -10,12 +10,12 @@ import com.view.ui.modules.auth.register.RegistrationFragment
 import com.view.ui.modules.auth.register.configurator.RegistrationFragmentAction
 
 
-open class AuthModuleNavigator(context: Activity, fragmentContainerId: Int) : BaseModule(
+open class AuthModuleFragmentHolder(context: Activity, fragmentContainerId: Int) : BaseModule(
         context,
         fragmentContainerId) {
 
-    fun createFragment(screenKey: String?, data: Any?,
-                       initialInitialAction: InitialAction): Fragment {
+    override fun createFragment(screenKey: String?, data: Any?,
+                                initialInitialAction: InitialAction): Fragment {
         val fragment: Fragment
         when (screenKey) {
             LOGIN_SCREEN -> {

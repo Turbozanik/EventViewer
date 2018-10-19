@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.inputmethod.EditorInfo
 import com.FRAGMENT_DATA_KEY
 import com.view.R
+import com.view.ui.godlikeroot.RootGodlikeActivity
 import com.view.ui.modules.auth.register.configurator.RegistrationFragmentAction
 import kotlinx.android.synthetic.main.fragment_ragistration.*
 import java.util.*
@@ -69,7 +70,7 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
     }
 
     override fun goToEventsFragment() {
-//        (activity as AuthActivity).goToMainActivityEventListFragment()
+        (activity as RootGodlikeActivity).goToMainActivityEventListFragment()
     }
 
     private fun initEtRepeatPassword() {
