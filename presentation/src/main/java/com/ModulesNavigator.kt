@@ -6,12 +6,12 @@ import android.content.Context
 class ModulesNavigator(context: Context) {
 //    private val mContext: Context = context
 //
-//    fun startActivityWithInitialAction(activityAction: ActivityAction) {
+//    fun startActivityWithInitialAction(activityAction: InitialAction) {
 //        startActivity(applyAction(getNewActivityIntent(getStringKeyByAction(activityAction)),
 //                                  activityAction))
 //    }
 //
-//    private fun applyAction(intent: Intent, activityAction: ActivityAction): Intent {
+//    private fun applyAction(intent: Intent, activityAction: InitialAction): Intent {
 //        intent.putExtra(ACTIVITY_ACTION_DATA_KEY, activityAction)
 //        return intent
 //    }
@@ -38,24 +38,24 @@ class ModulesNavigator(context: Context) {
 //        }
 //    }
 //
-//    private fun getStringKeyByAction(activityAction: ActivityAction): String {
+//    private fun getStringKeyByAction(activityAction: InitialAction): String {
 //        return when (activityAction) {
-//            ActivityAction.OPEN_AUTH_ACTIVITY -> {
+//            InitialAction.OPEN_AUTH -> {
 //                AUTH_ACTIVITY
 //            }
-//            ActivityAction.OPEN_MAIN_ACTIVITY -> {
+//            InitialAction.OPEN_MAIN -> {
 //                MAIN_ACTIVITY
 //            }
-//            ActivityAction.OPEN_AUTH_ACTIVITY_WITH_NO_SAVED_CREDENTIALS -> {
+//            InitialAction.OPEN_AUTH_WITH_NO_SAVED_CREDENTIALS -> {
 //                AUTH_ACTIVITY
 //            }
-//            ActivityAction.DEFAULT -> {
+//            InitialAction.DEFAULT -> {
 //                AUTH_ACTIVITY
 //            }
-//            ActivityAction.OPEN_MAIN_ACTIVITY_WITH_EVENT_LIST_FRAGMENT -> {
+//            InitialAction.OPEN_MAIN_WITH_EVENT_LIST_FRAGMENT -> {
 //                MAIN_ACTIVITY
 //            }
-//            ActivityAction.OPEN_AUTH_ACTIVITY_WITH_SAVED_CREDENTIALS -> {
+//            InitialAction.OPEN_AUTH_WITH_SAVED_CREDENTIALS -> {
 //                AUTH_ACTIVITY
 //            }
 //        }

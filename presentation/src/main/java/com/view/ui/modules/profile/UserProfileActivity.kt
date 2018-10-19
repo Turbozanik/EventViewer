@@ -17,7 +17,7 @@ package com.view.ui.modules.profile
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 //    }
 //
-//    override fun getScreenKeyByAction(activityAction: ActivityAction?): String {
+//    override fun getScreenKeyByAction(activityAction: InitialAction?): String {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 //    }
 //

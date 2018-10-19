@@ -28,9 +28,9 @@ package com.view.ui.modules.auth
 //        daggerController.removeAuthActivitySubComponent()
 //    }
 //
-//    override fun getScreenKeyByAction(activityAction: ActivityAction?): String {
+//    override fun getScreenKeyByAction(activityAction: InitialAction?): String {
 //        return when (activityAction) {
-//            ActivityAction.OPEN_AUTH_ACTIVITY_WITH_NO_SAVED_CREDENTIALS -> {
+//            InitialAction.OPEN_AUTH_WITH_NO_SAVED_CREDENTIALS -> {
 //                LOGIN_SCREEN
 //            }
 //            else -> {
@@ -58,7 +58,7 @@ package com.view.ui.modules.auth
 //
 //    fun goToMainActivityEventListFragment() {
 //        modulesNavigator.startActivityWithInitialAction(
-//                ActivityAction.OPEN_MAIN_ACTIVITY_WITH_EVENT_LIST_FRAGMENT)
+//                InitialAction.OPEN_MAIN_WITH_EVENT_LIST_FRAGMENT)
 //    }
 //
 //    fun prepareRegistrationToolbar() {

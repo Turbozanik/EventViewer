@@ -7,8 +7,8 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
 import com.ACTIVITY_ACTION_DATA_KEY
-import com.ActivityAction
 import com.EventViewerApp
+import com.InitialAction
 import com.ModulesNavigator
 import com.dagger.DaggerController
 import com.view.base.fragment.BaseFragment
@@ -49,7 +49,7 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
 
     protected var mCurrentFragment: Fragment? = null
     private lateinit var mModulesNavigator: ModulesNavigator
-    private lateinit var mActivityInitAction: ActivityAction
+    private lateinit var mInitialInitAction: InitialAction
 
     private val router: Router
         get() {
@@ -67,9 +67,9 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
                     .getDaggerController()
         }
 
-    val activityInitAction: ActivityAction
+    val initialAction: InitialAction
         get() {
-            return mActivityInitAction
+            return mInitialInitAction
         }
 
     val modulesNavigator: ModulesNavigator
@@ -84,7 +84,7 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
         initView()
         readActivityInitialAction()
         if (savedInstanceState?.get(CURRENT_FRAGMENT_ID_KEY) == null) {
-            showRootScreen(getScreenKeyByAction(activityInitAction))
+            showRootScreen(getScreenKeyByAction(initialAction))
         }
     }
 
@@ -120,7 +120,7 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
 
     protected abstract fun addCurrentActivitySubComponent()
 
-    protected abstract fun getScreenKeyByAction(activityAction: ActivityAction?): String
+    protected abstract fun getScreenKeyByAction(initialAction: InitialAction?): String
 
     protected abstract fun removeCurrentSubComponent()
 
@@ -148,12 +148,12 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
     }
 
     private fun readActivityInitialAction() {
-        var activityAction: ActivityAction? = null
+        var initialAction: InitialAction? = null
         if (intent.hasExtra(ACTIVITY_ACTION_DATA_KEY)) {
-            activityAction = intent.getSerializableExtra(
-                    ACTIVITY_ACTION_DATA_KEY) as ActivityAction
+            initialAction = intent.getSerializableExtra(
+                    ACTIVITY_ACTION_DATA_KEY) as InitialAction
         }
-        mActivityInitAction = activityAction ?: ActivityAction.DEFAULT
+        mInitialInitAction = initialAction ?: InitialAction.DEFAULT
     }
 
     private fun handleDaggerDependencies() {

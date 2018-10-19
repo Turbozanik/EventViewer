@@ -21,7 +21,7 @@ package com.view.ui.modules.splash
 //        daggerController.addSplashActivitySubComponent()
 //    }
 //
-//    override fun getScreenKeyByAction(activityAction: ActivityAction?): String {
+//    override fun getScreenKeyByAction(activityAction: InitialAction?): String {
 //        return ""
 //    }
 //
@@ -38,10 +38,10 @@ package com.view.ui.modules.splash
 //            mGetUserEmailUseCase.execute().subscribe {
 //                if (!isEmpty(it)) {
 //                    modulesNavigator.startActivityWithInitialAction(
-//                            ActivityAction.OPEN_AUTH_ACTIVITY_WITH_SAVED_CREDENTIALS)
+//                            InitialAction.OPEN_AUTH_WITH_SAVED_CREDENTIALS)
 //                } else {
 //                    modulesNavigator.startActivityWithInitialAction(
-//                            ActivityAction.OPEN_AUTH_ACTIVITY_WITH_NO_SAVED_CREDENTIALS)
+//                            InitialAction.OPEN_AUTH_WITH_NO_SAVED_CREDENTIALS)
 //                }
 //            }
 //        }

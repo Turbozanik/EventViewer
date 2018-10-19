@@ -1,6 +1,7 @@
 package com.view.ui.godlikeroot
 
 import android.content.res.Configuration
+import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
@@ -9,9 +10,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.AUTH_SCREEN
-import com.ActivityAction
-import com.ActivityAction.DEFAULT
 import com.EventViewerApp
+import com.InitialAction
+import com.InitialAction.DEFAULT
 import com.view.R
 import com.view.base.activity.BaseActivity
 import com.view.base.view.HasProgress
@@ -29,13 +30,13 @@ class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
         override fun createFragment(screenKey: String?, data: Any?): Fragment {
             return when (screenKey) {
                 AUTH_SCREEN -> {
-                    mAuthModuleHolder.createFragment(screenKey, null, activityInitAction)
+                    mAuthModuleHolder.createFragment(screenKey, null, initialAction)
                 }
                 REGISTRATION_SCREEN -> {
-                    mAuthModuleHolder.createFragment(screenKey, null, activityInitAction)
+                    mAuthModuleHolder.createFragment(screenKey, null, initialAction)
                 }
                 else -> {
-                    mAuthModuleHolder.createFragment(screenKey, null, activityInitAction)
+                    mAuthModuleHolder.createFragment(screenKey, null, initialAction)
                 }
             }
         }
@@ -123,8 +124,8 @@ class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
         daggerController.addMainActivitySubComponent()
     }
 
-    override fun getScreenKeyByAction(activityAction: ActivityAction?): String {
-        return when (activityAction) {
+    override fun getScreenKeyByAction(initialAction: InitialAction?): String {
+        return when (initialAction) {
             DEFAULT -> EVENT_LIST_SCREEN
             null -> EVENT_LIST_SCREEN
             else -> {
@@ -175,8 +176,12 @@ class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
         mToolbar.title = getString(R.string.profile)
     }
 
-    public fun showEventListFragment() {
+    fun showEventListFragment() {
 
+    }
+
+    fun showRegistrationFragment(data: Bundle?) {
+        addFragment(REGISTRATION_SCREEN, data)
     }
 
 }

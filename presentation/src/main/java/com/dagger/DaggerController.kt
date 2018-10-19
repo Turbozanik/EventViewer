@@ -8,14 +8,14 @@ import com.dagger.module.*
 open class DaggerController(eventViewerApp: Context) {
 
     private var mActivitySubComponent: ActivitySubComponent? = null
-    private var mAuthActivitySubComponent: AuthActivitySubComponent? = null
-    private var mMainActivitySubComponent: MainActivitySubComponent? = null
+    //private var mAuthActivitySubComponent: AuthActivitySubComponent? = null
+    private var mRootGodlikeActivitySubComponent: RootGodlikeActivitySubComponent? = null
     private var mRegistrationFragmentSubComponent: RegistrationFragmentSubComponent? = null
     private var mLoginSubComponent: LoginFragmentSubComponent? = null
     private var mEventListFragmentSubComponent: EventListFragmentSubComponent? = null
     private var mEventDetailsSubComponent: EventDetailsFragmentSubComponent? = null
     //private var mSplashActivitySubComponent: SplashActivitySubComponent? = null
-    private var mUserProfileActivitySubComponent: UserProfileActvitySubCopmonent? = null
+    //private var mUserProfileActivitySubComponent: UserProfileActvitySubCopmonent? = null
     private var mUserProfileFragmentModule: UserProfileFragmentSubComponent? = null
 
     private val mAppComponent: AppComponent = DaggerAppComponent.builder()
@@ -57,35 +57,35 @@ open class DaggerController(eventViewerApp: Context) {
 
     //RootGodlikeActivity module
     fun addMainActivitySubComponent() {
-        mMainActivitySubComponent = mActivitySubComponent?.add(MainActivityModule())
+        mRootGodlikeActivitySubComponent = mActivitySubComponent?.add(RootGodlikeActivityModule())
     }
 
     fun removeMainActivitySubComponent() {
-        mMainActivitySubComponent?.let { mMainActivitySubComponent = null }
+        mRootGodlikeActivitySubComponent?.let { mRootGodlikeActivitySubComponent = null }
     }
 
-    val mainActivitySubComponent: MainActivitySubComponent?
+    val rootGodlikeActivitySubComponent: RootGodlikeActivitySubComponent?
         get() {
-            return mMainActivitySubComponent
+            return mRootGodlikeActivitySubComponent
         }
 
     //AuthActivityModule
-    fun addAuthActivitySubComponent() {
-        mAuthActivitySubComponent = mActivitySubComponent?.add(AuthActivityModule())
-    }
-
-    fun removeAuthActivitySubComponent() {
-        mAuthActivitySubComponent?.let { mAuthActivitySubComponent = null }
-    }
-
-    val authActivitySubComponent: AuthActivitySubComponent?
-        get() {
-            return mAuthActivitySubComponent
-        }
+//    fun addAuthActivitySubComponent() {
+//        mAuthActivitySubComponent = mActivitySubComponent?.add(AuthActivityModule())
+//    }
+//
+//    fun removeAuthActivitySubComponent() {
+//        mAuthActivitySubComponent?.let { mAuthActivitySubComponent = null }
+//    }
+//
+//    val authActivitySubComponent: AuthActivitySubComponent?
+//        get() {
+//            return mAuthActivitySubComponent
+//        }
 
     //RegistrationFragment
     fun addRegistrationFragmentSubComponent() {
-        mRegistrationFragmentSubComponent = mAuthActivitySubComponent?.add(
+        mRegistrationFragmentSubComponent = mRootGodlikeActivitySubComponent?.add(
                 RegistrationFragmentModule())
     }
 
@@ -100,7 +100,7 @@ open class DaggerController(eventViewerApp: Context) {
 
     //LoginFragment
     fun addLoginFragmentSubComponent() {
-        mLoginSubComponent = mAuthActivitySubComponent?.add(LoginFragmentModule())
+        mLoginSubComponent = mRootGodlikeActivitySubComponent?.add(LoginFragmentModule())
     }
 
     fun removeLoginFragmentSubComponent() {
@@ -114,7 +114,8 @@ open class DaggerController(eventViewerApp: Context) {
 
     //EventList
     fun addEventListFragmentSubComponent() {
-        mEventListFragmentSubComponent = mMainActivitySubComponent?.add(EventListFragmentModule())
+        mEventListFragmentSubComponent = mRootGodlikeActivitySubComponent?.add(
+                EventListFragmentModule())
     }
 
     fun removeEventListFragmentSubComponent() {
@@ -128,7 +129,8 @@ open class DaggerController(eventViewerApp: Context) {
 
     //EventDetails
     fun addEventDetailsFragmentSubComponent() {
-        mEventDetailsSubComponent = mMainActivitySubComponent?.add(EventDetailsFragmentModule())
+        mEventDetailsSubComponent = mRootGodlikeActivitySubComponent?.add(
+                EventDetailsFragmentModule())
     }
 
     fun removeEventDetailsFragmentSubComponent() {
@@ -141,22 +143,22 @@ open class DaggerController(eventViewerApp: Context) {
         }
 
     //UserProfileActivity
-    fun addUserProfileActivitySubComponent() {
-        mUserProfileActivitySubComponent = mActivitySubComponent?.add(UserProfileActivityModle())
-    }
-
-    fun removeUserProfileActivitySubComponent() {
-        mUserProfileActivitySubComponent?.let { mUserProfileActivitySubComponent = null }
-    }
-
-    val userProfileActvitySubCopmonent: UserProfileActvitySubCopmonent?
-        get() {
-            return mUserProfileActivitySubComponent
-        }
+//    fun addUserProfileActivitySubComponent() {
+//        mUserProfileActivitySubComponent = mActivitySubComponent?.add(UserProfileActivityModle())
+//    }
+//
+//    fun removeUserProfileActivitySubComponent() {
+//        mUserProfileActivitySubComponent?.let { mUserProfileActivitySubComponent = null }
+//    }
+//
+//    val userProfileActvitySubCopmonent: UserProfileActvitySubCopmonent?
+//        get() {
+//            return mUserProfileActivitySubComponent
+//        }
 
     //UserProfileFragment
     fun addUserProfileFragmentSubComponent() {
-        mUserProfileFragmentModule = mUserProfileActivitySubComponent?.add(
+        mUserProfileFragmentModule = mRootGodlikeActivitySubComponent?.add(
                 UserProfileFragmentModule())
     }
 

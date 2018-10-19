@@ -2,7 +2,7 @@ package com.view.ui.modules.auth
 
 import android.app.Activity
 import android.support.v4.app.Fragment
-import com.ActivityAction
+import com.InitialAction
 import com.view.base.module.BaseModule
 import com.view.ui.modules.auth.login.LoginFragment
 import com.view.ui.modules.auth.login.configurator.LoginFragmentAction
@@ -15,12 +15,12 @@ open class AuthModuleNavigator(context: Activity, fragmentContainerId: Int) : Ba
         fragmentContainerId) {
 
     fun createFragment(screenKey: String?, data: Any?,
-                       activityInitialAction: ActivityAction): Fragment {
+                       initialInitialAction: InitialAction): Fragment {
         val fragment: Fragment
         when (screenKey) {
             LOGIN_SCREEN -> {
                 fragment = LoginFragment.createNewInstance()
-                if (activityInitialAction == com.ActivityAction.OPEN_AUTH_ACTIVITY_WITH_NO_SAVED_CREDENTIALS) {
+                if (initialInitialAction == com.InitialAction.OPEN_AUTH_WITH_NO_SAVED_CREDENTIALS) {
                     LoginFragment.addInitialAction(fragment,
                                                    LoginFragmentAction.DEFAULT)
                 }

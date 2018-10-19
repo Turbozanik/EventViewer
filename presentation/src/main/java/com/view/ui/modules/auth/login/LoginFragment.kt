@@ -6,6 +6,7 @@ import android.view.inputmethod.EditorInfo
 import com.FRAGMENT_DATA_KEY
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.view.R
+import com.view.ui.godlikeroot.RootGodlikeActivity
 import com.view.ui.modules.auth.login.configurator.LoginFragmentAction
 import io.reactivex.Observable
 import io.reactivex.functions.BiFunction
@@ -77,7 +78,7 @@ class LoginFragment : LoginFragmentContract.LoginFragment() {
     }
 
     override fun goToRegistrationFragment() {
-//        (activity as AuthActivity).showRegistrationFragment(null)
+        (activity as RootGodlikeActivity).showRegistrationFragment(null)
     }
 
     private fun initSignInFieldsValidation() {
