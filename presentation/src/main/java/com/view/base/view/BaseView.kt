@@ -1,3 +1,9 @@
 package com.view.base.view
 
-interface BaseView
+interface BaseView {
+
+    fun showProgress()
+
+    fun hideProgress()
+
+}

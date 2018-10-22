@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import com.view.base.presenter.BaseFragmentPresenter
 import com.view.base.view.BaseView
+import com.view.ui.godlikeroot.RootGodlikeActivity
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
@@ -44,4 +45,12 @@ abstract class PresenterFragment<PresenterType : BaseFragmentPresenter<*, *, *>>
     protected abstract fun addCurrentSubComponent()
 
     protected abstract fun removeCurrentSubComponent()
+
+    override fun showProgress() {
+        (activity as RootGodlikeActivity).showProgress()
+    }
+
+    override fun hideProgress() {
+        (activity as RootGodlikeActivity).hideProgress()
+    }
 }

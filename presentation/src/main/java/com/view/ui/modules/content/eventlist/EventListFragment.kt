@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.FRAGMENT_DATA_KEY
 import com.view.R
+import com.view.base.view.OnScrolledToEndListener
 import com.view.ui.godlikeroot.RootGodlikeActivity
 import com.view.ui.modules.content.eventlist.adapter.EventListAdapter
 import com.view.ui.modules.content.eventlist.configurator.EventListFragmentAction
@@ -38,8 +39,25 @@ class EventListFragment : EventListFragmentContract.EventListFragment() {
     override fun initView() {
         super.initView()
         initAdapter()
-        mRvEventList.adapter = mAdapter
+        initRecyclerView()
+        initSwipeRefreshLayout()
         (activity as RootGodlikeActivity).prepareEventListToolbar()
+    }
+
+    private fun initRecyclerView() {
+        mRvEventList.adapter = mAdapter
+        mRvEventList.addOnScrollListener(object : OnScrolledToEndListener(mEventListSwipeRefresh,
+                                                                          mAdapter) {
+            override fun onScrolledToEnd() {
+                sendAction(EventListFragmentAction.LOAD_MORE_EVENTS)
+            }
+        })
+    }
+
+    private fun initSwipeRefreshLayout() {
+        mEventListSwipeRefresh.setOnRefreshListener {
+            sendAction(EventListFragmentAction.RELOAD_EVENTS)
+        }
     }
 
     override fun addCurrentSubComponent() {
@@ -54,8 +72,7 @@ class EventListFragment : EventListFragmentContract.EventListFragment() {
         get() = R.layout.fragment_event_list
 
     override fun getViewData(): EventListFragmentContract.EventListFragmentDto {
-        return EventListFragmentContract.EventListFragmentDto(
-                false)
+        return EventListFragmentContract.EventListFragmentDto(false)
     }
 
     override fun sendAction(action: EventListFragmentAction?) {
@@ -76,6 +93,26 @@ class EventListFragment : EventListFragmentContract.EventListFragment() {
             else -> {
             }
         }
+    }
+
+    override fun showProgress() {
+        if (mEventListSwipeRefresh.setProgress(true)) return
+        if (mAdapter.setProgress(true, mRvEventList)) return
+        super.showProgress()
+    }
+
+    override fun hideProgress() {
+        if (mEventListSwipeRefresh.setProgress(false)) return
+        if (mAdapter.setProgress(false, mRvEventList)) return
+        super.showProgress()
+    }
+
+    override fun onEventsReloaded() {
+        hideProgress()
+    }
+
+    override fun onMoreEventsLoaded() {
+        hideProgress()
     }
 
 }

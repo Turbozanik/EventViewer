@@ -17,6 +17,12 @@ class EventListFragmentPresenter @Inject constructor() : EventListFragmentContra
         if (action != null) {
             when (actionConfigurator.produceViewCommand(mEventListFragmentState, action)) {
                 EventListFragmentViewCommand.DEFAULT -> TODO()
+                EventListFragmentViewCommand.LOAD_MORE_EVENTS -> {
+                    getView()?.onMoreEventsLoaded()
+                }
+                EventListFragmentViewCommand.RELOAD_EVENTS -> {
+                    getView()?.onEventsReloaded()
+                }
             }
         }
     }
