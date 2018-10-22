@@ -176,6 +176,10 @@ class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
         mToolbar.title = getString(R.string.registration)
     }
 
+    fun prepareLoginToolbar() {
+        mToolbar.title = getString(R.string.login)
+    }
+
     override fun saveCurrentFragment(fragment: Fragment) {
         mCurrentFragment = fragment
     }

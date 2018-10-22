@@ -51,7 +51,6 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
         initEtBirthday()
         initEtRepeatPassword()
         initRegisterButton()
-        (activity as RootGodlikeActivity).prepareRegistrationFragmentToolbar()
     }
 
     override val presenter: RegistrationFragmentPresenter
@@ -109,7 +108,7 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
     }
 
     override fun updateToolbar() {
-        //       (activity as AuthActivity).prepareRegistrationToolbar()
+        (activity as RootGodlikeActivity).prepareRegistrationFragmentToolbar()
     }
 
     override fun handleInitialAction() {

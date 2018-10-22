@@ -120,7 +120,7 @@ class LoginFragment : LoginFragmentContract.LoginFragment() {
     }
 
     override fun updateToolbar() {
-//        (activity as AuthActivity).prepareLoginToolbar()
+        (activity as RootGodlikeActivity).prepareLoginToolbar()
     }
 
     override fun handleInitialAction() {
