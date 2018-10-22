@@ -100,7 +100,7 @@ class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.all -> {
-
+                startRootActivityEventListFragmentChain(null)
             }
             R.id.nav_gallery -> {
                 startRegistrationFragmentChain(null)
@@ -172,6 +172,10 @@ class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
         mToolbar.title = getString(R.string.event_details)
     }
 
+    fun prepareRegistrationFragmentToolbar() {
+        mToolbar.title = getString(R.string.registration)
+    }
+
     override fun saveCurrentFragment(fragment: Fragment) {
         mCurrentFragment = fragment
     }
@@ -184,8 +188,8 @@ class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
         addFragment(REGISTRATION_SCREEN, data)
     }
 
-    fun startMainActivityEventListFragmentChain() {
-        createNewChain(EVENT_LIST_SCREEN, null)
+    fun startRootActivityEventListFragmentChain(data: Bundle?) {
+        createNewChain(EVENT_LIST_SCREEN, data)
     }
 
 }

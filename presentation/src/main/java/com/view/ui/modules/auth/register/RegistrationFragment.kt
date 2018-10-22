@@ -51,6 +51,7 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
         initEtBirthday()
         initEtRepeatPassword()
         initRegisterButton()
+        (activity as RootGodlikeActivity).prepareRegistrationFragmentToolbar()
     }
 
     override val presenter: RegistrationFragmentPresenter
@@ -64,13 +65,12 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
 
     override fun getViewData(): RegistrationFragmentContract.RegistrationFragmentDto {
         return RegistrationFragmentContract.RegistrationFragmentDto(
-                RegistrationFragmentContract.RegistrationInfo("",
-                                                              ""),
+                RegistrationFragmentContract.RegistrationInfo("", ""),
                 true)
     }
 
     override fun goToEventsFragment() {
-        (activity as RootGodlikeActivity).startMainActivityEventListFragmentChain()
+        (activity as RootGodlikeActivity).startRootActivityEventListFragmentChain(null)
     }
 
     private fun initEtRepeatPassword() {

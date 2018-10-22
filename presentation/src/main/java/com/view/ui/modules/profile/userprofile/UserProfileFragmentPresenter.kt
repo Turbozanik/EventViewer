@@ -11,6 +11,12 @@ class UserProfileFragmentPresenter @Inject constructor() : UserProfileFragmentCo
     }
 
     override fun consumeAction(action: UserProfileFragmentAction?) {
+        when (action) {
 
+            UserProfileFragmentAction.INITIAL_ACTION_DEFAULT -> {
+            }
+            null -> {
+            }
+        }
     }
 }

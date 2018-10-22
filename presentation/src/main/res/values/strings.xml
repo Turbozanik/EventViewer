@@ -27,7 +27,7 @@
     <string name="hint_registration_repeat_password">Repeat password</string>
     <string name="register">Register</string>
     <!--Event list-->
-    <string name="all">All</string>
+    <string name="all">All events</string>
     <string name="conference">Conference</string>
     <!--Event details-->
     <string name="event_details">Event details</string>

@@ -39,6 +39,7 @@ class EventListFragment : EventListFragmentContract.EventListFragment() {
         super.initView()
         initAdapter()
         mRvEventList.adapter = mAdapter
+        (activity as RootGodlikeActivity).prepareEventListToolbar()
     }
 
     override fun addCurrentSubComponent() {

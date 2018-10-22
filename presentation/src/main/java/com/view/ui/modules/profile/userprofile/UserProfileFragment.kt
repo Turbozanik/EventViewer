@@ -48,8 +48,6 @@ class UserProfileFragment : UserProfileFragmentContract.UserProfileFragment() {
 
     override fun getViewData(): UserProfileFragmentContract.UserProfileFragmentDto {
         return UserProfileFragmentContract.UserProfileFragmentDto(
-                UserProfileFragmentContract.UserProfileInfo(
-                        "",
-                        ""))
+                UserProfileFragmentContract.UserProfileInfo("", ""))
     }
 }
