@@ -15,7 +15,7 @@ abstract class OnScrolledToEndListener(private val swipeRefresh: SwipeRefreshLay
         if (newState == RecyclerView.SCROLL_STATE_IDLE
                 && !adapter.hasProgressItem()
                 && (swipeRefresh == null || !swipeRefresh.isRefreshing)) {
-            val lm = recyclerView!!.layoutManager as LinearLayoutManager
+            val lm = recyclerView?.layoutManager as LinearLayoutManager
             if (lm.findLastVisibleItemPosition() == adapter.itemCount - 1) {
                 onScrolledToEnd()
             }
