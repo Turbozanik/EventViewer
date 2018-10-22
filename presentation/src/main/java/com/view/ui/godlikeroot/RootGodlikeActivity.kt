@@ -58,9 +58,9 @@ class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
     override fun initView() {
         setSupportActionBar(mToolbar)
 
-        mToggle = ActionBarDrawerToggle(
-                this, mDrawerLayout, mToolbar, R.string.navigation_drawer_open,
-                R.string.navigation_drawer_close)
+        mToggle = ActionBarDrawerToggle(this, mDrawerLayout, mToolbar,
+                                        R.string.navigation_drawer_open,
+                                        R.string.navigation_drawer_close)
         mDrawerLayout.addDrawerListener(mToggle)
         mToggle.syncState()
 
