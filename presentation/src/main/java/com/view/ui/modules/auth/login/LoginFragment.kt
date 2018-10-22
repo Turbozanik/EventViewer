@@ -70,11 +70,9 @@ class LoginFragment : LoginFragmentContract.LoginFragment() {
     }
 
     override fun getViewData(): LoginFragmentContract.LoginFragmentDto {
-        return LoginFragmentContract.LoginFragmentDto(
-                LoginFragmentContract.UserCredentials(
-                        mEtEmail.text.toString(),
-                        mEtPassword.text.toString()),
-                mCbSaveCredentials.isChecked)
+        return LoginFragmentContract.LoginFragmentDto(LoginFragmentContract.UserCredentials(
+                mEtEmail.text.toString(), mEtPassword.text.toString()),
+                                                      mCbSaveCredentials.isChecked)
     }
 
     override fun goToRegistrationFragment() {
