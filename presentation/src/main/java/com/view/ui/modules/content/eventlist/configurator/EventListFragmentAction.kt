@@ -11,8 +11,7 @@ enum class EventListFragmentAction(action: Int, isInitialAction: Boolean) {
 
     companion object {
         private val map = EventListFragmentAction.values()
-                .associateBy(
-                        EventListFragmentAction::mAction)
+                .associateBy(EventListFragmentAction::mAction)
 
         fun getAction(command: Int) = map[command]
     }

@@ -9,8 +9,7 @@ enum class EventDetailsFragmentAction(action: Int, isInitialAction: Boolean) {
 
     companion object {
         private val map = EventDetailsFragmentAction.values()
-                .associateBy(
-                        EventDetailsFragmentAction::mAction)
+                .associateBy(EventDetailsFragmentAction::mAction)
 
         fun getAction(command: Int) = map[command]
     }

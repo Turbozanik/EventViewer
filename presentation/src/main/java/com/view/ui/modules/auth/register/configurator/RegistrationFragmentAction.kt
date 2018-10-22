@@ -10,8 +10,7 @@ enum class RegistrationFragmentAction(action: Int, isInitialAction: Boolean) {
 
     companion object {
         private val map = RegistrationFragmentAction.values()
-                .associateBy(
-                        RegistrationFragmentAction::mAction)
+                .associateBy(RegistrationFragmentAction::mAction)
 
         fun getAction(command: Int) = map[command]
     }

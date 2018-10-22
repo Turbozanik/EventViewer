@@ -9,8 +9,7 @@ enum class UserProfileFragmentAction(action: Int, isInitialAction: Boolean) {
 
     companion object {
         private val map = UserProfileFragmentAction.values()
-                .associateBy(
-                        UserProfileFragmentAction::mAction)
+                .associateBy(UserProfileFragmentAction::mAction)
 
         fun getAction(command: Int) = map[command]
     }
