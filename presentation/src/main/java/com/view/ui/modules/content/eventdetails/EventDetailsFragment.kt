@@ -58,8 +58,7 @@ class EventDetailsFragment : EventDetailsFragmentContract.EventDetailsFragment()
         get() = R.layout.fragment_event_details
 
     override fun getViewData(): EventDetailsFragmentContract.EventDetailsFragmentDto {
-        return EventDetailsFragmentContract.EventDetailsFragmentDto(
-                false)
+        return EventDetailsFragmentContract.EventDetailsFragmentDto(false)
     }
 
     override fun sendAction(action: EventDetailsFragmentAction?) {
