@@ -64,8 +64,7 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
 
     override fun getViewData(): RegistrationFragmentContract.RegistrationFragmentDto {
         return RegistrationFragmentContract.RegistrationFragmentDto(
-                RegistrationFragmentContract.RegistrationInfo("", ""),
-                true)
+                RegistrationFragmentContract.RegistrationInfo("", ""), true)
     }
 
     override fun goToEventsFragment() {
