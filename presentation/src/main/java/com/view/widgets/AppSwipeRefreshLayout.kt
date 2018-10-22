@@ -1,3 +1,5 @@
+package com.view.widgets
+
 import android.content.Context
 import android.support.v4.widget.SwipeRefreshLayout
 import android.util.AttributeSet
