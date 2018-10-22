@@ -180,12 +180,12 @@ class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
         mToolbar.title = getString(R.string.login)
     }
 
-    override fun saveCurrentFragment(fragment: Fragment) {
-        mCurrentFragment = fragment
-    }
-
     fun prepareUserProfileToolbar() {
         mToolbar.title = getString(R.string.profile)
+    }
+
+    override fun saveCurrentFragment(fragment: Fragment) {
+        mCurrentFragment = fragment
     }
 
     fun startRegistrationFragmentChain(data: Bundle?) {
