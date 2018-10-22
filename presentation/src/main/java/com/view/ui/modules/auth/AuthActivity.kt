@@ -52,11 +52,11 @@ package com.view.ui.modules.auth
 //            return mProgressBar
 //        }
 //
-//    fun showRegistrationFragment(data: Any?) {
+//    fun startRegistrationFragmentChain(data: Any?) {
 //        addFragment(REGISTRATION_SCREEN, data)
 //    }
 //
-//    fun goToMainActivityEventListFragment() {
+//    fun startMainActivityEventListFragmentChain() {
 //        modulesNavigator.startActivityWithInitialAction(
 //                InitialAction.OPEN_MAIN_WITH_EVENT_LIST_FRAGMENT)
 //    }

@@ -105,7 +105,7 @@ class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
 
             }
             R.id.nav_gallery -> {
-
+                startRegistrationFragmentChain(null)
             }
             R.id.nav_slideshow -> {
 
@@ -153,9 +153,6 @@ class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
     override val fragmentContainerViewId: Int
         get() = R.id.mFragmentContainer
 
-    val authModuleNavigatorFragmentHolder: AuthModuleFragmentHolder
-        get() = mAuthModuleHolder
-
     override fun showProgress() {
         progressView.visibility = View.VISIBLE
     }
@@ -185,15 +182,11 @@ class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
         mToolbar.title = getString(R.string.profile)
     }
 
-    fun showEventListFragment() {
-
-    }
-
-    fun showRegistrationFragment(data: Bundle?) {
+    fun startRegistrationFragmentChain(data: Bundle?) {
         addFragment(REGISTRATION_SCREEN, data)
     }
 
-    fun goToMainActivityEventListFragment() {
+    fun startMainActivityEventListFragmentChain() {
         createNewChain(EVENT_LIST_SCREEN, null)
     }
 

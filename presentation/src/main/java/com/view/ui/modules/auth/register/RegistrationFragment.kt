@@ -70,7 +70,7 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
     }
 
     override fun goToEventsFragment() {
-        (activity as RootGodlikeActivity).goToMainActivityEventListFragment()
+        (activity as RootGodlikeActivity).startMainActivityEventListFragmentChain()
     }
 
     private fun initEtRepeatPassword() {
