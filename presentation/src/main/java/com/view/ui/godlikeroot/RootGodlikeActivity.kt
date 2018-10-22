@@ -99,7 +99,7 @@ class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.event_list -> {
+            R.id.all -> {
 
             }
             R.id.nav_gallery -> {
@@ -165,7 +165,7 @@ class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
         }
 
     fun prepareEventListToolbar() {
-        mToolbar.title = getString(R.string.event_list)
+        mToolbar.title = getString(R.string.all)
     }
 
     fun prepareEventDetailsToolbar() {
