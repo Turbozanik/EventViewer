@@ -1,9 +1,8 @@
 package com.view.ui.modules.content
 
-import android.app.Activity
 import android.support.v4.app.Fragment
 import com.InitialAction
-import com.view.base.module.BaseModule
+import com.view.base.module.BaseFragmentHolder
 import com.view.ui.godlikeroot.EVENT_DETAILS_SCREEN
 import com.view.ui.godlikeroot.EVENT_LIST_SCREEN
 import com.view.ui.modules.auth.login.LoginFragment
@@ -12,9 +11,7 @@ import com.view.ui.modules.content.eventdetails.EventDetailsFragment
 import com.view.ui.modules.content.eventlist.EventListFragment
 
 
-class ContentFragmentHolder(context: Activity, fragmentContainerId: Int) : BaseModule(
-        context,
-        fragmentContainerId) {
+class ContentFragmentHolder : BaseFragmentHolder() {
     override fun createFragment(screenKey: String?, data: Any?,
                                 initialInitialAction: InitialAction): Fragment {
         val fragment: Fragment

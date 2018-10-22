@@ -16,7 +16,7 @@ import com.InitialAction.DEFAULT
 import com.view.R
 import com.view.base.activity.BaseActivity
 import com.view.base.view.HasProgress
-import com.view.ui.modules.auth.AuthModuleFragmentHolder
+import com.view.ui.modules.auth.AuthFragmentHolderFragmentHolder
 import com.view.ui.modules.auth.REGISTRATION_SCREEN
 import com.view.ui.modules.content.ContentFragmentHolder
 import kotlinx.android.synthetic.main.activity_root.*
@@ -50,10 +50,8 @@ class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
     }
 
     private lateinit var mToggle: ActionBarDrawerToggle
-    private var mAuthModuleHolder: AuthModuleFragmentHolder = AuthModuleFragmentHolder(this,
-                                                                                       fragmentContainerViewId)
-    private var mContentHolder: ContentFragmentHolder = ContentFragmentHolder(this,
-                                                                              fragmentContainerViewId)
+    private var mAuthModuleHolder: AuthFragmentHolderFragmentHolder = AuthFragmentHolderFragmentHolder()
+    private var mContentHolder: ContentFragmentHolder = ContentFragmentHolder()
     override val navigator: Navigator
         get() = mNavigator
 

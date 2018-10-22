@@ -1,18 +1,15 @@
 package com.view.ui.modules.auth
 
-import android.app.Activity
 import android.support.v4.app.Fragment
 import com.InitialAction
-import com.view.base.module.BaseModule
+import com.view.base.module.BaseFragmentHolder
 import com.view.ui.modules.auth.login.LoginFragment
 import com.view.ui.modules.auth.login.configurator.LoginFragmentAction
 import com.view.ui.modules.auth.register.RegistrationFragment
 import com.view.ui.modules.auth.register.configurator.RegistrationFragmentAction
 
 
-open class AuthModuleFragmentHolder(context: Activity, fragmentContainerId: Int) : BaseModule(
-        context,
-        fragmentContainerId) {
+open class AuthFragmentHolderFragmentHolder : BaseFragmentHolder() {
 
     override fun createFragment(screenKey: String?, data: Any?,
                                 initialInitialAction: InitialAction): Fragment {
