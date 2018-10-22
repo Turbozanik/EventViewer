@@ -7,11 +7,21 @@ import com.view.ui.modules.profile.userprofile.UserProfileFragmentState
 class UserProfileFragmentConfigurator : BaseFragmentConfigurator<UserProfileFragmentAction, UserProfileFragmentState, UserProfileFragmentViewCommand>() {
     override fun produceViewCommand(viewState: UserProfileFragmentState,
                                     action: UserProfileFragmentAction): UserProfileFragmentViewCommand {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return when (action) {
+
+            UserProfileFragmentAction.INITIAL_ACTION_DEFAULT -> {
+                UserProfileFragmentViewCommand.DEFAULT
+            }
+        }
     }
 
     override fun saveAction(action: UserProfileFragmentAction,
                             viewState: UserProfileFragmentState) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        if (action.mIsInitialAction) {
+            viewState.mInitialAction = action
+            viewState.actionList.add(action)
+        } else {
+            viewState.actionList.add(action)
+        }
     }
 }
