@@ -1,4 +1,4 @@
-package com.view.base.view
+package com.view.widgets
 
 import android.content.Context
 import android.content.res.TypedArray
@@ -55,6 +55,11 @@ class ValidatableInputLayout : TextInputLayout {
 
     fun isValid(): Boolean {
         return when (validationType) {
+//                <enum name="NONE" value="0" />
+//                <enum name="EMAIL" value="1" />
+//                <enum name="PASSWORD" value="2" />
+//                <enum name="USER_NAME" value="3" />
+//                <enum name="SURE_NAME" value="4" />
             0 -> true
             1 -> validateEmail()
             2 -> validatePassword()

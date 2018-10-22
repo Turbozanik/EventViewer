@@ -49,7 +49,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/nameLayout" />
 
-        <com.view.base.view.ValidatableInputLayout
+        <com.view.widgets.ValidatableInputLayout
             android:id="@+id/nameLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
                 android:hint="@string/hint_registration_name"
                 android:inputType="textCapWords"
                 android:singleLine="true" />
-        </com.view.base.view.ValidatableInputLayout>
+        </com.view.widgets.ValidatableInputLayout>
 
         <ImageView
             android:id="@+id/ivNickname"
@@ -79,7 +79,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/nicknameLayout" />
 
-        <com.view.base.view.ValidatableInputLayout
+        <com.view.widgets.ValidatableInputLayout
             android:id="@+id/nicknameLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
                 android:hint="@string/hint_registration_nickname"
                 android:inputType="textCapWords"
                 android:singleLine="true" />
-        </com.view.base.view.ValidatableInputLayout>
+        </com.view.widgets.ValidatableInputLayout>
 
         <ImageView
             android:id="@+id/ivEmail"
@@ -111,7 +111,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/mEmailLayout" />
 
-        <com.view.base.view.ValidatableInputLayout
+        <com.view.widgets.ValidatableInputLayout
             android:id="@+id/mEmailLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -129,7 +129,7 @@
                 android:hint="@string/hint_email"
                 android:inputType="text"
                 android:singleLine="true" />
-        </com.view.base.view.ValidatableInputLayout>
+        </com.view.widgets.ValidatableInputLayout>
 
         <ImageView
             android:id="@+id/ivBirthday"
@@ -142,7 +142,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/birthdayLayout" />
 
-        <com.view.base.view.ValidatableInputLayout
+        <com.view.widgets.ValidatableInputLayout
             android:id="@+id/birthdayLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -160,7 +160,7 @@
                 android:hint="@string/hint_registration_birthday"
                 android:inputType="text"
                 android:singleLine="true" />
-        </com.view.base.view.ValidatableInputLayout>
+        </com.view.widgets.ValidatableInputLayout>
 
         <ImageView
             android:id="@+id/ivLock"
@@ -173,7 +173,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/passwordLayout" />
 
-        <com.view.base.view.ValidatableInputLayout
+        <com.view.widgets.ValidatableInputLayout
             android:id="@+id/passwordLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -190,7 +190,7 @@
                 android:hint="@string/hint_password"
                 android:inputType="textPassword"
                 android:singleLine="true" />
-        </com.view.base.view.ValidatableInputLayout>
+        </com.view.widgets.ValidatableInputLayout>
 
         <ImageView
             android:id="@+id/ivRepeatLock"
@@ -203,7 +203,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/mRepeatPasswordLayout" />
 
-        <com.view.base.view.ValidatableInputLayout
+        <com.view.widgets.ValidatableInputLayout
             android:id="@+id/mRepeatPasswordLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -220,7 +220,7 @@
                 android:hint="@string/hint_registration_repeat_password"
                 android:inputType="textPassword"
                 android:singleLine="true" />
-        </com.view.base.view.ValidatableInputLayout>
+        </com.view.widgets.ValidatableInputLayout>
 
         <Button
             android:id="@+id/mBtnRegister"

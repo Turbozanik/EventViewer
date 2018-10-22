@@ -1,46 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<AppSwipeRefresh xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mSwipeRefresh"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/mIvSorting">
 
-    <ImageView
-        android:id="@+id/mIvSorting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/gray"
-        android:src="@drawable/ic_sort_black_36dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <View
-        android:id="@+id/mSortingDivider"
-        android:layout_width="1dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="@dimen/dp8"
-        android:background="@color/black"
-        app:layout_constraintBottom_toBottomOf="@id/mIvSorting"
-        app:layout_constraintEnd_toStartOf="@+id/mIvSorting"
-        app:layout_constraintTop_toTopOf="@id/mIvSorting" />
+        <ImageView
+            android:id="@+id/mIvSorting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/gray"
+            android:src="@drawable/ic_sort_black_36dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/mSpinnerTypeSort"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="@dimen/dp8"
-        android:background="@drawable/bg_spinner"
-        app:layout_constraintBottom_toBottomOf="@+id/mIvSorting"
-        app:layout_constraintEnd_toStartOf="@+id/mSortingDivider"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <View
+            android:id="@+id/mSortingDivider"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/dp8"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/mIvSorting"
+            app:layout_constraintEnd_toStartOf="@+id/mIvSorting"
+            app:layout_constraintTop_toTopOf="@id/mIvSorting" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/mRvEventList"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mIvSorting" />
+        <Spinner
+            android:id="@+id/mSpinnerTypeSort"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/dp8"
+            android:background="@drawable/bg_spinner"
+            app:layout_constraintBottom_toBottomOf="@+id/mIvSorting"
+            app:layout_constraintEnd_toStartOf="@+id/mSortingDivider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</android.support.constraint.ConstraintLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mRvEventList"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mIvSorting" />
+    </android.support.constraint.ConstraintLayout>
+</AppSwipeRefresh>
