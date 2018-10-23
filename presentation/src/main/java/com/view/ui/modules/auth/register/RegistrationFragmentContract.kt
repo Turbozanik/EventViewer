@@ -11,7 +11,9 @@ import com.view.ui.modules.auth.register.configurator.RegistrationFragmentConfig
 
 interface RegistrationFragmentContract : BasePresenterContract {
 
-    data class RegistrationInfo(var email: String, var password: String)
+    data class RegistrationInfo(var mane: String, var nickamne: String, var email: String,
+                                var birthday: String, var password: String,
+                                var repeatPassword: String)
 
     data class RegistrationFragmentDto(var registrationInfo: RegistrationInfo,
                                        val shouldSaveCredentials: Boolean)

@@ -8,6 +8,7 @@ import com.FRAGMENT_DATA_KEY
 import com.view.R
 import com.view.ui.godlikeroot.RootGodlikeActivity
 import com.view.ui.modules.auth.register.configurator.RegistrationFragmentAction
+import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_ragistration.*
 import java.util.*
 import javax.inject.Inject
@@ -64,7 +65,8 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
 
     override fun getViewData(): RegistrationFragmentContract.RegistrationFragmentDto {
         return RegistrationFragmentContract.RegistrationFragmentDto(
-                RegistrationFragmentContract.RegistrationInfo("", ""), true)
+                RegistrationFragmentContract.RegistrationInfo("", "", "", "", "", ""),
+                mCbSaveCredentials.isChecked)
     }
 
     override fun goToEventsFragment() {
