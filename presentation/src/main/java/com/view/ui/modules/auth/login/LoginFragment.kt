@@ -86,11 +86,9 @@ class LoginFragment : LoginFragmentContract.LoginFragment() {
                 BiFunction { isEmailValid: Boolean, isPasswordValid: Boolean ->
                     isEmailValid && isPasswordValid
                 })
-        addDisposable(mValidationObservable
-                              .subscribe({ isValid: Boolean ->
-                                             mIsFormValid = isValid
-                                         },
-                                         { Timber.e("Error") }))
+        addDisposable(
+                mValidationObservable.subscribe({ isValid: Boolean -> mIsFormValid = isValid },
+                                                { Timber.e("Error") }))
     }
 
     private fun initPasswordEditText() {
