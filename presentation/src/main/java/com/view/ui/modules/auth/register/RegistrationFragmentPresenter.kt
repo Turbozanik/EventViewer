@@ -39,7 +39,7 @@ class RegistrationFragmentPresenter @Inject constructor() : RegistrationFragment
     }
 
     private fun register() {
-        getView()?.goToEventsFragment()
+        view?.goToEventsFragment()
 //        val credentials = getView()?.getViewData()?.registrationInfo
 //        val body: Map<String, String?> = hashMapOf(
 //                "email" to credentials?.email,

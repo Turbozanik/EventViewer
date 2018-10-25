@@ -28,15 +28,6 @@ interface RegistrationFragmentContract : BasePresenterContract {
 
     abstract class RegistrationFragmentPresenter : BaseFragmentPresenter<RegistrationFragmentConfigurator, RegistrationFragmentAction, RegistrationFragmentView>()
 
-    abstract class RegistrationFragment : PresenterFragment<RegistrationFragmentPresenter>(), ActionProducer<RegistrationFragmentAction>, RegistrationFragmentView {
-
-        override fun initView() {
-            attachView()
-        }
-
-        private fun attachView() {
-            this.presenter.attachView(this)
-        }
-    }
+    abstract class RegistrationFragment : PresenterFragment<RegistrationFragmentView, RegistrationFragmentPresenter>(), ActionProducer<RegistrationFragmentAction>, RegistrationFragmentView
 
 }

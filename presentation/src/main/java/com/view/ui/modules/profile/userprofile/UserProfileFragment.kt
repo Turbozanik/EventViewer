@@ -6,17 +6,15 @@ import com.view.ui.modules.content.eventlist.adapter.EventListAdapter
 import com.view.ui.modules.profile.userprofile.configurator.UserProfileFragmentAction
 import kotlinx.android.synthetic.main.fragment_event_list.*
 import kotlinx.android.synthetic.main.fragment_user_profile.*
-import javax.inject.Inject
 
 
 class UserProfileFragment : UserProfileFragmentContract.UserProfileFragment() {
 
-    @Inject
-    lateinit var mPresenter: UserProfileFragmentPresenter
-    private lateinit var mAdapter: EventListAdapter
+    override fun createPresenter(): UserProfileFragmentContract.UserProfileFragmentPresenter {
+        return UserProfileFragmentPresenter()
+    }
 
-    override val presenter: UserProfileFragmentContract.UserProfileFragmentPresenter
-        get() = mPresenter
+    private lateinit var mAdapter: EventListAdapter
 
     override fun inject() {
         daggerController.userProfileFragmentSubComponent?.inject(this)
@@ -47,7 +45,6 @@ class UserProfileFragment : UserProfileFragmentContract.UserProfileFragment() {
     }
 
     override fun initView() {
-        super.initView()
         initAdapter()
     }
 

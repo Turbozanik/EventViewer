@@ -1,5 +1,6 @@
 package com.view.base.presenter
 
+import com.hannesdorfmann.mosby3.mvp.MvpBasePresenter
 import com.utils.BgExecutors
 import com.view.base.configurator.ActionConsumer
 import com.view.base.configurator.BaseFragmentConfigurator
@@ -11,24 +12,17 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-abstract class BaseFragmentPresenter<ActionConfigurator : BaseFragmentConfigurator<*, *, *>, ConsumedActionType, ViewType : BaseView> : ActionConsumer<ConsumedActionType> {
+abstract class BaseFragmentPresenter<ActionConfigurator : BaseFragmentConfigurator<*, *, *>, ConsumedActionType, ViewType : BaseView> : ActionConsumer<ConsumedActionType>, MvpBasePresenter<ViewType>() {
 
     private val mCompositeDisposable = CompositeDisposable()
-    protected var mView: ViewType? = null
 
     private val mConfigurator: ActionConfigurator? = null
 
     protected abstract fun intiConfigurator(): ActionConfigurator
 
-    fun attachView(view: ViewType) {
-        mView = view
-    }
-
-    fun getView(): ViewType? = mView
-
-    fun detachView() {
+    override fun detachView() {
+        super.detachView()
         mCompositeDisposable.clear()
-        mView = null
     }
 
     protected fun addDisposable(disposable: Disposable) {

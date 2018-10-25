@@ -1,5 +1,6 @@
 package com.view.base.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.support.annotation.CallSuper
 import android.support.annotation.LayoutRes
@@ -30,6 +31,22 @@ abstract class BaseFragment : Fragment() {
     protected val modulesNavigator: ModulesNavigator
         get() = (activity as BaseActivity).modulesNavigator
 
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        addCurrentSubComponent()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        inject()
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        removeCurrentSubComponent()
+    }
+
     @CallSuper
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -52,6 +69,12 @@ abstract class BaseFragment : Fragment() {
     protected abstract fun updateToolbar()
 
     protected abstract fun handleInitialAction()
+
+    protected abstract fun inject()
+
+    protected abstract fun addCurrentSubComponent()
+
+    protected abstract fun removeCurrentSubComponent()
 
     protected fun getUserKeeper(): UserKeeper {
         return (activity as BaseActivity).userKeeper

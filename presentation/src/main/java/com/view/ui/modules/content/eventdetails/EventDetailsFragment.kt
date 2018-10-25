@@ -7,10 +7,13 @@ import com.view.R
 import com.view.ui.godlikeroot.RootGodlikeActivity
 import com.view.ui.modules.content.eventdetails.configurator.EventDetailsFragmentAction
 import kotlinx.android.synthetic.main.fragment_event_details.*
-import javax.inject.Inject
 
 
 class EventDetailsFragment : EventDetailsFragmentContract.EventDetailsFragment() {
+
+    override fun createPresenter(): EventDetailsFragmentContract.EventDetailsFragmentPresenter {
+        return EventDetailsFragmentPresenter()
+    }
 
     companion object {
         fun createNewInstance(): EventDetailsFragment {
@@ -24,14 +27,7 @@ class EventDetailsFragment : EventDetailsFragmentContract.EventDetailsFragment()
         }
     }
 
-    @Inject
-    lateinit var mPresenter: EventDetailsFragmentPresenter
-
-    override val presenter: EventDetailsFragmentContract.EventDetailsFragmentPresenter
-        get() = mPresenter
-
     override fun initView() {
-        super.initView()
         mTvTitle.text = "Title"
         mTvDescription.text = "Description text"
         mTvAddress.text = getString(R.string.address_format, "Kolasa 51/2")

@@ -1,50 +1,23 @@
 package com.view.base.fragment
 
-import android.content.Context
-import android.os.Bundle
-import com.view.base.presenter.BaseFragmentPresenter
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter
 import com.view.base.view.BaseView
 import com.view.ui.godlikeroot.RootGodlikeActivity
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
-abstract class PresenterFragment<PresenterType : BaseFragmentPresenter<*, *, *>> : BaseFragment(), BaseView {
+abstract class PresenterFragment<ViewType : BaseView, PresenterType : MvpPresenter<ViewType>> : BaseMvpFragment<ViewType, PresenterType>(), BaseView {
 
     private val compositeSubscription = CompositeDisposable()
 
     override fun onDestroyView() {
         super.onDestroyView()
-        presenter.detachView()
         compositeSubscription.clear()
-    }
-
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-        addCurrentSubComponent()
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        inject()
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        removeCurrentSubComponent()
     }
 
     protected fun addDisposable(disposable: Disposable) {
         compositeSubscription.add(disposable)
     }
-
-
-    protected abstract val presenter: PresenterType
-
-    protected abstract fun inject()
-
-    protected abstract fun addCurrentSubComponent()
-
-    protected abstract fun removeCurrentSubComponent()
 
     override fun showProgress() {
         (activity as RootGodlikeActivity).showProgress()

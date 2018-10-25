@@ -25,14 +25,5 @@ interface EventDetailsFragmentContract : BasePresenterContract {
         }
     }
 
-    abstract class EventDetailsFragment : PresenterFragment<EventDetailsFragmentPresenter>(), EventDetailsFragmentView, ActionProducer<EventDetailsFragmentAction> {
-
-        override fun initView() {
-            attachView()
-        }
-
-        private fun attachView() {
-            this.presenter.attachView(this)
-        }
-    }
+    abstract class EventDetailsFragment : PresenterFragment<EventDetailsFragmentView, EventDetailsFragmentPresenter>(), EventDetailsFragmentView, ActionProducer<EventDetailsFragmentAction>
 }

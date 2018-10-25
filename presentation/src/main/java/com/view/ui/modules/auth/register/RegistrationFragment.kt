@@ -11,10 +11,13 @@ import com.view.ui.modules.auth.register.configurator.RegistrationFragmentAction
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_ragistration.*
 import java.util.*
-import javax.inject.Inject
 
 
 class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment() {
+
+    override fun createPresenter(): RegistrationFragmentContract.RegistrationFragmentPresenter {
+        return RegistrationFragmentPresenter()
+    }
 
     companion object {
         fun createNewInstance(): RegistrationFragment {
@@ -28,8 +31,6 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
         }
     }
 
-    @Inject
-    lateinit var mPresenter: RegistrationFragmentPresenter
     private lateinit var datePickerDialog: DatePickerDialog
 
     override fun inject() {
@@ -48,19 +49,13 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
         get() = R.layout.fragment_ragistration
 
     override fun initView() {
-        super.initView()
         initEtBirthday()
         initEtRepeatPassword()
         initRegisterButton()
     }
 
-    override val presenter: RegistrationFragmentPresenter
-        get() {
-            return mPresenter
-        }
-
     override fun sendAction(action: RegistrationFragmentAction?) {
-        mPresenter.consumeAction(action)
+        presenter.consumeAction(action)
     }
 
     override fun getViewData(): RegistrationFragmentContract.RegistrationFragmentDto {

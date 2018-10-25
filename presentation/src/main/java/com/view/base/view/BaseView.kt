@@ -1,6 +1,8 @@
 package com.view.base.view
 
-interface BaseView {
+import com.hannesdorfmann.mosby3.mvp.MvpView
+
+interface BaseView : MvpView {
 
     fun showProgress()
 

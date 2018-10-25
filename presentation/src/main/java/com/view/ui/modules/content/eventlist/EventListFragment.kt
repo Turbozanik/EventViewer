@@ -9,12 +9,13 @@ import com.view.ui.godlikeroot.RootGodlikeActivity
 import com.view.ui.modules.content.eventlist.adapter.EventListAdapter
 import com.view.ui.modules.content.eventlist.configurator.EventListFragmentAction
 import kotlinx.android.synthetic.main.fragment_event_list.*
-import javax.inject.Inject
 
 class EventListFragment : EventListFragmentContract.EventListFragment() {
 
-    @Inject
-    protected lateinit var mFragmentPresenter: EventListFragmentPresenter
+    override fun createPresenter(): EventListFragmentContract.EventListPresenter {
+        return EventListFragmentPresenter()
+    }
+
     private lateinit var mAdapter: EventListAdapter
 
     companion object {
@@ -29,15 +30,11 @@ class EventListFragment : EventListFragmentContract.EventListFragment() {
         }
     }
 
-    override val presenter: EventListFragmentContract.EventListPresenter
-        get() = mFragmentPresenter
-
     override fun inject() {
         daggerController.eventListFragmentSubComponent?.inject(this)
     }
 
     override fun initView() {
-        super.initView()
         initAdapter()
         initRecyclerView()
         initSwipeRefreshLayout()
@@ -76,7 +73,7 @@ class EventListFragment : EventListFragmentContract.EventListFragment() {
     }
 
     override fun sendAction(action: EventListFragmentAction?) {
-        mFragmentPresenter.consumeAction(action)
+        presenter.consumeAction(action)
     }
 
     private fun initAdapter() {

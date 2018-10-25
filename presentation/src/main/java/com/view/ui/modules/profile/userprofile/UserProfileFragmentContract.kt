@@ -22,15 +22,6 @@ interface UserProfileFragmentContract : BasePresenterContract {
 
     abstract class UserProfileFragmentPresenter : BaseFragmentPresenter<UserProfileFragmentConfigurator, UserProfileFragmentAction, UserProfileFragmentView>()
 
-    abstract class UserProfileFragment : PresenterFragment<UserProfileFragmentPresenter>(), ActionProducer<UserProfileFragmentAction>, UserProfileFragmentView {
-
-        override fun initView() {
-            attachView()
-        }
-
-        private fun attachView() {
-            this.presenter.attachView(this)
-        }
-    }
+    abstract class UserProfileFragment : PresenterFragment<UserProfileFragmentView, UserProfileFragmentPresenter>(), ActionProducer<UserProfileFragmentAction>, UserProfileFragmentView {}
 
 }

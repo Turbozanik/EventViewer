@@ -30,15 +30,6 @@ interface LoginFragmentContract : BasePresenterContract {
         }
     }
 
-    abstract class LoginFragment : PresenterFragment<LoginFragmentPresenter>(), LoginFragmentView, ActionProducer<LoginFragmentAction> {
-
-        override fun initView() {
-            attachView()
-        }
-
-        private fun attachView() {
-            this.presenter.attachView(this)
-        }
-    }
+    abstract class LoginFragment : PresenterFragment<LoginFragmentView, LoginFragmentPresenter>(), LoginFragmentView, ActionProducer<LoginFragmentAction>
 
 }

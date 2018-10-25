@@ -12,12 +12,13 @@ import io.reactivex.Observable
 import io.reactivex.functions.BiFunction
 import kotlinx.android.synthetic.main.fragment_login.*
 import timber.log.Timber
-import javax.inject.Inject
 
 class LoginFragment : LoginFragmentContract.LoginFragment() {
 
-    @Inject
-    lateinit var mPresenter: LoginFragmentPresenter
+    override fun createPresenter(): LoginFragmentContract.LoginFragmentPresenter {
+        return LoginFragmentPresenter()
+    }
+
     private lateinit var mValidationObservable: Observable<Boolean>
     private var mIsFormValid: Boolean = false
     private var mGso: GoogleSignInOptions? = null
@@ -50,7 +51,6 @@ class LoginFragment : LoginFragmentContract.LoginFragment() {
         get() = R.layout.fragment_login
 
     override fun initView() {
-        super.initView()
         initPasswordEditText()
         initSignInFieldsValidation()
         initSignInButton()
@@ -59,11 +59,6 @@ class LoginFragment : LoginFragmentContract.LoginFragment() {
             sendAction(LoginFragmentAction.NOT_REGISTERED_CLICK)
         }
     }
-
-    override val presenter: LoginFragmentPresenter
-        get() {
-            return mPresenter
-        }
 
     override fun sendAction(action: LoginFragmentAction?) {
         mPresenter.consumeAction(action)
