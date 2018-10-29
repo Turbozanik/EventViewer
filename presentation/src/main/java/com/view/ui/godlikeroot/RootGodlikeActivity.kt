@@ -24,6 +24,7 @@ import kotlinx.android.synthetic.main.activity_root_content.*
 import kotlinx.android.synthetic.main.activity_root_with_toolbar.*
 import ru.terrakok.cicerone.Navigator
 
+
 class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, HasProgress {
 
     private val mNavigator = object : FragmentNavigator(supportFragmentManager,
@@ -57,6 +58,8 @@ class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
 
     override fun initView() {
         setSupportActionBar(mToolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeButtonEnabled(true)
 
         mToggle = ActionBarDrawerToggle(this, mDrawerLayout, mToolbar,
                                         R.string.navigation_drawer_open,
