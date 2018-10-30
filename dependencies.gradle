@@ -34,7 +34,7 @@ ext {
     googleAuth = '15.0.1'
     googleAppIndexing = '16.0.2'
     roundedImageView = '2.3.0'
-    mosby = "3.1.0"
+    moxy = "1.5.5"
 
     //Annotations
     javaxAnnotationVersion = '1.0'
@@ -78,7 +78,7 @@ ext {
             googleAuth                    : "com.google.android.gms:play-services-auth:${googleAuth}",
             googleAppIndexing             : "com.google.firebase:firebase-appindexing:${googleAppIndexing}",
             roundedImageView              : "com.makeramen:roundedimageview:${roundedImageView}",
-            mosby                         : "com.hannesdorfmann.mosby3:mvp:${mosby}"
+            moxy                          : "com.arello-mobile:moxy-compiler:${moxy}"
     ]
 
     domainDependencies = [

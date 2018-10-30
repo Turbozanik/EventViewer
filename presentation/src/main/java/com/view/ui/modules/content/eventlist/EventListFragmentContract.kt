@@ -28,6 +28,6 @@ interface EventListFragmentContract : BasePresenterContract {
         }
     }
 
-    abstract class EventListFragment : PresenterFragment<EventListFragmentView, EventListPresenter>(), EventListFragmentView, ActionProducer<EventListFragmentAction>
+    abstract class EventListFragment : PresenterFragment(), EventListFragmentView, ActionProducer<EventListFragmentAction>
 
 }

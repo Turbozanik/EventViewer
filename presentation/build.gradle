@@ -66,7 +66,7 @@ dependencies {
     implementation presentationDependencies.rxandroid
     implementation presentationDependencies.rxrelay
     implementation presentationDependencies.kotlin
-    implementation presentationDependencies.mosby
+    implementation presentationDependencies.moxy
     implementation dataDependencies.okhttp
     implementation(presentationDependencies.permissionsDispatcher) {
         // if you don't use android.app.Fragment you can exclude support for them

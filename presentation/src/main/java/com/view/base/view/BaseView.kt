@@ -1,6 +1,6 @@
 package com.view.base.view
 
-import com.hannesdorfmann.mosby3.mvp.MvpView
+import com.arellomobile.mvp.MvpView
 
 interface BaseView : MvpView {
 
