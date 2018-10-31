@@ -3,6 +3,8 @@ package com.view.ui.modules.profile.userprofile
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.PresenterType
 import com.view.R
+import com.view.base.configurator.ActionProducer
+import com.view.base.fragment.PresenterFragment
 import com.view.ui.godlikeroot.RootGodlikeActivity
 import com.view.ui.modules.content.eventlist.adapter.EventListAdapter
 import com.view.ui.modules.profile.userprofile.configurator.UserProfileFragmentAction
@@ -10,7 +12,7 @@ import kotlinx.android.synthetic.main.fragment_event_list.*
 import kotlinx.android.synthetic.main.fragment_user_profile.*
 
 
-class UserProfileFragment : UserProfileFragmentContract.UserProfileFragment() {
+class UserProfileFragment : PresenterFragment(), ActionProducer<UserProfileFragmentAction, UserProfileFragmentContract.UserProfileFragmentDto>, UserProfileFragmentView {
 
     @InjectPresenter(type = PresenterType.LOCAL)
     lateinit var mPresenter: UserProfileFragmentPresenter

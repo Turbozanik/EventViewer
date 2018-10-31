@@ -3,6 +3,7 @@ package com.view.ui.modules.auth.register
 import com.arellomobile.mvp.InjectViewState
 import com.domain.usecase.net.registration.RegisterUserCase
 import com.domain.usecase.prefs.user.SaveUserToSharedPrefsUseCase
+import com.view.base.presenter.BaseFragmentPresenter
 import com.view.ui.modules.auth.register.configurator.RegistrationFragmentAction
 import com.view.ui.modules.auth.register.configurator.RegistrationFragmentConfigurator
 import com.view.ui.modules.auth.register.configurator.RegistrationFragmentViewCommand
@@ -11,7 +12,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @InjectViewState
-class RegistrationFragmentPresenter @Inject constructor() : RegistrationFragmentContract.RegistrationFragmentPresenter() {
+class RegistrationFragmentPresenter : BaseFragmentPresenter<RegistrationFragmentConfigurator, RegistrationFragmentAction, RegistrationFragmentContract.RegistrationFragmentDto, RegistrationFragmentView>() {
 
     @Inject
     protected lateinit var mRegistrationUserCase: RegisterUserCase

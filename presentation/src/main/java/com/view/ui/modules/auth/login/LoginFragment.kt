@@ -8,6 +8,8 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.PresenterType
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.view.R
+import com.view.base.configurator.ActionProducer
+import com.view.base.fragment.PresenterFragment
 import com.view.ui.godlikeroot.RootGodlikeActivity
 import com.view.ui.modules.auth.login.configurator.LoginFragmentAction
 import io.reactivex.Observable
@@ -15,7 +17,7 @@ import io.reactivex.functions.BiFunction
 import kotlinx.android.synthetic.main.fragment_login.*
 import timber.log.Timber
 
-class LoginFragment : LoginFragmentContract.LoginFragment() {
+class LoginFragment : PresenterFragment(), LoginFragmentView, ActionProducer<LoginFragmentAction, LoginFragmentContract.LoginFragmentDto> {
 
     @InjectPresenter(type = PresenterType.LOCAL)
     lateinit var mPresenter: LoginFragmentPresenter

@@ -8,6 +8,8 @@ import com.FRAGMENT_DATA_KEY
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.PresenterType
 import com.view.R
+import com.view.base.configurator.ActionProducer
+import com.view.base.fragment.PresenterFragment
 import com.view.ui.godlikeroot.RootGodlikeActivity
 import com.view.ui.modules.auth.register.RegistrationFragmentContract.RegistrationFragmentDto
 import com.view.ui.modules.auth.register.configurator.RegistrationFragmentAction
@@ -15,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_ragistration.*
 import java.util.*
 
 
-class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment() {
+class RegistrationFragment : PresenterFragment(), ActionProducer<RegistrationFragmentAction, RegistrationFragmentDto>, RegistrationFragmentView {
 
     @InjectPresenter(type = PresenterType.LOCAL)
     lateinit var mPresenter: RegistrationFragmentPresenter

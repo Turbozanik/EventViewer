@@ -7,6 +7,7 @@ import com.domain.usecase.prefs.user.GetUserEmailUseCase
 import com.domain.usecase.prefs.user.GetUserPasswordUseCase
 import com.domain.usecase.prefs.user.SaveUserToSharedPrefsUseCase
 import com.utils.DefaultErrorConsumer
+import com.view.base.presenter.BaseFragmentPresenter
 import com.view.ui.modules.auth.login.configurator.LoginFragmentAction
 import com.view.ui.modules.auth.login.configurator.LoginFragmentConfigurator
 import com.view.ui.modules.auth.login.configurator.LoginFragmentViewCommand
@@ -16,7 +17,7 @@ import io.reactivex.functions.BiFunction
 import javax.inject.Inject
 
 @InjectViewState
-class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.LoginFragmentPresenter() {
+class LoginFragmentPresenter : BaseFragmentPresenter<LoginFragmentConfigurator, LoginFragmentAction, LoginFragmentContract.LoginFragmentDto, LoginFragmentView>() {
 
     @Inject
     protected lateinit var mLoginUseCase: LoginUseCase

@@ -6,6 +6,8 @@ import com.FRAGMENT_DATA_KEY
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.PresenterType
 import com.view.R
+import com.view.base.configurator.ActionProducer
+import com.view.base.fragment.PresenterFragment
 import com.view.base.view.OnScrolledToEndListener
 import com.view.ui.godlikeroot.RootGodlikeActivity
 import com.view.ui.modules.content.eventlist.adapter.EventListAdapter
@@ -13,7 +15,7 @@ import com.view.ui.modules.content.eventlist.configurator.EventListFragmentActio
 import kotlinx.android.synthetic.main.fragment_event_list.*
 
 
-class EventListFragment : EventListFragmentContract.EventListFragment() {
+class EventListFragment : PresenterFragment(), EventListFragmentView, ActionProducer<EventListFragmentAction, EventListFragmentContract.EventListFragmentDto> {
 
     @InjectPresenter(type = PresenterType.LOCAL)
     lateinit var mPresenter: EventListFragmentPresenter

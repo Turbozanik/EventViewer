@@ -6,12 +6,14 @@ import com.FRAGMENT_DATA_KEY
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.PresenterType
 import com.view.R
+import com.view.base.configurator.ActionProducer
+import com.view.base.fragment.PresenterFragment
 import com.view.ui.godlikeroot.RootGodlikeActivity
 import com.view.ui.modules.content.eventdetails.configurator.EventDetailsFragmentAction
 import kotlinx.android.synthetic.main.fragment_event_details.*
 
 
-class EventDetailsFragment : EventDetailsFragmentContract.EventDetailsFragment() {
+class EventDetailsFragment : PresenterFragment(), EventDetailsFragmentView, ActionProducer<EventDetailsFragmentAction, EventDetailsFragmentContract.EventDetailsFragmentDto> {
 
     @InjectPresenter(type = PresenterType.LOCAL)
     lateinit var mPresenter: EventDetailsFragmentPresenter
@@ -54,10 +56,6 @@ class EventDetailsFragment : EventDetailsFragmentContract.EventDetailsFragment()
 
     override val layoutId: Int
         get() = R.layout.fragment_event_details
-
-    override fun getViewData(): EventDetailsFragmentContract.EventDetailsFragmentDto {
-        return EventDetailsFragmentContract.EventDetailsFragmentDto(false)
-    }
 
     override fun sendActionAndData(action: EventDetailsFragmentAction?,
                                    data: EventDetailsFragmentContract.EventDetailsFragmentDto?) {
