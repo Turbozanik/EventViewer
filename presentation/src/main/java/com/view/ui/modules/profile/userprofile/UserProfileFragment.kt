@@ -1,5 +1,7 @@
 package com.view.ui.modules.profile.userprofile
 
+import com.arellomobile.mvp.presenter.InjectPresenter
+import com.arellomobile.mvp.presenter.PresenterType
 import com.view.R
 import com.view.ui.godlikeroot.RootGodlikeActivity
 import com.view.ui.modules.content.eventlist.adapter.EventListAdapter
@@ -10,10 +12,9 @@ import kotlinx.android.synthetic.main.fragment_user_profile.*
 
 class UserProfileFragment : UserProfileFragmentContract.UserProfileFragment() {
 
-    override fun createPresenter(): UserProfileFragmentContract.UserProfileFragmentPresenter {
-        return UserProfileFragmentPresenter()
-    }
-
+    @InjectPresenter(type = PresenterType.LOCAL)
+    lateinit var mPresenter: UserProfileFragmentPresenter
+    val presenter: UserProfileFragmentPresenter get() = mPresenter
     private lateinit var mAdapter: EventListAdapter
 
     override fun inject() {
@@ -52,13 +53,9 @@ class UserProfileFragment : UserProfileFragmentContract.UserProfileFragment() {
         mAdapter = EventListAdapter()
     }
 
-    override fun sendAction(action: UserProfileFragmentAction?) {
-        presenter.consumeAction(action)
-    }
-
-    override fun getViewData(): UserProfileFragmentContract.UserProfileFragmentDto {
-        return UserProfileFragmentContract.UserProfileFragmentDto(
-                UserProfileFragmentContract.UserProfileInfo("", ""))
+    override fun sendActionAndData(action: UserProfileFragmentAction?,
+                                   data: UserProfileFragmentContract.UserProfileFragmentDto?) {
+        presenter.consumeActionAndData(action, data)
     }
 
     override fun showProgress() {

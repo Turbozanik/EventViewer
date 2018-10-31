@@ -5,19 +5,21 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.inputmethod.EditorInfo
 import com.FRAGMENT_DATA_KEY
+import com.arellomobile.mvp.presenter.InjectPresenter
+import com.arellomobile.mvp.presenter.PresenterType
 import com.view.R
 import com.view.ui.godlikeroot.RootGodlikeActivity
+import com.view.ui.modules.auth.register.RegistrationFragmentContract.RegistrationFragmentDto
 import com.view.ui.modules.auth.register.configurator.RegistrationFragmentAction
-import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_ragistration.*
 import java.util.*
 
 
 class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment() {
 
-    override fun createPresenter(): RegistrationFragmentContract.RegistrationFragmentPresenter {
-        return RegistrationFragmentPresenter()
-    }
+    @InjectPresenter(type = PresenterType.LOCAL)
+    lateinit var mPresenter: RegistrationFragmentPresenter
+    val presenter: RegistrationFragmentPresenter get() = mPresenter
 
     companion object {
         fun createNewInstance(): RegistrationFragment {
@@ -54,14 +56,9 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
         initRegisterButton()
     }
 
-    override fun sendAction(action: RegistrationFragmentAction?) {
-        presenter.consumeAction(action)
-    }
-
-    override fun getViewData(): RegistrationFragmentContract.RegistrationFragmentDto {
-        return RegistrationFragmentContract.RegistrationFragmentDto(
-                RegistrationFragmentContract.RegistrationInfo("", "", "", "", "", ""),
-                mCbSaveCredentials.isChecked)
+    override fun sendActionAndData(action: RegistrationFragmentAction?,
+                                   data: RegistrationFragmentDto?) {
+        presenter.consumeActionAndData(action, data)
     }
 
     override fun goToEventsFragment() {
@@ -71,8 +68,9 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
     private fun initEtRepeatPassword() {
         mEtRepeatPassword.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                sendAction(
-                        RegistrationFragmentAction.REGISTER)
+//                sendActionAndData(
+//                        RegistrationFragmentAction.REGISTER, RegistrationFragmentDto(
+//                        RegistrationFragmentContract.RegistrationInfo(mEtName.)))
             }
             false
         }
@@ -99,7 +97,7 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
 
     private fun initRegisterButton() {
         mBtnRegister.setOnClickListener {
-            sendAction(RegistrationFragmentAction.REGISTER)
+            sendActionAndData(RegistrationFragmentAction.REGISTER, null)
         }
     }
 

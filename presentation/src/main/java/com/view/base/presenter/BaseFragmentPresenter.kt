@@ -1,6 +1,5 @@
 package com.view.base.presenter
 
-import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.utils.BgExecutors
 import com.view.base.configurator.ActionConsumer
@@ -13,8 +12,8 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-@InjectViewState
-abstract class BaseFragmentPresenter<ActionConfigurator : BaseFragmentConfigurator<*, *, *>, ConsumedActionType, ViewType : BaseView> : ActionConsumer<ConsumedActionType>, MvpPresenter<ViewType>() {
+
+abstract class BaseFragmentPresenter<ActionConfigurator : BaseFragmentConfigurator<*, *, *>, ConsumedActionType, ConsmedDataType, ViewType : BaseView> : ActionConsumer<ConsumedActionType, ConsmedDataType>, MvpPresenter<ViewType>() {
 
     private val mCompositeDisposable = CompositeDisposable()
 

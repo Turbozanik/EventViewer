@@ -1,5 +1,6 @@
 package com.view.ui.modules.auth.register
 
+import com.arellomobile.mvp.InjectViewState
 import com.domain.usecase.net.registration.RegisterUserCase
 import com.domain.usecase.prefs.user.SaveUserToSharedPrefsUseCase
 import com.view.ui.modules.auth.register.configurator.RegistrationFragmentAction
@@ -9,7 +10,7 @@ import com.watchers.keepers.UserKeeper
 import timber.log.Timber
 import javax.inject.Inject
 
-
+@InjectViewState
 class RegistrationFragmentPresenter @Inject constructor() : RegistrationFragmentContract.RegistrationFragmentPresenter() {
 
     @Inject
@@ -25,7 +26,8 @@ class RegistrationFragmentPresenter @Inject constructor() : RegistrationFragment
         return RegistrationFragmentConfigurator()
     }
 
-    override fun consumeAction(action: RegistrationFragmentAction?) {
+    override fun consumeActionAndData(action: RegistrationFragmentAction?,
+                                      data: RegistrationFragmentContract.RegistrationFragmentDto?) {
         if (action != null) {
             when (actionConfigurator.produceViewCommand(mRegistrationFragmentState, action)) {
                 RegistrationFragmentViewCommand.DEFAULT -> {
@@ -39,7 +41,7 @@ class RegistrationFragmentPresenter @Inject constructor() : RegistrationFragment
     }
 
     private fun register() {
-        view?.goToEventsFragment()
+        viewState.goToEventsFragment()
 //        val credentials = getView()?.getViewData()?.registrationInfo
 //        val body: Map<String, String?> = hashMapOf(
 //                "email" to credentials?.email,

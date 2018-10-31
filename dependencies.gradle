@@ -13,7 +13,7 @@ ext {
 
     //Libraries
     androidSupport = '27.1.1'
-    constraintLayout = '1.1.2'
+    constraintLayout = '1.1.3'
     multidex = '1.0.3'
     cicerone = '2.1.0'
     dagger = '2.15'
@@ -78,7 +78,8 @@ ext {
             googleAuth                    : "com.google.android.gms:play-services-auth:${googleAuth}",
             googleAppIndexing             : "com.google.firebase:firebase-appindexing:${googleAppIndexing}",
             roundedImageView              : "com.makeramen:roundedimageview:${roundedImageView}",
-            moxy                          : "com.arello-mobile:moxy-compiler:${moxy}"
+            moxy                          : "com.arello-mobile:moxy:${moxy}",
+            moxyCompiler                  : "com.arello-mobile:moxy-compiler:${moxy}"
     ]
 
     domainDependencies = [

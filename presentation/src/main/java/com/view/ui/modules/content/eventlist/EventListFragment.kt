@@ -3,6 +3,8 @@ package com.view.ui.modules.content.eventlist
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.FRAGMENT_DATA_KEY
+import com.arellomobile.mvp.presenter.InjectPresenter
+import com.arellomobile.mvp.presenter.PresenterType
 import com.view.R
 import com.view.base.view.OnScrolledToEndListener
 import com.view.ui.godlikeroot.RootGodlikeActivity
@@ -10,11 +12,12 @@ import com.view.ui.modules.content.eventlist.adapter.EventListAdapter
 import com.view.ui.modules.content.eventlist.configurator.EventListFragmentAction
 import kotlinx.android.synthetic.main.fragment_event_list.*
 
+
 class EventListFragment : EventListFragmentContract.EventListFragment() {
 
-    override fun createPresenter(): EventListFragmentContract.EventListPresenter {
-        return EventListFragmentPresenter()
-    }
+    @InjectPresenter(type = PresenterType.LOCAL)
+    lateinit var mPresenter: EventListFragmentPresenter
+    val presenter: EventListFragmentPresenter get() = mPresenter
 
     private lateinit var mAdapter: EventListAdapter
 
@@ -46,14 +49,14 @@ class EventListFragment : EventListFragmentContract.EventListFragment() {
         mRvEventList.addOnScrollListener(object : OnScrolledToEndListener(mEventListSwipeRefresh,
                                                                           mAdapter) {
             override fun onScrolledToEnd() {
-                sendAction(EventListFragmentAction.LOAD_MORE_EVENTS)
+                sendActionAndData(EventListFragmentAction.LOAD_MORE_EVENTS, null)
             }
         })
     }
 
     private fun initSwipeRefreshLayout() {
         mEventListSwipeRefresh.setOnRefreshListener {
-            sendAction(EventListFragmentAction.RELOAD_EVENTS)
+            sendActionAndData(EventListFragmentAction.RELOAD_EVENTS, null)
         }
     }
 
@@ -68,12 +71,9 @@ class EventListFragment : EventListFragmentContract.EventListFragment() {
     override val layoutId: Int
         get() = R.layout.fragment_event_list
 
-    override fun getViewData(): EventListFragmentContract.EventListFragmentDto {
-        return EventListFragmentContract.EventListFragmentDto(false)
-    }
-
-    override fun sendAction(action: EventListFragmentAction?) {
-        presenter.consumeAction(action)
+    override fun sendActionAndData(action: EventListFragmentAction?,
+                                   data: EventListFragmentContract.EventListFragmentDto?) {
+        presenter.consumeActionAndData(action, data)
     }
 
     private fun initAdapter() {

@@ -1,10 +1,12 @@
 package com.view.ui.modules.content.eventlist
 
+import com.arellomobile.mvp.InjectViewState
 import com.view.ui.modules.content.eventlist.configurator.EventListFragmentAction
 import com.view.ui.modules.content.eventlist.configurator.EventListFragmentConfigurator
 import com.view.ui.modules.content.eventlist.configurator.EventListFragmentViewCommand
 import javax.inject.Inject
 
+@InjectViewState
 class EventListFragmentPresenter @Inject constructor() : EventListFragmentContract.EventListPresenter() {
 
     private val mEventListFragmentState: EventListFragmentState = EventListFragmentState()
@@ -13,7 +15,8 @@ class EventListFragmentPresenter @Inject constructor() : EventListFragmentContra
         return EventListFragmentConfigurator()
     }
 
-    override fun consumeAction(action: EventListFragmentAction?) {
+    override fun consumeActionAndData(action: EventListFragmentAction?,
+                                      data: EventListFragmentContract.EventListFragmentDto?) {
         if (action != null) {
             when (actionConfigurator.produceViewCommand(mEventListFragmentState, action)) {
                 EventListFragmentViewCommand.DEFAULT -> TODO()

@@ -1,8 +1,8 @@
 package com.view.base.configurator
 
 
-interface ActionProducer<ActionType> {
+interface ActionProducer<ActionType, DataType> {
 
-    fun sendAction(action: ActionType?)
+    fun sendActionAndData(action: ActionType?, data: DataType?)
 
 }

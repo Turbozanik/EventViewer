@@ -14,20 +14,18 @@ interface EventListFragmentContract : BasePresenterContract {
 
     interface EventListFragmentView : BaseView {
 
-        fun getViewData(): EventListFragmentDto
-
         fun onMoreEventsLoaded()
 
         fun onEventsReloaded()
 
     }
 
-    abstract class EventListPresenter : BaseFragmentPresenter<EventListFragmentConfigurator, EventListFragmentAction, EventListFragmentView>() {
+    abstract class EventListPresenter : BaseFragmentPresenter<EventListFragmentConfigurator, EventListFragmentAction, EventListFragmentDto, EventListFragmentView>() {
         init {
             this.intiConfigurator()
         }
     }
 
-    abstract class EventListFragment : PresenterFragment(), EventListFragmentView, ActionProducer<EventListFragmentAction>
+    abstract class EventListFragment : PresenterFragment(), EventListFragmentView, ActionProducer<EventListFragmentAction, EventListFragmentDto>
 
 }

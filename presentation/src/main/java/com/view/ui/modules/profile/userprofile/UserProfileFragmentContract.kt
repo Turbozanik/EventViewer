@@ -14,14 +14,10 @@ interface UserProfileFragmentContract : BasePresenterContract {
 
     data class UserProfileFragmentDto(var userProfileInfo: UserProfileInfo)
 
-    interface UserProfileFragmentView : BaseView {
+    interface UserProfileFragmentView : BaseView
 
-        fun getViewData(): UserProfileFragmentDto
+    abstract class UserProfileFragmentPresenter : BaseFragmentPresenter<UserProfileFragmentConfigurator, UserProfileFragmentAction, UserProfileFragmentDto, UserProfileFragmentView>()
 
-    }
-
-    abstract class UserProfileFragmentPresenter : BaseFragmentPresenter<UserProfileFragmentConfigurator, UserProfileFragmentAction, UserProfileFragmentView>()
-
-    abstract class UserProfileFragment : PresenterFragment<UserProfileFragmentView, UserProfileFragmentPresenter>(), ActionProducer<UserProfileFragmentAction>, UserProfileFragmentView {}
+    abstract class UserProfileFragment : PresenterFragment(), ActionProducer<UserProfileFragmentAction, UserProfileFragmentDto>, UserProfileFragmentView
 
 }

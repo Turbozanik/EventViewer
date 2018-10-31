@@ -1,5 +1,6 @@
 package com.view.ui.modules.auth.login
 
+import com.arellomobile.mvp.InjectViewState
 import com.domain.models.UserDto
 import com.domain.usecase.net.login.LoginUseCase
 import com.domain.usecase.prefs.user.GetUserEmailUseCase
@@ -14,7 +15,7 @@ import io.reactivex.Flowable
 import io.reactivex.functions.BiFunction
 import javax.inject.Inject
 
-
+@InjectViewState
 class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.LoginFragmentPresenter() {
 
     @Inject
@@ -28,34 +29,25 @@ class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.Login
     @Inject
     protected lateinit var mUserKeeper: UserKeeper
 
-    private var loginFragmentData: LoginFragmentContract.LoginFragmentDto? = null
-
     private val mLoginFragmentState: LoginFragmentState = LoginFragmentState()
-
-    override fun attachView(view: LoginFragmentContract.LoginFragmentView) {
-        super.attachView(view)
-        ifViewAttached { loginFragmentData = it.getViewData() }
-    }
 
     override fun intiConfigurator(): LoginFragmentConfigurator {
         return LoginFragmentConfigurator()
     }
 
-    override fun consumeAction(action: LoginFragmentAction?) {
+    override fun consumeActionAndData(action: LoginFragmentAction?,
+                                      data: LoginFragmentContract.LoginFragmentDto?) {
         if (action != null) {
             when (actionConfigurator.produceViewCommand(mLoginFragmentState, action)) {
                 LoginFragmentViewCommand.LOGIN -> {
-                    ifViewAttached { loginFragmentData = it.getViewData() }
-                    login(loginFragmentData?.userCredentials)
+                    login(data?.userCredentials)
                 }
                 LoginFragmentViewCommand.LOGIN_WITH_SAVED_CREDENTIALS -> {
-                    ifViewAttached { loginFragmentData = it.getViewData() }
-                    loginFragmentData?.userCredentials = getUserCredentialsFromSharedPrefs()
-                    login(loginFragmentData?.userCredentials)
+                    login(getUserCredentialsFromSharedPrefs())
                 }
                 LoginFragmentViewCommand.DEFAULT -> TODO()
                 LoginFragmentViewCommand.GOT_TO_REGISTRATION -> {
-                    ifViewAttached { it.goToRegistrationFragment() }
+                    viewState.goToRegistrationFragment()
                 }
             }
         }
@@ -74,7 +66,7 @@ class LoginFragmentPresenter @Inject constructor() : LoginFragmentContract.Login
                                     .setParams(Pair(userDto.mUserName, userDto.mUserSecondName))
                                     .execute()
                         }.subscribe(
-                                { ifViewAttached { view: LoginFragmentContract.LoginFragmentView -> view.goToRegistrationFragment() } },
+                                { viewState.goToRegistrationFragment() },
                                 { DefaultErrorConsumer() })
         )
     }

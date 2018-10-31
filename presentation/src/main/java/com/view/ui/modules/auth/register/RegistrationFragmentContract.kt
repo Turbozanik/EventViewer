@@ -20,14 +20,12 @@ interface RegistrationFragmentContract : BasePresenterContract {
 
     interface RegistrationFragmentView : BaseView {
 
-        fun getViewData(): RegistrationFragmentDto
-
         fun goToEventsFragment()
 
     }
 
-    abstract class RegistrationFragmentPresenter : BaseFragmentPresenter<RegistrationFragmentConfigurator, RegistrationFragmentAction, RegistrationFragmentView>()
+    abstract class RegistrationFragmentPresenter : BaseFragmentPresenter<RegistrationFragmentConfigurator, RegistrationFragmentAction, RegistrationFragmentDto, RegistrationFragmentView>()
 
-    abstract class RegistrationFragment : PresenterFragment<RegistrationFragmentView, RegistrationFragmentPresenter>(), ActionProducer<RegistrationFragmentAction>, RegistrationFragmentView
+    abstract class RegistrationFragment : PresenterFragment(), ActionProducer<RegistrationFragmentAction, RegistrationFragmentDto>, RegistrationFragmentView
 
 }

@@ -3,6 +3,8 @@ package com.view.ui.modules.content.eventdetails
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.FRAGMENT_DATA_KEY
+import com.arellomobile.mvp.presenter.InjectPresenter
+import com.arellomobile.mvp.presenter.PresenterType
 import com.view.R
 import com.view.ui.godlikeroot.RootGodlikeActivity
 import com.view.ui.modules.content.eventdetails.configurator.EventDetailsFragmentAction
@@ -11,9 +13,9 @@ import kotlinx.android.synthetic.main.fragment_event_details.*
 
 class EventDetailsFragment : EventDetailsFragmentContract.EventDetailsFragment() {
 
-    override fun createPresenter(): EventDetailsFragmentContract.EventDetailsFragmentPresenter {
-        return EventDetailsFragmentPresenter()
-    }
+    @InjectPresenter(type = PresenterType.LOCAL)
+    lateinit var mPresenter: EventDetailsFragmentPresenter
+    val presenter: EventDetailsFragmentPresenter get() = mPresenter
 
     companion object {
         fun createNewInstance(): EventDetailsFragment {
@@ -57,8 +59,9 @@ class EventDetailsFragment : EventDetailsFragmentContract.EventDetailsFragment()
         return EventDetailsFragmentContract.EventDetailsFragmentDto(false)
     }
 
-    override fun sendAction(action: EventDetailsFragmentAction?) {
-        presenter.consumeAction(action)
+    override fun sendActionAndData(action: EventDetailsFragmentAction?,
+                                   data: EventDetailsFragmentContract.EventDetailsFragmentDto?) {
+        presenter.consumeActionAndData(action, data)
     }
 
     override fun updateToolbar() {

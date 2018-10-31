@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.inputmethod.EditorInfo
 import com.FRAGMENT_DATA_KEY
+import com.arellomobile.mvp.presenter.InjectPresenter
+import com.arellomobile.mvp.presenter.PresenterType
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.view.R
 import com.view.ui.godlikeroot.RootGodlikeActivity
@@ -15,10 +17,9 @@ import timber.log.Timber
 
 class LoginFragment : LoginFragmentContract.LoginFragment() {
 
-    override fun createPresenter(): LoginFragmentContract.LoginFragmentPresenter {
-        return LoginFragmentPresenter()
-    }
-
+    @InjectPresenter(type = PresenterType.LOCAL)
+    lateinit var mPresenter: LoginFragmentPresenter
+    val presenter: LoginFragmentPresenter get() = mPresenter
     private lateinit var mValidationObservable: Observable<Boolean>
     private var mIsFormValid: Boolean = false
     private var mGso: GoogleSignInOptions? = null
@@ -56,18 +57,13 @@ class LoginFragment : LoginFragmentContract.LoginFragment() {
         initSignInButton()
         initGoogleSignIn()
         mTvNotRegistered.setOnClickListener {
-            sendAction(LoginFragmentAction.NOT_REGISTERED_CLICK)
+            sendActionAndData(LoginFragmentAction.NOT_REGISTERED_CLICK, null)
         }
     }
 
-    override fun sendAction(action: LoginFragmentAction?) {
-        mPresenter.consumeAction(action)
-    }
-
-    override fun getViewData(): LoginFragmentContract.LoginFragmentDto {
-        return LoginFragmentContract.LoginFragmentDto(LoginFragmentContract.UserCredentials(
-                mEtEmail.text.toString(), mEtPassword.text.toString()),
-                                                      mCbSaveCredentials.isChecked)
+    override fun sendActionAndData(action: LoginFragmentAction?,
+                                   data: LoginFragmentContract.LoginFragmentDto?) {
+        mPresenter.consumeActionAndData(action, data)
     }
 
     override fun goToRegistrationFragment() {
@@ -89,7 +85,7 @@ class LoginFragment : LoginFragmentContract.LoginFragment() {
     private fun initPasswordEditText() {
         mEtPassword?.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                sendAction(LoginFragmentAction.LOGIN_CLICK)
+                tryToLogin()
             }
             false
         }
@@ -99,8 +95,7 @@ class LoginFragment : LoginFragmentContract.LoginFragment() {
         mBtnSignIn.setOnClickListener {
             mEmailInputLayout.validate()
             mPasswordLayout.validate()
-            if (mIsFormValid)
-                sendAction(LoginFragmentAction.LOGIN_CLICK)
+            tryToLogin()
         }
     }
 
@@ -117,10 +112,25 @@ class LoginFragment : LoginFragmentContract.LoginFragment() {
     override fun handleInitialAction() {
         when (initialAction as LoginFragmentAction?) {
             LoginFragmentAction.LOGIN_WITH_SAVED_CREDENTIALS -> {
-                sendAction(LoginFragmentAction.LOGIN_WITH_SAVED_CREDENTIALS)
+                sendActionAndData(LoginFragmentAction.LOGIN_WITH_SAVED_CREDENTIALS, null)
             }
             else -> {
             }
+        }
+    }
+
+    private fun sendLoginAction() {
+        sendActionAndData(LoginFragmentAction.LOGIN_CLICK,
+                          LoginFragmentContract.LoginFragmentDto(
+                                  LoginFragmentContract.UserCredentials(
+                                          mEtEmail.text.toString(),
+                                          mEtPassword.text.toString()),
+                                  mCbSaveCredentials.isChecked))
+    }
+
+    private fun tryToLogin() {
+        if (mIsFormValid) {
+            sendLoginAction()
         }
     }
 

@@ -18,18 +18,16 @@ interface LoginFragmentContract : BasePresenterContract {
 
     interface LoginFragmentView : BaseView {
 
-        fun getViewData(): LoginFragmentDto
-
         fun goToRegistrationFragment()
 
     }
 
-    abstract class LoginFragmentPresenter : BaseFragmentPresenter<LoginFragmentConfigurator, LoginFragmentAction, LoginFragmentView>() {
+    abstract class LoginFragmentPresenter : BaseFragmentPresenter<LoginFragmentConfigurator, LoginFragmentAction, LoginFragmentDto, LoginFragmentView>() {
         init {
             this.intiConfigurator()
         }
     }
 
-    abstract class LoginFragment : PresenterFragment<LoginFragmentView, LoginFragmentPresenter>(), LoginFragmentView, ActionProducer<LoginFragmentAction>
+    abstract class LoginFragment : PresenterFragment(), LoginFragmentView, ActionProducer<LoginFragmentAction, LoginFragmentDto>
 
 }

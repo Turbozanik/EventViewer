@@ -13,17 +13,17 @@ interface EventDetailsFragmentContract : BasePresenterContract {
 
     data class EventDetailsFragmentDto(var dummy: Boolean)
 
-    interface EventDetailsFragmentView : BaseView {
+    interface EventDetailsFragmentView : BaseView
 
-        fun getViewData(): EventDetailsFragmentDto
-
-    }
-
-    abstract class EventDetailsFragmentPresenter : BaseFragmentPresenter<EventDetailsFragmentConfigurator, EventDetailsFragmentAction, EventDetailsFragmentView>() {
+    abstract class EventDetailsFragmentPresenter : BaseFragmentPresenter<EventDetailsFragmentConfigurator, EventDetailsFragmentAction, EventDetailsFragmentDto, EventDetailsFragmentView>() {
         init {
             this.intiConfigurator()
         }
     }
 
-    abstract class EventDetailsFragment : PresenterFragment<EventDetailsFragmentView, EventDetailsFragmentPresenter>(), EventDetailsFragmentView, ActionProducer<EventDetailsFragmentAction>
+    abstract class EventDetailsFragment : PresenterFragment(), EventDetailsFragmentView, ActionProducer<EventDetailsFragmentAction, EventDetailsFragmentDto> {
+
+        abstract fun getViewData(): EventDetailsFragmentDto
+
+    }
 }
