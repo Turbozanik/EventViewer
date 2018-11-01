@@ -9,8 +9,8 @@
     <dimen name="swipe_refresh_end_offset">64dp</dimen>
 
     <!--Constraint content borders-->
-    <dimen name="left_side_content_margin">0.05</dimen>
-    <dimen name="right_side_content_margin">0.95</dimen>
+    <dimen name="left_side_content_margin">0.045</dimen>
+    <dimen name="right_side_content_margin">0.955</dimen>
     <dimen name="top_side_content_margin">0.05</dimen>
     <dimen name="bottom_side_content_margin">0.95</dimen>
     <dimen name="default_button_width_in_percents">0.6</dimen>

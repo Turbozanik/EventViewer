@@ -46,7 +46,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/nameLayout"
             app:layout_constraintEnd_toStartOf="@+id/nameLayout"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
             app:layout_constraintTop_toTopOf="@+id/nameLayout" />
 
         <com.view.widgets.ValidatableInputLayout
@@ -54,10 +54,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:counterOverflowTextAppearance="@style/TextLimitError"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
             app:layout_constraintStart_toEndOf="@id/ivName"
-            app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalTop"
-            app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents">
+            app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalTop">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/mEtName"
@@ -76,7 +75,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/nicknameLayout"
             app:layout_constraintEnd_toStartOf="@+id/nicknameLayout"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
             app:layout_constraintTop_toTopOf="@+id/nicknameLayout" />
 
         <com.view.widgets.ValidatableInputLayout
@@ -84,10 +83,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp16"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
             app:layout_constraintStart_toEndOf="@id/ivNickname"
-            app:layout_constraintTop_toBottomOf="@+id/nameLayout"
-            app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents">
+            app:layout_constraintTop_toBottomOf="@+id/nameLayout">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/mEtNickname"
@@ -107,8 +105,7 @@
             app:layout_constraintEnd_toStartOf="@+id/mEmailLayout"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toEndOf="@+id/guidelineVerticalLeft"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
             app:layout_constraintTop_toTopOf="@+id/mEmailLayout" />
 
         <com.view.widgets.ValidatableInputLayout
@@ -116,10 +113,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp16"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
             app:layout_constraintStart_toEndOf="@+id/ivEmail"
-            app:layout_constraintTop_toBottomOf="@+id/nicknameLayout"
-            app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents">
+            app:layout_constraintTop_toBottomOf="@+id/nicknameLayout">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/mEtEmail"
@@ -139,7 +135,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/birthdayLayout"
             app:layout_constraintEnd_toStartOf="@+id/birthdayLayout"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
             app:layout_constraintTop_toTopOf="@+id/birthdayLayout" />
 
         <com.view.widgets.ValidatableInputLayout
@@ -147,10 +143,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp16"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
             app:layout_constraintStart_toEndOf="@id/ivBirthday"
-            app:layout_constraintTop_toBottomOf="@+id/mEmailLayout"
-            app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents">
+            app:layout_constraintTop_toBottomOf="@+id/mEmailLayout">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/mEtBirthday"
@@ -170,7 +165,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/passwordLayout"
             app:layout_constraintEnd_toStartOf="@+id/passwordLayout"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
             app:layout_constraintTop_toTopOf="@+id/passwordLayout" />
 
         <com.view.widgets.ValidatableInputLayout
@@ -178,10 +173,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp16"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
             app:layout_constraintStart_toEndOf="@id/ivLock"
-            app:layout_constraintTop_toBottomOf="@+id/birthdayLayout"
-            app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents">
+            app:layout_constraintTop_toBottomOf="@+id/birthdayLayout">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/mEtPassword"
@@ -200,7 +194,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/mRepeatPasswordLayout"
             app:layout_constraintEnd_toStartOf="@+id/mRepeatPasswordLayout"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
             app:layout_constraintTop_toTopOf="@+id/mRepeatPasswordLayout" />
 
         <com.view.widgets.ValidatableInputLayout
@@ -208,10 +202,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp16"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
             app:layout_constraintStart_toEndOf="@id/ivRepeatLock"
-            app:layout_constraintTop_toBottomOf="@+id/passwordLayout"
-            app:layout_constraintWidth_percent="@dimen/default_button_width_in_percents">
+            app:layout_constraintTop_toBottomOf="@+id/passwordLayout">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/mEtRepeatPassword"
