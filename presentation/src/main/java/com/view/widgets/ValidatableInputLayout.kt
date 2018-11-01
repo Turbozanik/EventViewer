@@ -3,24 +3,17 @@ package com.view.widgets
 import android.content.Context
 import android.content.res.TypedArray
 import android.support.design.widget.TextInputLayout
-import android.text.Editable
 import android.util.AttributeSet
-import com.DEFAULT_INPUT_DEBOUNCE
-import com.utils.DefaultTextWatcher
 import com.utils.ValidationUtils
 import com.view.R
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.subjects.PublishSubject
-import java.util.concurrent.TimeUnit
 
 
-class ValidatableInputLayout : TextInputLayout {
+open class ValidatableInputLayout : TextInputLayout {
 
     private lateinit var mAttrs: AttributeSet
     private lateinit var ta: TypedArray
     private var validationType: Int = 0
     private var errorStringResId: Int = 0
-    private var updatesPublisher: PublishSubject<Boolean>? = null
 
     constructor(context: Context) : super(context)
 
@@ -34,16 +27,12 @@ class ValidatableInputLayout : TextInputLayout {
     }
 
 
-    private fun initView() {
+    protected open fun initView() {
         validationType = ta.getInt(R.styleable.ValidatableInputLayout_validationType, 0)
         errorStringResId = ta.getResourceId(R.styleable.ValidatableInputLayout_errorStringRes, 0)
-        initUpdatesPublisher()
-        post {
-            initEditTextWatcher()
-        }
     }
 
-    private fun init(attrs: AttributeSet) {
+    protected fun init(attrs: AttributeSet) {
         mAttrs = attrs
         try {
             ta = context.obtainStyledAttributes(mAttrs, R.styleable.ValidatableInputLayout, 0, 0)
@@ -53,13 +42,13 @@ class ValidatableInputLayout : TextInputLayout {
         }
     }
 
+    //<enum name="NONE" value="0" />
+//<enum name="EMAIL" value="1" />
+//<enum name="PASSWORD" value="2" />
+//<enum name="USER_NAME" value="3" />
+//<enum name="SURE_NAME" value="4" />
     fun isValid(): Boolean {
         return when (validationType) {
-//                <enum name="NONE" value="0" />
-//                <enum name="EMAIL" value="1" />
-//                <enum name="PASSWORD" value="2" />
-//                <enum name="USER_NAME" value="3" />
-//                <enum name="SURE_NAME" value="4" />
             0 -> true
             1 -> validateEmail()
             2 -> validatePassword()
@@ -71,40 +60,16 @@ class ValidatableInputLayout : TextInputLayout {
         }
     }
 
-    private fun validateEmail(): Boolean {
+    protected fun validateEmail(): Boolean {
         val isValid = ValidationUtils.validateEmail(editText?.text.toString())
         error = if (errorStringResId != 0 && !isValid) context.getString(errorStringResId) else null
         return isValid
     }
 
-    private fun validatePassword(): Boolean {
+    protected fun validatePassword(): Boolean {
         val isValid = ValidationUtils.validatePassword(editText?.text.toString())
         error = if (errorStringResId != 0 && !isValid) context.getString(errorStringResId) else null
         return isValid
     }
-
-
-    private fun initUpdatesPublisher() {
-        updatesPublisher = PublishSubject.create()
-        updatesPublisher?.debounce(DEFAULT_INPUT_DEBOUNCE, TimeUnit.MILLISECONDS)
-                ?.observeOn(AndroidSchedulers.mainThread())
-    }
-
-    private fun initEditTextWatcher() {
-        editText?.addTextChangedListener(object : DefaultTextWatcher() {
-            override fun afterTextChanged(editable: Editable) {
-                updatesPublisher?.onNext(isValid())
-            }
-        })
-    }
-
-    internal fun validate() {
-        updatesPublisher?.onNext(isValid())
-    }
-
-    fun getValidityObservable(): PublishSubject<Boolean>? {
-        return updatesPublisher
-    }
-
 
 }
