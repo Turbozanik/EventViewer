@@ -24,13 +24,4 @@ class LoginFragmentConfigurator : BaseFragmentConfigurator<LoginFragmentAction, 
         }
     }
 
-    override fun saveAction(action: LoginFragmentAction, viewState: LoginFragmentState) {
-        if (action.mIsInitialState) {
-            viewState.mInitialAction = action
-            viewState.actionList.add(action)
-        } else {
-            viewState.actionList.add(action)
-        }
-    }
-
 }
