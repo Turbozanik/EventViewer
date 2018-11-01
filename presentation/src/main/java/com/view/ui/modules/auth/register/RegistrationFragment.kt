@@ -68,9 +68,15 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
     private fun initEtRepeatPassword() {
         mEtRepeatPassword.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-//                sendActionAndData(
-//                        RegistrationFragmentAction.REGISTER, RegistrationFragmentDto(
-//                        RegistrationFragmentContract.RegistrationInfo(mEtName.)))
+                sendActionAndData(
+                        RegistrationFragmentAction.REGISTER, RegistrationFragmentDto(
+                        RegistrationFragmentContract.RegistrationInfo(mEtName.text.toString(),
+                                                                      mEtNickname.text.toString(),
+                                                                      mEtEmail.text.toString(),
+                                                                      mEtBirthday.text.toString(),
+                                                                      mEtPassword.text.toString(),
+                                                                      mEtPassword.text.toString()),
+                        true))
             }
             false
         }
