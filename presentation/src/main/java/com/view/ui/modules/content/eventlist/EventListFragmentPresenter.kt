@@ -1,13 +1,12 @@
 package com.view.ui.modules.content.eventlist
 
 import com.arellomobile.mvp.InjectViewState
-import com.view.base.presenter.BaseFragmentPresenter
 import com.view.ui.modules.content.eventlist.configurator.EventListFragmentAction
 import com.view.ui.modules.content.eventlist.configurator.EventListFragmentConfigurator
 import com.view.ui.modules.content.eventlist.configurator.EventListFragmentViewCommand
 
 @InjectViewState
-class EventListFragmentPresenter : BaseFragmentPresenter<EventListFragmentConfigurator, EventListFragmentAction, EventListFragmentContract.EventListFragmentDto, EventListFragmentView>() {
+class EventListFragmentPresenter : EventListFragmentContract.EventListPresenter() {
 
     private val mEventListFragmentState: EventListFragmentState = EventListFragmentState()
 

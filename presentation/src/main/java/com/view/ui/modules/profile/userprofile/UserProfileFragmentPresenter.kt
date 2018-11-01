@@ -1,13 +1,12 @@
 package com.view.ui.modules.profile.userprofile
 
 import com.arellomobile.mvp.InjectViewState
-import com.view.base.presenter.BaseFragmentPresenter
 import com.view.ui.modules.profile.userprofile.configurator.UserProfileFragmentAction
 import com.view.ui.modules.profile.userprofile.configurator.UserProfileFragmentConfigurator
 
 
 @InjectViewState
-class UserProfileFragmentPresenter : BaseFragmentPresenter<UserProfileFragmentConfigurator, UserProfileFragmentAction, UserProfileFragmentContract.UserProfileFragmentDto, UserProfileFragmentView>() {
+class UserProfileFragmentPresenter : UserProfileFragmentContract.UserProfileFragmentPresenter() {
 
     override fun intiConfigurator(): UserProfileFragmentConfigurator {
         return UserProfileFragmentConfigurator()

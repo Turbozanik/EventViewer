@@ -6,14 +6,12 @@ import com.FRAGMENT_DATA_KEY
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.PresenterType
 import com.view.R
-import com.view.base.configurator.ActionProducer
-import com.view.base.fragment.PresenterFragment
 import com.view.ui.godlikeroot.RootGodlikeActivity
 import com.view.ui.modules.content.eventdetails.configurator.EventDetailsFragmentAction
 import kotlinx.android.synthetic.main.fragment_event_details.*
 
 
-class EventDetailsFragment : PresenterFragment(), EventDetailsFragmentView, ActionProducer<EventDetailsFragmentAction, EventDetailsFragmentContract.EventDetailsFragmentDto> {
+class EventDetailsFragment : EventDetailsFragmentContract.EventDetailsFragment() {
 
     @InjectPresenter(type = PresenterType.LOCAL)
     lateinit var mPresenter: EventDetailsFragmentPresenter

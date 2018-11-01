@@ -1,14 +1,13 @@
 package com.view.ui.modules.content.eventdetails
 
 import com.arellomobile.mvp.InjectViewState
-import com.view.base.presenter.BaseFragmentPresenter
 import com.view.ui.modules.content.eventdetails.configurator.EventDetailsFragmentAction
 import com.view.ui.modules.content.eventdetails.configurator.EventDetailsFragmentConfigurator
 import com.view.ui.modules.content.eventdetails.configurator.EventDetailsFragmentViewCommand
 import timber.log.Timber
 
 @InjectViewState
-class EventDetailsFragmentPresenter : BaseFragmentPresenter<EventDetailsFragmentConfigurator, EventDetailsFragmentAction, EventDetailsFragmentContract.EventDetailsFragmentDto, EventDetailsFragmentView>() {
+class EventDetailsFragmentPresenter : EventDetailsFragmentContract.EventDetailsFragmentPresenter() {
 
     private val mEventDetailsFragmentState: EventDetailsFragmentState = EventDetailsFragmentState()
 
