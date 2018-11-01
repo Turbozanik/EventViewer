@@ -16,7 +16,7 @@ import com.InitialAction.DEFAULT
 import com.view.R
 import com.view.base.activity.BaseActivity
 import com.view.base.view.HasProgress
-import com.view.ui.modules.auth.AuthFragmentHolderFragmentHolder
+import com.view.ui.modules.auth.AuthFragmentFragmentHolder
 import com.view.ui.modules.auth.REGISTRATION_SCREEN
 import com.view.ui.modules.content.ContentFragmentHolder
 import kotlinx.android.synthetic.main.activity_root.*
@@ -51,7 +51,7 @@ class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
     }
 
     private lateinit var mToggle: ActionBarDrawerToggle
-    private var mAuthModuleHolder: AuthFragmentHolderFragmentHolder = AuthFragmentHolderFragmentHolder()
+    private var mAuthModuleHolder: AuthFragmentFragmentHolder = AuthFragmentFragmentHolder()
     private var mContentHolder: ContentFragmentHolder = ContentFragmentHolder()
     override val navigator: Navigator
         get() = mNavigator
@@ -197,6 +197,11 @@ class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
 
     fun startRootActivityEventListFragmentChain(data: Bundle?) {
         createNewChain(EVENT_LIST_SCREEN, data)
+    }
+
+    fun goToAllEventsScreen(data: Bundle?) {
+        mNavView.setCheckedItem(R.id.all)
+        onNavigationItemSelected(mNavView.menu.findItem(R.id.all))
     }
 
 }

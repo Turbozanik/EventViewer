@@ -5,7 +5,7 @@ import com.view.ui.godlikeroot.RootGodlikeActivity
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
-abstract class PresenterFragment : BaseFragment(), BaseView {
+abstract class PresenterFragment : MvpFragment(), BaseView {
 
     private val compositeSubscription = CompositeDisposable()
 

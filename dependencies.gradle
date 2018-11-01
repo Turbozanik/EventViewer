@@ -8,7 +8,7 @@ allprojects {
 
 ext {
     //Kolin
-    kotlinVersion = '1.2.61'
+    kotlinVersion = '1.3.0'
     annotationProcessorValueVersion = '1.5.2'
 
     //Libraries
@@ -79,6 +79,7 @@ ext {
             googleAppIndexing             : "com.google.firebase:firebase-appindexing:${googleAppIndexing}",
             roundedImageView              : "com.makeramen:roundedimageview:${roundedImageView}",
             moxy                          : "com.arello-mobile:moxy:${moxy}",
+            moxyAndroid                   : "com.arello-mobile:moxy-android:${moxy}",
             moxyCompiler                  : "com.arello-mobile:moxy-compiler:${moxy}"
     ]
 

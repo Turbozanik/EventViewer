@@ -7,6 +7,7 @@ import com.view.ui.modules.auth.register.configurator.RegistrationFragmentAction
 import com.view.ui.modules.auth.register.configurator.RegistrationFragmentConfigurator
 import com.view.ui.modules.auth.register.configurator.RegistrationFragmentViewCommand
 import com.watchers.keepers.UserKeeper
+import io.reactivex.Flowable
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -41,7 +42,9 @@ class RegistrationFragmentPresenter : RegistrationFragmentContract.RegistrationF
     }
 
     private fun register() {
-        viewState.goToEventsFragment()
+        addDisposable(inBackground(Flowable.just("A").map { Thread.sleep(2000) }).subscribe {
+            viewState.goToEventsFragment()
+        })
 //        val credentials = getView()?.getViewData()?.registrationInfo
 //        val body: Map<String, String?> = hashMapOf(
 //                "email" to credentials?.email,

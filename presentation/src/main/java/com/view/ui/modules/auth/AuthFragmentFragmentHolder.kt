@@ -9,7 +9,7 @@ import com.view.ui.modules.auth.register.RegistrationFragment
 import com.view.ui.modules.auth.register.configurator.RegistrationFragmentAction
 
 
-open class AuthFragmentHolderFragmentHolder : BaseFragmentHolder() {
+open class AuthFragmentFragmentHolder : BaseFragmentHolder() {
 
     override fun createFragment(screenKey: String?, data: Any?,
                                 initialInitialAction: InitialAction): Fragment {

@@ -11,7 +11,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation domainDependencies.rxjava
-    implementation domainDependencies.rxrelay
     compileOnly domainDependencies.javaxAnnotation
     implementation domainDependencies.javaxInject
     implementation domainDependencies.kotlin
