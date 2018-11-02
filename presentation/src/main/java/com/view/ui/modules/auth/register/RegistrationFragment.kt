@@ -113,7 +113,8 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
 
     override fun handleInitialAction() {
         when (initialAction as RegistrationFragmentAction?) {
-
+            RegistrationFragmentAction.INITIAL_ACTION_DEFAULT -> sendActionAndData(
+                    RegistrationFragmentAction.INITIAL_ACTION_DEFAULT, null)
             else -> {
             }
         }
