@@ -17,11 +17,9 @@ class ContentFragmentHolder : BaseFragmentHolder() {
         when (screenKey) {
             EVENT_LIST_SCREEN -> {
                 fragment = EventListFragment.createNewInstance()
-                //EventListFragment.addInitialAction(fragment, mEventListTransformer.transform(initialAction))
             }
             EVENT_DETAILS_SCREEN -> {
                 fragment = EventDetailsFragment.createNewInstance()
-                //EventDetailsFragment.addInitialAction(fragment, mEventDetailsTransformer.transform(initialAction))
             }
             else -> {
                 fragment = EventListFragment.createNewInstance()
