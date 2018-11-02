@@ -2,6 +2,7 @@ package com.view.base.configurator
 
 import com.view.base.BaseAction
 import com.view.base.fragment.BaseState
+import timber.log.Timber
 
 abstract class BaseFragmentConfigurator<ActionType : BaseAction, StateType : BaseState<ActionType>, ViewCommandType> {
 
@@ -12,6 +13,7 @@ abstract class BaseFragmentConfigurator<ActionType : BaseAction, StateType : Bas
         if (action.mIsInitialAction) {
             viewState.mInitialAction = action
         }
+        Timber.d(viewState.actionList.toString())
     }
 
 }

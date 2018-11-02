@@ -16,7 +16,7 @@ import com.InitialAction.DEFAULT
 import com.view.R
 import com.view.base.activity.BaseActivity
 import com.view.base.view.HasProgress
-import com.view.ui.modules.auth.AuthFragmentFragmentHolder
+import com.view.ui.modules.auth.AuthModuleHolder
 import com.view.ui.modules.auth.REGISTRATION_SCREEN
 import com.view.ui.modules.content.ContentFragmentHolder
 import kotlinx.android.synthetic.main.activity_root.*
@@ -32,26 +32,26 @@ class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
         override fun createFragment(screenKey: String?, data: Any?): Fragment {
             return when (screenKey) {
                 AUTH_SCREEN -> {
-                    mAuthModuleHolder.createFragment(screenKey, null, initialAction)
+                    mAuthModuleHolder.createFragment(screenKey, null)
                 }
                 REGISTRATION_SCREEN -> {
-                    mAuthModuleHolder.createFragment(screenKey, null, initialAction)
+                    mAuthModuleHolder.createFragment(screenKey, null)
                 }
                 EVENT_LIST_SCREEN -> {
-                    mContentHolder.createFragment(screenKey, null, initialAction)
+                    mContentHolder.createFragment(screenKey, null)
                 }
                 EVENT_DETAILS_SCREEN -> {
-                    mContentHolder.createFragment(screenKey, null, initialAction)
+                    mContentHolder.createFragment(screenKey, null)
                 }
                 else -> {
-                    mContentHolder.createFragment(EVENT_LIST_SCREEN, null, initialAction)
+                    mContentHolder.createFragment(EVENT_LIST_SCREEN, null)
                 }
             }
         }
     }
 
     private lateinit var mToggle: ActionBarDrawerToggle
-    private var mAuthModuleHolder: AuthFragmentFragmentHolder = AuthFragmentFragmentHolder()
+    private var mAuthModuleHolder: AuthModuleHolder = AuthModuleHolder()
     private var mContentHolder: ContentFragmentHolder = ContentFragmentHolder()
     override val navigator: Navigator
         get() = mNavigator
@@ -195,7 +195,7 @@ class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
         addFragment(REGISTRATION_SCREEN, data)
     }
 
-    fun startRootActivityEventListFragmentChain(data: Bundle?) {
+    private fun startRootActivityEventListFragmentChain(data: Bundle?) {
         createNewChain(EVENT_LIST_SCREEN, data)
     }
 

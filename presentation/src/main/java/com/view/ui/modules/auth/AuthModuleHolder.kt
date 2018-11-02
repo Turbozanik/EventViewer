@@ -1,7 +1,6 @@
 package com.view.ui.modules.auth
 
 import android.support.v4.app.Fragment
-import com.InitialAction
 import com.view.base.module.BaseFragmentHolder
 import com.view.ui.modules.auth.login.LoginFragment
 import com.view.ui.modules.auth.login.configurator.LoginFragmentAction
@@ -9,18 +8,13 @@ import com.view.ui.modules.auth.register.RegistrationFragment
 import com.view.ui.modules.auth.register.configurator.RegistrationFragmentAction
 
 
-open class AuthFragmentFragmentHolder : BaseFragmentHolder() {
-
-    override fun createFragment(screenKey: String?, data: Any?,
-                                initialInitialAction: InitialAction): Fragment {
+open class AuthModuleHolder : BaseFragmentHolder() {
+    override fun createFragment(screenKey: String?, data: Any?): Fragment {
         val fragment: Fragment
         when (screenKey) {
             LOGIN_SCREEN -> {
                 fragment = LoginFragment.createNewInstance()
-                if (initialInitialAction == com.InitialAction.OPEN_AUTH_WITH_NO_SAVED_CREDENTIALS) {
-                    LoginFragment.addInitialAction(fragment,
-                                                   LoginFragmentAction.DEFAULT)
-                }
+                LoginFragment.addInitialAction(fragment, LoginFragmentAction.DEFAULT)
             }
             REGISTRATION_SCREEN -> {
                 fragment = RegistrationFragment.createNewInstance()
@@ -34,5 +28,4 @@ open class AuthFragmentFragmentHolder : BaseFragmentHolder() {
         }
         return fragment
     }
-
 }

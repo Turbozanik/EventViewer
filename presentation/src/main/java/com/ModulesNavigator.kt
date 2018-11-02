@@ -6,12 +6,12 @@ import android.content.Context
 class ModulesNavigator(context: Context) {
 //    private val mContext: Context = context
 //
-//    fun startActivityWithInitialAction(activityAction: InitialAction) {
+//    fun startActivityWithInitialAction(activityAction: ContentHolderInitialAction) {
 //        startActivity(applyAction(getNewActivityIntent(getStringKeyByAction(activityAction)),
 //                                  activityAction))
 //    }
 //
-//    private fun applyAction(intent: Intent, activityAction: InitialAction): Intent {
+//    private fun applyAction(intent: Intent, activityAction: ContentHolderInitialAction): Intent {
 //        intent.putExtra(ACTIVITY_ACTION_DATA_KEY, activityAction)
 //        return intent
 //    }
@@ -38,24 +38,24 @@ class ModulesNavigator(context: Context) {
 //        }
 //    }
 //
-//    private fun getStringKeyByAction(activityAction: InitialAction): String {
+//    private fun getStringKeyByAction(activityAction: ContentHolderInitialAction): String {
 //        return when (activityAction) {
-//            InitialAction.OPEN_AUTH -> {
+//            ContentHolderInitialAction.OPEN_AUTH -> {
 //                AUTH_ACTIVITY
 //            }
-//            InitialAction.OPEN_MAIN -> {
+//            ContentHolderInitialAction.OPEN_MAIN -> {
 //                MAIN_ACTIVITY
 //            }
-//            InitialAction.OPEN_AUTH_WITH_NO_SAVED_CREDENTIALS -> {
+//            ContentHolderInitialAction.OPEN_AUTH_WITH_NO_SAVED_CREDENTIALS -> {
 //                AUTH_ACTIVITY
 //            }
-//            InitialAction.DEFAULT -> {
+//            ContentHolderInitialAction.DEFAULT -> {
 //                AUTH_ACTIVITY
 //            }
-//            InitialAction.OPEN_MAIN_WITH_EVENT_LIST_FRAGMENT -> {
+//            ContentHolderInitialAction.OPEN_MAIN_WITH_EVENT_LIST_FRAGMENT -> {
 //                MAIN_ACTIVITY
 //            }
-//            InitialAction.OPEN_AUTH_WITH_SAVED_CREDENTIALS -> {
+//            ContentHolderInitialAction.OPEN_AUTH_WITH_SAVED_CREDENTIALS -> {
 //                AUTH_ACTIVITY
 //            }
 //        }
