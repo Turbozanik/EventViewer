@@ -7,6 +7,7 @@ class RegistrationFragmentConfigurator : BaseFragmentConfigurator<RegistrationFr
 
     override fun produceViewCommand(viewState: RegistrationFragmentState,
                                     action: RegistrationFragmentAction): RegistrationFragmentViewCommand {
+        saveAction(action, viewState)
         return when (action) {
             RegistrationFragmentAction.INITIAL_ACTION_DEFAULT -> {
                 RegistrationFragmentViewCommand.DEFAULT
@@ -14,15 +15,6 @@ class RegistrationFragmentConfigurator : BaseFragmentConfigurator<RegistrationFr
             RegistrationFragmentAction.REGISTER -> {
                 RegistrationFragmentViewCommand.REGISTER
             }
-        }
-    }
-
-    override fun saveAction(action: RegistrationFragmentAction, viewState: RegistrationFragmentState) {
-        if (action.mIsInitialAction) {
-            viewState.mInitialAction = action
-            viewState.actionList.add(action)
-        } else {
-            viewState.actionList.add(action)
         }
     }
 
