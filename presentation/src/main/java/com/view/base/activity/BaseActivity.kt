@@ -2,7 +2,6 @@ package com.view.base.activity
 
 import android.os.Bundle
 import android.support.annotation.LayoutRes
-import android.support.annotation.StringRes
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
@@ -163,15 +162,6 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
     private fun handleDaggerDependencies() {
         addActivitySubComponent()
         addCurrentActivitySubComponent()
-    }
-
-    protected fun getToolbarBackVisibility(): Int {
-        return 0// TODO: 26.06.2018 add realisation
-    }
-
-    @StringRes
-    protected fun getToolbarTitle(): Int {
-        return 0// TODO: 26.06.2018 add realisation
     }
 
     override fun showRootScreen(screenKey: String?) {
