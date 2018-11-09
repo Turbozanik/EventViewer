@@ -1,4 +1,4 @@
-package com.view.base.presenter
+package com.view.base.fragment.presenter
 
 import com.view.base.view.BaseView
 

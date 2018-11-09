@@ -1,4 +1,4 @@
-package com.view.base.presenter
+package com.view.base.fragment.presenter
 
 import com.arellomobile.mvp.MvpPresenter
 import com.utils.BgExecutors

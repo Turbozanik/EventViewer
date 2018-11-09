@@ -16,9 +16,9 @@ import com.InitialAction.DEFAULT
 import com.view.R
 import com.view.base.activity.BaseActivity
 import com.view.base.view.HasProgress
-import com.view.ui.modules.auth.AuthModuleHolder
+import com.view.ui.modules.auth.AuthModuleFragmentFactory
 import com.view.ui.modules.auth.REGISTRATION_SCREEN
-import com.view.ui.modules.content.ContentFragmentHolder
+import com.view.ui.modules.content.ContentFragmentFactory
 import kotlinx.android.synthetic.main.activity_root.*
 import kotlinx.android.synthetic.main.activity_root_content.*
 import kotlinx.android.synthetic.main.activity_root_with_toolbar.*
@@ -32,10 +32,10 @@ class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
         override fun createFragment(screenKey: String?, data: Any?): Fragment {
             return when (screenKey) {
                 AUTH_SCREEN -> {
-                    mAuthModuleHolder.createFragment(screenKey, null)
+                    mAuthModuleFragmentHolder.createFragment(screenKey, null)
                 }
                 REGISTRATION_SCREEN -> {
-                    mAuthModuleHolder.createFragment(screenKey, null)
+                    mAuthModuleFragmentHolder.createFragment(screenKey, null)
                 }
                 EVENT_LIST_SCREEN -> {
                     mContentHolder.createFragment(screenKey, null)
@@ -51,8 +51,8 @@ class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
     }
 
     private lateinit var mToggle: ActionBarDrawerToggle
-    private var mAuthModuleHolder: AuthModuleHolder = AuthModuleHolder()
-    private var mContentHolder: ContentFragmentHolder = ContentFragmentHolder()
+    private var mAuthModuleFragmentHolder: AuthModuleFragmentFactory = AuthModuleFragmentFactory()
+    private var mContentHolder: ContentFragmentFactory = ContentFragmentFactory()
     override val navigator: Navigator
         get() = mNavigator
 

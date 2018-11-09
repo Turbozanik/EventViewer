@@ -2,8 +2,8 @@ package com.view.ui.modules.auth.login
 
 import com.view.base.configurator.ActionProducer
 import com.view.base.fragment.PresenterFragment
-import com.view.base.presenter.BaseFragmentPresenter
-import com.view.base.presenter.BasePresenterContract
+import com.view.base.fragment.presenter.BaseFragmentPresenter
+import com.view.base.fragment.presenter.BasePresenterContract
 import com.view.ui.modules.auth.login.configurator.LoginFragmentAction
 import com.view.ui.modules.auth.login.configurator.LoginFragmentConfigurator
 
