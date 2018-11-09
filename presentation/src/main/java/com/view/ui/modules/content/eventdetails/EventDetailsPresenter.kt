@@ -7,7 +7,7 @@ import com.view.ui.modules.content.eventdetails.configurator.EventDetailsFragmen
 import timber.log.Timber
 
 @InjectViewState
-class EventDetailsFragmentPresenter : EventDetailsFragmentContract.EventDetailsFragmentPresenter() {
+class EventDetailsPresenter : EventDetailsFragmentContract.EventDetailsPresenter() {
 
     private val mEventDetailsFragmentState: EventDetailsFragmentState = EventDetailsFragmentState()
 

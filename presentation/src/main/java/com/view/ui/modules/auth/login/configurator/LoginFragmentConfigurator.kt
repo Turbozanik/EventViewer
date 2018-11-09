@@ -1,9 +1,9 @@
 package com.view.ui.modules.auth.login.configurator
 
-import com.view.base.configurator.BaseFragmentConfigurator
+import com.view.base.configurator.BaseConfigurator
 import com.view.ui.modules.auth.login.LoginFragmentState
 
-class LoginFragmentConfigurator : BaseFragmentConfigurator<LoginFragmentAction, LoginFragmentState, LoginFragmentViewCommand>() {
+class LoginFragmentConfigurator : BaseConfigurator<LoginFragmentAction, LoginFragmentState, LoginFragmentViewCommand>() {
 
     override fun produceViewCommand(viewState: LoginFragmentState,
                                     action: LoginFragmentAction): LoginFragmentViewCommand {

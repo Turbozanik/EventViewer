@@ -18,8 +18,8 @@ import java.util.*
 class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment() {
 
     @InjectPresenter(type = PresenterType.LOCAL)
-    lateinit var mPresenter: RegistrationFragmentPresenter
-    val presenter: RegistrationFragmentPresenter get() = mPresenter
+    lateinit var mPresenter: RegistrationPresenter
+    val presenter: RegistrationPresenter get() = mPresenter
 
     companion object {
         fun createNewInstance(): RegistrationFragment {

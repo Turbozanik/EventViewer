@@ -1,8 +1,8 @@
 package com.view.ui.modules.auth.register
 
+import com.view.base.BasePresenter
 import com.view.base.configurator.ActionProducer
 import com.view.base.fragment.PresenterFragment
-import com.view.base.fragment.presenter.BaseFragmentPresenter
 import com.view.base.fragment.presenter.BasePresenterContract
 import com.view.ui.modules.auth.register.configurator.RegistrationFragmentAction
 import com.view.ui.modules.auth.register.configurator.RegistrationFragmentConfigurator
@@ -17,7 +17,7 @@ interface RegistrationFragmentContract : BasePresenterContract {
     data class RegistrationFragmentDto(var registrationInfo: RegistrationInfo,
                                        val shouldSaveCredentials: Boolean)
 
-    abstract class RegistrationFragmentPresenter : BaseFragmentPresenter<RegistrationFragmentConfigurator, RegistrationFragmentAction, RegistrationFragmentDto, RegistrationFragmentView>() {
+    abstract class RegistrationPresenter : BasePresenter<RegistrationFragmentConfigurator, RegistrationFragmentAction, RegistrationFragmentDto, RegistrationFragmentView>() {
         init {
             this.intiConfigurator()
         }

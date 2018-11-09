@@ -6,7 +6,7 @@ import com.view.ui.modules.content.eventlist.configurator.EventListFragmentConfi
 import com.view.ui.modules.content.eventlist.configurator.EventListFragmentViewCommand
 
 @InjectViewState
-class EventListFragmentPresenter : EventListFragmentContract.EventListPresenter() {
+class EventListPresenter : EventListFragmentContract.EventListPresenter() {
 
     private val mEventListFragmentState: EventListFragmentState = EventListFragmentState()
 

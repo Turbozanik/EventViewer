@@ -16,8 +16,8 @@ import kotlinx.android.synthetic.main.fragment_event_list.*
 class EventListFragment : EventListFragmentContract.EventListFragment() {
 
     @InjectPresenter(type = PresenterType.LOCAL)
-    lateinit var mPresenter: EventListFragmentPresenter
-    val presenter: EventListFragmentPresenter get() = mPresenter
+    lateinit var mPresenter: EventListPresenter
+    val presenter: EventListPresenter get() = mPresenter
 
     private lateinit var mAdapter: EventListAdapter
 

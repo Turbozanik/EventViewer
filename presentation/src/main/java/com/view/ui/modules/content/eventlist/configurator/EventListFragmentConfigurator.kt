@@ -1,9 +1,9 @@
 package com.view.ui.modules.content.eventlist.configurator
 
-import com.view.base.configurator.BaseFragmentConfigurator
+import com.view.base.configurator.BaseConfigurator
 import com.view.ui.modules.content.eventlist.EventListFragmentState
 
-class EventListFragmentConfigurator : BaseFragmentConfigurator<EventListFragmentAction, EventListFragmentState, EventListFragmentViewCommand>() {
+class EventListFragmentConfigurator : BaseConfigurator<EventListFragmentAction, EventListFragmentState, EventListFragmentViewCommand>() {
     override fun produceViewCommand(viewState: EventListFragmentState,
                                     action: EventListFragmentAction): EventListFragmentViewCommand {
         saveAction(action, viewState)

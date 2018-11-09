@@ -14,8 +14,8 @@ import kotlinx.android.synthetic.main.fragment_event_details.*
 class EventDetailsFragment : EventDetailsFragmentContract.EventDetailsFragment() {
 
     @InjectPresenter(type = PresenterType.LOCAL)
-    lateinit var mPresenter: EventDetailsFragmentPresenter
-    val presenter: EventDetailsFragmentPresenter get() = mPresenter
+    lateinit var mPresenter: EventDetailsPresenter
+    val presenter: EventDetailsPresenter get() = mPresenter
 
     companion object {
         fun createNewInstance(): EventDetailsFragment {

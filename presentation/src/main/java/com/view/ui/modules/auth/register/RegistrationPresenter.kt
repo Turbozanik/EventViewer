@@ -12,7 +12,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @InjectViewState
-class RegistrationFragmentPresenter : RegistrationFragmentContract.RegistrationFragmentPresenter() {
+class RegistrationPresenter : RegistrationFragmentContract.RegistrationPresenter() {
 
     @Inject
     protected lateinit var mRegistrationUserCase: RegisterUserCase

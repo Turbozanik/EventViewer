@@ -16,7 +16,7 @@ import io.reactivex.functions.BiFunction
 import javax.inject.Inject
 
 @InjectViewState
-class LoginFragmentPresenter : LoginFragmentContract.LoginFragmentPresenter() {
+class LoginPresenter : LoginFragmentContract.LoginPresenter() {
 
     @Inject
     protected lateinit var mLoginUseCase: LoginUseCase

@@ -18,8 +18,8 @@ import timber.log.Timber
 class LoginFragment : LoginFragmentContract.LoginFragment() {
 
     @InjectPresenter(type = PresenterType.LOCAL)
-    lateinit var mPresenter: LoginFragmentPresenter
-    val presenter: LoginFragmentPresenter get() = mPresenter
+    lateinit var mPresenter: LoginPresenter
+    val presenter: LoginPresenter get() = mPresenter
     private lateinit var mValidationObservable: Observable<Boolean>
     private var mIsFormValid: Boolean = false
     private var mGso: GoogleSignInOptions? = null

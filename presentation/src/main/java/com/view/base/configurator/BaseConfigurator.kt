@@ -4,7 +4,7 @@ import com.view.base.BaseAction
 import com.view.base.fragment.BaseState
 import timber.log.Timber
 
-abstract class BaseFragmentConfigurator<ActionType : BaseAction, StateType : BaseState<ActionType>, ViewCommandType> {
+abstract class BaseConfigurator<ActionType : BaseAction, StateType : BaseState<ActionType>, ViewCommandType> {
 
     abstract fun produceViewCommand(viewState: StateType, action: ActionType): ViewCommandType
 

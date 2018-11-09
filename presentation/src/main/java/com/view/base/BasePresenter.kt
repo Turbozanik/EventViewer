@@ -1,9 +1,9 @@
-package com.view.base.fragment.presenter
+package com.view.base
 
 import com.arellomobile.mvp.MvpPresenter
 import com.utils.BgExecutors
 import com.view.base.configurator.ActionConsumer
-import com.view.base.configurator.BaseFragmentConfigurator
+import com.view.base.configurator.BaseConfigurator
 import com.view.base.view.BaseView
 import io.reactivex.Flowable
 import io.reactivex.Observable
@@ -13,7 +13,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 
-abstract class BaseFragmentPresenter<ActionConfigurator : BaseFragmentConfigurator<*, *, *>, ConsumedActionType, ConsmedDataType, ViewType : BaseView> : ActionConsumer<ConsumedActionType, ConsmedDataType>, MvpPresenter<ViewType>() {
+abstract class BasePresenter<ActionConfigurator : BaseConfigurator<*, *, *>, ConsumedActionType, ConsmedDataType, ViewType : BaseView> : ActionConsumer<ConsumedActionType, ConsmedDataType>, MvpPresenter<ViewType>() {
 
     private val mCompositeDisposable = CompositeDisposable()
 

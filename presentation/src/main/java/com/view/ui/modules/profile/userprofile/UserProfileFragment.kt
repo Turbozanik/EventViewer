@@ -13,8 +13,8 @@ import kotlinx.android.synthetic.main.fragment_user_profile.*
 class UserProfileFragment : UserProfileFragmentContract.UserProfileFragment() {
 
     @InjectPresenter(type = PresenterType.LOCAL)
-    lateinit var mPresenter: UserProfileFragmentPresenter
-    val presenter: UserProfileFragmentPresenter get() = mPresenter
+    lateinit var mPresenter: UserProfilePresenter
+    val presenter: UserProfilePresenter get() = mPresenter
     private lateinit var mAdapter: EventListAdapter
 
     override fun inject() {

@@ -13,8 +13,9 @@ import com.AUTH_SCREEN
 import com.EventViewerApp
 import com.InitialAction
 import com.InitialAction.DEFAULT
+import com.arellomobile.mvp.presenter.InjectPresenter
+import com.arellomobile.mvp.presenter.PresenterType
 import com.view.R
-import com.view.base.activity.BaseActivity
 import com.view.base.view.HasProgress
 import com.view.ui.modules.auth.AuthModuleFragmentFactory
 import com.view.ui.modules.auth.REGISTRATION_SCREEN
@@ -25,12 +26,13 @@ import kotlinx.android.synthetic.main.activity_root_with_toolbar.*
 import ru.terrakok.cicerone.Navigator
 
 
-class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, HasProgress {
+class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), NavigationView.OnNavigationItemSelectedListener, HasProgress {
 
     private val mNavigator = object : FragmentNavigator(supportFragmentManager,
                                                         fragmentContainerViewId) {
         override fun createFragment(screenKey: String?, data: Any?): Fragment {
             return when (screenKey) {
+                //todo move holder invocations to presenter, rename holders to factoies
                 AUTH_SCREEN -> {
                     mAuthModuleFragmentHolder.createFragment(screenKey, null)
                 }
@@ -50,6 +52,8 @@ class RootGodlikeActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
         }
     }
 
+    @InjectPresenter(type = PresenterType.LOCAL)
+    lateinit var mPresenter: RootGodlikeActivityPresenter
     private lateinit var mToggle: ActionBarDrawerToggle
     private var mAuthModuleFragmentHolder: AuthModuleFragmentFactory = AuthModuleFragmentFactory()
     private var mContentHolder: ContentFragmentFactory = ContentFragmentFactory()

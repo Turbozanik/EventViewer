@@ -1,10 +1,10 @@
 package com.view.ui.modules.content.eventdetails.configurator
 
-import com.view.base.configurator.BaseFragmentConfigurator
+import com.view.base.configurator.BaseConfigurator
 import com.view.ui.modules.content.eventdetails.EventDetailsFragmentState
 
 
-class EventDetailsFragmentConfigurator : BaseFragmentConfigurator<EventDetailsFragmentAction, EventDetailsFragmentState, EventDetailsFragmentViewCommand>() {
+class EventDetailsFragmentConfigurator : BaseConfigurator<EventDetailsFragmentAction, EventDetailsFragmentState, EventDetailsFragmentViewCommand>() {
     override fun produceViewCommand(viewState: EventDetailsFragmentState,
                                     action: EventDetailsFragmentAction): EventDetailsFragmentViewCommand {
         saveAction(action, viewState)

@@ -6,7 +6,7 @@ import com.view.ui.modules.profile.userprofile.configurator.UserProfileFragmentC
 
 
 @InjectViewState
-class UserProfileFragmentPresenter : UserProfileFragmentContract.UserProfileFragmentPresenter() {
+class UserProfilePresenter : UserProfileFragmentContract.UserProfilePresenter() {
 
     override fun intiConfigurator(): UserProfileFragmentConfigurator {
         return UserProfileFragmentConfigurator()
