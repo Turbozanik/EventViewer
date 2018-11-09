@@ -11,6 +11,9 @@ class RootActivityConfigurator : BaseConfigurator<RootActivityAction, RootGodlik
             RootActivityAction.DEFAULT -> {
                 RootActivityViewCommand.DEFAULT
             }
+            RootActivityAction.CHECK_CREDENTIALS_IN_SHARED_PREFS -> {
+                RootActivityViewCommand.OPEN_AUTH_SCREEN
+            }
         }
     }
 }

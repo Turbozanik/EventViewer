@@ -13,6 +13,13 @@ class RootGodlikeActivityPresenter : RootGodlikeActivityContract.RootActivityPre
             when (action) {
                 RootActivityAction.DEFAULT -> {
                 }
+                RootActivityAction.CHECK_CREDENTIALS_IN_SHARED_PREFS -> {
+                    if (false) {
+                        viewState.goToAuthFragmentWithSavedCredentials()
+                    } else {
+                        viewState.goToAuthFragment()
+                    }
+                }
             }
         }
     }

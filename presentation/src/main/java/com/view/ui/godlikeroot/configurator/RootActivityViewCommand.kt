@@ -2,7 +2,11 @@ package com.view.ui.godlikeroot.configurator
 
 
 enum class RootActivityViewCommand(command: Int) {
-    DEFAULT(command = 0);
+    DEFAULT(command = 0),
+    OPEN_AUTH_SCREEN(1),
+    OPEN_REGISTRATION_SCREEN(2),
+    OPEN_EVENT_LIST_SCREEN(3),
+    OPEN_EVENT_DETAILS_SCREEN(4);
 
     private val mCommand: Int = command
 

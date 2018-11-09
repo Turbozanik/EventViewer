@@ -8,7 +8,7 @@ import com.view.ui.modules.auth.register.RegistrationFragment
 import com.view.ui.modules.auth.register.configurator.RegistrationFragmentAction
 
 
-open class AuthModuleFragmentFactory : BaseFragmentFactory() {
+class AuthModuleFragmentFactory : BaseFragmentFactory() {
     override fun createFragment(screenKey: String?, data: Any?): Fragment {
         val fragment: Fragment
         when (screenKey) {

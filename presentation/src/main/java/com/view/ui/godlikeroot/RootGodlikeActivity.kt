@@ -17,6 +17,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.PresenterType
 import com.view.R
 import com.view.base.view.HasProgress
+import com.view.ui.godlikeroot.configurator.RootActivityAction
 import com.view.ui.modules.auth.AuthModuleFragmentFactory
 import com.view.ui.modules.auth.REGISTRATION_SCREEN
 import com.view.ui.modules.content.ContentFragmentFactory
@@ -32,7 +33,6 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
                                                         fragmentContainerViewId) {
         override fun createFragment(screenKey: String?, data: Any?): Fragment {
             return when (screenKey) {
-                //todo move holder invocations to presenter, rename holders to factoies
                 AUTH_SCREEN -> {
                     mAuthModuleFragmentHolder.createFragment(screenKey, null)
                 }
@@ -40,6 +40,9 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
                     mAuthModuleFragmentHolder.createFragment(screenKey, null)
                 }
                 EVENT_LIST_SCREEN -> {
+                    mContentHolder.createFragment(screenKey, null)
+                }
+                EVENT_LIST_WITH_SAVED_CREDENTIALS_SCREEN -> {
                     mContentHolder.createFragment(screenKey, null)
                 }
                 EVENT_DETAILS_SCREEN -> {
@@ -72,6 +75,7 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
         mToggle.syncState()
 
         mNavView.setNavigationItemSelectedListener(this)
+        mPresenter.consumeActionAndData(RootActivityAction.CHECK_CREDENTIALS_IN_SHARED_PREFS, null)
     }
 
     override fun onBackPressed() {
@@ -166,6 +170,14 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
         progressView.visibility = View.GONE
     }
 
+    override fun goToAuthFragment() {
+        addFragment(EVENT_LIST_SCREEN, null)
+    }
+
+    override fun goToAuthFragmentWithSavedCredentials() {
+        addFragment(EVENT_LIST_WITH_SAVED_CREDENTIALS_SCREEN, null)
+    }
+
     override val progressView: View
         get() {
             return mProgressBar
@@ -193,6 +205,12 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
 
     override fun saveCurrentFragment(fragment: Fragment) {
         mCurrentFragment = fragment
+    }
+
+    override fun showRootScreen(screenKey: String?) {
+        if (initialAction != DEFAULT) {
+            super.showRootScreen(screenKey)
+        }
     }
 
     fun startRegistrationFragmentChain(data: Bundle?) {
