@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
-import android.support.v7.app.AppCompatActivity
 import com.ACTIVITY_ACTION_DATA_KEY
 import com.EventViewerApp
 import com.InitialAction
@@ -21,7 +20,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 
-abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
+abstract class BaseActivity : com.view.base.activity.MvpActivity(), HasRootScreen {
 
     private val CURRENT_FRAGMENT_ID_KEY = "CURRENT_FRAGMENT_ID_KEY"
 
@@ -87,9 +86,9 @@ abstract class BaseActivity : AppCompatActivity(), HasRootScreen {
         }
     }
 
-    override fun onSaveInstanceState(outState: Bundle?) {
+    override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState?.putInt(CURRENT_FRAGMENT_ID_KEY, currentFragment?.id ?: -1)
+        outState.putInt(CURRENT_FRAGMENT_ID_KEY, currentFragment?.id ?: -1)
     }
 
     override fun onResume() {
