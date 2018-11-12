@@ -5,6 +5,7 @@ import com.data.net.datasource.NetDataSource
 import com.data.net.repository.RetrofitNetRepositoryImpl
 import com.data.net.retrofit.RetrofitApiCreator
 import com.data.prefs.datasource.PrefsDataSource
+import com.domain.repository.NetRepository
 import dagger.Module
 import dagger.Provides
 
@@ -24,7 +25,6 @@ class NetModule {
     @Provides
     @ActivityScope
     fun provideNetRepository(
-            netDataSource: NetDataSource): RetrofitNetRepositoryImpl = RetrofitNetRepositoryImpl(
-            netDataSource)
+            netDataSource: NetDataSource): NetRepository = RetrofitNetRepositoryImpl(netDataSource)
 
 }
