@@ -7,6 +7,6 @@ interface RootGodlikeActivityView : BaseView {
 
     fun goToAuthFragment()
 
-    fun goToAuthFragmentWithSavedCredentials()
+    fun goToEventListFragment()
 
 }

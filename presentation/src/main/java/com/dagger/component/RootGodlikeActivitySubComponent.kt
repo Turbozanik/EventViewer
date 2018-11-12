@@ -2,13 +2,13 @@ package com.dagger.component
 
 import com.dagger.module.*
 import com.dagger.scoupe.RootGodlikeActivityScope
+import com.view.ui.godlikeroot.RootGodlikeActivityContract
 import dagger.Subcomponent
 
 @RootGodlikeActivityScope
 @Subcomponent(modules = [RootGodlikeActivityModule::class])
 interface RootGodlikeActivitySubComponent {
 
-    //test
     fun add(registrationModule: RegistrationFragmentModule): RegistrationFragmentSubComponent
 
     fun add(loginFragmentModule: LoginFragmentModule): LoginFragmentSubComponent
@@ -18,5 +18,7 @@ interface RootGodlikeActivitySubComponent {
     fun add(eventDetailsFragmentModule: EventDetailsFragmentModule): EventDetailsFragmentSubComponent
 
     fun add(userProfileFragmentModule: UserProfileFragmentModule): UserProfileFragmentSubComponent
+
+    fun inject(rootActivityPresenter: RootGodlikeActivityContract.RootActivityPresenter)
 
 }

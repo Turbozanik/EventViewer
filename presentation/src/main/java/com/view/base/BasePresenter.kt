@@ -13,7 +13,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 
-abstract class BasePresenter<ActionConfigurator : BaseConfigurator<*, *, *>, ConsumedActionType, ConsmedDataType, ViewType : BaseView> : ActionConsumer<ConsumedActionType, ConsmedDataType>, MvpPresenter<ViewType>() {
+abstract class BasePresenter<ActionConfigurator : BaseConfigurator<*, *, *>, ConsumedActionType, ConsumedDataType, ViewType : BaseView> : ActionConsumer<ConsumedActionType, ConsumedDataType>, MvpPresenter<ViewType>() {
 
     private val mCompositeDisposable = CompositeDisposable()
 

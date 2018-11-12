@@ -41,26 +41,12 @@ open class DaggerController(eventViewerApp: Context) {
             return mActivitySubComponent
         }
 
-    //SplashActivity
-//    fun addSplashActivitySubComponent() {
-//        mSplashActivitySubComponent = mActivitySubComponent?.add(SplashActivityModule())
-//    }
-//
-//    fun removeSplashActivitySubComponent() {
-//        mSplashActivitySubComponent?.let { mSplashActivitySubComponent = null }
-//    }
-//
-//    val splashActivitySubComponent: SplashActivitySubComponent?
-//        get() {
-//            return mSplashActivitySubComponent
-//        }
-
     //RootGodlikeActivity module
-    fun addMainActivitySubComponent() {
+    fun addRootActivitySubComponent() {
         mRootGodlikeActivitySubComponent = mActivitySubComponent?.add(RootGodlikeActivityModule())
     }
 
-    fun removeMainActivitySubComponent() {
+    fun removeRootActivitySubComponent() {
         mRootGodlikeActivitySubComponent?.let { mRootGodlikeActivitySubComponent = null }
     }
 
@@ -68,20 +54,6 @@ open class DaggerController(eventViewerApp: Context) {
         get() {
             return mRootGodlikeActivitySubComponent
         }
-
-    //AuthActivityModule
-//    fun addAuthActivitySubComponent() {
-//        mAuthActivitySubComponent = mActivitySubComponent?.add(AuthActivityModule())
-//    }
-//
-//    fun removeAuthActivitySubComponent() {
-//        mAuthActivitySubComponent?.let { mAuthActivitySubComponent = null }
-//    }
-//
-//    val authActivitySubComponent: AuthActivitySubComponent?
-//        get() {
-//            return mAuthActivitySubComponent
-//        }
 
     //RegistrationFragment
     fun addRegistrationFragmentSubComponent() {
@@ -141,20 +113,6 @@ open class DaggerController(eventViewerApp: Context) {
         get() {
             return mEventDetailsSubComponent
         }
-
-    //UserProfileActivity
-//    fun addUserProfileActivitySubComponent() {
-//        mUserProfileActivitySubComponent = mActivitySubComponent?.add(UserProfileActivityModle())
-//    }
-//
-//    fun removeUserProfileActivitySubComponent() {
-//        mUserProfileActivitySubComponent?.let { mUserProfileActivitySubComponent = null }
-//    }
-//
-//    val userProfileActvitySubCopmonent: UserProfileActvitySubCopmonent?
-//        get() {
-//            return mUserProfileActivitySubComponent
-//        }
 
     //UserProfileFragment
     fun addUserProfileFragmentSubComponent() {

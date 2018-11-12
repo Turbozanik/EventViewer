@@ -10,7 +10,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.AUTH_SCREEN
-import com.EventViewerApp
 import com.InitialAction
 import com.InitialAction.DEFAULT
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -139,7 +138,11 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
     }
 
     override fun addCurrentActivitySubComponent() {
-        daggerController.addMainActivitySubComponent()
+        daggerController.addRootActivitySubComponent()
+    }
+
+    override fun removeCurrentSubComponent() {
+        daggerController.removeRootActivitySubComponent()
     }
 
     override fun getScreenKeyByAction(initialAction: InitialAction?): String {
@@ -150,10 +153,6 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
                 EVENT_LIST_SCREEN
             }
         }
-    }
-
-    override fun removeCurrentSubComponent() {
-        EventViewerApp.getInstance().getDaggerController().removeActivitySubComponent()
     }
 
     override val layoutId: Int
@@ -172,10 +171,6 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
 
     override fun goToAuthFragment() {
         addFragment(EVENT_LIST_SCREEN, null)
-    }
-
-    override fun goToAuthFragmentWithSavedCredentials() {
-        addFragment(EVENT_LIST_WITH_SAVED_CREDENTIALS_SCREEN, null)
     }
 
     override val progressView: View
@@ -224,6 +219,10 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
     fun goToAllEventsScreen(data: Bundle?) {
         mNavView.setCheckedItem(R.id.all)
         onNavigationItemSelected(mNavView.menu.findItem(R.id.all))
+    }
+
+    override fun goToEventListFragment() {
+        startRootActivityEventListFragmentChain(null)
     }
 
 }
