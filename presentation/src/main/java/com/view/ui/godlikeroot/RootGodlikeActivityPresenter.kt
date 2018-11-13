@@ -9,7 +9,6 @@ import com.view.ui.godlikeroot.configurator.RootActivityAction
 import com.view.ui.godlikeroot.configurator.RootActivityConfigurator
 import io.reactivex.Flowable
 import io.reactivex.functions.BiFunction
-import timber.log.Timber
 import javax.inject.Inject
 
 @InjectViewState
@@ -34,15 +33,8 @@ class RootGodlikeActivityPresenter : RootGodlikeActivityContract.RootActivityPre
                                 "email" to it.first,
                                 "password" to it.second)
                         mLoginUseCase.setParams(body).execute()
-                    }).subscribe(
-                            {
-                                if (it != null) {
-                                    viewState.goToEventListFragment()
-                                } else {
-                                    viewState.goToEventListFragment()
-                                }
-                            },
-                            { Timber.e("Error during login") }))
+                    }).subscribe({ viewState.goToEventListFragment() },
+                                 { viewState.goToEventListFragment() }))
                 }
             }
         }
