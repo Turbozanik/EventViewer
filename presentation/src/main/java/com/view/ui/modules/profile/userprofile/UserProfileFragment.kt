@@ -17,10 +17,6 @@ class UserProfileFragment : UserProfileFragmentContract.UserProfileFragment() {
     val presenter: UserProfilePresenter get() = mPresenter
     private lateinit var mAdapter: EventListAdapter
 
-    override fun inject() {
-        daggerController.userProfileFragmentSubComponent?.inject(this)
-    }
-
     override fun addCurrentSubComponent() {
         daggerController.addUserProfileFragmentSubComponent()
     }

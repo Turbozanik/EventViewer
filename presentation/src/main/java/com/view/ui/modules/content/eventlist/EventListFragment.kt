@@ -33,10 +33,6 @@ class EventListFragment : EventListFragmentContract.EventListFragment() {
         }
     }
 
-    override fun inject() {
-        daggerController.eventListFragmentSubComponent?.inject(this)
-    }
-
     override fun initView() {
         initAdapter()
         initRecyclerView()

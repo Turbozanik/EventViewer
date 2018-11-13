@@ -2,7 +2,7 @@ package com.dagger.component
 
 import com.dagger.module.RegistrationFragmentModule
 import com.dagger.scoupe.RegistrationFragmentScope
-import com.view.ui.modules.auth.register.RegistrationFragment
+import com.view.ui.modules.auth.register.RegistrationPresenter
 import dagger.Subcomponent
 
 
@@ -10,6 +10,6 @@ import dagger.Subcomponent
 @Subcomponent(modules = [RegistrationFragmentModule::class])
 interface RegistrationFragmentSubComponent {
 
-    fun inject(registrationFragment: RegistrationFragment)
+    fun inject(registrationPresenter: RegistrationPresenter)
 
 }

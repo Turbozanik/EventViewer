@@ -15,6 +15,7 @@ interface EventDetailsFragmentContract : BasePresenterContract {
     abstract class EventDetailsPresenter : BasePresenter<EventDetailsFragmentConfigurator, EventDetailsFragmentAction, EventDetailsFragmentDto, EventDetailsFragmentView>() {
         init {
             this.intiConfigurator()
+            this.injectPresenter()
         }
     }
 

@@ -1,7 +1,7 @@
 package com.dagger.module
 
 import com.dagger.scoupe.RegistrationFragmentScope
-import com.data.net.repository.RetrofitNetRepositoryImpl
+import com.domain.repository.NetRepository
 import com.domain.usecase.net.registration.RegisterUserCase
 import dagger.Module
 import dagger.Provides
@@ -11,9 +11,8 @@ class RegistrationFragmentModule {
 
     @Provides
     @RegistrationFragmentScope
-    fun provideRegistrationUseCase(
-            retrofitNetRepositoryImpl: RetrofitNetRepositoryImpl): RegisterUserCase {
-        return RegisterUserCase(retrofitNetRepositoryImpl)
+    fun provideRegistrationUseCase(netRepository: NetRepository): RegisterUserCase {
+        return RegisterUserCase(netRepository)
     }
 
 }

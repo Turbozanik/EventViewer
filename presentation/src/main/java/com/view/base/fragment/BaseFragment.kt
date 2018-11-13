@@ -39,7 +39,6 @@ abstract class BaseFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        inject()
     }
 
     override fun onDetach() {
@@ -69,8 +68,6 @@ abstract class BaseFragment : Fragment() {
     protected abstract fun updateToolbar()
 
     protected abstract fun handleInitialAction()
-
-    protected abstract fun inject()
 
     protected abstract fun addCurrentSubComponent()
 

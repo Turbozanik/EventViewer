@@ -21,6 +21,8 @@ abstract class BasePresenter<ActionConfigurator : BaseConfigurator<*, *, *>, Con
 
     protected abstract fun intiConfigurator(): ActionConfigurator
 
+    abstract fun injectPresenter()
+
     protected fun addDisposable(disposable: Disposable) {
         mCompositeDisposable.add(disposable)
     }

@@ -1,5 +1,6 @@
 package com.view.ui.modules.auth.register
 
+import com.EventViewerApp
 import com.arellomobile.mvp.InjectViewState
 import com.domain.usecase.net.registration.RegisterUserCase
 import com.domain.usecase.prefs.user.SaveUserToSharedPrefsUseCase
@@ -60,6 +61,11 @@ class RegistrationPresenter : RegistrationFragmentContract.RegistrationPresenter
 //                                { getView()?.goToEventsFragment() },
 //                                { DefaultErrorConsumer() })
 //        )
+    }
+
+    override fun injectPresenter() {
+        EventViewerApp.getInstance().getDaggerController().registrationFragmentSubComponent?.inject(
+                this)
     }
 
 }

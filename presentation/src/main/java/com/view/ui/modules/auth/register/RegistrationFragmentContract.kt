@@ -20,6 +20,7 @@ interface RegistrationFragmentContract : BasePresenterContract {
     abstract class RegistrationPresenter : BasePresenter<RegistrationFragmentConfigurator, RegistrationFragmentAction, RegistrationFragmentDto, RegistrationFragmentView>() {
         init {
             this.intiConfigurator()
+            this.injectPresenter()
         }
     }
 

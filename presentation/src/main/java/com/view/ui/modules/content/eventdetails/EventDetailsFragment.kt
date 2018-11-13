@@ -40,10 +40,6 @@ class EventDetailsFragment : EventDetailsFragmentContract.EventDetailsFragment()
         mTvEmail.text = getString(R.string.email_format, "roma_lapa@mail.ru")
     }
 
-    override fun inject() {
-        daggerController.eventDetailsFragmentSubComponent?.inject(this)
-    }
-
     override fun addCurrentSubComponent() {
         daggerController.addEventDetailsFragmentSubComponent()
     }

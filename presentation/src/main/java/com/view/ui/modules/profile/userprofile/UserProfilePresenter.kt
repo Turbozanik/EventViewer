@@ -1,5 +1,6 @@
 package com.view.ui.modules.profile.userprofile
 
+import com.EventViewerApp
 import com.arellomobile.mvp.InjectViewState
 import com.view.ui.modules.profile.userprofile.configurator.UserProfileFragmentAction
 import com.view.ui.modules.profile.userprofile.configurator.UserProfileFragmentConfigurator
@@ -22,4 +23,10 @@ class UserProfilePresenter : UserProfileFragmentContract.UserProfilePresenter() 
             }
         }
     }
+
+    override fun injectPresenter() {
+        EventViewerApp.getInstance().getDaggerController().userProfileFragmentSubComponent?.inject(
+                this)
+    }
+
 }

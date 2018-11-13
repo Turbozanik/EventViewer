@@ -1,5 +1,6 @@
 package com.view.ui.modules.auth.login
 
+import com.EventViewerApp
 import com.arellomobile.mvp.InjectViewState
 import com.domain.models.UserDto
 import com.domain.usecase.net.login.LoginUseCase
@@ -83,6 +84,10 @@ class LoginPresenter : LoginFragmentContract.LoginPresenter() {
             userCredentials = it
         })
         return userCredentials
+    }
+
+    override fun injectPresenter() {
+        EventViewerApp.getInstance().getDaggerController().loginFragmentSubComponent?.inject(this)
     }
 
 }

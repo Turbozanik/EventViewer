@@ -36,10 +36,6 @@ class LoginFragment : LoginFragmentContract.LoginFragment() {
         }
     }
 
-    override fun inject() {
-        daggerController.loginFragmentSubComponent?.inject(this)
-    }
-
     override fun addCurrentSubComponent() {
         daggerController.addLoginFragmentSubComponent()
     }

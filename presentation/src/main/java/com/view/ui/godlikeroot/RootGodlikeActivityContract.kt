@@ -17,8 +17,6 @@ interface RootGodlikeActivityContract : BasePresenterContract {
             this.injectPresenter()
         }
 
-        abstract fun injectPresenter()
-
     }
 
     abstract class RootActivity : BaseActivity(), RootGodlikeActivityView

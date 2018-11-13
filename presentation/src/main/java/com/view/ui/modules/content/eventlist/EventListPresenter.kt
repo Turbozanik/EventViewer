@@ -1,5 +1,6 @@
 package com.view.ui.modules.content.eventlist
 
+import com.EventViewerApp
 import com.arellomobile.mvp.InjectViewState
 import com.view.ui.modules.content.eventlist.configurator.EventListFragmentAction
 import com.view.ui.modules.content.eventlist.configurator.EventListFragmentConfigurator
@@ -28,4 +29,10 @@ class EventListPresenter : EventListFragmentContract.EventListPresenter() {
             }
         }
     }
+
+    override fun injectPresenter() {
+        EventViewerApp.getInstance().getDaggerController().eventListFragmentSubComponent?.inject(
+                this)
+    }
+
 }

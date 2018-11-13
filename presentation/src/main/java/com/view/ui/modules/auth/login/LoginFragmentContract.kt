@@ -18,6 +18,7 @@ interface LoginFragmentContract : BasePresenterContract {
     abstract class LoginPresenter : BasePresenter<LoginFragmentConfigurator, LoginFragmentAction, LoginFragmentDto, LoginFragmentView>() {
         init {
             this.intiConfigurator()
+            this.injectPresenter()
         }
     }
 

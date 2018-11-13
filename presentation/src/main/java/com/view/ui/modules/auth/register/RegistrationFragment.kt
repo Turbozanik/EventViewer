@@ -35,10 +35,6 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
 
     private lateinit var datePickerDialog: DatePickerDialog
 
-    override fun inject() {
-        daggerController.registrationFragmentSubComponent?.inject(this)
-    }
-
     override fun addCurrentSubComponent() {
         daggerController.addRegistrationFragmentSubComponent()
     }
