@@ -39,8 +39,14 @@ class RootGodlikeActivityPresenter : RootGodlikeActivityContract.RootActivityPre
                         } else {
                             Flowable.empty()
                         }
-                    }.subscribe(
-                            { viewState.goToEventListFragment() },
+                    }.isEmpty.subscribe(
+                            { isEmpty: Boolean ->
+                                if (isEmpty) {
+                                    viewState.goToEventListFragment()
+                                } else {
+                                    viewState.goToEventListFragment()
+                                }
+                            },
                             { Timber.e("Error during login") })
                 }
             }
