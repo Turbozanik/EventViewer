@@ -1,6 +1,5 @@
 package com.view.ui.godlikeroot
 
-import android.text.TextUtils.isEmpty
 import com.EventViewerApp
 import com.arellomobile.mvp.InjectViewState
 import com.domain.usecase.net.login.LoginUseCase
@@ -30,24 +29,20 @@ class RootGodlikeActivityPresenter : RootGodlikeActivityContract.RootActivityPre
                 RootActivityAction.DEFAULT -> {
                 }
                 RootActivityAction.CHECK_CREDENTIALS_IN_SHARED_PREFS -> {
-                    getUserCredentialsFromSharedPrefs().flatMap {
-                        if (!isEmpty(it.first) || !isEmpty(it.second)) {
-                            val body: HashMap<String, String> = hashMapOf(
-                                    "email" to it.first,
-                                    "password" to it.second)
-                            mLoginUseCase.setParams(body).execute()
-                        } else {
-                            Flowable.empty()
-                        }
-                    }.isEmpty.subscribe(
-                            { isEmpty: Boolean ->
-                                if (isEmpty) {
+                    addDisposable(inBackground(getUserCredentialsFromSharedPrefs().flatMap {
+                        val body: HashMap<String, String> = hashMapOf(
+                                "email" to it.first,
+                                "password" to it.second)
+                        mLoginUseCase.setParams(body).execute()
+                    }).subscribe(
+                            {
+                                if (it != null) {
                                     viewState.goToEventListFragment()
                                 } else {
                                     viewState.goToEventListFragment()
                                 }
                             },
-                            { Timber.e("Error during login") })
+                            { Timber.e("Error during login") }))
                 }
             }
         }
