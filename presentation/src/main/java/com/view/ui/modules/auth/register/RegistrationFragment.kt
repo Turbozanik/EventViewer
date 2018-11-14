@@ -11,7 +11,10 @@ import com.view.R
 import com.view.ui.godlikeroot.RootGodlikeActivity
 import com.view.ui.modules.auth.register.RegistrationFragmentContract.RegistrationFragmentDto
 import com.view.ui.modules.auth.register.configurator.RegistrationFragmentAction
+import io.reactivex.Observable
+import io.reactivex.functions.Function6
 import kotlinx.android.synthetic.main.fragment_ragistration.*
+import timber.log.Timber
 import java.util.*
 
 
@@ -20,6 +23,10 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
     @InjectPresenter(type = PresenterType.LOCAL)
     lateinit var mPresenter: RegistrationPresenter
     val presenter: RegistrationPresenter get() = mPresenter
+
+    private var mIsFormValid: Boolean = false
+
+    private lateinit var mValidationObservable: Observable<Boolean>
 
     companion object {
         fun createNewInstance(): RegistrationFragment {
@@ -50,6 +57,7 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
         initEtBirthday()
         initEtRepeatPassword()
         initRegisterButton()
+        initFormValidation()
     }
 
     override fun sendActionAndData(action: RegistrationFragmentAction?,
@@ -99,8 +107,40 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
 
     private fun initRegisterButton() {
         mBtnRegister.setOnClickListener {
-            sendActionAndData(RegistrationFragmentAction.REGISTER, null)
+            validateForm()
+            if (mIsFormValid) {
+                sendActionAndData(RegistrationFragmentAction.REGISTER, null)
+            }
         }
+    }
+
+    private fun initFormValidation() {
+        mValidationObservable = Observable.combineLatest(
+                mNameLayout.getValidityObservable()?.startWith(false),
+                mNicknameLayout.getValidityObservable()?.startWith(false),
+                mEmailLayout.getValidityObservable()?.startWith(false),
+                mBirthdayLayout.getValidityObservable()?.startWith(false),
+                mPasswordLayout.getValidityObservable()?.startWith(false),
+                mRepeatPasswordLayout.getValidityObservable()?.startWith(false),
+                Function6 { isNameValid: Boolean, isNicknameValid: Boolean, isEmailValid: Boolean, isBirthdayValid: Boolean, isPasswordValid: Boolean, isRepeatPasswordValid: Boolean ->
+                    isNameValid && isNicknameValid && isEmailValid && isBirthdayValid && isPasswordValid && isRepeatPasswordValid && validatePasswordsMatch()
+                })
+        addDisposable(
+                mValidationObservable.subscribe({ isValid: Boolean -> mIsFormValid = isValid },
+                                                { Timber.e("Error") }))
+    }
+
+    private fun validateForm() {
+        mNameLayout.validate()
+        mNicknameLayout.validate()
+        mEmailLayout.validate()
+        mBirthdayLayout.validate()
+        mPasswordLayout.validate()
+        mRepeatPasswordLayout.validate()
+    }
+
+    private fun validatePasswordsMatch(): Boolean {
+        return mEtPassword.text.toString() == mEtRepeatPassword.text.toString()
     }
 
     override fun updateToolbar() {

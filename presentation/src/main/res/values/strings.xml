@@ -26,6 +26,8 @@
     <string name="hint_registration_password">Password</string>
     <string name="hint_registration_repeat_password">Repeat password</string>
     <string name="register">Register</string>
+    <string name="registration_error_invalid_email">Email is invalid</string>
+    <string name="registration_error_invalid_password">Password is invalid</string>
     <!--Event list-->
     <string name="all">All events</string>
     <string name="conference">Conference</string>

@@ -3,6 +3,7 @@ package com.view.widgets
 import android.content.Context
 import android.content.res.TypedArray
 import android.support.design.widget.TextInputLayout
+import android.text.TextUtils
 import android.util.AttributeSet
 import com.utils.ValidationUtils
 import com.view.R
@@ -22,7 +23,7 @@ open class ValidatableInputLayout : TextInputLayout {
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs,
-            defStyleAttr) {
+                                                                                  defStyleAttr) {
         init(attrs)
     }
 
@@ -47,6 +48,7 @@ open class ValidatableInputLayout : TextInputLayout {
 //<enum name="PASSWORD" value="2" />
 //<enum name="USER_NAME" value="3" />
 //<enum name="SURE_NAME" value="4" />
+    //<enum name="NOT_EMPTY" value="5" />
     fun isValid(): Boolean {
         return when (validationType) {
             0 -> true
@@ -54,6 +56,7 @@ open class ValidatableInputLayout : TextInputLayout {
             2 -> validatePassword()
             3 -> true
             4 -> true
+            5 -> isEmpty()
             else -> {
                 true
             }
@@ -68,6 +71,12 @@ open class ValidatableInputLayout : TextInputLayout {
 
     protected fun validatePassword(): Boolean {
         val isValid = ValidationUtils.validatePassword(editText?.text.toString())
+        error = if (errorStringResId != 0 && !isValid) context.getString(errorStringResId) else null
+        return isValid
+    }
+
+    protected fun isEmpty(): Boolean {
+        val isValid = !TextUtils.isEmpty(editText?.text.toString())
         error = if (errorStringResId != 0 && !isValid) context.getString(errorStringResId) else null
         return isValid
     }

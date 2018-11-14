@@ -27,6 +27,8 @@
     <string name="hint_registration_password">Пароль</string>
     <string name="hint_registration_repeat_password">Повторите пароль</string>
     <string name="register">Зарегестрироваться</string>
+    <string name="registration_error_invalid_email">Неверный email</string>
+    <string name="registration_error_invalid_password">Неверый пароль</string>
     <!--Event list-->
     <string name="all">Все события</string>
     <string name="conference">Конференции</string>

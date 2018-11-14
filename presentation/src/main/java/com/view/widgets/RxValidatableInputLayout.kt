@@ -5,6 +5,7 @@ import android.text.Editable
 import android.util.AttributeSet
 import com.DEFAULT_INPUT_DEBOUNCE
 import com.utils.DefaultTextWatcher
+import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.subjects.PublishSubject
 import java.util.concurrent.TimeUnit
@@ -35,16 +36,15 @@ class RxValidatableInputLayout : ValidatableInputLayout {
 
     private fun initUpdatesPublisher() {
         updatesPublisher = PublishSubject.create()
-        updatesPublisher?.debounce(DEFAULT_INPUT_DEBOUNCE, TimeUnit.MILLISECONDS)
-                ?.observeOn(AndroidSchedulers.mainThread())
     }
 
     internal fun validate() {
         updatesPublisher?.onNext(isValid())
     }
 
-    fun getValidityObservable(): PublishSubject<Boolean>? {
-        return updatesPublisher
+    fun getValidityObservable(): Observable<Boolean>? {
+        return updatesPublisher?.debounce(DEFAULT_INPUT_DEBOUNCE, TimeUnit.MILLISECONDS)
+                ?.observeOn(AndroidSchedulers.mainThread())
     }
 
     private fun initEditTextWatcher() {
