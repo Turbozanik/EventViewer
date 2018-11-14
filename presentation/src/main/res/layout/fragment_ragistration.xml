@@ -54,9 +54,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:counterOverflowTextAppearance="@style/TextLimitError"
+            app:errorStringRes="@string/registration_error_invalid_email"
             app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
             app:layout_constraintStart_toEndOf="@id/ivName"
-            app:errorStringRes="@string/hint_email"
             app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalTop"
             app:validationType="USER_NAME">
 
@@ -177,6 +177,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp16"
+            app:errorStringRes="@string/registration_error_invalid_password"
             app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
             app:layout_constraintStart_toEndOf="@id/ivLock"
             app:layout_constraintTop_toBottomOf="@+id/mBirthdayLayout"
