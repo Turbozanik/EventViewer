@@ -54,9 +54,9 @@ open class ValidatableInputLayout : TextInputLayout {
             0 -> true
             1 -> validateEmail()
             2 -> validatePassword()
-            3 -> isEmpty()
-            4 -> isEmpty()
-            5 -> isEmpty()
+            3 -> isNotEmpty()
+            4 -> isNotEmpty()
+            5 -> isNotEmpty()
             else -> {
                 true
             }
@@ -75,7 +75,7 @@ open class ValidatableInputLayout : TextInputLayout {
         return isValid
     }
 
-    protected fun isEmpty(): Boolean {
+    protected fun isNotEmpty(): Boolean {
         val isValid = !TextUtils.isEmpty(editText?.text.toString())
         error = if (errorStringResId != 0 && !isValid) context.getString(errorStringResId) else null
         return isValid

@@ -36,7 +36,7 @@ package com.view.ui.modules.splash
 //            modulesNavigator.startActivity(MAIN_ACTIVITY)
 //        } else {
 //            mGetUserEmailUseCase.execute().subscribe {
-//                if (!isEmpty(it)) {
+//                if (!isNotEmpty(it)) {
 //                    modulesNavigator.startActivityWithInitialAction(
 //                            ContentHolderInitialAction.OPEN_AUTH_WITH_SAVED_CREDENTIALS)
 //                } else {
