@@ -112,7 +112,15 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
         mBtnRegister.setOnClickListener {
             validateForm()
             if (mIsFormValid) {
-                sendActionAndData(RegistrationFragmentAction.REGISTER, null)
+                sendActionAndData(RegistrationFragmentAction.REGISTER,
+                                  RegistrationFragmentContract.RegistrationFragmentDto(
+                                          RegistrationFragmentContract.RegistrationInfo(
+                                                  mEtName.text.toString(),
+                                                  mEtNickname.text.toString(),
+                                                  mEtEmail.text.toString(),
+                                                  mEtBirthday.text.toString(),
+                                                  mEtPassword.text.toString(),
+                                                  mEtPassword.text.toString()), true))
             }
         }
     }
