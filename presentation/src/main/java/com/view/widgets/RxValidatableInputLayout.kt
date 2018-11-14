@@ -29,7 +29,7 @@ class RxValidatableInputLayout : ValidatableInputLayout {
     override fun initView() {
         super.initView()
         initUpdatesPublisher()
-        editText?.post {
+        this.post {
             initEditTextWatcher()
         }
     }
