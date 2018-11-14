@@ -54,8 +54,8 @@ open class ValidatableInputLayout : TextInputLayout {
             0 -> true
             1 -> validateEmail()
             2 -> validatePassword()
-            3 -> true
-            4 -> true
+            3 -> isEmpty()
+            4 -> isEmpty()
             5 -> isEmpty()
             else -> {
                 true
