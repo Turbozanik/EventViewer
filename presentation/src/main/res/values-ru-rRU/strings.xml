@@ -22,7 +22,7 @@
     <string name="registration">Регистрация</string>
     <string name="hint_registration_name">Имя</string>
     <string name="hint_registration_nickname">Отображаемое имя</string>
-    <string name="hint_registration_email">Email</string>
+    <string name="hint_registration_email">Почта</string>
     <string name="hint_registration_birthday">Дата рождения</string>
     <string name="hint_registration_password">Пароль</string>
     <string name="hint_registration_repeat_password">Повторите пароль</string>
