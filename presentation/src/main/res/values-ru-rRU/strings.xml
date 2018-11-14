@@ -27,7 +27,7 @@
     <string name="hint_registration_password">Пароль</string>
     <string name="hint_registration_repeat_password">Повторите пароль</string>
     <string name="register">Зарегестрироваться</string>
-    <string name="registration_error_invalid_name">Name is empty</string>
+    <string name="registration_error_invalid_name">Имя не заполнено</string>
     <string name="registration_error_invalid_nickname">Никнейм не заполнен</string>
     <string name="registration_error_invalid_birthday">День рождения не заполнен</string>
     <string name="registration_error_invalid_email">Неверный email</string>
