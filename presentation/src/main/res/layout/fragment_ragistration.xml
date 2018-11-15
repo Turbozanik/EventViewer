@@ -57,6 +57,7 @@
             app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
             app:layout_constraintStart_toEndOf="@id/ivName"
             app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalTop"
+            app:errorStringRes="@string/registration_error_invalid_name"
             app:validationType="USER_NAME">
 
             <android.support.design.widget.TextInputEditText
@@ -87,6 +88,7 @@
             app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
             app:layout_constraintStart_toEndOf="@id/ivNickname"
             app:layout_constraintTop_toBottomOf="@+id/mNameLayout"
+            app:errorStringRes="@string/registration_error_invalid_nickname"
             app:validationType="USER_NAME">
 
             <android.support.design.widget.TextInputEditText
@@ -149,6 +151,7 @@
             app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
             app:layout_constraintStart_toEndOf="@id/ivBirthday"
             app:layout_constraintTop_toBottomOf="@+id/mEmailLayout"
+            app:errorStringRes="@string/registration_error_invalid_birthday"
             app:validationType="NOT_EMPTY">
 
             <android.support.design.widget.TextInputEditText

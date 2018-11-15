@@ -9,4 +9,6 @@ interface RootGodlikeActivityView : BaseView {
 
     fun goToEventListFragment()
 
+    fun goToConferenceFragment()
+
 }

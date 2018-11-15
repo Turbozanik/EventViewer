@@ -15,6 +15,7 @@ import com.InitialAction.DEFAULT
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.PresenterType
 import com.view.R
+import com.view.base.configurator.ActionProducer
 import com.view.base.view.HasProgress
 import com.view.ui.godlikeroot.configurator.RootActivityAction
 import com.view.ui.modules.auth.AuthModuleFragmentFactory
@@ -26,7 +27,7 @@ import kotlinx.android.synthetic.main.activity_root_with_toolbar.*
 import ru.terrakok.cicerone.Navigator
 
 
-class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), NavigationView.OnNavigationItemSelectedListener, HasProgress {
+class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), NavigationView.OnNavigationItemSelectedListener, HasProgress, ActionProducer<RootActivityAction, RootGodlikeActivityContract.RootActivityDto> {
 
     private val mNavigator = object : FragmentNavigator(supportFragmentManager,
                                                         fragmentContainerViewId) {
@@ -74,7 +75,10 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
         mToggle.syncState()
 
         mNavView.setNavigationItemSelectedListener(this)
-        mPresenter.consumeActionAndData(RootActivityAction.CHECK_CREDENTIALS_IN_SHARED_PREFS, null)
+        if (currentFragment == null) {
+            mPresenter.consumeActionAndData(RootActivityAction.CHECK_CREDENTIALS_IN_SHARED_PREFS,
+                                            null)
+        }
     }
 
     override fun onBackPressed() {
@@ -106,14 +110,19 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
         mToggle.onConfigurationChanged(newConfig)
     }
 
+    override fun sendActionAndData(action: RootActivityAction?,
+                                   data: RootGodlikeActivityContract.RootActivityDto?) {
+        mPresenter.consumeActionAndData(action, data)
+    }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.all -> {
-                startRootActivityEventListFragmentChain(null)
+                sendActionAndData(RootActivityAction.EVENT_LIST_ITEM_CLICK, null)
             }
             R.id.nav_gallery -> {
-                startRegistrationFragmentChain(null)
+                sendActionAndData(RootActivityAction.CONFERENCE_ITEM_CLICK, null)
             }
             R.id.nav_slideshow -> {
 
@@ -198,10 +207,6 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
         mToolbar.title = getString(R.string.profile)
     }
 
-    override fun saveCurrentFragment(fragment: Fragment) {
-        mCurrentFragment = fragment
-    }
-
     override fun showRootScreen(screenKey: String?) {
         if (initialAction != DEFAULT) {
             super.showRootScreen(screenKey)
@@ -223,6 +228,10 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
 
     override fun goToEventListFragment() {
         startRootActivityEventListFragmentChain(null)
+    }
+
+    override fun goToConferenceFragment() {
+        startRegistrationFragmentChain(null)
     }
 
 }

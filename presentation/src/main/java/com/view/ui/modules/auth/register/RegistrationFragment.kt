@@ -3,6 +3,7 @@ package com.view.ui.modules.auth.register
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.text.TextUtils.isEmpty
 import android.view.inputmethod.EditorInfo
 import com.FRAGMENT_DATA_KEY
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -134,11 +135,12 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
                 mPasswordLayout.getValidityObservable()?.startWith(false),
                 mRepeatPasswordLayout.getValidityObservable()?.startWith(false),
                 Function6 { isNameValid: Boolean, isNicknameValid: Boolean, isEmailValid: Boolean, isBirthdayValid: Boolean, isPasswordValid: Boolean, isRepeatPasswordValid: Boolean ->
-                    isNameValid && isNicknameValid && isEmailValid && isBirthdayValid && isPasswordValid && isRepeatPasswordValid && validatePasswordsMatch()
+                    isNameValid and isNicknameValid and isEmailValid and isBirthdayValid and isPasswordValid and isRepeatPasswordValid and validatePasswordsMatch()
                 })
         addDisposable(
-                mValidationObservable.subscribe({ isValid: Boolean -> mIsFormValid = isValid },
-                                                { Timber.e("Error") }))
+                mValidationObservable.subscribe(
+                        { isValid: Boolean -> mIsFormValid = isValid },
+                        { Timber.e("Error") }))
     }
 
     private fun validateForm() {
@@ -151,7 +153,16 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
     }
 
     private fun validatePasswordsMatch(): Boolean {
-        return mEtPassword.text.toString() == mEtRepeatPassword.text.toString()
+        val isValid: Boolean
+        return when {
+            isEmpty(mEtPassword.text.toString()) -> false
+            else -> {
+                isValid = mEtPassword.text.toString() == mEtRepeatPassword.text.toString()
+                if (isValid) mRepeatPasswordLayout.error = null else mRepeatPasswordLayout.error = getString(
+                        R.string.registration_error_invalid_repeat_password)
+                isValid
+            }
+        }
     }
 
     override fun updateToolbar() {

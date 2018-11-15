@@ -7,6 +7,7 @@ import com.domain.usecase.prefs.user.GetUserEmailUseCase
 import com.domain.usecase.prefs.user.GetUserPasswordUseCase
 import com.view.ui.godlikeroot.configurator.RootActivityAction
 import com.view.ui.godlikeroot.configurator.RootActivityConfigurator
+import com.view.ui.godlikeroot.configurator.RootActivityViewCommand
 import io.reactivex.Flowable
 import io.reactivex.functions.BiFunction
 import javax.inject.Inject
@@ -21,13 +22,25 @@ class RootGodlikeActivityPresenter : RootGodlikeActivityContract.RootActivityPre
     @Inject
     lateinit var mLoginUseCase: LoginUseCase
 
+    private val mRootGodlikeActivityState: RootGodlikeActivityState = RootGodlikeActivityState()
+
     override fun consumeActionAndData(action: RootActivityAction?,
                                       data: RootGodlikeActivityContract.RootActivityDto?) {
         if (action != null) {
-            when (action) {
-                RootActivityAction.DEFAULT -> {
+            when (actionConfigurator.produceViewCommand(mRootGodlikeActivityState, action)) {
+                RootActivityViewCommand.DEFAULT -> {
                 }
-                RootActivityAction.CHECK_CREDENTIALS_IN_SHARED_PREFS -> {
+                RootActivityViewCommand.OPEN_CONFERENCE_SCREEN -> {
+                    viewState.goToConferenceFragment()
+                }
+                RootActivityViewCommand.OPEN_EVENT_LIST_SCREEN -> {
+                    viewState.goToEventListFragment()
+                }
+                RootActivityViewCommand.OPEN_EVENT_DETAILS_SCREEN -> {
+                }
+                RootActivityViewCommand.OPEN_AUTH_SCREEN -> {
+                }
+                RootActivityViewCommand.LOGIN_AND_OPEN_EVENT_LIST_SCREEN -> {
                     addDisposable(inBackground(getUserCredentialsFromSharedPrefs().flatMap {
                         val body: HashMap<String, String> = hashMapOf(
                                 "email" to it.first,

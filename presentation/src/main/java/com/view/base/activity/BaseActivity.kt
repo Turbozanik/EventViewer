@@ -2,7 +2,6 @@ package com.view.base.activity
 
 import android.os.Bundle
 import android.support.annotation.LayoutRes
-import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import com.ACTIVITY_ACTION_DATA_KEY
 import com.EventViewerApp
@@ -45,7 +44,6 @@ abstract class BaseActivity : com.view.base.activity.MvpActivity(), HasRootScree
             return mUserKeeper
         }
 
-    protected var mCurrentFragment: Fragment? = null
     private lateinit var mModulesNavigator: ModulesNavigator
     private lateinit var mInitialInitAction: InitialAction
 
@@ -124,9 +122,7 @@ abstract class BaseActivity : com.view.base.activity.MvpActivity(), HasRootScree
 
     protected abstract fun initView()
 
-    protected abstract fun saveCurrentFragment(fragment: Fragment)
-
-    private val currentFragment: BaseFragment?
+    protected val currentFragment: BaseFragment?
         get() = supportFragmentManager.findFragmentById(fragmentContainerViewId) as? BaseFragment
 
     private fun removeNavigator() {
