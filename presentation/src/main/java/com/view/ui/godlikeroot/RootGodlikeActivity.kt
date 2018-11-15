@@ -20,6 +20,7 @@ import com.view.base.view.HasProgress
 import com.view.ui.godlikeroot.configurator.RootActivityAction
 import com.view.ui.modules.auth.AuthModuleFragmentFactory
 import com.view.ui.modules.auth.REGISTRATION_SCREEN
+import com.view.ui.modules.auth.register.RegistrationFragment
 import com.view.ui.modules.content.ContentFragmentFactory
 import kotlinx.android.synthetic.main.activity_root.*
 import kotlinx.android.synthetic.main.activity_root_content.*
@@ -233,6 +234,9 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
     }
 
     override fun goBack() {
+        if (currentFragment is RegistrationFragment) {
+            mNavView.setCheckedItem(R.id.all)
+        }
         goToPreviousFragment()
     }
 
