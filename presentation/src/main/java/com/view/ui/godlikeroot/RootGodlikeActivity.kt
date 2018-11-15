@@ -75,17 +75,13 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
         mToggle.syncState()
 
         mNavView.setNavigationItemSelectedListener(this)
-        if (currentFragment == null) {
-            mPresenter.consumeActionAndData(RootActivityAction.CHECK_CREDENTIALS_IN_SHARED_PREFS,
-                                            null)
-        }
     }
 
     override fun onBackPressed() {
         if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
             mDrawerLayout.closeDrawer(GravityCompat.START)
         } else {
-            super.onBackPressed()
+            sendActionAndData(RootActivityAction.BACK_CLICK, null)
         }
     }
 
@@ -187,6 +183,14 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
             return mProgressBar
         }
 
+    override fun getDefaultInitialAction(): InitialAction {
+        return DEFAULT
+    }
+
+    override fun handleInitialAction(initialAction: InitialAction) {
+        sendActionAndData(RootActivityAction.DEFAULT, null)
+    }
+
     fun prepareEventListToolbar() {
         mToolbar.title = getString(R.string.all)
     }
@@ -207,18 +211,12 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
         mToolbar.title = getString(R.string.profile)
     }
 
-    override fun showRootScreen(screenKey: String?) {
-        if (initialAction != DEFAULT) {
-            super.showRootScreen(screenKey)
-        }
-    }
-
-    fun startRegistrationFragmentChain(data: Bundle?) {
+    fun addRegistrationFragment(data: Bundle?) {
         addFragment(REGISTRATION_SCREEN, data)
     }
 
-    private fun startRootActivityEventListFragmentChain(data: Bundle?) {
-        createNewChain(EVENT_LIST_SCREEN, data)
+    private fun addEventListFragmentRoot(data: Bundle?) {
+        showRootScreen(EVENT_LIST_SCREEN, data)
     }
 
     fun goToAllEventsScreen(data: Bundle?) {
@@ -227,11 +225,15 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
     }
 
     override fun goToEventListFragment() {
-        startRootActivityEventListFragmentChain(null)
+        addEventListFragmentRoot(null)
     }
 
     override fun goToConferenceFragment() {
-        startRegistrationFragmentChain(null)
+        addRegistrationFragment(null)
+    }
+
+    override fun goBack() {
+        goToPreviousFragment()
     }
 
 }

@@ -11,4 +11,6 @@ interface RootGodlikeActivityView : BaseView {
 
     fun goToConferenceFragment()
 
+    fun goBack()
+
 }

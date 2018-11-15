@@ -29,6 +29,13 @@ class RootGodlikeActivityPresenter : RootGodlikeActivityContract.RootActivityPre
         action?.let { actionCopy: RootActivityAction ->
             when (actionConfigurator.produceViewCommand(mRootGodlikeActivityState, actionCopy)) {
                 RootActivityViewCommand.DEFAULT -> {
+                    addDisposable(inBackground(getUserCredentialsFromSharedPrefs().flatMap {
+                        val body: HashMap<String, String> = hashMapOf(
+                                "email" to it.first,
+                                "password" to it.second)
+                        mLoginUseCase.setParams(body).execute()
+                    }).subscribe({ viewState.goToEventListFragment() },
+                                 { viewState.goToEventListFragment() }))
                 }
                 RootActivityViewCommand.OPEN_CONFERENCE_SCREEN -> {
                     viewState.goToConferenceFragment()
@@ -40,14 +47,9 @@ class RootGodlikeActivityPresenter : RootGodlikeActivityContract.RootActivityPre
                 }
                 RootActivityViewCommand.OPEN_AUTH_SCREEN -> {
                 }
-                RootActivityViewCommand.LOGIN_AND_OPEN_EVENT_LIST_SCREEN -> {
-                    addDisposable(inBackground(getUserCredentialsFromSharedPrefs().flatMap {
-                        val body: HashMap<String, String> = hashMapOf(
-                                "email" to it.first,
-                                "password" to it.second)
-                        mLoginUseCase.setParams(body).execute()
-                    }).subscribe({ viewState.goToEventListFragment() },
-                                 { viewState.goToEventListFragment() }))
+
+                RootActivityViewCommand.GO_BACK -> {
+                    viewState.goBack()
                 }
             }
         }

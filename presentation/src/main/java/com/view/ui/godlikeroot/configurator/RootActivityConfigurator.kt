@@ -11,14 +11,14 @@ class RootActivityConfigurator : BaseConfigurator<RootActivityAction, RootGodlik
             RootActivityAction.DEFAULT -> {
                 RootActivityViewCommand.DEFAULT
             }
-            RootActivityAction.CHECK_CREDENTIALS_IN_SHARED_PREFS -> {
-                RootActivityViewCommand.LOGIN_AND_OPEN_EVENT_LIST_SCREEN
-            }
             RootActivityAction.EVENT_LIST_ITEM_CLICK -> {
                 RootActivityViewCommand.OPEN_EVENT_LIST_SCREEN
             }
             RootActivityAction.CONFERENCE_ITEM_CLICK -> {
                 RootActivityViewCommand.OPEN_CONFERENCE_SCREEN
+            }
+            RootActivityAction.BACK_CLICK -> {
+                RootActivityViewCommand.GO_BACK
             }
         }
     }

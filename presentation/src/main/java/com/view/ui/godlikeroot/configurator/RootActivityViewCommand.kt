@@ -7,7 +7,7 @@ enum class RootActivityViewCommand(command: Int) {
     OPEN_CONFERENCE_SCREEN(2),
     OPEN_EVENT_LIST_SCREEN(3),
     OPEN_EVENT_DETAILS_SCREEN(4),
-    LOGIN_AND_OPEN_EVENT_LIST_SCREEN(5);
+    GO_BACK(5);
 
     private val mCommand: Int = command
 

@@ -32,7 +32,7 @@ abstract class BaseActivity : com.view.base.activity.MvpActivity(), HasRootScree
         }
 
         override fun exit() {
-            finish()
+            moveTaskToBack(true)
         }
 
     }
@@ -80,7 +80,7 @@ abstract class BaseActivity : com.view.base.activity.MvpActivity(), HasRootScree
         initView()
         readActivityInitialAction()
         if (savedInstanceState?.get(CURRENT_FRAGMENT_ID_KEY) == null) {
-            showRootScreen(getScreenKeyByAction(initialAction))
+            handleInitialAction(initialAction)
         }
     }
 
@@ -122,6 +122,8 @@ abstract class BaseActivity : com.view.base.activity.MvpActivity(), HasRootScree
 
     protected abstract fun initView()
 
+    protected abstract fun getDefaultInitialAction(): InitialAction
+
     protected val currentFragment: BaseFragment?
         get() = supportFragmentManager.findFragmentById(fragmentContainerViewId) as? BaseFragment
 
@@ -135,6 +137,10 @@ abstract class BaseActivity : com.view.base.activity.MvpActivity(), HasRootScree
 
     protected fun goToPreviousFragment(screenKey: String?) {
         router.backTo(screenKey)
+    }
+
+    protected fun goToPreviousFragment() {
+        router.exit()
     }
 
     protected fun createNewChain(screenKey: String?, data: Any?) {
@@ -151,7 +157,7 @@ abstract class BaseActivity : com.view.base.activity.MvpActivity(), HasRootScree
             initialAction = intent.getSerializableExtra(
                     ACTIVITY_ACTION_DATA_KEY) as InitialAction
         }
-        mInitialInitAction = initialAction ?: InitialAction.DEFAULT
+        mInitialInitAction = initialAction ?: getDefaultInitialAction()
     }
 
     private fun handleDaggerDependencies() {
@@ -159,9 +165,13 @@ abstract class BaseActivity : com.view.base.activity.MvpActivity(), HasRootScree
         addCurrentActivitySubComponent()
     }
 
-    override fun showRootScreen(screenKey: String?) {
+    protected open fun handleInitialAction(initialAction: InitialAction) {
+        showRootScreen(getScreenKeyByAction(initialAction), null)
+    }
+
+    override fun showRootScreen(screenKey: String?, bundle: Bundle?) {
         screenKey?.let {
-            router.newRootScreen(screenKey)
+            router.newRootScreen(screenKey, bundle)
         }
     }
 

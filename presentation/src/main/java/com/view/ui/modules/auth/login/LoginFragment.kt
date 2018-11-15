@@ -63,7 +63,7 @@ class LoginFragment : LoginFragmentContract.LoginFragment() {
     }
 
     override fun goToRegistrationFragment() {
-        (activity as RootGodlikeActivity).startRegistrationFragmentChain(null)
+        (activity as RootGodlikeActivity).addRegistrationFragment(null)
     }
 
     private fun initSignInFieldsValidation() {
