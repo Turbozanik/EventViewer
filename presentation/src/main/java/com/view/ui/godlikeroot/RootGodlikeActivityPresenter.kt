@@ -26,8 +26,8 @@ class RootGodlikeActivityPresenter : RootGodlikeActivityContract.RootActivityPre
 
     override fun consumeActionAndData(action: RootActivityAction?,
                                       data: RootGodlikeActivityContract.RootActivityDto?) {
-        if (action != null) {
-            when (actionConfigurator.produceViewCommand(mRootGodlikeActivityState, action)) {
+        action?.let { actionCopy: RootActivityAction ->
+            when (actionConfigurator.produceViewCommand(mRootGodlikeActivityState, actionCopy)) {
                 RootActivityViewCommand.DEFAULT -> {
                 }
                 RootActivityViewCommand.OPEN_CONFERENCE_SCREEN -> {

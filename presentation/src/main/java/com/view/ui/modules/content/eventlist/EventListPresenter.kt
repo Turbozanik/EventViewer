@@ -17,8 +17,8 @@ class EventListPresenter : EventListFragmentContract.EventListPresenter() {
 
     override fun consumeActionAndData(action: EventListFragmentAction?,
                                       data: EventListFragmentContract.EventListFragmentDto?) {
-        if (action != null) {
-            when (actionConfigurator.produceViewCommand(mEventListFragmentState, action)) {
+        action?.let { actionCopy: EventListFragmentAction ->
+            when (actionConfigurator.produceViewCommand(mEventListFragmentState, actionCopy)) {
                 EventListFragmentViewCommand.DEFAULT -> TODO()
                 EventListFragmentViewCommand.LOAD_MORE_EVENTS -> {
                     viewState.onMoreEventsLoaded()

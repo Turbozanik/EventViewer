@@ -30,8 +30,8 @@ class RegistrationPresenter : RegistrationFragmentContract.RegistrationPresenter
 
     override fun consumeActionAndData(action: RegistrationFragmentAction?,
                                       data: RegistrationFragmentContract.RegistrationFragmentDto?) {
-        if (action != null) {
-            when (actionConfigurator.produceViewCommand(mRegistrationFragmentState, action)) {
+        action?.let { actionCopy: RegistrationFragmentAction ->
+            when (actionConfigurator.produceViewCommand(mRegistrationFragmentState, actionCopy)) {
                 RegistrationFragmentViewCommand.DEFAULT -> {
                     Timber.d("default message")
                 }
