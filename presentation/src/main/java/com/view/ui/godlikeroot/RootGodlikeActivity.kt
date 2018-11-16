@@ -20,7 +20,6 @@ import com.view.base.view.HasProgress
 import com.view.ui.godlikeroot.configurator.RootActivityAction
 import com.view.ui.modules.auth.AuthModuleFragmentFactory
 import com.view.ui.modules.auth.REGISTRATION_SCREEN
-import com.view.ui.modules.auth.register.RegistrationFragment
 import com.view.ui.modules.content.ContentFragmentFactory
 import kotlinx.android.synthetic.main.activity_root.*
 import kotlinx.android.synthetic.main.activity_root_content.*
@@ -216,17 +215,13 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
         addFragment(REGISTRATION_SCREEN, data)
     }
 
-    private fun addEventListFragmentRoot(data: Bundle?) {
+    private fun showEventListFragmentRoot(data: Bundle?) {
         showRootScreen(EVENT_LIST_SCREEN, data)
     }
 
-    fun goToAllEventsScreen(data: Bundle?) {
-        mNavView.setCheckedItem(R.id.all)
-        onNavigationItemSelected(mNavView.menu.findItem(R.id.all))
-    }
-
     override fun goToEventListFragment() {
-        addEventListFragmentRoot(null)
+        mNavView.setCheckedItem(R.id.all)
+        showEventListFragmentRoot(null)
     }
 
     override fun goToConferenceFragment() {
@@ -234,10 +229,7 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
     }
 
     override fun goBack() {
-        if (currentFragment is RegistrationFragment) {
-            mNavView.setCheckedItem(R.id.all)
-        }
-        goToPreviousFragment()
+        goToEventListFragment()
     }
 
 }
