@@ -2,7 +2,6 @@ package com.domain.usecase.prefs.user
 
 import com.domain.repository.SharedPrefsRepository
 import com.domain.usecase.UseCase
-import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
 
 
@@ -12,10 +11,8 @@ class SaveUserToSharedPrefsUseCase(
     private val mSharedPrefsRepository: SharedPrefsRepository = sharedSharedPrefsRepo
 
     override fun buildFlowable(params: Pair<String, String>?): Flowable<Any> {
-        return Flowable.create<Any>({
-                                        mSharedPrefsRepository.saveUserEmail(params?.first)
-                                        mSharedPrefsRepository.saveUserPassword(params?.second)
-        }, BackpressureStrategy.DROP)
+        return mSharedPrefsRepository.saveUserEmail(params?.first)
+                .flatMap { mSharedPrefsRepository.saveUserPassword(params?.second) }
     }
 
     override val isParamsRequired: Boolean

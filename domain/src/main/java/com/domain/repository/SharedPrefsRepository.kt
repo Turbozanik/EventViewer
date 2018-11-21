@@ -1,14 +1,16 @@
 package com.domain.repository
 
+import io.reactivex.Flowable
+
 
 interface SharedPrefsRepository {
 
-    fun saveUserEmail(email: String?)
+    fun saveUserEmail(email: String?): Flowable<Any>
 
-    fun saveUserPassword(password: String?)
+    fun saveUserPassword(password: String?): Flowable<Any>
 
-    fun getUserEmail(): String?
+    fun getUserEmail(): Flowable<String>
 
-    fun getUserPassword(): String?
+    fun getUserPassword(): Flowable<String>
 
 }

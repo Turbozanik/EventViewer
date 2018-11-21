@@ -11,10 +11,7 @@ class GetUserPasswordUseCase(
     private val mSharedPrefsRepository: SharedPrefsRepository = sharedSharedPrefsRepository
 
     override fun buildFlowable(params: Any?): Flowable<String> {
-        return when (mSharedPrefsRepository.getUserPassword()) {
-            null -> Flowable.just("")
-            else -> Flowable.just(mSharedPrefsRepository.getUserPassword())
-        }
+        return mSharedPrefsRepository.getUserPassword()
     }
 
     override val isParamsRequired: Boolean
