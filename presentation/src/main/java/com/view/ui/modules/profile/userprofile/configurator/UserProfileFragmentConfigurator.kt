@@ -9,7 +9,7 @@ class UserProfileFragmentConfigurator : BaseConfigurator<UserProfileFragmentActi
                                     action: UserProfileFragmentAction): UserProfileFragmentViewCommand {
         saveAction(action, viewState)
         return when (action) {
-            UserProfileFragmentAction.INITIAL_ACTION_DEFAULT -> {
+            UserProfileFragmentAction.DEFAULT -> {
                 UserProfileFragmentViewCommand.DEFAULT
             }
         }

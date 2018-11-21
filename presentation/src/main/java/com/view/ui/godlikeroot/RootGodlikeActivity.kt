@@ -21,6 +21,8 @@ import com.view.ui.godlikeroot.configurator.RootActivityAction
 import com.view.ui.modules.auth.AuthModuleFragmentFactory
 import com.view.ui.modules.auth.REGISTRATION_SCREEN
 import com.view.ui.modules.content.ContentFragmentFactory
+import com.view.ui.modules.profile.PROFILE_SCREEN
+import com.view.ui.modules.profile.ProfileModuleFragmentFactory
 import kotlinx.android.synthetic.main.activity_root.*
 import kotlinx.android.synthetic.main.activity_root_content.*
 import kotlinx.android.synthetic.main.activity_root_with_toolbar.*
@@ -35,6 +37,9 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
             return when (screenKey) {
                 AUTH_SCREEN -> {
                     mAuthModuleFragmentHolder.createFragment(screenKey, null)
+                }
+                PROFILE_SCREEN -> {
+                    mUserProfileFactory.createFragment(screenKey, null)
                 }
                 REGISTRATION_SCREEN -> {
                     mAuthModuleFragmentHolder.createFragment(screenKey, null)
@@ -59,6 +64,7 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
     lateinit var mPresenter: RootGodlikeActivityPresenter
     private lateinit var mToggle: ActionBarDrawerToggle
     private var mAuthModuleFragmentHolder: AuthModuleFragmentFactory = AuthModuleFragmentFactory()
+    private var mUserProfileFactory: ProfileModuleFragmentFactory = ProfileModuleFragmentFactory()
     private var mContentHolder: ContentFragmentFactory = ContentFragmentFactory()
     override val navigator: Navigator
         get() = mNavigator
@@ -120,8 +126,8 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
             R.id.nav_gallery -> {
                 sendActionAndData(RootActivityAction.CONFERENCE_ITEM_CLICK, null)
             }
-            R.id.nav_slideshow -> {
-
+            R.id.nav_user_profile -> {
+                sendActionAndData(RootActivityAction.USER_PROFILE_CLICK, null)
             }
             R.id.nav_manage -> {
 
@@ -215,8 +221,17 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
         addFragment(REGISTRATION_SCREEN, data)
     }
 
+    fun addUserProfileFragment(data: Bundle?) {
+        addFragment(PROFILE_SCREEN, data)
+    }
+
     private fun showEventListFragmentRoot(data: Bundle?) {
         showRootScreen(EVENT_LIST_SCREEN, data)
+    }
+
+    override fun showProfileFragment() {
+        mNavView.setCheckedItem(R.id.nav_user_profile)
+        addUserProfileFragment(null)
     }
 
     override fun goToEventListFragment() {

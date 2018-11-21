@@ -20,6 +20,9 @@ class RootActivityConfigurator : BaseConfigurator<RootActivityAction, RootGodlik
             RootActivityAction.BACK_CLICK -> {
                 RootActivityViewCommand.GO_BACK
             }
+            RootActivityAction.USER_PROFILE_CLICK -> {
+                RootActivityViewCommand.OPEN_USER_PROFILE
+            }
         }
     }
 }

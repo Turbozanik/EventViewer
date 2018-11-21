@@ -1,5 +1,8 @@
 package com.view.ui.modules.profile.userprofile
 
+import android.os.Bundle
+import android.support.v4.app.Fragment
+import com.FRAGMENT_DATA_KEY
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.PresenterType
 import com.view.R
@@ -16,6 +19,18 @@ class UserProfileFragment : UserProfileFragmentContract.UserProfileFragment() {
     lateinit var mPresenter: UserProfilePresenter
     val presenter: UserProfilePresenter get() = mPresenter
     private lateinit var mAdapter: EventListAdapter
+
+    companion object {
+        fun createNewInstance(): UserProfileFragment {
+            return UserProfileFragment()
+        }
+
+        fun addInitialAction(fragment: Fragment, initialAction: UserProfileFragmentAction) {
+            val args = Bundle()
+            args.putSerializable(FRAGMENT_DATA_KEY, initialAction)
+            fragment.arguments = args
+        }
+    }
 
     override fun addCurrentSubComponent() {
         daggerController.addUserProfileFragmentSubComponent()

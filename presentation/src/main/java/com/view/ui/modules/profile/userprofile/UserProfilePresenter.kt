@@ -17,7 +17,7 @@ class UserProfilePresenter : UserProfileFragmentContract.UserProfilePresenter() 
                                       data: UserProfileFragmentContract.UserProfileFragmentDto?) {
         when (action) {
 
-            UserProfileFragmentAction.INITIAL_ACTION_DEFAULT -> {
+            UserProfileFragmentAction.DEFAULT -> {
             }
             null -> {
             }

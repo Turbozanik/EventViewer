@@ -4,7 +4,7 @@ import com.view.base.BaseAction
 
 
 enum class UserProfileFragmentAction(action: Int, isInitialAction: Boolean) : BaseAction {
-    INITIAL_ACTION_DEFAULT(action = 0, isInitialAction = true);
+    DEFAULT(action = 0, isInitialAction = true);
 
     override val mActionValue: Int = action
     override val mIsInitialAction: Boolean = isInitialAction

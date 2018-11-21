@@ -51,6 +51,9 @@ class RootGodlikeActivityPresenter : RootGodlikeActivityContract.RootActivityPre
                 RootActivityViewCommand.GO_BACK -> {
                     viewState.goBack()
                 }
+                RootActivityViewCommand.OPEN_USER_PROFILE -> {
+                    viewState.showProfileFragment()
+                }
             }
         }
     }
