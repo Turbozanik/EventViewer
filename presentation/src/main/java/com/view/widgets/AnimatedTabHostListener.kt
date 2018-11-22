@@ -16,17 +16,17 @@ import android.widget.TabHost.OnTabChangeListener
  */
 class AnimatedTabHostListener
 /**
- * Constructor that takes the TabHost as a parameter and sets previousView to the currentView at instantiation
+ * Constructor that takes the TabHost as a parameter and sets mPreviousView to the mCurrentView at instantiation
  *
- * @param tabHost
+ * @param mTabHost
  */
-(private val tabHost: TabHost) : OnTabChangeListener {
-    private var previousView: View? = null
-    private var currentView: View? = null
-    private var currentTab: Int = 0
+(private val mTabHost: TabHost) : OnTabChangeListener {
+    private var mPreviousView: View? = null
+    private var mCurrentView: View? = null
+    private var mCurrentTab: Int = 0
 
     init {
-        this.previousView = tabHost.currentView
+        mPreviousView = mTabHost.currentView
     }
 
     /**
@@ -35,16 +35,16 @@ class AnimatedTabHostListener
      */
     override fun onTabChanged(tabId: String) {
 
-        currentView = tabHost.currentView
-        if (tabHost.currentTab > currentTab) {
-            previousView?.animation = outToLeftAnimation()
-            currentView?.animation = inFromRightAnimation()
+        mCurrentView = mTabHost.currentView
+        if (mTabHost.currentTab > mCurrentTab) {
+            mPreviousView?.animation = outToLeftAnimation()
+            mCurrentView?.animation = inFromRightAnimation()
         } else {
-            previousView?.animation = outToRightAnimation()
-            currentView?.animation = inFromLeftAnimation()
+            mPreviousView?.animation = outToRightAnimation()
+            mCurrentView?.animation = inFromLeftAnimation()
         }
-        previousView = currentView
-        currentTab = tabHost.currentTab
+        mPreviousView = mCurrentView
+        mCurrentTab = mTabHost.currentTab
 
     }
 
@@ -106,12 +106,12 @@ class AnimatedTabHostListener
      * @return the animation with common properties
      */
     private fun setProperties(animation: Animation): Animation {
-        animation.duration = ANIMATION_TIME.toLong()
+        animation.duration = ANIMATION_TIME
         animation.interpolator = AccelerateInterpolator()
         return animation
     }
 
     companion object {
-        private val ANIMATION_TIME = 240
+        private const val ANIMATION_TIME: Long = 240
     }
 }
