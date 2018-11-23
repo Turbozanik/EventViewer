@@ -2,12 +2,14 @@ package com.view.ui.godlikeroot
 
 import com.EventViewerApp
 import com.arellomobile.mvp.InjectViewState
+import com.domain.models.UserDto
 import com.domain.usecase.net.login.LoginUseCase
 import com.domain.usecase.prefs.user.GetUserEmailUseCase
 import com.domain.usecase.prefs.user.GetUserPasswordUseCase
 import com.view.ui.godlikeroot.configurator.RootActivityAction
 import com.view.ui.godlikeroot.configurator.RootActivityConfigurator
 import com.view.ui.godlikeroot.configurator.RootActivityViewCommand
+import com.watchers.keepers.UserKeeper
 import io.reactivex.Flowable
 import io.reactivex.functions.BiFunction
 import javax.inject.Inject
@@ -21,6 +23,8 @@ class RootGodlikeActivityPresenter : RootGodlikeActivityContract.RootActivityPre
     lateinit var mGetUserPasswordUseCase: GetUserPasswordUseCase
     @Inject
     lateinit var mLoginUseCase: LoginUseCase
+    @Inject
+    lateinit var mUserKeeper: UserKeeper
 
     private val mRootGodlikeActivityState: RootGodlikeActivityState = RootGodlikeActivityState()
 
@@ -34,8 +38,15 @@ class RootGodlikeActivityPresenter : RootGodlikeActivityContract.RootActivityPre
                                 "email" to it.first,
                                 "password" to it.second)
                         mLoginUseCase.setParams(body).execute()
-                    }).subscribe({ viewState.goToEventListFragment() },
-                                 { viewState.goToEventListFragment() }))
+                    }).subscribe({
+                                     mUserKeeper.user = it
+                                     viewState.goToEventListFragment()
+                                 },
+                                 {
+                                     //todo remove this line(47)
+                                     mUserKeeper.user = UserDto(1, "Roman", "Lapa")
+                                     viewState.goToEventListFragment()
+                                 }))
                 }
                 RootActivityViewCommand.OPEN_CONFERENCE_SCREEN -> {
                     viewState.goToConferenceFragment()

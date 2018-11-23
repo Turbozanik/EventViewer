@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import com.FRAGMENT_DATA_KEY
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.PresenterType
+import com.domain.models.UserDto
 import com.view.R
 import com.view.ui.godlikeroot.RootGodlikeActivity
 import com.view.ui.modules.content.eventlist.adapter.EventListAdapter
@@ -51,9 +52,13 @@ class UserProfileFragment : UserProfileFragmentContract.UserProfileFragment() {
         when (initialAction as UserProfileFragmentAction) {
 
             else -> {
-
+                sendActionAndData(UserProfileFragmentAction.DEFAULT, null)
             }
         }
+    }
+
+    override fun populateProfileData(user: UserDto?) {
+        mTvName.text = user?.mUserName
     }
 
     override fun initView() {

@@ -40,18 +40,39 @@
                 app:layout_constraintGuide_percent="@dimen/top_side_content_margin" />
 
             <android.support.constraint.Guideline
-                android:id="@+id/guidelineHorizontalBottom"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="@dimen/bottom_side_content_margin" />
-
-            <android.support.constraint.Guideline
                 android:id="@+id/guidelineBottomOfProfileInfo"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.6" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/profilePhotoLeftBorderGuideline"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.2" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/profilePhotoRightBorderGuideline"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.8" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/profilePhotoTopBorderGuideline"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.15" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/profilePhotoBottomBorderGuideline"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.525" />
 
             <TextView
                 android:id="@+id/mTvName"
@@ -64,41 +85,42 @@
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/mIvProfilePhoto"
-                android:layout_width="@dimen/profile_photo_size"
-                android:layout_height="@dimen/profile_photo_size"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:src="@color/colorPrimary"
-                app:layout_constraintBottom_toTopOf="@+id/guidelineBottomOfProfileInfo"
-                app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
-                app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
-                app:layout_constraintTop_toBottomOf="@+id/mTvName"
-                app:layout_constraintVertical_bias="0.3"
+                app:layout_constraintBottom_toTopOf="@+id/profilePhotoBottomBorderGuideline"
+                app:layout_constraintEnd_toStartOf="@+id/profilePhotoRightBorderGuideline"
+                app:layout_constraintStart_toStartOf="@+id/profilePhotoLeftBorderGuideline"
+                app:layout_constraintTop_toTopOf="@+id/profilePhotoTopBorderGuideline"
                 app:riv_oval="true" />
 
             <TextView
                 android:id="@+id/mEtEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/mEtNickname"
-                app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
-                app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
-                app:layout_constraintTop_toBottomOf="@+id/mIvProfilePhoto"
-                app:layout_constraintVertical_chainStyle="packed"
+                app:layout_constraintBottom_toTopOf="@+id/guidelineBottomOfProfileInfo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mEtNickname"
                 tools:text="Email" />
 
             <TextView
                 android:id="@+id/mEtNickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/guidelineBottomOfProfileInfo"
+                app:layout_constraintBottom_toTopOf="@+id/mEtEmail"
                 app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
-                app:layout_constraintTop_toBottomOf="@+id/mEtEmail"
+                app:layout_constraintTop_toBottomOf="@+id/mIvProfilePhoto"
                 tools:text="Nickname" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/mRvUsersEventList"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

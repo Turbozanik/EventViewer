@@ -5,5 +5,7 @@ import javax.inject.Singleton
 
 @Singleton
 class UserKeeper {
+
     var user: UserDto? = null
+
 }

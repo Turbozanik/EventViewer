@@ -37,10 +37,6 @@ abstract class BaseFragment : Fragment() {
         addCurrentSubComponent()
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onDetach() {
         super.onDetach()
         removeCurrentSubComponent()
