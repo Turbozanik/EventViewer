@@ -44,14 +44,32 @@
                 app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
                 app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalTop" />
 
+            <ImageButton
+                android:id="@+id/btnAddToTracked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp8"
+                android:background="@drawable/ic_add_circle_outline_black_36dp"
+                app:layout_constraintStart_toEndOf="@+id/guidelineVerticalLeft"
+                app:layout_constraintTop_toBottomOf="@+id/mIvEventImage" />
+
+            <ImageButton
+                android:id="@+id/btnAddToFavourite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_star_border_black_36dp"
+                app:layout_constraintBottom_toBottomOf="@+id/btnAddToTracked"
+                app:layout_constraintStart_toEndOf="@+id/btnAddToTracked"
+                app:layout_constraintTop_toTopOf="@+id/btnAddToTracked" />
+
             <TextView
                 android:id="@+id/mTvTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp16"
+                android:layout_marginTop="@dimen/dp8"
                 app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
                 app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
-                app:layout_constraintTop_toBottomOf="@+id/mIvEventImage"
+                app:layout_constraintTop_toBottomOf="@+id/btnAddToTracked"
                 tools:text="Title text" />
 
             <TextView

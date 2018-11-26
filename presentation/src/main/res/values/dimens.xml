@@ -27,6 +27,9 @@
     <!--Text length-->
     <integer name="max_password_length">20</integer>
 
+    <!--Event list-->
+    <dimen name="event_list_item_image_size">100dp</dimen>
+
     <!--User Profile-->
     <dimen name="profile_photo_size">100dp</dimen>
 
