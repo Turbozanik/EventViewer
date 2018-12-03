@@ -1,4 +1,4 @@
-package com.view.ui.godlikeroot
+package com.view.ui.modules.content
 
 const val EVENT_LIST_SCREEN= "EVENT_LIST_SCREEN"
 const val EVENT_LIST_WITH_SAVED_CREDENTIALS_SCREEN = "EVENT_LIST_WITH_SAVED_CREDENTIALS_SCREEN"

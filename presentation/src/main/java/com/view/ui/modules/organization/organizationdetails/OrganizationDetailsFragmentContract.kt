@@ -1,0 +1,3 @@
+package com.view.ui.modules.organization.organizationdetails
+
+class OrganizationDetailsFragmentContract

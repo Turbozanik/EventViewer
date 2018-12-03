@@ -21,6 +21,9 @@ import com.view.ui.godlikeroot.configurator.RootActivityAction
 import com.view.ui.modules.auth.AuthModuleFragmentFactory
 import com.view.ui.modules.auth.REGISTRATION_SCREEN
 import com.view.ui.modules.content.ContentFragmentFactory
+import com.view.ui.modules.content.EVENT_DETAILS_SCREEN
+import com.view.ui.modules.content.EVENT_LIST_SCREEN
+import com.view.ui.modules.content.EVENT_LIST_WITH_SAVED_CREDENTIALS_SCREEN
 import com.view.ui.modules.content.eventlist.EventListFragment
 import com.view.ui.modules.profile.PROFILE_SCREEN
 import com.view.ui.modules.profile.ProfileModuleFragmentFactory
