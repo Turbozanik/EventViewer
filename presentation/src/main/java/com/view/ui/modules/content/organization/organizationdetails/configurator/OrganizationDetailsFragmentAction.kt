@@ -1,4 +1,4 @@
-package com.view.ui.modules.organization.organizationdetails.configurator
+package com.view.ui.modules.content.organization.organizationdetails.configurator
 
 import com.view.base.BaseAction
 import com.view.ui.modules.auth.register.configurator.RegistrationFragmentAction
@@ -6,8 +6,7 @@ import com.view.ui.modules.auth.register.configurator.RegistrationFragmentAction
 
 enum class OrganizationDetailsFragmentAction(action: Int, isInitialAction: Boolean) : BaseAction {
 
-    INITIAL_ACTION_DEFAULT(action = 0, isInitialAction = true),
-    ORGANIZATION_DETAILS(action = 1, isInitialAction = false);
+    INITIAL_ACTION_DEFAULT(action = 0, isInitialAction = true);
 
     override val mActionValue: Int = action
     override val mIsInitialAction: Boolean = isInitialAction

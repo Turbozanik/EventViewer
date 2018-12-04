@@ -14,9 +14,8 @@ open class DaggerController(eventViewerApp: Context) {
     private var mLoginSubComponent: LoginFragmentSubComponent? = null
     private var mEventListFragmentSubComponent: EventListFragmentSubComponent? = null
     private var mEventDetailsSubComponent: EventDetailsFragmentSubComponent? = null
-    //private var mSplashActivitySubComponent: SplashActivitySubComponent? = null
-    //private var mUserProfileActivitySubComponent: UserProfileActvitySubCopmonent? = null
-    private var mUserProfileFragmentModule: UserProfileFragmentSubComponent? = null
+    private var mUserProfileFragmentSubComponent: UserProfileFragmentSubComponent? = null
+    private var mOrganizationDetailsSubComponent: OrganizationFragmentDetailsSubComponent? = null;
 
     private val mAppComponent: AppComponent = DaggerAppComponent.builder()
             .appModule(AppModule(eventViewerApp))
@@ -116,17 +115,32 @@ open class DaggerController(eventViewerApp: Context) {
 
     //UserProfileFragment
     fun addUserProfileFragmentSubComponent() {
-        mUserProfileFragmentModule = mRootGodlikeActivitySubComponent?.add(
+        mUserProfileFragmentSubComponent = mRootGodlikeActivitySubComponent?.add(
                 UserProfileFragmentModule())
     }
 
     fun removeUserProfileFragmentSubComponent() {
-        mUserProfileFragmentModule?.let { mEventDetailsSubComponent = null }
+        mUserProfileFragmentSubComponent?.let { mUserProfileFragmentSubComponent = null }
     }
 
     val userProfileFragmentSubComponent: UserProfileFragmentSubComponent?
         get() {
-            return mUserProfileFragmentModule
+            return mUserProfileFragmentSubComponent
+        }
+
+    //OrganizationDetails
+    fun addOrganizationDetailsFragmentSubComponent() {
+        mOrganizationDetailsSubComponent = mRootGodlikeActivitySubComponent?.add(
+                OrganizationFragmentDetailsModule())
+    }
+
+    fun removeOrganizationDetailsFragmentSubComponent() {
+        mOrganizationDetailsSubComponent?.let { mOrganizationDetailsSubComponent = null }
+    }
+
+    val organizationDetailsFragmentSubComponent: OrganizationFragmentDetailsSubComponent?
+        get() {
+            return mOrganizationDetailsSubComponent
         }
 
 }

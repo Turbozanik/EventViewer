@@ -1,4 +1,0 @@
-package com.view.ui.modules.organization.organizationdetails.configurator
-
-
-enum class OrganizationDetailsFragmentViewComand

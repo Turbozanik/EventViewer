@@ -19,6 +19,8 @@ interface RootGodlikeActivitySubComponent {
 
     fun add(userProfileFragmentModule: UserProfileFragmentModule): UserProfileFragmentSubComponent
 
+    fun add(organizationFragmentDetailsModule: OrganizationFragmentDetailsModule): OrganizationFragmentDetailsSubComponent
+
     fun inject(rootActivityPresenter: RootGodlikeActivityPresenter)
 
 }

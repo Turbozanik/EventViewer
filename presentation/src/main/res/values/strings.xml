@@ -45,4 +45,6 @@
     <string name="address_format"><b>Address</b>: %1$s</string>
     <!--User Profile-->
     <string name="profile">Profile</string>
+    <!--Organization details-->
+    <string name="orgagizations">Organizations</string>
 </resources>

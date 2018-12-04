@@ -20,11 +20,8 @@ import com.view.base.view.HasProgress
 import com.view.ui.godlikeroot.configurator.RootActivityAction
 import com.view.ui.modules.auth.AuthModuleFragmentFactory
 import com.view.ui.modules.auth.REGISTRATION_SCREEN
-import com.view.ui.modules.content.ContentFragmentFactory
-import com.view.ui.modules.content.EVENT_DETAILS_SCREEN
-import com.view.ui.modules.content.EVENT_LIST_SCREEN
-import com.view.ui.modules.content.EVENT_LIST_WITH_SAVED_CREDENTIALS_SCREEN
 import com.view.ui.modules.content.eventlist.EventListFragment
+import com.view.ui.modules.content.organization.*
 import com.view.ui.modules.profile.PROFILE_SCREEN
 import com.view.ui.modules.profile.ProfileModuleFragmentFactory
 import kotlinx.android.synthetic.main.activity_root.*
@@ -57,6 +54,12 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
                 EVENT_DETAILS_SCREEN -> {
                     mContentHolder.createFragment(screenKey, null)
                 }
+                EVENT_ORGANIZATION_LIST_SCREEN -> {
+                    mContentHolder.createFragment(screenKey, null)
+                }
+                EVENT_ORGANIZATION_DETAILS_SCREEN -> {
+                    mContentHolder.createFragment(screenKey, null)
+                }
                 else -> {
                     mContentHolder.createFragment(EVENT_LIST_SCREEN, null)
                 }
@@ -69,7 +72,7 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
     private lateinit var mToggle: ActionBarDrawerToggle
     private var mAuthModuleFragmentHolder: AuthModuleFragmentFactory = AuthModuleFragmentFactory()
     private var mUserProfileFactory: ProfileModuleFragmentFactory = ProfileModuleFragmentFactory()
-    private var mContentHolder: ContentFragmentFactory = ContentFragmentFactory()
+    private var mContentHolder: ContentModuleFragmentFactory = ContentModuleFragmentFactory()
     override val navigator: Navigator
         get() = mNavigator
 
@@ -249,7 +252,7 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
 
     override fun goBack() {
         if (currentFragment is EventListFragment) {
-            moveTaskToBack(true);
+            moveTaskToBack(true)
         } else {
             goToEventListFragment()
         }
