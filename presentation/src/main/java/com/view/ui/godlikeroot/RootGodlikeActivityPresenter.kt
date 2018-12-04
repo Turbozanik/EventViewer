@@ -43,7 +43,7 @@ class RootGodlikeActivityPresenter : RootGodlikeActivityContract.RootActivityPre
                                      viewState.goToEventListFragment()
                                  },
                                  {
-                                     //todo remove this line(47)
+                                     //todo remove next line
                                      mUserKeeper.user = UserDto(1, "Roman", "Lapa")
                                      viewState.goToEventListFragment()
                                  }))
@@ -63,7 +63,10 @@ class RootGodlikeActivityPresenter : RootGodlikeActivityContract.RootActivityPre
                     viewState.goBack()
                 }
                 RootActivityViewCommand.OPEN_USER_PROFILE -> {
-                    viewState.showProfileFragment()
+                    viewState.goToProfileFragment()
+                }
+                RootActivityViewCommand.OPEN_COMPANY_DETAILS -> {
+                    viewState.goToCompanyDetailsFragment()
                 }
             }
         }

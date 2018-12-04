@@ -5,7 +5,7 @@ import com.view.base.view.BaseView
 
 interface RootGodlikeActivityView : BaseView {
 
-    fun showProfileFragment()
+    fun goToProfileFragment()
 
     fun goToAuthFragment()
 
@@ -14,5 +14,7 @@ interface RootGodlikeActivityView : BaseView {
     fun goToConferenceFragment()
 
     fun goBack()
+
+    fun goToCompanyDetailsFragment();
 
 }

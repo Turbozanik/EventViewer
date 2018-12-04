@@ -24,6 +24,9 @@ class RootActivityConfigurator : BaseConfigurator<RootActivityAction, RootGodlik
                 RootActivityAction.USER_PROFILE_CLICK -> {
                     RootActivityViewCommand.OPEN_USER_PROFILE
                 }
+                RootActivityAction.COMPANY_DETAILS_CLICK -> {
+                    RootActivityViewCommand.OPEN_COMPANY_DETAILS
+                }
             }
         }
     }

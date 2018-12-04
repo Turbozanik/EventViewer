@@ -8,7 +8,8 @@ enum class RootActivityAction(action: Int, isInitialAction: Boolean) : BaseActio
     EVENT_LIST_ITEM_CLICK(1, isInitialAction = false),
     CONFERENCE_ITEM_CLICK(2, isInitialAction = false),
     BACK_CLICK(3, isInitialAction = false),
-    USER_PROFILE_CLICK(4, isInitialAction = false);
+    USER_PROFILE_CLICK(4, isInitialAction = false),
+    COMPANY_DETAILS_CLICK(4, false);
 
     override val mActionValue: Int = action
     override val mIsInitialAction: Boolean = isInitialAction

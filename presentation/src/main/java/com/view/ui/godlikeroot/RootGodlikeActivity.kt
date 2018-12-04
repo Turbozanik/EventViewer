@@ -54,10 +54,10 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
                 EVENT_DETAILS_SCREEN -> {
                     mContentHolder.createFragment(screenKey, null)
                 }
-                EVENT_ORGANIZATION_LIST_SCREEN -> {
+                ORGANIZATION_LIST_SCREEN -> {
                     mContentHolder.createFragment(screenKey, null)
                 }
-                EVENT_ORGANIZATION_DETAILS_SCREEN -> {
+                ORGANIZATION_DETAILS_SCREEN -> {
                     mContentHolder.createFragment(screenKey, null)
                 }
                 else -> {
@@ -137,7 +137,7 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
                 sendActionAndData(RootActivityAction.USER_PROFILE_CLICK, null)
             }
             R.id.nav_manage -> {
-
+                sendActionAndData(RootActivityAction.COMPANY_DETAILS_CLICK, null)
             }
             R.id.nav_share -> {
 
@@ -224,6 +224,10 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
         mToolbar.title = getString(R.string.profile)
     }
 
+    fun prepareOrganizationFragmentToolbar() {
+        mToolbar.title = getString(R.string.orgagizations)
+    }
+
     fun addRegistrationFragment(data: Bundle?) {
         addFragment(REGISTRATION_SCREEN, data)
     }
@@ -232,11 +236,15 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
         addFragment(PROFILE_SCREEN, data)
     }
 
+    fun addCompanyDetailsFragment(data: Bundle?) {
+        addFragment(ORGANIZATION_DETAILS_SCREEN, data);
+    }
+
     private fun showEventListFragmentRoot(data: Bundle?) {
         showRootScreen(EVENT_LIST_SCREEN, data)
     }
 
-    override fun showProfileFragment() {
+    override fun goToProfileFragment() {
         mNavView.setCheckedItem(R.id.nav_user_profile)
         addUserProfileFragment(null)
     }
@@ -248,6 +256,10 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
 
     override fun goToConferenceFragment() {
         addRegistrationFragment(null)
+    }
+
+    override fun goToCompanyDetailsFragment() {
+        addCompanyDetailsFragment(null)
     }
 
     override fun goBack() {

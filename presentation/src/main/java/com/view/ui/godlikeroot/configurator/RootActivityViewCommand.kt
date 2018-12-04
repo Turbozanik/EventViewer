@@ -8,7 +8,8 @@ enum class RootActivityViewCommand(command: Int) {
     OPEN_EVENT_LIST_SCREEN(3),
     OPEN_EVENT_DETAILS_SCREEN(4),
     GO_BACK(5),
-    OPEN_USER_PROFILE(6);
+    OPEN_USER_PROFILE(6),
+    OPEN_COMPANY_DETAILS(7);
 
     private val mCommand: Int = command
 

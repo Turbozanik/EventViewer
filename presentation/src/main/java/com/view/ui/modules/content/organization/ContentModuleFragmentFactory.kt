@@ -34,12 +34,12 @@ class ContentModuleFragmentFactory : BaseFragmentFactory() {
                 RegistrationFragment.addInitialAction(fragment,
                                                       RegistrationFragmentAction.INITIAL_ACTION_DEFAULT)
             }
-            EVENT_ORGANIZATION_DETAILS_SCREEN -> {
+            ORGANIZATION_DETAILS_SCREEN -> {
                 fragment = OrganizationDetailsFragment.createNewInstance()
                 OrganizationDetailsFragment.addInitialAction(fragment,
                                                              OrganizationDetailsFragmentAction.INITIAL_ACTION_DEFAULT)
             }
-            EVENT_ORGANIZATION_LIST_SCREEN -> {
+            ORGANIZATION_LIST_SCREEN -> {
                 //todo replace with correct fragment
                 fragment = OrganizationDetailsFragment.createNewInstance()
                 OrganizationDetailsFragment.addInitialAction(fragment,

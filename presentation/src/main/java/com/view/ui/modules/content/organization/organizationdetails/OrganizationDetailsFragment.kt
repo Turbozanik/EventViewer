@@ -6,8 +6,8 @@ import com.FRAGMENT_DATA_KEY
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.PresenterType
 import com.view.R
+import com.view.ui.godlikeroot.RootGodlikeActivity
 import com.view.ui.modules.content.organization.organizationdetails.configurator.OrganizationDetailsFragmentAction
-import kotlinx.android.synthetic.main.activity_root_with_toolbar.*
 
 class OrganizationDetailsFragment : OrganizationDetailsFragmentContract.OrganizationDetailsFragment() {
 
@@ -32,11 +32,11 @@ class OrganizationDetailsFragment : OrganizationDetailsFragmentContract.Organiza
         get() = R.layout.fragment_organization_details
 
     override fun initView() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun updateToolbar() {
-        mToolbar.title = getString(R.string.orgagizations)
+        (activity as RootGodlikeActivity).prepareOrganizationFragmentToolbar()
     }
 
     override fun handleInitialAction() {
