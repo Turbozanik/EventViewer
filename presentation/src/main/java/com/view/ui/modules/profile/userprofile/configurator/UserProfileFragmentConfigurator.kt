@@ -6,11 +6,12 @@ import com.view.ui.modules.profile.userprofile.UserProfileFragmentState
 
 class UserProfileFragmentConfigurator : BaseConfigurator<UserProfileFragmentAction, UserProfileFragmentState, UserProfileFragmentViewCommand>() {
     override fun produceViewCommand(viewState: UserProfileFragmentState,
-                                    action: UserProfileFragmentAction): UserProfileFragmentViewCommand {
-        saveAction(action, viewState)
-        return when (action) {
-            UserProfileFragmentAction.DEFAULT -> {
-                UserProfileFragmentViewCommand.DEFAULT
+                                    action: UserProfileFragmentAction?): UserProfileFragmentViewCommand {
+        action?.let {
+            return when (action) {
+                UserProfileFragmentAction.DEFAULT -> {
+                    UserProfileFragmentViewCommand.DEFAULT
+                }
             }
         }
     }
