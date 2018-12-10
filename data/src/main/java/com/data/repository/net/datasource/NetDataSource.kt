@@ -1,9 +1,9 @@
-package com.data.net.datasource
+package com.data.repository.net.datasource
 
-import com.data.net.pojo.User
-import com.data.net.retrofit.BaseResponse
-import com.data.net.retrofit.RetrofitApiCreator
-import com.data.prefs.datasource.PrefsDataSource
+import com.data.repository.net.retrofit.BaseResponse
+import com.data.repository.net.retrofit.RetrofitApiCreator
+import com.data.repository.pojo.User
+import com.data.repository.prefs.datasource.PrefsDataSource
 import io.reactivex.Flowable
 
 open class NetDataSource(prefsDataSource: PrefsDataSource, retrofitApiCreator: RetrofitApiCreator) {

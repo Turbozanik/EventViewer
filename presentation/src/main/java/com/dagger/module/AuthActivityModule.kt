@@ -1,7 +1,7 @@
 package com.dagger.module
 
 import com.dagger.scoupe.AuthActivityScope
-import com.data.prefs.repository.SharedPrefsRepositoryImpl
+import com.data.repository.prefs.repository.SharedPrefsRepositoryImpl
 import com.domain.usecase.prefs.user.GetUserEmailUseCase
 import com.domain.usecase.prefs.user.GetUserPasswordUseCase
 import com.domain.usecase.prefs.user.SaveUserToSharedPrefsUseCase

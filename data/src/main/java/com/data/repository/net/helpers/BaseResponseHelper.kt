@@ -1,6 +1,6 @@
-package com.data.net.helpers
+package com.data.repository.net.helpers
 
-import com.data.net.retrofit.BaseResponse
+import com.data.repository.net.retrofit.BaseResponse
 import io.reactivex.Flowable
 
 

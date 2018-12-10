@@ -1,8 +1,8 @@
-package com.data.net.repository
+package com.data.repository.net.repository
 
-import com.data.net.datasource.NetDataSource
-import com.data.net.helpers.BaseResponseHelper
-import com.data.net.pojo.User
+import com.data.repository.net.datasource.NetDataSource
+import com.data.repository.net.helpers.BaseResponseHelper
+import com.data.repository.pojo.User
 import com.data.transformers.user.UserToUserDtoTransformer
 import com.domain.models.UserDto
 import com.domain.repository.NetRepository

@@ -1,4 +1,4 @@
-package com.data.net.pojo
+package com.data.repository.pojo
 
 import com.google.gson.annotations.SerializedName
 

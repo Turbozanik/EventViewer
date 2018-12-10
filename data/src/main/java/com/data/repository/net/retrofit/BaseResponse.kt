@@ -1,11 +1,11 @@
-package com.data.net.retrofit
+package com.data.repository.net.retrofit
 
 import android.text.TextUtils
 import com.data.*
-import com.data.net.exception.BaseException
-import com.data.net.exception.ClientException
-import com.data.net.exception.PaymentException
-import com.data.net.exception.TokenExpiredException
+import com.data.repository.net.exception.BaseException
+import com.data.repository.net.exception.ClientException
+import com.data.repository.net.exception.PaymentException
+import com.data.repository.net.exception.TokenExpiredException
 import com.google.gson.annotations.Expose
 
 class BaseResponse<T> {

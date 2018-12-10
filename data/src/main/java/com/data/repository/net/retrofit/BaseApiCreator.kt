@@ -1,4 +1,4 @@
-package com.data.net.retrofit
+package com.data.repository.net.retrofit
 
 import com.data.BuildConfig
 import com.google.gson.FieldNamingPolicy

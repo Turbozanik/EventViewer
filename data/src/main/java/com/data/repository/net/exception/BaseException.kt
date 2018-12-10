@@ -1,3 +1,3 @@
-package com.data.net.exception
+package com.data.repository.net.exception
 
 open class BaseException(message: String) : Exception(message)

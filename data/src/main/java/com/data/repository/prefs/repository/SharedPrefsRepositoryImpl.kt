@@ -1,6 +1,6 @@
-package com.data.prefs.repository
+package com.data.repository.prefs.repository
 
-import com.data.prefs.datasource.PrefsDataSource
+import com.data.repository.prefs.datasource.PrefsDataSource
 import com.domain.repository.SharedPrefsRepository
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable

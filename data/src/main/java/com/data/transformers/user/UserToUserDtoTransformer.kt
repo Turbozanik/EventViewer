@@ -1,6 +1,6 @@
 package com.data.transformers.user
 
-import com.data.net.pojo.User
+import com.data.repository.pojo.User
 import com.data.transformers.Transformer
 import com.domain.models.UserDto
 

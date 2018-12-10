@@ -1,8 +1,8 @@
 package com.dagger.module
 
 import android.content.Context
-import com.data.prefs.datasource.PrefsDataSource
-import com.data.prefs.repository.SharedPrefsRepositoryImpl
+import com.data.repository.prefs.datasource.PrefsDataSource
+import com.data.repository.prefs.repository.SharedPrefsRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

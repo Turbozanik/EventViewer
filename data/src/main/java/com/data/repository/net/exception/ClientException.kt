@@ -1,3 +1,3 @@
-package com.data.net.exception
+package com.data.repository.net.exception
 
 class ClientException(message: String) : BaseException(message)

@@ -1,10 +1,10 @@
-package com.data.prefs.datasource
+package com.data.repository.prefs.datasource
 
 import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
-import com.data.prefs.USER_EMAIL
-import com.data.prefs.USER_PASSWORD
+import com.data.repository.prefs.USER_EMAIL
+import com.data.repository.prefs.USER_PASSWORD
 
 
 open class PrefsDataSource(context: Context) {

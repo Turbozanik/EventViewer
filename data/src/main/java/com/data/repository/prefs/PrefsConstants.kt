@@ -1,4 +1,4 @@
-package com.data.prefs
+package com.data.repository.prefs
 
 
 const val USER_PASSWORD = "USER_PASSWORD"
