@@ -33,7 +33,7 @@ import ru.terrakok.cicerone.Navigator
 class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), NavigationView.OnNavigationItemSelectedListener, HasProgress, ActionProducer<RootActivityAction, RootGodlikeActivityContract.RootActivityDto> {
 
     private val mNavigator = object : FragmentNavigator(supportFragmentManager,
-                                                        fragmentContainerViewId) {
+            fragmentContainerViewId) {
         override fun createFragment(screenKey: String?, data: Any?): Fragment {
             return when (screenKey) {
                 AUTH_SCREEN -> {
@@ -82,12 +82,28 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
         supportActionBar?.setHomeButtonEnabled(true)
 
         mToggle = ActionBarDrawerToggle(this, mDrawerLayout, mToolbar,
-                                        R.string.navigation_drawer_open,
-                                        R.string.navigation_drawer_close)
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close)
         mDrawerLayout.addDrawerListener(mToggle)
         mToggle.syncState()
 
         mNavView.setNavigationItemSelectedListener(this)
+        initBackStackListener()
+    }
+
+    private fun initBackStackListener() {
+        supportFragmentManager.addOnBackStackChangedListener {
+            if (supportFragmentManager.backStackEntryCount > 0) {
+                mToggle.isDrawerIndicatorEnabled = false
+                supportActionBar?.setDisplayHomeAsUpEnabled(true)// show back button
+                mToolbar.setNavigationOnClickListener { onBackPressed() }
+            } else {
+                mToggle.isDrawerIndicatorEnabled = true
+                supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                mToggle.syncState()
+                mToolbar.setNavigationOnClickListener { mDrawerLayout.openDrawer(GravityCompat.START) }
+            }
+        }
     }
 
     override fun onBackPressed() {
@@ -110,6 +126,10 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
             R.id.action_settings -> true
+            R.id.home -> {
+                onBackPressed()
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -237,7 +257,7 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
     }
 
     fun addCompanyDetailsFragment(data: Bundle?) {
-        addFragment(ORGANIZATION_DETAILS_SCREEN, data);
+        addFragment(ORGANIZATION_DETAILS_SCREEN, data)
     }
 
     private fun showEventListFragmentRoot(data: Bundle?) {
@@ -266,7 +286,7 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
         if (currentFragment is EventListFragment) {
             moveTaskToBack(true)
         } else {
-            goToEventListFragment()
+            goToPreviousFragment()
         }
     }
 
