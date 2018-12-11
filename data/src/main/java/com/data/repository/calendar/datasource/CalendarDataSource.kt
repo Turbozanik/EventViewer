@@ -1,4 +1,4 @@
-package com.data.repository.calendar
+package com.data.repository.calendar.datasource
 
 import android.annotation.SuppressLint
 import android.content.ContentValues
@@ -7,14 +7,15 @@ import android.provider.CalendarContract
 import android.support.v4.content.ContextCompat
 import android.text.TextUtils
 import com.data.R
-import com.data.repository.pojo.Event
+import com.domain.models.EventDto
 import java.util.*
 
-class CalendarDataSource constructor(private val mContext: Context) {
+class CalendarDataSource(context: Context) {
 
+    private val mContext: Context = context
     private val calendarName: String = mContext.getString(R.string.app_name)
 
-    fun addEventToCalendar(event: Event) {
+    fun addEventToCalendar(event: EventDto) {
         var calendarId: Long = getCalendarId()
         if (calendarId.compareTo(-1) == 0) {
             createCalendar()
@@ -61,7 +62,7 @@ class CalendarDataSource constructor(private val mContext: Context) {
     }
 
     @SuppressLint("MissingPermission")
-    private fun addEventToCalendar(event: Event, calendarId: Long) {
+    private fun addEventToCalendar(event: EventDto, calendarId: Long) {
         val values = ContentValues()
         values.put(CalendarContract.Events.CALENDAR_ID, calendarId.toString())
 //        values.put(CalendarContract.Events.TITLE, event.listing.title)
