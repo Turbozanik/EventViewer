@@ -1,10 +1,10 @@
-package com.view.ui.modules.content.organization.organizationdetails.configurator
+package com.view.ui.modules.content.organization.organiыationdetails.configurator
 
 import com.view.base.BaseAction
 import com.view.ui.modules.auth.register.configurator.RegistrationFragmentAction
 
 
-enum class OrganizationDetailsFragmentAction(action: Int, isInitialAction: Boolean) : BaseAction {
+enum class OrganisationDetailsFragmentAction(action: Int, isInitialAction: Boolean) : BaseAction {
 
     INITIAL_ACTION_DEFAULT(action = 0, isInitialAction = true);
 

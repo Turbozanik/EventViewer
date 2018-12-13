@@ -10,8 +10,8 @@ import com.view.ui.modules.content.eventdetails.EventDetailsFragment
 import com.view.ui.modules.content.eventdetails.configurator.EventDetailsFragmentAction
 import com.view.ui.modules.content.eventlist.EventListFragment
 import com.view.ui.modules.content.eventlist.configurator.EventListFragmentAction
-import com.view.ui.modules.content.organization.organizationdetails.OrganizationDetailsFragment
-import com.view.ui.modules.content.organization.organizationdetails.configurator.OrganizationDetailsFragmentAction
+import com.view.ui.modules.content.organization.organiыationdetails.OrganisationDetailsFragment
+import com.view.ui.modules.content.organization.organiыationdetails.configurator.OrganisationDetailsFragmentAction
 
 
 class ContentModuleFragmentFactory : BaseFragmentFactory() {
@@ -35,15 +35,15 @@ class ContentModuleFragmentFactory : BaseFragmentFactory() {
                                                       RegistrationFragmentAction.INITIAL_ACTION_DEFAULT)
             }
             ORGANIZATION_DETAILS_SCREEN -> {
-                fragment = OrganizationDetailsFragment.createNewInstance()
-                OrganizationDetailsFragment.addInitialAction(fragment,
-                                                             OrganizationDetailsFragmentAction.INITIAL_ACTION_DEFAULT)
+                fragment = OrganisationDetailsFragment.createNewInstance()
+                OrganisationDetailsFragment.addInitialAction(fragment,
+                                                             OrganisationDetailsFragmentAction.INITIAL_ACTION_DEFAULT)
             }
             ORGANIZATION_LIST_SCREEN -> {
                 //todo replace with correct fragment
-                fragment = OrganizationDetailsFragment.createNewInstance()
-                OrganizationDetailsFragment.addInitialAction(fragment,
-                                                             OrganizationDetailsFragmentAction.INITIAL_ACTION_DEFAULT)
+                fragment = OrganisationDetailsFragment.createNewInstance()
+                OrganisationDetailsFragment.addInitialAction(fragment,
+                                                             OrganisationDetailsFragmentAction.INITIAL_ACTION_DEFAULT)
             }
             else -> {
                 fragment = LoginFragment.createNewInstance()

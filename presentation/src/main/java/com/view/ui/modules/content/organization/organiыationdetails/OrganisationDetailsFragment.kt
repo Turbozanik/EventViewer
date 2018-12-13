@@ -1,4 +1,4 @@
-package com.view.ui.modules.content.organization.organizationdetails
+package com.view.ui.modules.content.organization.organiыationdetails
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -7,17 +7,17 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.PresenterType
 import com.view.R
 import com.view.ui.godlikeroot.RootGodlikeActivity
-import com.view.ui.modules.content.organization.organizationdetails.configurator.OrganizationDetailsFragmentAction
+import com.view.ui.modules.content.organization.organiыationdetails.configurator.OrganisationDetailsFragmentAction
 
-class OrganizationDetailsFragment : OrganizationDetailsFragmentContract.OrganizationDetailsFragment() {
+class OrganisationDetailsFragment : OrganisationDetailsFragmentContract.OrganizationDetailsFragment() {
 
 
     companion object {
-        fun createNewInstance(): OrganizationDetailsFragment {
-            return OrganizationDetailsFragment()
+        fun createNewInstance(): OrganisationDetailsFragment {
+            return OrganisationDetailsFragment()
         }
 
-        fun addInitialAction(fragment: Fragment, initialAction: OrganizationDetailsFragmentAction) {
+        fun addInitialAction(fragment: Fragment, initialAction: OrganisationDetailsFragmentAction) {
             val args = Bundle()
             args.putSerializable(FRAGMENT_DATA_KEY, initialAction)
             fragment.arguments = args
@@ -25,8 +25,8 @@ class OrganizationDetailsFragment : OrganizationDetailsFragmentContract.Organiza
     }
 
     @InjectPresenter(type = PresenterType.LOCAL)
-    lateinit var mPresenter: OrganizationDetailsFragmentPresenter
-    val presenter: OrganizationDetailsFragmentPresenter get() = mPresenter
+    lateinit var mPresenter: OrganisationDetailsFragmentPresenter
+    val presenter: OrganisationDetailsFragmentPresenter get() = mPresenter
 
     override val layoutId: Int
         get() = R.layout.fragment_organization_details
@@ -40,7 +40,7 @@ class OrganizationDetailsFragment : OrganizationDetailsFragmentContract.Organiza
     }
 
     override fun handleInitialAction() {
-        when (initialAction as OrganizationDetailsFragmentAction?) {
+        when (initialAction as OrganisationDetailsFragmentAction?) {
 
             else -> {
             }
@@ -55,8 +55,8 @@ class OrganizationDetailsFragment : OrganizationDetailsFragmentContract.Organiza
         daggerController.removeOrganizationDetailsFragmentSubComponent()
     }
 
-    override fun sendActionAndData(action: OrganizationDetailsFragmentAction?,
-                                   data: OrganizationDetailsFragmentContract.OrganizationDetailsFragmentDto?) {
+    override fun sendActionAndData(action: OrganisationDetailsFragmentAction?,
+                                   data: OrganisationDetailsFragmentContract.OrganizationDetailsFragmentDto?) {
         mPresenter.consumeActionAndData(action, data)
     }
 
