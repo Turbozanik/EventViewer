@@ -18,7 +18,7 @@ class OrganisationDetailsFragmentPresenter : OrganisationDetailsFragmentContract
     override fun consumeActionAndData(action: OrganisationDetailsFragmentAction?,
                                       data: OrganisationDetailsFragmentContract.OrganizationDetailsFragmentDto?) {
         action?.let {
-            updateViewState()
+            updateViewState(action)
             when (actionConfigurator.produceViewCommand(mOrganizationDetailsFragmentState, it)) {
 
                 OrganisationDetailsFragmentViewCommand.DEFAULT -> {
@@ -29,7 +29,7 @@ class OrganisationDetailsFragmentPresenter : OrganisationDetailsFragmentContract
         }
     }
 
-    override fun updateViewState() {
+    override fun updateViewState(action: OrganisationDetailsFragmentAction) {
 
     }
 

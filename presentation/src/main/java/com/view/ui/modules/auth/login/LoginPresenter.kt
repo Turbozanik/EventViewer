@@ -39,7 +39,7 @@ class LoginPresenter : LoginFragmentContract.LoginPresenter() {
     override fun consumeActionAndData(action: LoginFragmentAction?,
                                       data: LoginFragmentContract.LoginFragmentDto?) {
         action?.let {
-            updateViewState()
+            updateViewState(action)
             when (actionConfigurator.produceViewCommand(mLoginFragmentState, action)) {
                 LoginFragmentViewCommand.LOGIN -> {
                     login(data?.userCredentials)
@@ -87,7 +87,7 @@ class LoginPresenter : LoginFragmentContract.LoginPresenter() {
         return userCredentials
     }
 
-    override fun updateViewState() {
+    override fun updateViewState(action: LoginFragmentAction) {
 
     }
 

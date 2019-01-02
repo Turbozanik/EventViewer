@@ -31,7 +31,7 @@ class RegistrationPresenter : RegistrationFragmentContract.RegistrationPresenter
     override fun consumeActionAndData(action: RegistrationFragmentAction?,
                                       data: RegistrationFragmentContract.RegistrationFragmentDto?) {
         action?.let { actionCopy: RegistrationFragmentAction ->
-            updateViewState()
+            updateViewState(action)
             when (actionConfigurator.produceViewCommand(mRegistrationFragmentState, actionCopy)) {
                 RegistrationFragmentViewCommand.DEFAULT -> {
                     Timber.d("default message")
@@ -64,7 +64,7 @@ class RegistrationPresenter : RegistrationFragmentContract.RegistrationPresenter
 //        )
     }
 
-    override fun updateViewState() {
+    override fun updateViewState(action: RegistrationFragmentAction) {
 
     }
 

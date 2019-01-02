@@ -31,7 +31,7 @@ class RootGodlikeActivityPresenter : RootGodlikeActivityContract.RootActivityPre
     override fun consumeActionAndData(action: RootActivityAction?,
                                       data: RootGodlikeActivityContract.RootActivityDto?) {
         action?.let { actionCopy: RootActivityAction ->
-            updateViewState()
+            updateViewState(action)
             when (actionConfigurator.produceViewCommand(mRootGodlikeActivityState, actionCopy)) {
                 RootActivityViewCommand.DEFAULT -> {
                     addDisposable(inBackground(getUserCredentialsFromSharedPrefs().flatMap {
@@ -81,7 +81,7 @@ class RootGodlikeActivityPresenter : RootGodlikeActivityContract.RootActivityPre
                             })
     }
 
-    override fun updateViewState() {
+    override fun updateViewState(action: RootActivityAction) {
 
     }
 

@@ -19,7 +19,7 @@ class EventDetailsPresenter : EventDetailsFragmentContract.EventDetailsPresenter
     override fun consumeActionAndData(action: EventDetailsFragmentAction?,
                                       data: EventDetailsFragmentContract.EventDetailsFragmentDto?) {
         action?.let {
-            updateViewState()
+            updateViewState(action)
             when (actionConfigurator.produceViewCommand(mEventDetailsFragmentState, action)) {
                 EventDetailsFragmentViewCommand.DEFAULT -> {
                     Timber.e("default")
@@ -28,7 +28,7 @@ class EventDetailsPresenter : EventDetailsFragmentContract.EventDetailsPresenter
         }
     }
 
-    override fun updateViewState() {
+    override fun updateViewState(action: EventDetailsFragmentAction) {
 
     }
 

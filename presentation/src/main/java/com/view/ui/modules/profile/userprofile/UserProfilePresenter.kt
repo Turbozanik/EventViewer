@@ -21,7 +21,7 @@ class UserProfilePresenter : UserProfileFragmentContract.UserProfilePresenter() 
     override fun consumeActionAndData(action: UserProfileFragmentAction?,
                                       data: UserProfileFragmentContract.UserProfileFragmentDto?) {
         action?.let {
-            updateViewState()
+            updateViewState(action)
             when (action) {
                 UserProfileFragmentAction.DEFAULT -> {
                     viewState.populateProfileData(mUserKeeper.user)
@@ -30,7 +30,7 @@ class UserProfilePresenter : UserProfileFragmentContract.UserProfilePresenter() 
         }
     }
 
-    override fun updateViewState() {
+    override fun updateViewState(action: UserProfileFragmentAction) {
 
     }
 
