@@ -9,9 +9,6 @@ import timber.log.Timber
 
 @InjectViewState
 class EventDetailsPresenter : EventDetailsFragmentContract.EventDetailsPresenter() {
-    override fun updateViewState() {
-
-    }
 
     private val mEventDetailsFragmentState: EventDetailsFragmentState = EventDetailsFragmentState()
 
@@ -29,6 +26,10 @@ class EventDetailsPresenter : EventDetailsFragmentContract.EventDetailsPresenter
                 }
             }
         }
+    }
+
+    override fun updateViewState() {
+
     }
 
     override fun injectPresenter() {

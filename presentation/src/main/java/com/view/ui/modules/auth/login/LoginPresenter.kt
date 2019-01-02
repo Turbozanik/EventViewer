@@ -19,10 +19,6 @@ import javax.inject.Inject
 @InjectViewState
 class LoginPresenter : LoginFragmentContract.LoginPresenter() {
 
-    override fun updateViewState() {
-
-    }
-
     @Inject
     protected lateinit var mLoginUseCase: LoginUseCase
     @Inject
@@ -89,6 +85,10 @@ class LoginPresenter : LoginFragmentContract.LoginPresenter() {
             userCredentials = it
         })
         return userCredentials
+    }
+
+    override fun updateViewState() {
+
     }
 
     override fun injectPresenter() {

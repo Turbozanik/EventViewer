@@ -15,10 +15,6 @@ import javax.inject.Inject
 @InjectViewState
 class RegistrationPresenter : RegistrationFragmentContract.RegistrationPresenter() {
 
-    override fun updateViewState() {
-
-    }
-
     @Inject
     protected lateinit var mRegistrationUserCase: RegisterUserCase
     @Inject
@@ -66,6 +62,10 @@ class RegistrationPresenter : RegistrationFragmentContract.RegistrationPresenter
 //                                { getView()?.goToEventsFragment() },
 //                                { DefaultErrorConsumer() })
 //        )
+    }
+
+    override fun updateViewState() {
+
     }
 
     override fun injectPresenter() {

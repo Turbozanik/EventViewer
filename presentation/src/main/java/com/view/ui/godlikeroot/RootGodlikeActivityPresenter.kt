@@ -17,10 +17,6 @@ import javax.inject.Inject
 @InjectViewState
 class RootGodlikeActivityPresenter : RootGodlikeActivityContract.RootActivityPresenter() {
 
-    override fun updateViewState() {
-
-    }
-
     @Inject
     lateinit var mGetUserEmailUseCase: GetUserEmailUseCase
     @Inject
@@ -83,6 +79,10 @@ class RootGodlikeActivityPresenter : RootGodlikeActivityContract.RootActivityPre
                             BiFunction { email: String, password: String ->
                                 Pair(email, password)
                             })
+    }
+
+    override fun updateViewState() {
+
     }
 
     override fun injectPresenter() {

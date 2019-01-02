@@ -9,10 +9,6 @@ import com.view.ui.modules.content.eventlist.configurator.EventListFragmentViewC
 @InjectViewState
 class EventListPresenter : EventListFragmentContract.EventListPresenter() {
 
-    override fun updateViewState() {
-
-    }
-
     private val mEventListFragmentState: EventListFragmentState = EventListFragmentState()
 
     override fun intiConfigurator(): EventListFragmentConfigurator {
@@ -33,6 +29,10 @@ class EventListPresenter : EventListFragmentContract.EventListPresenter() {
                 }
             }
         }
+    }
+
+    override fun updateViewState() {
+
     }
 
     override fun injectPresenter() {

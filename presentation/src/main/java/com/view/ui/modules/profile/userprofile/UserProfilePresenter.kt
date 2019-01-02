@@ -11,10 +11,6 @@ import javax.inject.Inject
 @InjectViewState
 class UserProfilePresenter : UserProfileFragmentContract.UserProfilePresenter() {
 
-    override fun updateViewState() {
-
-    }
-
     @Inject
     lateinit var mUserKeeper: UserKeeper
 
@@ -32,6 +28,10 @@ class UserProfilePresenter : UserProfileFragmentContract.UserProfilePresenter() 
                 }
             }
         }
+    }
+
+    override fun updateViewState() {
+
     }
 
     override fun injectPresenter() {
