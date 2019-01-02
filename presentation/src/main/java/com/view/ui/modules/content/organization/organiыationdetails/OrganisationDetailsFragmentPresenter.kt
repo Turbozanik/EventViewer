@@ -8,6 +8,10 @@ import com.view.ui.modules.content.organization.organiыationdetails.configurato
 
 class OrganisationDetailsFragmentPresenter : OrganisationDetailsFragmentContract.OrganizationDetailsPresenter() {
 
+    override fun updateViewState() {
+
+    }
+
     private val mOrganizationDetailsFragmentState: OrganisationDetailsFragmentState = OrganisationDetailsFragmentState()
 
     override fun injectPresenter() {
@@ -18,6 +22,7 @@ class OrganisationDetailsFragmentPresenter : OrganisationDetailsFragmentContract
     override fun consumeActionAndData(action: OrganisationDetailsFragmentAction?,
                                       data: OrganisationDetailsFragmentContract.OrganizationDetailsFragmentDto?) {
         action?.let {
+            updateViewState()
             when (actionConfigurator.produceViewCommand(mOrganizationDetailsFragmentState, it)) {
 
                 OrganisationDetailsFragmentViewCommand.DEFAULT -> {

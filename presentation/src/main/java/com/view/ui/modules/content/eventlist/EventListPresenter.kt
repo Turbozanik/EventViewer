@@ -9,6 +9,10 @@ import com.view.ui.modules.content.eventlist.configurator.EventListFragmentViewC
 @InjectViewState
 class EventListPresenter : EventListFragmentContract.EventListPresenter() {
 
+    override fun updateViewState() {
+
+    }
+
     private val mEventListFragmentState: EventListFragmentState = EventListFragmentState()
 
     override fun intiConfigurator(): EventListFragmentConfigurator {
@@ -18,6 +22,7 @@ class EventListPresenter : EventListFragmentContract.EventListPresenter() {
     override fun consumeActionAndData(action: EventListFragmentAction?,
                                       data: EventListFragmentContract.EventListFragmentDto?) {
         action?.let { actionCopy: EventListFragmentAction ->
+            updateViewState()
             when (actionConfigurator.produceViewCommand(mEventListFragmentState, actionCopy)) {
                 EventListFragmentViewCommand.DEFAULT -> TODO()
                 EventListFragmentViewCommand.LOAD_MORE_EVENTS -> {

@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentManager
 import com.ACTIVITY_ACTION_DATA_KEY
 import com.EventViewerApp
 import com.InitialAction
-import com.ModulesNavigator
 import com.dagger.DaggerController
 import com.view.base.fragment.BaseFragment
 import com.view.base.view.HasRootScreen
@@ -44,7 +43,6 @@ abstract class BaseActivity : com.view.base.activity.MvpActivity(), HasRootScree
             return mUserKeeper
         }
 
-    private lateinit var mModulesNavigator: ModulesNavigator
     private lateinit var mInitialInitAction: InitialAction
 
     private val router: Router
@@ -66,11 +64,6 @@ abstract class BaseActivity : com.view.base.activity.MvpActivity(), HasRootScree
     val initialAction: InitialAction
         get() {
             return mInitialInitAction
-        }
-
-    val modulesNavigator: ModulesNavigator
-        get() {
-            return mModulesNavigator
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -17,6 +17,10 @@ import javax.inject.Inject
 @InjectViewState
 class RootGodlikeActivityPresenter : RootGodlikeActivityContract.RootActivityPresenter() {
 
+    override fun updateViewState() {
+
+    }
+
     @Inject
     lateinit var mGetUserEmailUseCase: GetUserEmailUseCase
     @Inject
@@ -31,6 +35,7 @@ class RootGodlikeActivityPresenter : RootGodlikeActivityContract.RootActivityPre
     override fun consumeActionAndData(action: RootActivityAction?,
                                       data: RootGodlikeActivityContract.RootActivityDto?) {
         action?.let { actionCopy: RootActivityAction ->
+            updateViewState()
             when (actionConfigurator.produceViewCommand(mRootGodlikeActivityState, actionCopy)) {
                 RootActivityViewCommand.DEFAULT -> {
                     addDisposable(inBackground(getUserCredentialsFromSharedPrefs().flatMap {

@@ -23,6 +23,8 @@ abstract class BasePresenter<ActionConfigurator : BaseConfigurator<*, *, *>, Con
 
     abstract fun injectPresenter()
 
+    abstract fun updateViewState()
+
     protected fun addDisposable(disposable: Disposable) {
         mCompositeDisposable.add(disposable)
     }

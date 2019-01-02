@@ -9,6 +9,9 @@ import timber.log.Timber
 
 @InjectViewState
 class EventDetailsPresenter : EventDetailsFragmentContract.EventDetailsPresenter() {
+    override fun updateViewState() {
+
+    }
 
     private val mEventDetailsFragmentState: EventDetailsFragmentState = EventDetailsFragmentState()
 
@@ -18,7 +21,8 @@ class EventDetailsPresenter : EventDetailsFragmentContract.EventDetailsPresenter
 
     override fun consumeActionAndData(action: EventDetailsFragmentAction?,
                                       data: EventDetailsFragmentContract.EventDetailsFragmentDto?) {
-        if (action != null) {
+        action?.let {
+            updateViewState()
             when (actionConfigurator.produceViewCommand(mEventDetailsFragmentState, action)) {
                 EventDetailsFragmentViewCommand.DEFAULT -> {
                     Timber.e("default")

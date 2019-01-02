@@ -15,6 +15,10 @@ import javax.inject.Inject
 @InjectViewState
 class RegistrationPresenter : RegistrationFragmentContract.RegistrationPresenter() {
 
+    override fun updateViewState() {
+
+    }
+
     @Inject
     protected lateinit var mRegistrationUserCase: RegisterUserCase
     @Inject
@@ -31,6 +35,7 @@ class RegistrationPresenter : RegistrationFragmentContract.RegistrationPresenter
     override fun consumeActionAndData(action: RegistrationFragmentAction?,
                                       data: RegistrationFragmentContract.RegistrationFragmentDto?) {
         action?.let { actionCopy: RegistrationFragmentAction ->
+            updateViewState()
             when (actionConfigurator.produceViewCommand(mRegistrationFragmentState, actionCopy)) {
                 RegistrationFragmentViewCommand.DEFAULT -> {
                     Timber.d("default message")

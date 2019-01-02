@@ -11,6 +11,10 @@ import javax.inject.Inject
 @InjectViewState
 class UserProfilePresenter : UserProfileFragmentContract.UserProfilePresenter() {
 
+    override fun updateViewState() {
+
+    }
+
     @Inject
     lateinit var mUserKeeper: UserKeeper
 
@@ -20,12 +24,12 @@ class UserProfilePresenter : UserProfileFragmentContract.UserProfilePresenter() 
 
     override fun consumeActionAndData(action: UserProfileFragmentAction?,
                                       data: UserProfileFragmentContract.UserProfileFragmentDto?) {
-        when (action) {
-
-            UserProfileFragmentAction.DEFAULT -> {
-                viewState.populateProfileData(mUserKeeper.user)
-            }
-            null -> {
+        action?.let {
+            updateViewState()
+            when (action) {
+                UserProfileFragmentAction.DEFAULT -> {
+                    viewState.populateProfileData(mUserKeeper.user)
+                }
             }
         }
     }
