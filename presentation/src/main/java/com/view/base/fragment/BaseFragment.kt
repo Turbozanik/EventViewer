@@ -1,6 +1,5 @@
 package com.view.base.fragment
 
-import android.content.Context
 import android.os.Bundle
 import android.support.annotation.CallSuper
 import android.support.annotation.LayoutRes
@@ -27,11 +26,6 @@ abstract class BaseFragment : Fragment() {
     protected val daggerController: DaggerController
         get() = (activity as BaseActivity).daggerController
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-        addCurrentSubComponent()
-    }
-
     override fun onDetach() {
         super.onDetach()
         removeCurrentSubComponent()
@@ -45,6 +39,7 @@ abstract class BaseFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        addCurrentSubComponent()
         initView()
         handleInitialAction()
     }
