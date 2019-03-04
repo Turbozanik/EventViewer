@@ -48,4 +48,6 @@
     <string name="profile">Профиль</string>
     <!--Organization details-->
     <string name="orgagizations">Организации</string>
+    <!--Organization list-->
+    <string name="organization_list">Список организаций</string>
 </resources>

@@ -21,6 +21,8 @@ interface RootGodlikeActivitySubComponent {
 
     fun add(organizationFragmentDetailsModule: OrganizationFragmentDetailsModule): OrganizationFragmentDetailsSubComponent
 
+    fun add(organizationFragmentListModule: OrganizationListFragmentModule): OrganizationListFragmentSubComponent
+
     fun inject(rootActivityPresenter: RootGodlikeActivityPresenter)
 
 }

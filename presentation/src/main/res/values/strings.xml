@@ -47,4 +47,6 @@
     <string name="profile">Profile</string>
     <!--Organization details-->
     <string name="orgagizations">Organizations</string>
+    <!--Organization list-->
+    <string name="organization_list">Organization list</string>
 </resources>

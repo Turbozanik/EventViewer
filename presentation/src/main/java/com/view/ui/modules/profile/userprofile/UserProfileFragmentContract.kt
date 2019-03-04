@@ -20,6 +20,6 @@ interface UserProfileFragmentContract : BasePresenterContract {
         }
     }
 
-    abstract class UserProfileFragment : PresenterFragment(), ActionProducer<UserProfileFragmentAction, UserProfileFragmentDto>, UserProfileFragmentView
+    abstract class UserProfileFragment : PresenterFragment(), UserProfileFragmentView, ActionProducer<UserProfileFragmentAction, UserProfileFragmentDto>
 
 }

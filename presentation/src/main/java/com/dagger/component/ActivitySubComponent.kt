@@ -10,12 +10,6 @@ import dagger.Subcomponent
 @Subcomponent(modules = [ActivityModule::class, NetModule::class])
 interface ActivitySubComponent {
 
-    //fun add(splashActivityModule: SplashActivityModule): SplashActivitySubComponent
-
-    //fun add(authActivityModule: AuthActivityModule): AuthActivitySubComponent
-
     fun add(rootGodlikeActivityModule: RootGodlikeActivityModule): RootGodlikeActivitySubComponent
-
-    //fun add(userProfileActivityModle: UserProfileActivityModle): UserProfileActvitySubCopmonent
 
 }

@@ -2,8 +2,7 @@ package com.view.ui.modules.profile.userprofile.configurator
 
 
 enum class UserProfileFragmentViewCommand(command: Int) {
-    DEFAULT(command = 0),
-    REGISTER(command = 1);
+    DEFAULT(command = 0);
 
     private val mCommand: Int = command
 

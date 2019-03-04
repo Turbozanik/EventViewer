@@ -9,6 +9,7 @@ import dagger.Provides
 
 @Module
 class SplashActivityModule {
+
     @Provides
     @SplashActivityScope
     fun provideGetUserEmailUseCase(

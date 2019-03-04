@@ -15,6 +15,8 @@ interface RootGodlikeActivityView : BaseView {
 
     fun goBack()
 
-    fun goToCompanyDetailsFragment();
+    fun goToCompanyDetailsFragment()
+
+    fun goToCompanyListFragment()
 
 }

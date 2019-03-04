@@ -1,11 +1,11 @@
 package com.dagger.component
 
 import com.dagger.module.OrganizationFragmentDetailsModule
-import com.dagger.scoupe.EventListFragmentScope
+import com.dagger.scoupe.OrganizationFragmentDetailsScope
 import com.view.ui.modules.content.organization.organiыationdetails.OrganisationDetailsFragmentPresenter
 import dagger.Subcomponent
 
-@EventListFragmentScope
+@OrganizationFragmentDetailsScope
 @Subcomponent(modules = [OrganizationFragmentDetailsModule::class])
 interface OrganizationFragmentDetailsSubComponent {
 

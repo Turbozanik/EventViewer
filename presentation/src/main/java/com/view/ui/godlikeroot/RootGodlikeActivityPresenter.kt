@@ -69,6 +69,9 @@ class RootGodlikeActivityPresenter : RootGodlikeActivityContract.RootActivityPre
                 RootActivityViewCommand.OPEN_COMPANY_DETAILS -> {
                     viewState.goToCompanyDetailsFragment()
                 }
+                RootActivityViewCommand.OPEN_COMPANY_LIST -> {
+                    viewState.goToCompanyListFragment()
+                }
             }
         }
     }

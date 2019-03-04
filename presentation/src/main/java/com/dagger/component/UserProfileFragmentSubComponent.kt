@@ -2,7 +2,7 @@ package com.dagger.component
 
 import com.dagger.module.UserProfileFragmentModule
 import com.dagger.scoupe.UserProfileFragmentScope
-import com.view.ui.modules.profile.userprofile.UserProfilePresenter
+import com.view.ui.modules.profile.userprofile.UserProfileFragmentPresenter
 import dagger.Subcomponent
 
 
@@ -10,6 +10,6 @@ import dagger.Subcomponent
 @Subcomponent(modules = [UserProfileFragmentModule::class])
 interface UserProfileFragmentSubComponent {
 
-    fun inject(userProfilePresenter: UserProfilePresenter)
+    fun inject(userProfilePresenter: UserProfileFragmentPresenter)
 
 }

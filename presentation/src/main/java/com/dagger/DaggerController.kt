@@ -8,27 +8,27 @@ import com.dagger.module.*
 open class DaggerController(eventViewerApp: Context) {
 
     private var mActivitySubComponent: ActivitySubComponent? = null
-    //private var mAuthActivitySubComponent: AuthActivitySubComponent? = null
     private var mRootGodlikeActivitySubComponent: RootGodlikeActivitySubComponent? = null
     private var mRegistrationFragmentSubComponent: RegistrationFragmentSubComponent? = null
     private var mLoginSubComponent: LoginFragmentSubComponent? = null
     private var mEventListFragmentSubComponent: EventListFragmentSubComponent? = null
     private var mEventDetailsSubComponent: EventDetailsFragmentSubComponent? = null
     private var mUserProfileFragmentSubComponent: UserProfileFragmentSubComponent? = null
-    private var mOrganizationDetailsSubComponent: OrganizationFragmentDetailsSubComponent? = null;
+    private var mOrganizationDetailsSubComponent: OrganizationFragmentDetailsSubComponent? = null
+    private var mOrganizationFragmentListSubComponent: OrganizationListFragmentSubComponent? = null
 
-    private val mAppComponent: AppComponent = DaggerAppComponent.builder()
+    private val mAppComponent: AppComponent? = DaggerAppComponent.builder()
             .appModule(AppModule(eventViewerApp))
             .build()
 
-    val appComponent: AppComponent
+    private val appComponent: AppComponent?
         get() {
             return mAppComponent
         }
 
     //Activity module
     fun addActivitySubComponent() {
-        mActivitySubComponent = mActivitySubComponent ?: mAppComponent.add(ActivityModule())
+        mActivitySubComponent = appComponent?.add(ActivityModule())
     }
 
     fun removeActivitySubComponent() {
@@ -141,6 +141,21 @@ open class DaggerController(eventViewerApp: Context) {
     val organizationDetailsFragmentSubComponent: OrganizationFragmentDetailsSubComponent?
         get() {
             return mOrganizationDetailsSubComponent
+        }
+
+    //OrganizationList
+    fun addOrganizationListFragmentSubComponent() {
+        mOrganizationFragmentListSubComponent = mRootGodlikeActivitySubComponent?.add(
+                OrganizationListFragmentModule())
+    }
+
+    fun removeOrganizationListFragmentSubComponent() {
+        mOrganizationFragmentListSubComponent?.let { mOrganizationFragmentListSubComponent = null }
+    }
+
+    val organizationListFragmentSubComponent: OrganizationListFragmentSubComponent?
+        get() {
+            return mOrganizationFragmentListSubComponent
         }
 
 }

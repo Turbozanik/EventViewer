@@ -10,6 +10,8 @@ import com.view.ui.modules.content.eventdetails.EventDetailsFragment
 import com.view.ui.modules.content.eventdetails.configurator.EventDetailsFragmentAction
 import com.view.ui.modules.content.eventlist.EventListFragment
 import com.view.ui.modules.content.eventlist.configurator.EventListFragmentAction
+import com.view.ui.modules.content.organization.organisationlist.OrganisationListFragment
+import com.view.ui.modules.content.organization.organisationlist.configurator.OrganisationListFragmentAction
 import com.view.ui.modules.content.organization.organiыationdetails.OrganisationDetailsFragment
 import com.view.ui.modules.content.organization.organiыationdetails.configurator.OrganisationDetailsFragmentAction
 
@@ -40,10 +42,9 @@ class ContentModuleFragmentFactory : BaseFragmentFactory() {
                                                              OrganisationDetailsFragmentAction.INITIAL_ACTION_DEFAULT)
             }
             ORGANIZATION_LIST_SCREEN -> {
-                //todo replace with correct fragment
-                fragment = OrganisationDetailsFragment.createNewInstance()
-                OrganisationDetailsFragment.addInitialAction(fragment,
-                                                             OrganisationDetailsFragmentAction.INITIAL_ACTION_DEFAULT)
+                fragment = OrganisationListFragment.createNewInstance()
+                OrganisationListFragment.addInitialAction(fragment,
+                                                          OrganisationListFragmentAction.INITIAL_ACTION_DEFAULT)
             }
             else -> {
                 fragment = LoginFragment.createNewInstance()

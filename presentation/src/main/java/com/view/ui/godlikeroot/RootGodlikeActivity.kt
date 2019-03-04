@@ -33,7 +33,7 @@ import ru.terrakok.cicerone.Navigator
 class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), NavigationView.OnNavigationItemSelectedListener, HasProgress, ActionProducer<RootActivityAction, RootGodlikeActivityContract.RootActivityDto> {
 
     private val mNavigator = object : FragmentNavigator(supportFragmentManager,
-            fragmentContainerViewId) {
+                                                        fragmentContainerViewId) {
         override fun createFragment(screenKey: String?, data: Any?): Fragment {
             return when (screenKey) {
                 AUTH_SCREEN -> {
@@ -82,8 +82,8 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
         supportActionBar?.setHomeButtonEnabled(true)
 
         mToggle = ActionBarDrawerToggle(this, mDrawerLayout, mToolbar,
-                R.string.navigation_drawer_open,
-                R.string.navigation_drawer_close)
+                                        R.string.navigation_drawer_open,
+                                        R.string.navigation_drawer_close)
         mDrawerLayout.addDrawerListener(mToggle)
         mToggle.syncState()
 
@@ -101,7 +101,9 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
                 mToggle.isDrawerIndicatorEnabled = true
                 supportActionBar?.setDisplayHomeAsUpEnabled(false)
                 mToggle.syncState()
-                mToolbar.setNavigationOnClickListener { mDrawerLayout.openDrawer(GravityCompat.START) }
+                mToolbar.setNavigationOnClickListener {
+                    mDrawerLayout.openDrawer(GravityCompat.START)
+                }
             }
         }
     }
@@ -160,7 +162,7 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
                 sendActionAndData(RootActivityAction.COMPANY_DETAILS_CLICK, null)
             }
             R.id.nav_share -> {
-
+                sendActionAndData(RootActivityAction.COMPANY_LIST_CLICK, null)
             }
             R.id.nav_send -> {
 
@@ -248,6 +250,10 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
         mToolbar.title = getString(R.string.orgagizations)
     }
 
+    fun prepareOrganizationListFragmentToolbar() {
+        mToolbar.title = getString(R.string.organization_list)
+    }
+
     fun addRegistrationFragment(data: Bundle?) {
         addFragment(REGISTRATION_SCREEN, data)
     }
@@ -280,6 +286,15 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
 
     override fun goToCompanyDetailsFragment() {
         addCompanyDetailsFragment(null)
+    }
+
+    override fun goToCompanyListFragment() {
+        mNavView.setCheckedItem(R.id.nav_share)
+        addCompanyListFragment(null)
+    }
+
+    private fun addCompanyListFragment(bundle: Bundle?) {
+        addFragment(ORGANIZATION_LIST_SCREEN, bundle)
     }
 
     override fun goBack() {

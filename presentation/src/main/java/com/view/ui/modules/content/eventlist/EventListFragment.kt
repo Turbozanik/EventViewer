@@ -16,8 +16,8 @@ import kotlinx.android.synthetic.main.fragment_event_list.*
 class EventListFragment : EventListFragmentContract.EventListFragment() {
 
     @InjectPresenter(type = PresenterType.LOCAL)
-    lateinit var mPresenter: EventListPresenter
-    val presenter: EventListPresenter get() = mPresenter
+    lateinit var mFragmentPresenter: EventListFragmentPresenter
+    val fragmentPresenter: EventListFragmentPresenter get() = mFragmentPresenter
 
     private lateinit var mAdapter: EventListAdapter
 
@@ -69,7 +69,7 @@ class EventListFragment : EventListFragmentContract.EventListFragment() {
 
     override fun sendActionAndData(action: EventListFragmentAction?,
                                    data: EventListFragmentContract.EventListFragmentDto?) {
-        presenter.consumeActionAndData(action, data)
+        fragmentPresenter.consumeActionAndData(action, data)
     }
 
     private fun initAdapter() {

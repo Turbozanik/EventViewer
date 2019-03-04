@@ -1,3 +1,5 @@
 package com.view.ui.modules.content.organization.organisationlist
 
-interface OrganisationListFragmentView
+import com.view.base.view.BaseView
+
+interface OrganisationListFragmentView : BaseView

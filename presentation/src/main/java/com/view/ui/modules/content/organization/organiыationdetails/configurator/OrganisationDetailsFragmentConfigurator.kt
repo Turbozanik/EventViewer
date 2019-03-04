@@ -8,13 +8,14 @@ class OrganisationDetailsFragmentConfigurator : BaseConfigurator<OrganisationDet
 
     override fun produceViewCommand(viewState: OrganisationDetailsFragmentState,
                                     action: OrganisationDetailsFragmentAction?): OrganisationDetailsFragmentViewCommand {
-        action?.let {
-            return when (it) {
+        return when (action) {
 
-                OrganisationDetailsFragmentAction.INITIAL_ACTION_DEFAULT -> {
-                    return OrganisationDetailsFragmentViewCommand.DEFAULT
-                }
+            OrganisationDetailsFragmentAction.INITIAL_ACTION_DEFAULT -> {
+                OrganisationDetailsFragmentViewCommand.DEFAULT
+            }
 
+            else -> {
+                OrganisationDetailsFragmentViewCommand.DEFAULT
             }
         }
     }
