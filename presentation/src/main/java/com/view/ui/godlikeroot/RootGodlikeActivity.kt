@@ -29,12 +29,10 @@ import kotlinx.android.synthetic.main.activity_root_with_toolbar.*
 import ru.terrakok.cicerone.Navigator
 
 
-
-
 class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), NavigationView.OnNavigationItemSelectedListener, HasProgress, ActionProducer<RootActivityAction, RootGodlikeActivityContract.RootActivityDto> {
 
     private val mNavigator = object : FragmentNavigator(supportFragmentManager,
-                                                        fragmentContainerViewId) {
+            fragmentContainerViewId) {
         override fun createFragment(screenKey: String?, data: Any?): Fragment {
             return when (screenKey) {
                 AUTH_SCREEN -> {
@@ -83,8 +81,8 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
         supportActionBar?.setHomeButtonEnabled(true)
 
         mToggle = ActionBarDrawerToggle(this, mDrawerLayout, mToolbar,
-                                        com.view.R.string.navigation_drawer_open,
-                                        com.view.R.string.navigation_drawer_close)
+                com.view.R.string.navigation_drawer_open,
+                com.view.R.string.navigation_drawer_close)
         mDrawerLayout.addDrawerListener(mToggle)
         mToggle.syncState()
 
@@ -305,8 +303,11 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
     override fun goBack() {
         if (currentFragment is EventListFragment) {
             moveTaskToBack(true)
+        } else if (fragmentManager.backStackEntryCount > 2) {
+            goToPreviousFragment()
         } else {
             goToPreviousFragment()
+            setEvenListSelected()
         }
     }
 
