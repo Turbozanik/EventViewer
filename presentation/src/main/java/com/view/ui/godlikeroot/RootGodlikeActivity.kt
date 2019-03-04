@@ -14,7 +14,6 @@ import com.InitialAction
 import com.InitialAction.DEFAULT
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.PresenterType
-import com.view.R
 import com.view.base.configurator.ActionProducer
 import com.view.base.view.HasProgress
 import com.view.ui.godlikeroot.configurator.RootActivityAction
@@ -28,6 +27,8 @@ import kotlinx.android.synthetic.main.activity_root.*
 import kotlinx.android.synthetic.main.activity_root_content.*
 import kotlinx.android.synthetic.main.activity_root_with_toolbar.*
 import ru.terrakok.cicerone.Navigator
+
+
 
 
 class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), NavigationView.OnNavigationItemSelectedListener, HasProgress, ActionProducer<RootActivityAction, RootGodlikeActivityContract.RootActivityDto> {
@@ -82,8 +83,8 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
         supportActionBar?.setHomeButtonEnabled(true)
 
         mToggle = ActionBarDrawerToggle(this, mDrawerLayout, mToolbar,
-                                        R.string.navigation_drawer_open,
-                                        R.string.navigation_drawer_close)
+                                        com.view.R.string.navigation_drawer_open,
+                                        com.view.R.string.navigation_drawer_close)
         mDrawerLayout.addDrawerListener(mToggle)
         mToggle.syncState()
 
@@ -118,7 +119,7 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.root_activity_menu, menu)
+        menuInflater.inflate(com.view.R.menu.root_activity_menu, menu)
         return true
     }
 
@@ -127,8 +128,8 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_settings -> true
-            R.id.home -> {
+            com.view.R.id.action_settings -> true
+            com.view.R.id.home -> {
                 onBackPressed()
                 true
             }
@@ -149,22 +150,22 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.all -> {
+            com.view.R.id.all -> {
                 sendActionAndData(RootActivityAction.EVENT_LIST_ITEM_CLICK, null)
             }
-            R.id.nav_gallery -> {
+            com.view.R.id.nav_gallery -> {
                 sendActionAndData(RootActivityAction.CONFERENCE_ITEM_CLICK, null)
             }
-            R.id.nav_user_profile -> {
+            com.view.R.id.nav_user_profile -> {
                 sendActionAndData(RootActivityAction.USER_PROFILE_CLICK, null)
             }
-            R.id.nav_manage -> {
+            com.view.R.id.nav_manage -> {
                 sendActionAndData(RootActivityAction.COMPANY_DETAILS_CLICK, null)
             }
-            R.id.nav_share -> {
+            com.view.R.id.nav_share -> {
                 sendActionAndData(RootActivityAction.COMPANY_LIST_CLICK, null)
             }
-            R.id.nav_send -> {
+            com.view.R.id.nav_send -> {
 
             }
         }
@@ -196,10 +197,10 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
     }
 
     override val layoutId: Int
-        get() = R.layout.activity_root
+        get() = com.view.R.layout.activity_root
 
     override val fragmentContainerViewId: Int
-        get() = R.id.mFragmentContainer
+        get() = com.view.R.id.mFragmentContainer
 
     override fun showProgress() {
         progressView.visibility = View.VISIBLE
@@ -227,31 +228,31 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
     }
 
     fun prepareEventListToolbar() {
-        mToolbar.title = getString(R.string.all)
+        mToolbar.title = getString(com.view.R.string.all)
     }
 
     fun prepareEventDetailsToolbar() {
-        mToolbar.title = getString(R.string.event_details)
+        mToolbar.title = getString(com.view.R.string.event_details)
     }
 
     fun prepareRegistrationFragmentToolbar() {
-        mToolbar.title = getString(R.string.registration)
+        mToolbar.title = getString(com.view.R.string.registration)
     }
 
     fun prepareLoginToolbar() {
-        mToolbar.title = getString(R.string.login)
+        mToolbar.title = getString(com.view.R.string.login)
     }
 
     fun prepareUserProfileToolbar() {
-        mToolbar.title = getString(R.string.profile)
+        mToolbar.title = getString(com.view.R.string.profile)
     }
 
     fun prepareOrganizationFragmentToolbar() {
-        mToolbar.title = getString(R.string.orgagizations)
+        mToolbar.title = getString(com.view.R.string.orgagizations)
     }
 
     fun prepareOrganizationListFragmentToolbar() {
-        mToolbar.title = getString(R.string.organization_list)
+        mToolbar.title = getString(com.view.R.string.organization_list)
     }
 
     fun addRegistrationFragment(data: Bundle?) {
@@ -271,12 +272,12 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
     }
 
     override fun goToProfileFragment() {
-        mNavView.setCheckedItem(R.id.nav_user_profile)
+        mNavView.setCheckedItem(com.view.R.id.nav_user_profile)
         addUserProfileFragment(null)
     }
 
     override fun goToEventListFragment() {
-        mNavView.setCheckedItem(R.id.all)
+        setEvenListSelected()
         showEventListFragmentRoot(null)
     }
 
@@ -289,12 +290,16 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
     }
 
     override fun goToCompanyListFragment() {
-        mNavView.setCheckedItem(R.id.nav_share)
+        mNavView.setCheckedItem(com.view.R.id.nav_share)
         addCompanyListFragment(null)
     }
 
     private fun addCompanyListFragment(bundle: Bundle?) {
         addFragment(ORGANIZATION_LIST_SCREEN, bundle)
+    }
+
+    private fun setEvenListSelected() {
+        mNavView.setCheckedItem(com.view.R.id.all)
     }
 
     override fun goBack() {
