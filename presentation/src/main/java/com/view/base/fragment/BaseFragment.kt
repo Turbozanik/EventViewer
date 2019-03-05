@@ -1,6 +1,5 @@
 package com.view.base.fragment
 
-import android.content.Context
 import android.os.Bundle
 import android.support.annotation.CallSuper
 import android.support.annotation.LayoutRes
@@ -38,12 +37,8 @@ abstract class BaseFragment : Fragment() {
         return inflater.inflate(layoutId, null)
     }
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-        addCurrentSubComponent()
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        addCurrentSubComponent()
         super.onViewCreated(view, savedInstanceState)
         initView()
         handleInitialAction()

@@ -42,7 +42,9 @@ open class DaggerController(eventViewerApp: Context) {
 
     //RootGodlikeActivity module
     fun addRootActivitySubComponent() {
-        mRootGodlikeActivitySubComponent = mActivitySubComponent?.add(RootGodlikeActivityModule())
+        if (mRootGodlikeActivitySubComponent == null) {
+            mRootGodlikeActivitySubComponent = mActivitySubComponent?.add(RootGodlikeActivityModule())
+        }
     }
 
     fun removeRootActivitySubComponent() {
@@ -56,8 +58,10 @@ open class DaggerController(eventViewerApp: Context) {
 
     //RegistrationFragment
     fun addRegistrationFragmentSubComponent() {
-        mRegistrationFragmentSubComponent = mRootGodlikeActivitySubComponent?.add(
-                RegistrationFragmentModule())
+        if (mRegistrationFragmentSubComponent == null) {
+            mRegistrationFragmentSubComponent = mRootGodlikeActivitySubComponent?.add(
+                    RegistrationFragmentModule())
+        }
     }
 
     fun removeRegistrationFragmentSubComponent() {
@@ -71,7 +75,9 @@ open class DaggerController(eventViewerApp: Context) {
 
     //LoginFragment
     fun addLoginFragmentSubComponent() {
-        mLoginSubComponent = mRootGodlikeActivitySubComponent?.add(LoginFragmentModule())
+        if (mLoginSubComponent == null) {
+            mLoginSubComponent = mRootGodlikeActivitySubComponent?.add(LoginFragmentModule())
+        }
     }
 
     fun removeLoginFragmentSubComponent() {
@@ -85,8 +91,10 @@ open class DaggerController(eventViewerApp: Context) {
 
     //EventList
     fun addEventListFragmentSubComponent() {
-        mEventListFragmentSubComponent = mRootGodlikeActivitySubComponent?.add(
-                EventListFragmentModule())
+        if (mEventListFragmentSubComponent == null) {
+            mEventListFragmentSubComponent = mRootGodlikeActivitySubComponent?.add(
+                    EventListFragmentModule())
+        }
     }
 
     fun removeEventListFragmentSubComponent() {
@@ -100,8 +108,10 @@ open class DaggerController(eventViewerApp: Context) {
 
     //EventDetails
     fun addEventDetailsFragmentSubComponent() {
-        mEventDetailsSubComponent = mRootGodlikeActivitySubComponent?.add(
-                EventDetailsFragmentModule())
+        if (mEventDetailsSubComponent == null) {
+            mEventDetailsSubComponent = mRootGodlikeActivitySubComponent?.add(
+                    EventDetailsFragmentModule())
+        }
     }
 
     fun removeEventDetailsFragmentSubComponent() {
@@ -115,8 +125,10 @@ open class DaggerController(eventViewerApp: Context) {
 
     //UserProfileFragment
     fun addUserProfileFragmentSubComponent() {
-        mUserProfileFragmentSubComponent = mRootGodlikeActivitySubComponent?.add(
-                UserProfileFragmentModule())
+        if (mUserProfileFragmentSubComponent == null) {
+            mUserProfileFragmentSubComponent = mRootGodlikeActivitySubComponent?.add(
+                    UserProfileFragmentModule())
+        }
     }
 
     fun removeUserProfileFragmentSubComponent() {
@@ -130,8 +142,10 @@ open class DaggerController(eventViewerApp: Context) {
 
     //OrganizationDetails
     fun addOrganizationDetailsFragmentSubComponent() {
-        mOrganizationDetailsSubComponent = mRootGodlikeActivitySubComponent?.add(
-                OrganizationFragmentDetailsModule())
+        if (mOrganizationDetailsSubComponent == null) {
+            mOrganizationDetailsSubComponent = mRootGodlikeActivitySubComponent?.add(
+                    OrganizationFragmentDetailsModule())
+        }
     }
 
     fun removeOrganizationDetailsFragmentSubComponent() {
@@ -145,8 +159,10 @@ open class DaggerController(eventViewerApp: Context) {
 
     //OrganizationList
     fun addOrganizationListFragmentSubComponent() {
-        mOrganizationFragmentListSubComponent = mRootGodlikeActivitySubComponent?.add(
-                OrganizationListFragmentModule())
+        if (mOrganizationFragmentListSubComponent == null) {
+            mOrganizationFragmentListSubComponent = mRootGodlikeActivitySubComponent?.add(
+                    OrganizationListFragmentModule())
+        }
     }
 
     fun removeOrganizationListFragmentSubComponent() {
