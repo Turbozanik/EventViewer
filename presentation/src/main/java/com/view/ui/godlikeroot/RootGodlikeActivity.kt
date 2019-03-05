@@ -96,6 +96,7 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
                 mToggle.isDrawerIndicatorEnabled = false
                 supportActionBar?.setDisplayHomeAsUpEnabled(true)// show back button
                 mToolbar.setNavigationOnClickListener { onBackPressed() }
+                setEvenListSelected()
             } else {
                 mToggle.isDrawerIndicatorEnabled = true
                 supportActionBar?.setDisplayHomeAsUpEnabled(false)
@@ -301,13 +302,12 @@ class RootGodlikeActivity : RootGodlikeActivityContract.RootActivity(), Navigati
     }
 
     override fun goBack() {
-        if (currentFragment is EventListFragment) {
-            moveTaskToBack(true)
-        } else if (fragmentManager.backStackEntryCount > 2) {
-            goToPreviousFragment()
-        } else {
-            goToPreviousFragment()
-            setEvenListSelected()
+        when {
+            currentFragment is EventListFragment -> moveTaskToBack(true)
+            fragmentManager.backStackEntryCount > 2 -> goToPreviousFragment()
+            else -> {
+                goToPreviousFragment()
+            }
         }
     }
 
