@@ -38,8 +38,8 @@ abstract class BaseFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        addCurrentSubComponent()
         super.onViewCreated(view, savedInstanceState)
+        addCurrentSubComponent()
         initView()
         handleInitialAction()
     }

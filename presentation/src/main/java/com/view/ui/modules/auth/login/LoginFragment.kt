@@ -38,6 +38,7 @@ class LoginFragment : LoginFragmentContract.LoginFragment() {
 
     override fun addCurrentSubComponent() {
         daggerController.addLoginFragmentSubComponent()
+        presenter.injectPresenter()
     }
 
     override fun removeCurrentSubComponent() {

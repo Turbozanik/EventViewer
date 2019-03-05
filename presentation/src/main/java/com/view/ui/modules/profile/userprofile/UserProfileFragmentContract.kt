@@ -16,7 +16,6 @@ interface UserProfileFragmentContract : BasePresenterContract {
     abstract class UserProfilePresenter : BasePresenter<UserProfileFragmentConfigurator, UserProfileFragmentAction, UserProfileFragmentDto, UserProfileFragmentView>() {
         init {
             this.intiConfigurator()
-            this.injectPresenter()
         }
     }
 

@@ -45,6 +45,7 @@ class RegistrationFragment : RegistrationFragmentContract.RegistrationFragment()
 
     override fun addCurrentSubComponent() {
         daggerController.addRegistrationFragmentSubComponent()
+        presenter.injectPresenter()
     }
 
     override fun removeCurrentSubComponent() {

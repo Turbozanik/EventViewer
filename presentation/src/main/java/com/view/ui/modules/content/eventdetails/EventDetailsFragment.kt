@@ -42,6 +42,7 @@ class EventDetailsFragment : EventDetailsFragmentContract.EventDetailsFragment()
 
     override fun addCurrentSubComponent() {
         daggerController.addEventDetailsFragmentSubComponent()
+        presenter.injectPresenter()
     }
 
     override fun removeCurrentSubComponent() {

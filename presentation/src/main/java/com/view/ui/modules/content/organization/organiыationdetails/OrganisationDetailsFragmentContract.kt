@@ -13,7 +13,6 @@ class OrganisationDetailsFragmentContract {
     abstract class OrganizationDetailsPresenter : BasePresenter<OrganisationDetailsFragmentConfigurator, OrganisationDetailsFragmentAction, OrganizationDetailsFragmentDto, OrganisationDetailsFragmentView>() {
         init {
             this.intiConfigurator()
-            this.injectPresenter()
         }
     }
 

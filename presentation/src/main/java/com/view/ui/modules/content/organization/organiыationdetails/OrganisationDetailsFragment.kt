@@ -49,6 +49,7 @@ class OrganisationDetailsFragment : OrganisationDetailsFragmentContract.Organiza
 
     override fun addCurrentSubComponent() {
         daggerController.addOrganizationDetailsFragmentSubComponent()
+        presenter.injectPresenter()
     }
 
     override fun removeCurrentSubComponent() {

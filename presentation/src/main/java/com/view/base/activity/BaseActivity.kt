@@ -128,6 +128,10 @@ abstract class BaseActivity : com.view.base.activity.MvpActivity(), HasRootScree
         router.navigateTo(screenKey, data)
     }
 
+    protected fun replaceFragment(screenKey: String, data: Any?) {
+        router.replaceScreen(screenKey, data)
+    }
+
     protected fun goToPreviousFragment(screenKey: String?) {
         router.backTo(screenKey)
     }

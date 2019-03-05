@@ -36,6 +36,7 @@ class UserProfileFragment : UserProfileFragmentContract.UserProfileFragment() {
 
     override fun addCurrentSubComponent() {
         daggerController.addUserProfileFragmentSubComponent()
+        presenter.injectPresenter()
     }
 
     override fun removeCurrentSubComponent() {
@@ -86,5 +87,4 @@ class UserProfileFragment : UserProfileFragmentContract.UserProfileFragment() {
         if (mAdapter.setProgress(false, mRvUsersEventList)) return
         super.showProgress()
     }
-
 }

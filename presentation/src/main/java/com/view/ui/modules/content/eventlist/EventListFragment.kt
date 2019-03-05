@@ -17,7 +17,7 @@ class EventListFragment : EventListFragmentContract.EventListFragment() {
 
     @InjectPresenter(type = PresenterType.LOCAL)
     lateinit var mFragmentPresenter: EventListFragmentPresenter
-    val fragmentPresenter: EventListFragmentPresenter get() = mFragmentPresenter
+    val presenter: EventListFragmentPresenter get() = mFragmentPresenter
 
     private lateinit var mAdapter: EventListAdapter
 
@@ -58,6 +58,7 @@ class EventListFragment : EventListFragmentContract.EventListFragment() {
 
     override fun addCurrentSubComponent() {
         daggerController.addEventListFragmentSubComponent()
+        presenter.injectPresenter()
     }
 
     override fun removeCurrentSubComponent() {
@@ -69,7 +70,7 @@ class EventListFragment : EventListFragmentContract.EventListFragment() {
 
     override fun sendActionAndData(action: EventListFragmentAction?,
                                    data: EventListFragmentContract.EventListFragmentDto?) {
-        fragmentPresenter.consumeActionAndData(action, data)
+        presenter.consumeActionAndData(action, data)
     }
 
     private fun initAdapter() {

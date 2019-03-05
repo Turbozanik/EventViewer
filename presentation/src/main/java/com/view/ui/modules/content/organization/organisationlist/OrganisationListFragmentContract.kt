@@ -14,7 +14,6 @@ interface OrganisationListFragmentContract : BasePresenterContract {
     abstract class OrganizationListPresenter : BasePresenter<OrganizationListFragmentConfigurator, OrganisationListFragmentAction, OrganisationListFragmentDto, OrganisationListFragmentView>() {
         init {
             this.intiConfigurator()
-            this.injectPresenter()
         }
     }
 
